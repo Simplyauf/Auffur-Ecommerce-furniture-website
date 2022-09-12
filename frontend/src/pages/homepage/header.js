@@ -31,8 +31,8 @@ export const Header = () => {
   }, [isLargeScreen]);
 
   return (
-    <header className="h-[125px]">
-      <nav className="w-[100%] h-[68%] font-Roboto px-[5%] font-medium flex items-center justify-between border-b-2 shadow-md shadow-[#e5e5e5]  border-[#e5e5e5]">
+    <header className="">
+      <nav className="w-[100%] h-[80px] font-Roboto px-[5%] font-medium flex items-center justify-between border-b-2 shadow-md shadow-[#e5e5e5]  border-[#e5e5e5]">
         <h1 className="text-[24px]">AUFUR</h1>
         {isLargeScreen && <NavTabs />}
 
@@ -54,7 +54,7 @@ export const Header = () => {
         </div>
       </nav>
       {isSearchClicked && (
-        <div className="w-[100%] searchBar h-[32%] bg-[#e5e5e5] text-[#000000] border-b-2 z-50  relative border-[#e5e5e5]">
+        <div className="w-[100%] searchBar h-[45px] bg-[#e5e5e5] text-[#000000] border-b-2 z-50  relative border-[#e5e5e5]">
           <input
             className="w-[100%] text-[18px] pl-20 h-[100%] bg-[#e5e5e5] border-none outline-none"
             type="search"
