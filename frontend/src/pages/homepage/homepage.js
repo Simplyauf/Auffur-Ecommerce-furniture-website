@@ -1,7 +1,7 @@
 import { Header } from "./header";
 import { HeroSection } from "./heroSection";
-import { ProductsSection } from "./productsSection";
 import { WhyChooseUsSection } from "./whyChooseUsSection";
+import ProductsSection from "./productsSection";
 const Homepage = () => {
   return (
     <>
