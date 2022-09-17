@@ -9,4 +9,18 @@
   .product-img-container:hover .product-details-link {
     display: flex;
   }
+  .category-img-container:hover .product-img-overlay {
+    display: block;
+  }
+  .category-img-container:hover .category-shop-link {
+    display: flex;
+  }
+}
+@layer utilities {
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-RobotoCondensed;
+  }
 }
