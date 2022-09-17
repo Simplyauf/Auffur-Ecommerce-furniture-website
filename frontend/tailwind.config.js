@@ -11,7 +11,7 @@ module.exports = {
       },
       fontFamily: {
         Montserrat: ["Montserrat", "sans-serif"],
-        Roboto: ["Roboto", "sans-serif"],
+        RobotoCondensed: ["Roboto Condensed", "sans-serif"],
       },
     },
   },
