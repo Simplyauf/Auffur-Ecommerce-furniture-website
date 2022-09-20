@@ -23,4 +23,13 @@
   h4 {
     @apply font-RobotoCondensed;
   }
+  body {
+    @apply font-Lato;
+  }
+  li {
+    @apply cursor-pointer;
+  }
+  button {
+    @apply cursor-pointer;
+  }
 }

@@ -10,7 +10,7 @@ module.exports = {
         lgHeight: { raw: "(min-height:850px)" },
       },
       fontFamily: {
-        Montserrat: ["Montserrat", "sans-serif"],
+        Lato: ["Lato", "sans-serif"],
         RobotoCondensed: ["Roboto Condensed", "sans-serif"],
       },
     },
