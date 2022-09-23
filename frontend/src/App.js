@@ -4,7 +4,7 @@ import PagesRoute from "./routes/pagesRoute";
 
 function App() {
   return (
-    <div className="App-container font-Montserrat">
+    <div className="App-container">
       <PagesRoute />
     </div>
   );
