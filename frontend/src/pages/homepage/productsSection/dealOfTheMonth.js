@@ -3,9 +3,9 @@ import { BsArrowRight } from "react-icons/bs";
 
 export const DealOfTheMonth = () => {
   return (
-    <>
+    <section>
       <h1 className="font-bold text-[36px] mb-8 text-center ">Deal of the Week</h1>
-      <section className="w-[100%] bg-[#e5e5e5] py-14 gap-7 h-[750px] flex flex-col px-[5%]">
+      <div className="w-[100%] bg-[#e5e5e5] py-14 gap-7 h-[750px] flex flex-col px-[5%]">
         <div className="w-[100%]  h-[40%] mx-auto">
           <img
             className="w-[100%] h-[100%] "
@@ -44,7 +44,7 @@ export const DealOfTheMonth = () => {
             <BsArrowRight />
           </button>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
