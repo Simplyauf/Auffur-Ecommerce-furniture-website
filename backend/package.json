@@ -1,0 +1,29 @@
+{
+  "name": "auffur",
+  "version": "1.0.0",
+  "description": "Auffur is an e-commerce platform",
+  "main": "app.js",
+  "scripts": {
+    "start": "concurrently \"npm run app\" \"cd ../frontend && npm start\"",
+    "server": "nodemon app.js"
+  },
+  "author": "Azeez umar faruk",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cloudinary": "^1.32.0",
+    "concurrently": "^7.4.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "express-async-errors": "^3.1.1",
+    "express-fileupload": "^1.4.0",
+    "express-rate-limit": "^6.6.0",
+    "helmet": "^6.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.6.1"
+  }
+}
