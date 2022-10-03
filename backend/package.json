@@ -4,7 +4,7 @@
   "description": "Auffur is an e-commerce platform",
   "main": "app.js",
   "scripts": {
-    "start": "concurrently \"npm run app\" \"cd ../frontend && npm start\"",
+    "start": "concurrently \"yarn run server\" \"cd ../frontend && yarn start\"",
     "server": "nodemon app.js"
   },
   "author": "Azeez umar faruk",
