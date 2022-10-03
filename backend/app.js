@@ -5,10 +5,29 @@ const connectDb = require("./db/connect");
 const productRoute = require("./routes/productRoute");
 const errorHandler = require("./middleware/errorHandler");
 const pathNotFound = require("./middleware/pathNotFound");
+const cloudinary = require("cloudinary").v2;
+const fileUpload = require("express-fileupload");
+const cors = require("cors");
+
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_API_KEY,
+  api_secret: process.env.CLOUD_API_SECRET,
+});
+
+console.log(cloudinary.config());
 
 const app = express();
 //  middlewares
+app.use(cors());
 app.use(express.json());
+app.use(
+  fileUpload({
+    useTempFiles: true,
+    limits: { fileSize: 3 * 1024 * 1024 },
+    responseOnLimit: "Image size has exceeded the limit",
+  })
+);
 
 app.get("/", (req, res) => {
   res.status(200).send("<h1>Auffur</h1>  <a href=''>products page<a/> ");
