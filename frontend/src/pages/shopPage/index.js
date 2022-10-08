@@ -2,10 +2,38 @@ import { Header } from "../../components/header";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { BiFilter } from "react-icons/bi";
 import { SingleProductBox } from "../../components/singleProductBox";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { setIsLoading, getAllProductsData, setTypeOfproductsDataCurrentlyRequested } from "../../features/productSlice";
+import FooterSection from "../../components/footerSection";
+import { Loading } from "../../components/Loading";
+import { PaginationSection } from "./paginationSection";
+import { handlePaginationProductsPage } from "../../utils/handlePaginationProductsPage";
 
 import React from "react";
 
 const Index = () => {
+  const dispatch = useDispatch();
+  const { allProductsData, isLoading, typeOfproductsDataCurrentlyRequested, productsDataForCurrentPage } = useSelector(
+    (state) => state.productsData
+  );
+  console.log(productsDataForCurrentPage);
+  let NoOfProductsPerPage = 10;
+  const [currentPageNo, setCurrentPageNo] = useState(1);
+  console.log(allProductsData);
+
+  useEffect(() => {
+    handlePaginationProductsPage(dispatch, NoOfProductsPerPage, currentPageNo, typeOfproductsDataCurrentlyRequested);
+  }, [currentPageNo, NoOfProductsPerPage, typeOfproductsDataCurrentlyRequested, dispatch]);
+
+  useEffect(() => {
+    dispatch(setTypeOfproductsDataCurrentlyRequested(allProductsData));
+  }, [dispatch, allProductsData]);
+
+  useEffect(() => {
+    dispatch(getAllProductsData());
+  }, []);
+
   return (
     <>
       <Header />
@@ -50,12 +78,22 @@ const Index = () => {
           <li data-id="Oceania">Oceania</li>
         </div>
       </article>
-      <h3 className="text-center font-bold text-[24px]">All</h3>
-      <section className="flex w-[80%] mx-auto items-center justify-center gap-14 flex-col mt-20">
-        <SingleProductBox />
-        <SingleProductBox />
-        <SingleProductBox />
-      </section>
+
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <>
+          {" "}
+          <h3 className="text-center font-bold text-[24px]">All</h3>
+          <section className="flex w-[80%] mx-auto items-center justify-center gap-14 flex-col mt-20">
+            {productsDataForCurrentPage.map((elem, index) => {
+              return <SingleProductBox key={index} />;
+            })}
+          </section>
+          <PaginationSection {...{ setCurrentPageNo, NoOfProductsPerPage, currentPageNo }} />
+        </>
+      )}
+      <FooterSection />
     </>
   );
 };
