@@ -24,8 +24,6 @@ app.use(express.json());
 app.use(
   fileUpload({
     useTempFiles: true,
-    limits: { fileSize: 3 * 1024 * 1024 },
-    responseOnLimit: "Image size has exceeded the limit",
   })
 );
 
