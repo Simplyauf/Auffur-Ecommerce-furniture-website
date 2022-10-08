@@ -29,8 +29,8 @@ export const Header = () => {
   }, [isLargeScreen]);
   // ;C:\Users\user\AppData\Local\Programs\Microsoft VS Code\bin
   return (
-    <header className="h-[80px] relative z-[1000] ">
-      <nav className="w-[100%] h-[100%] font-Roboto px-[5%] font-medium flex items-center justify-between border-b-2 shadow-md shadow-[#e5e5e5]  border-[rgb(229,229,229)]">
+    <header className="h-[80px] sticky top-0 z-[1000] bg-[#ffffff]">
+      <nav className="w-[100%] h-[100%] font-Roboto px-[5%] font-medium flex items-center justify-between shadow-[0px_0px_4px_0px_rgba(14,19,24,0.7)] ">
         <h1 className="text-[24px]">AUFUR</h1>
         {isLargeScreen && <NavTabs />}
         <div className="flex items-center gap-4 md:basis-[25%] text-[18px]">

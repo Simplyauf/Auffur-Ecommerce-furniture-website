@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export const NavTabs = () => {
   return (
-    <ul className="flex flex-col z-50 absolute top-[100%] bg-white items-start px-[5%] left-0 right-0 py-8 gap-3 tracking-[0.25px] text-[18px]">
+    <ul className="flex flex-col z-50 border-t-2 border-[rgb(229,229,229)] absolute top-[100%] bg-white items-start px-[5%] left-0 right-0 py-8 gap-3 tracking-[0.25px] text-[18px]">
       <li>
         <Link to="/">Home</Link>
       </li>
