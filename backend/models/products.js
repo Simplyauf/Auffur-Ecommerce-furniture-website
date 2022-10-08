@@ -37,6 +37,7 @@ const productSchema = new mongoose.Schema(
         "dining",
         "featured",
         "first order deal",
+        "sofa",
       ],
       required: [true, "Product's categories is required"],
     },
