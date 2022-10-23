@@ -21,25 +21,10 @@ const productSchema = new mongoose.Schema(
       required: [true, "Product's image is required"],
     },
     categories: {
-      type: [String],
-      enums: [
-        "chairs",
-        "tables",
-        "kids",
-        "office",
-        "sets",
-        "cupboards",
-        "lighting",
-        "discounts",
-        "bedroom",
-        "living room",
-        "kitchen",
-        "dining",
-        "featured",
-        "first order deal",
-        "sofa",
-      ],
-      required: [true, "Product's categories is required"],
+      "Featured Categories": { type: [String], enums: ["featured", "first order deal", "discounts"] },
+      location: { type: [String], enums: ["kitchen", "dining", "bedroom", "living room", "office"] },
+      features: { type: [String], enums: ["chairs", "tables", "sets", "cupboards", "lighting", "sofa"] },
+      others: { type: [String], enums: ["kids"] },
     },
   },
   {
@@ -48,3 +33,9 @@ const productSchema = new mongoose.Schema(
 );
 
 module.exports = mongoose.model("Product", productSchema);
+// const productCategories = {
+//   "Featured Categories": ["featured", "first order deal", "discounts"],
+//   location: ["kitchen", "dining", "bedroom", "living room", "office"],
+//   features: ["chairs", "tables", "sets", "cupboards", "lighting", "sofa"],
+//   others: ["kids"],
+// };
