@@ -2,10 +2,10 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 
 export const PaginationSection = ({ setCurrentPageNo, NoOfProductsPerPage, currentPageNo }) => {
-  const { typeOfproductsDataCurrentlyRequested } = useSelector((state) => state.productsData);
+  const { placeholderOfproductsDataCurrentlyRequested } = useSelector((state) => state.productsData);
 
   let pageNumbers = [];
-  for (let i = 1; i <= Math.ceil(typeOfproductsDataCurrentlyRequested.length / NoOfProductsPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(placeholderOfproductsDataCurrentlyRequested.length / NoOfProductsPerPage); i++) {
     pageNumbers.push(i);
   }
 

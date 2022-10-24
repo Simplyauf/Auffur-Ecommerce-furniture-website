@@ -4,10 +4,10 @@ export const handlePaginationProductsPage = (
   dispatch,
   NoOfProductsPerPageNo,
   currentPageNo,
-  typeOfproductsDataCurrentlyRequested
+  placeholderOfproductsDataCurrentlyRequested
 ) => {
   const indexOfLastPage = NoOfProductsPerPageNo * currentPageNo;
   const indexOfPrevPage = indexOfLastPage - NoOfProductsPerPageNo;
-  let currentPageProductsData = typeOfproductsDataCurrentlyRequested.slice(indexOfPrevPage, indexOfLastPage);
+  let currentPageProductsData = placeholderOfproductsDataCurrentlyRequested.slice(indexOfPrevPage, indexOfLastPage);
   dispatch(setProductsDataForCurrentPage(currentPageProductsData));
 };

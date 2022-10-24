@@ -4,7 +4,11 @@ import { BiFilter } from "react-icons/bi";
 import { SingleProductBox } from "../../components/singleProductBox";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { setIsLoading, getAllProductsData, setTypeOfproductsDataCurrentlyRequested } from "../../features/productSlice";
+import {
+  setIsLoading,
+  getAllProductsData,
+  setPlaceholderOfproductsDataCurrentlyRequested,
+} from "../../features/productSlice";
 import FooterSection from "../../components/footerSection";
 import { Loading } from "../../components/Loading";
 import { PaginationSection } from "./paginationSection";
@@ -14,20 +18,24 @@ import React from "react";
 
 const Index = () => {
   const dispatch = useDispatch();
-  const { allProductsData, isLoading, typeOfproductsDataCurrentlyRequested, productsDataForCurrentPage } = useSelector(
-    (state) => state.productsData
-  );
+  const { allProductsData, isLoading, placeholderOfproductsDataCurrentlyRequested, productsDataForCurrentPage } =
+    useSelector((state) => state.productsData);
   console.log(productsDataForCurrentPage);
   let NoOfProductsPerPage = 10;
   const [currentPageNo, setCurrentPageNo] = useState(1);
   console.log(allProductsData);
 
   useEffect(() => {
-    handlePaginationProductsPage(dispatch, NoOfProductsPerPage, currentPageNo, typeOfproductsDataCurrentlyRequested);
-  }, [currentPageNo, NoOfProductsPerPage, typeOfproductsDataCurrentlyRequested, dispatch]);
+    handlePaginationProductsPage(
+      dispatch,
+      NoOfProductsPerPage,
+      currentPageNo,
+      placeholderOfproductsDataCurrentlyRequested
+    );
+  }, [currentPageNo, NoOfProductsPerPage, placeholderOfproductsDataCurrentlyRequested, dispatch]);
 
   useEffect(() => {
-    dispatch(setTypeOfproductsDataCurrentlyRequested(allProductsData));
+    dispatch(setPlaceholderOfproductsDataCurrentlyRequested(allProductsData));
   }, [dispatch, allProductsData]);
 
   useEffect(() => {
@@ -58,7 +66,7 @@ const Index = () => {
           <li data-id="Oceania">Oceania</li>
         </div>
       </article>
-      <article className="w-[65%] tablet:w-[40%] md:w-[30%]  laptop:w-[17%] lg:w-[22%] ml-[5%] mb-12 flex-col flex gap-2">
+      <article className="w-[65%] tablet:w-[40%] md:w-[30%]  laptop:w-[17%] lg:w-[22%] ml-[5%]  mb-12 flex-col flex gap-2">
         <h3 className="text-[18px] font-bold ml-2"> Categories</h3>
         <div
           className="flex dark:bg-mainElementColor2 bg-mainElementColor justify-between h-14 rounded-md shadow-[0.5px_2px_32px_-2px_rgba(0,0,0,0.1)] items-center px-[10%] cursor-pointer"
@@ -67,7 +75,7 @@ const Index = () => {
           }}
         >
           <h2>All</h2>
-          <BiFilter className="w-8 h-8 " />
+          <RiArrowDropDownLine className="w-8 h-8 " />
         </div>
         <div className=" hidden flex-col rounded-md shadow-[0px_2px_32px_-2px_rgba(0,0,0,0.1)] bg-mainElementColor dark:bg-mainElementColor2  py-4  gap-4 z-50 px-[10%] sticky top-0 left-0 right-0 -mb-64  region-lists">
           <li>All</li>
@@ -78,6 +86,7 @@ const Index = () => {
           <li data-id="Oceania">Oceania</li>
         </div>
       </article>
+
 
       {isLoading ? (
         <Loading />

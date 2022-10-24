@@ -4,7 +4,7 @@ import axios from "axios";
 const initialState = {
   allProductsData: [],
   isLoading: true,
-  typeOfproductsDataCurrentlyRequested: [],
+  placeholderOfproductsDataCurrentlyRequested: [],
   productsDataForCurrentPage: [],
 };
 
@@ -26,10 +26,10 @@ export const productSlice = createSlice({
     setIsLoading: (state, { payload }) => {
       state.isLoading = payload;
     },
-    setTypeOfproductsDataCurrentlyRequested: (state, { payload }) => {
+    setPlaceholderOfproductsDataCurrentlyRequested: (state, { payload }) => {
       payload = payload ? payload : [];
 
-      state.typeOfproductsDataCurrentlyRequested = payload;
+      state.placeholderOfproductsDataCurrentlyRequested = payload;
     },
     setProductsDataForCurrentPage: (state, { payload }) => {
       payload = payload ? payload : [];
@@ -54,7 +54,7 @@ export const productSlice = createSlice({
   },
 });
 
-export const { setIsLoading, setTypeOfproductsDataCurrentlyRequested, setProductsDataForCurrentPage } =
+export const { setIsLoading, setPlaceholderOfproductsDataCurrentlyRequested, setProductsDataForCurrentPage } =
   productSlice.actions;
 
 export default productSlice.reducer;
