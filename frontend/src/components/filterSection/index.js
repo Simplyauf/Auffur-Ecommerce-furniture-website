@@ -1,10 +1,12 @@
 import { IoCloseOutline } from "react-icons/io5";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { setPriceRange, setSelectedCategory, setSelectedSubCategoryForFilter } from "../../features/filterBySlice";
 import CategoriesSection from "./CategorySection";
 import { PriceRange } from "./priceRange";
 import { handleFilterByCategoriesAndPrice } from "../../utils/handleFilterByCategoriesAndPrice";
 import { handlePaginationProductsPage } from "../../utils/handlePaginationProductsPage";
+import { useEffect } from "react";
 
 export const FilterBySection = ({
   isFilterBySectionOpen,
@@ -13,28 +15,21 @@ export const FilterBySection = ({
   NoOfProductsPerPage,
 }) => {
   const dispatch = useDispatch();
-  const { allProductsData } = useSelector((state) => state.productsData);
+  const { sortedAllProductsData } = useSelector((state) => state.productsData);
 
-  const [selectedSubCategoryForFilter, setSelectedSubCategoryForFilter] = useState(null);
-  const [selectedCategory, setSelectedCategory] = useState(null);
-  const [priceRange, setPriceRange] = useState(null);
+  useEffect(() => {
+    handleFilterByCategoriesAndPrice(dispatch, NoOfProductsPerPage, currentPageNo, sortedAllProductsData);
+  }, [sortedAllProductsData]);
 
   // DOMS OF THE CHECKED ELEM FOR UNCHECKING DURING RESET
   const [checkedCategoryDOM, setCheckedCategoryDOM] = useState(null);
   const [checkedPriceRangeDOM, setCheckedPriceRangeDOM] = useState(null);
 
-  // GET SELECTED CHECKED CATEGORY DETAILS FROM THE CHILD COMPONENT
-  const getSelectedCategoryDetailsCallbackFN = (CategoryValue, SubCategoryForFilterValue, checkedCategory) => {
-    setSelectedCategory(CategoryValue);
-    setSelectedSubCategoryForFilter(SubCategoryForFilterValue);
-    setCheckedCategoryDOM(checkedCategory);
-  };
-
   const resetFilter = (checkedCategory, checkedPriceRange) => {
-    setSelectedCategory(null);
-    setSelectedSubCategoryForFilter(null);
-    setPriceRange(null);
-    handlePaginationProductsPage(dispatch, NoOfProductsPerPage, currentPageNo, allProductsData);
+    dispatch(setSelectedCategory(null));
+    dispatch(setSelectedSubCategoryForFilter(null));
+    dispatch(setPriceRange(null));
+    handlePaginationProductsPage(dispatch, NoOfProductsPerPage, currentPageNo, sortedAllProductsData);
     if (checkedCategory) {
       checkedCategory.checked = false;
     }
@@ -56,22 +51,14 @@ export const FilterBySection = ({
           onClick={() => setIsFilterBySectionOpen(false)}
         />
         <div className="w-[100%]">
-          <CategoriesSection {...{ getSelectedCategoryDetailsCallbackFN }} />
-          <PriceRange {...{ setPriceRange, setCheckedPriceRangeDOM }} />
+          <CategoriesSection {...{ setCheckedCategoryDOM }} />
+          <PriceRange {...{ setCheckedPriceRangeDOM }} />
         </div>
         <div className="flex items-center justify-between w-[100%] gap-[10%] ">
           <button
             className="h-[45px] basis-[40%] bg-[#fca311] text-white"
             onClick={() => {
-              handleFilterByCategoriesAndPrice(
-                dispatch,
-                priceRange,
-                selectedSubCategoryForFilter,
-                selectedCategory,
-                NoOfProductsPerPage,
-                currentPageNo,
-                allProductsData
-              );
+              handleFilterByCategoriesAndPrice(dispatch, NoOfProductsPerPage, currentPageNo, sortedAllProductsData);
               setIsFilterBySectionOpen(false);
             }}
           >

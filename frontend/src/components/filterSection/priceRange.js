@@ -1,9 +1,13 @@
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { RiArrowDropUpLine } from "react-icons/ri";
 import { useState } from "react";
+import { setPriceRange } from "../../features/filterBySlice";
+import { useDispatch } from "react-redux";
 
-export const PriceRange = ({ setPriceRange, setCheckedPriceRangeDOM }) => {
+export const PriceRange = ({ setCheckedPriceRangeDOM }) => {
   const [isPriceSectionOpen, setIsPriceSectionOpen] = useState(false);
+
+  const dispatch = useDispatch();
 
   // LOOP THROUGH THE DESCENDANTS WHILE SKIPPING THE EVENT TARGET AND GET THE CHECKBOXES DOM
   const handleCheckedPrice = (e) => {
@@ -16,11 +20,10 @@ export const PriceRange = ({ setPriceRange, setCheckedPriceRangeDOM }) => {
     }
 
     if (e.target.checked) {
-      setPriceRange(e.target.value);
+      dispatch(setPriceRange(e.target.value));
       setCheckedPriceRangeDOM(e.target);
     } else {
-      setPriceRange(e.target.value);
-      setCheckedPriceRangeDOM(e.target);
+      dispatch(setPriceRange(e.target.value));
     }
   };
 

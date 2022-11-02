@@ -1,7 +1,8 @@
 import { handlePaginationProductsPage } from "./handlePaginationProductsPage";
+import { store } from "../store";
 
 // FUNCTIONALITY FOR FILTERING BY PRICE
-const priceRangeFn = (productsDataParams, priceRange) => {
+export const priceRangeFn = (productsDataParams, priceRange) => {
   const priceRangeArr = priceRange.split("-");
 
   if (priceRangeArr[1] === "") {
@@ -20,18 +21,17 @@ const priceRangeFn = (productsDataParams, priceRange) => {
 
 export const handleFilterByCategoriesAndPrice = (
   dispatch,
-  priceRange,
-  selectedSubCategoryForFilter,
-  selectedCategory,
   NoOfProductsPerPage,
   currentPageNo,
-  allProductsData
+  sortedAllProductsData
 ) => {
+  const { priceRange, selectedSubCategoryForFilter, selectedCategory } = store.getState().filterByCategoryAndPrice;
+
+  console.log(selectedCategory, selectedSubCategoryForFilter);
   if (selectedSubCategoryForFilter && priceRange) {
-    let filteredProductsCategory = allProductsData.filter((productsData) =>
+    let filteredProductsCategory = sortedAllProductsData.filter((productsData) =>
       productsData.categories[selectedCategory].includes(selectedSubCategoryForFilter)
     );
-    console.log(filteredProductsCategory);
     handlePaginationProductsPage(
       dispatch,
       NoOfProductsPerPage,
@@ -39,9 +39,10 @@ export const handleFilterByCategoriesAndPrice = (
       priceRangeFn(filteredProductsCategory, priceRange)
     );
   } else if (!selectedSubCategoryForFilter && !priceRange) {
+    handlePaginationProductsPage(dispatch, NoOfProductsPerPage, currentPageNo, sortedAllProductsData);
     console.log("no filter parameters is selected");
   } else if (selectedSubCategoryForFilter) {
-    let filteredProductsCategory = allProductsData.filter((productsData) =>
+    let filteredProductsCategory = sortedAllProductsData.filter((productsData) =>
       productsData.categories[selectedCategory].includes(selectedSubCategoryForFilter)
     );
     handlePaginationProductsPage(dispatch, NoOfProductsPerPage, currentPageNo, filteredProductsCategory);
@@ -50,7 +51,9 @@ export const handleFilterByCategoriesAndPrice = (
       dispatch,
       NoOfProductsPerPage,
       currentPageNo,
-      priceRangeFn(allProductsData, priceRange)
+      priceRangeFn(sortedAllProductsData, priceRange)
     );
   }
 };
+
+//FILTER THE PRODUCTSDATA FROM THE SHALLOW COPY OF THE 'sortedAllProductsData' -THIS IS DONE DUE TO FACT THE 'allProductsData' IS IMMUTABLE WHILE THE CAN RECEEIVE UPDATES FROM THE SORTING FUNCTIONS.IT IS DONE BY CHECKING THE VALUE OF THE 'selectedSubCategoryForFilter && priceRange',FILTERED DATA ARE ALSO PAGINATED

@@ -6,6 +6,7 @@ const initialState = {
   isLoading: true,
   placeholderOfproductsDataCurrentlyRequested: [],
   productsDataForCurrentPage: [],
+  sortedAllProductsData: [],
 };
 
 const url = "http://localhost:5000/api/v1/products";
@@ -36,6 +37,10 @@ export const productSlice = createSlice({
 
       state.productsDataForCurrentPage = payload;
     },
+    setSortedAllProductsData: (state, { payload }) => {
+      payload = payload ? payload : [];
+      state.sortedAllProductsData = payload;
+    },
   },
   extraReducers: {
     [getAllProductsData.pending]: (state) => {
@@ -54,7 +59,15 @@ export const productSlice = createSlice({
   },
 });
 
-export const { setIsLoading, setPlaceholderOfproductsDataCurrentlyRequested, setProductsDataForCurrentPage } =
-  productSlice.actions;
+export const {
+  setIsLoading,
+  setPlaceholderOfproductsDataCurrentlyRequested,
+  setProductsDataForCurrentPage,
+  setSortedAllProductsData,
+} = productSlice.actions;
 
 export default productSlice.reducer;
+
+//  placeholderOfproductsDataCurrentlyRequested- REPRESENT THE TYPE OF PRODUCTS DATA CURRENTLY BEING REQUESTED WHICH COULD BE SORTED,SEARCHED OR FILTERED PRODUCTS DATA.
+//  allProductsData-ENTIRE PRODUCTS DATA FETCHED FROM THE SERVER
+//   productsDataForCurrentPage=CURRENT PAGE PRODUCTS DATA OUT OF THE PAGINATED DATA

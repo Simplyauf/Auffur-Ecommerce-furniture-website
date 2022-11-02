@@ -41,4 +41,7 @@
   li {
     @apply list-none;
   }
+  .active-sorting-lists {
+    @apply flex;
+  }
 }

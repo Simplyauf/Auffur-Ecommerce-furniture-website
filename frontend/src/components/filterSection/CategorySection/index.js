@@ -2,9 +2,13 @@ import { CategoryLists } from "./categoryLists";
 import { useState } from "react";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { RiArrowDropUpLine } from "react-icons/ri";
+import { setSelectedCategory, setSelectedSubCategoryForFilter } from "../../../features/filterBySlice";
+import { useDispatch } from "react-redux";
 
-const Index = ({ getSelectedCategoryDetailsCallbackFN }) => {
+const Index = ({ setCheckedCategoryDOM }) => {
   const [isCategorySectionOpen, setIsCategorySectionOpen] = useState(false);
+
+  const dispatch = useDispatch();
 
   // THE MAPPED JSON TO CREATE THE CHECKBOX AND CATEGORY UI
   const productCategories = {
@@ -18,20 +22,21 @@ const Index = ({ getSelectedCategoryDetailsCallbackFN }) => {
   const handleCheckedCategory = (e) => {
     let descendants = e.currentTarget.getElementsByTagName("*");
     for (let i = 0; i < descendants.length; i++) {
-      if (descendants[i] == e.target) {
+      if (descendants[i] === e.target) {
         continue;
       }
       descendants[i].checked = false;
     }
 
     if (e.target.checked) {
-      getSelectedCategoryDetailsCallbackFN(
-        e.target.parentElement.parentElement.previousElementSibling.firstElementChild.textContent,
-        e.target.value,
-        e.target
+      dispatch(
+        setSelectedCategory(e.target.parentElement.parentElement.previousElementSibling.firstElementChild.textContent)
       );
+      dispatch(setSelectedSubCategoryForFilter(e.target.value));
+      setCheckedCategoryDOM(e.target);
     } else {
-      getSelectedCategoryDetailsCallbackFN(null, null, e.target);
+      dispatch(setSelectedCategory(null));
+      dispatch(setSelectedSubCategoryForFilter(null));
     }
   };
 
