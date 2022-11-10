@@ -7,6 +7,9 @@ const initialState = {
   placeholderOfproductsDataCurrentlyRequested: [],
   productsDataForCurrentPage: [],
   sortedAllProductsData: [],
+  searchedProductData: [],
+  sortedSearchedProductData: [],
+  loadingOrErrorMessage: "Loading",
 };
 
 const url = "http://localhost:5000/api/v1/products";
@@ -17,6 +20,7 @@ export const getAllProductsData = createAsyncThunk("products/getAllProductsData"
     return data.products;
   } catch (error) {
     console.log(error);
+    return thunkAPI.rejectWithValue(error.message);
   }
 });
 
@@ -29,17 +33,27 @@ export const productSlice = createSlice({
     },
     setPlaceholderOfproductsDataCurrentlyRequested: (state, { payload }) => {
       payload = payload ? payload : [];
-
       state.placeholderOfproductsDataCurrentlyRequested = payload;
     },
     setProductsDataForCurrentPage: (state, { payload }) => {
       payload = payload ? payload : [];
-
       state.productsDataForCurrentPage = payload;
+    },
+    setSortedSearchedProductData: (state, { payload }) => {
+      payload = payload ? payload : [];
+      state.sortedSearchedProductData = payload;
+    },
+    setSearchedProductData: (state, { payload }) => {
+      payload = payload ? payload : [];
+      state.searchedProductData = payload;
     },
     setSortedAllProductsData: (state, { payload }) => {
       payload = payload ? payload : [];
       state.sortedAllProductsData = payload;
+    },
+    setLoadingOrErrorMessage: (state, { payload }) => {
+      payload = payload ? payload : [];
+      state.loadingOrErrorMessage = payload;
     },
   },
   extraReducers: {
@@ -52,9 +66,10 @@ export const productSlice = createSlice({
       state.isLoading = false;
       state.allProductsData = payload;
     },
-    [getAllProductsData.rejected]: (state, action) => {
+    [getAllProductsData.rejected]: (state, { payload }) => {
       state.isLoading = true;
       state.allProductsData = [];
+      state.loadingOrErrorMessage = payload;
     },
   },
 });
@@ -64,10 +79,18 @@ export const {
   setPlaceholderOfproductsDataCurrentlyRequested,
   setProductsDataForCurrentPage,
   setSortedAllProductsData,
+  setSearchedProductData,
+  setSortedSearchedProductData,
+  setLoadingOrErrorMessage,
 } = productSlice.actions;
 
 export default productSlice.reducer;
 
 //  placeholderOfproductsDataCurrentlyRequested- REPRESENT THE TYPE OF PRODUCTS DATA CURRENTLY BEING REQUESTED WHICH COULD BE SORTED,SEARCHED OR FILTERED PRODUCTS DATA.
 //  allProductsData-ENTIRE PRODUCTS DATA FETCHED FROM THE SERVER
-//   productsDataForCurrentPage=CURRENT PAGE PRODUCTS DATA OUT OF THE PAGINATED DATA
+// productsDataForCurrentPage=CURRENT PAGE PRODUCTS DATA OUT OF THE PAGINATED DATA
+//sortedAllProductsData & sortedSearchedProductData -THIS IS THE SORTED DATA WHICH THE FILTERING AND PAGINATION FUNCTION TAKES DATA
+
+//HOW THE SEARCH AND SHOP PAGE FNs WORKS
+// AT THE START OF THE APP ALL IS FETCH
+// IN THE SHOP AND SEARCH PAGE, THE SORTING FUNCTION KICKS OFF FIRSTLY AND SET THE 'sortedAllProductsData & sortedSearchedProductData' WHICH TRIGGERS THE FILTER FUNCTION AND IN THE FILTER FUNCTION  'placeholderOfproductsDataCurrentlyRequested' IS SET WHICH TRIGGERS PAGINATION

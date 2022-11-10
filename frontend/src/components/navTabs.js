@@ -8,7 +8,7 @@ export const NavTabs = () => {
         <Link to="/">Home</Link>
       </li>
       <li>
-        <Link to="/Shop">Shop</Link>
+        <Link to="/shop">Shop</Link>
       </li>
       <li>
         <Link to="">About us</Link>

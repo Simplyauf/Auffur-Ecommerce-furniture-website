@@ -3,38 +3,63 @@ import { BiFilter } from "react-icons/bi";
 import { SingleProductBox } from "../../components/singleProductBox";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
+import { setSearchedProductData } from "../../features/productSlice";
+import { ProductsNotFound } from "../../components/productsNotFound";
 import FooterSection from "../../components/footerSection";
-import { Loading } from "../../components/Loading";
 import { PaginationSection } from "../../components/paginationSection";
 import { handlePaginationProductsPage } from "../../utils/handlePaginationProductsPage";
 import { FilterBySection } from "../../components/filterSection";
 import { handleSorting } from "../../utils/handleSorting";
-import { IoIosArrowBack } from "react-icons/io";
 import { useLocation, useNavigate } from "react-router-dom";
+import { IoIosArrowBack } from "react-icons/io";
 
-const Index = () => {
-  const [sortingCriteria, setSortingCriteria] = useState("Default: Latest");
+export const SearchPage = () => {
+  // SEE THE SHP INDEX PAGE,THE UTILS AND THE FEATURES SLICE COMMENTS FOR HOW THE APP FUNCTIONALITIES WORKS
   const [isFilterBySectionOpen, setIsFilterBySectionOpen] = useState(false);
+  const [sortingCriteria, setSortingCriteria] = useState("Default: Latest");
 
-  const location = useLocation();
-  const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  const { allProductsData, isLoading, placeholderOfproductsDataCurrentlyRequested, productsDataForCurrentPage } =
-    useSelector((state) => state.productsData);
+  const {
+    allProductsData,
+    placeholderOfproductsDataCurrentlyRequested,
+    productsDataForCurrentPage,
+    searchedProductData,
+  } = useSelector((state) => state.productsData);
   const { priceRange, selectedSubCategoryForFilter, selectedCategory } = useSelector(
     (state) => state.filterByCategoryAndPrice
   );
 
+  const navigate = useNavigate();
+  let location = useLocation();
+
+  const locationArr = location.search.split("=");
+  const prevPage = location.state === "/" || location.state === "/search" ? "home" : location.state.replace("/", "");
+  const searchValue = locationArr[1]?.toUpperCase()?.trim();
+
   let NoOfProductsPerPage = 10;
   const [currentPageNo, setCurrentPageNo] = useState(1);
 
+  // DIRECTLY ACESSING THE SEARCH PAGE TRIGGERS REDIRECTION TO HOMEPAGE
+  useEffect(() => {
+    !prevPage && navigate("/");
+  }, []);
+
   // HANDLE SORTING WHEN THE APP STARTS AND ALSO WHEN SORTING CRITERIA CHANGES
   useEffect(() => {
-    handleSorting(dispatch, sortingCriteria, allProductsData, NoOfProductsPerPage, currentPageNo, location.pathname);
-  }, [dispatch, sortingCriteria, allProductsData]);
+    let SearchedProductData = allProductsData.filter((product) => {
+      return product.title.toUpperCase().trim().includes(searchValue);
+    });
+    dispatch(setSearchedProductData(SearchedProductData));
+    handleSorting(
+      dispatch,
+      sortingCriteria,
+      SearchedProductData,
+      NoOfProductsPerPage,
+      currentPageNo,
+      location.pathname
+    );
+  }, [dispatch, sortingCriteria, allProductsData, searchValue]);
 
-  // PAGINATES THE DATA WHEN VALUE  placeholderOfproductsDataCurrentlyRequested CHANGES IN THE FILTER FN
   useEffect(() => {
     handlePaginationProductsPage(
       dispatch,
@@ -42,7 +67,7 @@ const Index = () => {
       currentPageNo,
       placeholderOfproductsDataCurrentlyRequested
     );
-  }, [currentPageNo, NoOfProductsPerPage, placeholderOfproductsDataCurrentlyRequested, dispatch]);
+  }, [dispatch, NoOfProductsPerPage, currentPageNo, placeholderOfproductsDataCurrentlyRequested]);
 
   const handleSortingCriteriaSelection = (e) => {
     if (e.target.dataset.list) {
@@ -51,16 +76,26 @@ const Index = () => {
     }
   };
 
+  // FOR THE 'back' BTN NAVIGATION
+  const navigateToPrevPage = () => {
+    if (prevPage === "home") {
+      navigate("/");
+    }
+    if (prevPage === "shop") {
+      navigate("/shop");
+    }
+  };
+
   return (
     <>
       <div className="mt-12 w-[100%] h-[54px] bg-[#e5e5e5] text-[#14213d] pl-[3%] flex items-center justify-between font-bold  font-RobotoCondensed">
         <div className="flex gap-[4px] items-center text-[15px]">
           <IoIosArrowBack />
-          <li onClick={() => navigate("/")} className="hover:underline capitalize">
-            Home
+          <li onClick={() => navigateToPrevPage()} className="hover:underline capitalize">
+            {prevPage}
           </li>
           <IoIosArrowBack />
-          <span>Shop</span>
+          <span>Search results</span>
           {selectedSubCategoryForFilter && (
             <>
               {" "}
@@ -71,12 +106,14 @@ const Index = () => {
           )}
         </div>
       </div>
-      <h1 className="text-center font-bold text-[40px] my-16">Shop</h1>
-      {isLoading ? (
-        <Loading />
+      <h3 className="text-center font-bold text-[25px] my-12 px-[10%]">
+        Showing search results for the term : '{locationArr[1]}'
+      </h3>
+      {searchedProductData.length < 1 ? (
+        <ProductsNotFound searchTerm={searchValue} />
       ) : (
         <>
-          <article className="w-[65%] tablet:w-[40%] md:w-[30%] bg-[#ffffff] laptop:w-[17%] lg:w-[22%] ml-[5%]  mb-12 flex-col flex gap-2">
+          <article className="w-[65%] tablet:w-[40%] md:w-[30%] bg-[#ffffff] laptop:w-[17%] lg:w-[22%] ml-[5%] mb-12 flex-col flex gap-2">
             <h3 className="text-[18px] font-bold ml-2"> Sort by</h3>
             <div
               className="flex dark:bg-mainElementColor2 bg-mainElementColor justify-between h-14 rounded-md shadow-[0.5px_2px_32px_-2px_rgba(0,0,0,0.1)] items-center px-[10%] cursor-pointer"
@@ -108,16 +145,14 @@ const Index = () => {
               </div>
             </article>
           )}
-          <h3 className="text-center font-bold text-[24px]">All</h3>
           <section className="flex w-[80%] mx-auto items-center justify-center gap-14 flex-col mt-20">
             {productsDataForCurrentPage.map((elem, index) => {
               return <SingleProductBox key={index} />;
             })}
           </section>
           <PaginationSection {...{ setCurrentPageNo, NoOfProductsPerPage, currentPageNo }} />
-
           <BiFilter
-            className="w-16 h-16 bg-[#fca311] shadow-md stroke-[black] fixed right-[7%] bottom-[7%] z-[1000] cursor-pointer"
+            className="w-16 h-16 bg-[#fca311] shadow-md stroke-[black] fixed right-[7%] bottom-[7%] z-[1000]"
             onClick={() => setIsFilterBySectionOpen(true)}
           />
           <FilterBySection
@@ -129,5 +164,3 @@ const Index = () => {
     </>
   );
 };
-
-export default Index;

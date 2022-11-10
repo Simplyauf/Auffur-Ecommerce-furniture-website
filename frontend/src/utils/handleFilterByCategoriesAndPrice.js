@@ -1,5 +1,5 @@
-import { handlePaginationProductsPage } from "./handlePaginationProductsPage";
 import { store } from "../store";
+import { setPlaceholderOfproductsDataCurrentlyRequested } from "../features/productSlice";
 
 // FUNCTIONALITY FOR FILTERING BY PRICE
 export const priceRangeFn = (productsDataParams, priceRange) => {
@@ -32,28 +32,18 @@ export const handleFilterByCategoriesAndPrice = (
     let filteredProductsCategory = sortedAllProductsData.filter((productsData) =>
       productsData.categories[selectedCategory].includes(selectedSubCategoryForFilter)
     );
-    handlePaginationProductsPage(
-      dispatch,
-      NoOfProductsPerPage,
-      currentPageNo,
-      priceRangeFn(filteredProductsCategory, priceRange)
-    );
+    dispatch(setPlaceholderOfproductsDataCurrentlyRequested(priceRangeFn(filteredProductsCategory, priceRange)));
   } else if (!selectedSubCategoryForFilter && !priceRange) {
-    handlePaginationProductsPage(dispatch, NoOfProductsPerPage, currentPageNo, sortedAllProductsData);
+    dispatch(setPlaceholderOfproductsDataCurrentlyRequested(sortedAllProductsData));
     console.log("no filter parameters is selected");
   } else if (selectedSubCategoryForFilter) {
     let filteredProductsCategory = sortedAllProductsData.filter((productsData) =>
       productsData.categories[selectedCategory].includes(selectedSubCategoryForFilter)
     );
-    handlePaginationProductsPage(dispatch, NoOfProductsPerPage, currentPageNo, filteredProductsCategory);
+    dispatch(setPlaceholderOfproductsDataCurrentlyRequested(filteredProductsCategory));
   } else if (priceRange) {
-    handlePaginationProductsPage(
-      dispatch,
-      NoOfProductsPerPage,
-      currentPageNo,
-      priceRangeFn(sortedAllProductsData, priceRange)
-    );
+    dispatch(setPlaceholderOfproductsDataCurrentlyRequested(priceRangeFn(sortedAllProductsData, priceRange)));
   }
 };
 
-//FILTER THE PRODUCTSDATA FROM THE SHALLOW COPY OF THE 'sortedAllProductsData' -THIS IS DONE DUE TO FACT THE 'allProductsData' IS IMMUTABLE WHILE THE CAN RECEEIVE UPDATES FROM THE SORTING FUNCTIONS.IT IS DONE BY CHECKING THE VALUE OF THE 'selectedSubCategoryForFilter && priceRange',FILTERED DATA ARE ALSO PAGINATED
+//FILTER THE PRODUCTSDATA FROM THE SHALLOW COPY OF THE 'sortedAllProductsData' -THIS IS DONE DUE TO FACT THE 'allProductsData' IS IMMUTABLE WHILE THE FORMER CAN RECEIVE UPDATES FROM THE SORTING FUNCTIONS.IT IS DONE BY CHECKING THE VALUE OF THE 'selectedSubCategoryForFilter && priceRange' AS CRITERIA,FILTERED DATA THEN DISPATCHED INTO THE  'placeholderOfproductsDataCurrentlyRequested' WHICH IN TURN TRIGGERS THE PAGINATION FUNCTION IN THE USEEFFECT IN THE INDEX PAGE

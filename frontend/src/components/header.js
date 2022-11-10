@@ -7,12 +7,18 @@ import { FiHeart } from "react-icons/fi";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BiSearch } from "react-icons/bi";
 import { NavTabs } from "./navTabs";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export const Header = () => {
   const [isHamburgerBtnClicked, setIsHamburgerBtnClicked] = useState(false);
   const [isLargeScreen, setIsLargeScreen] = useState("");
   const [isSearchClicked, setIsSearchClicked] = useState(false);
-  console.log(isHamburgerBtnClicked);
+  const { allProductsData, isLoading, loadingOrErrorMessage } = useSelector((state) => state.productsData);
+
+  const navigateToSearchPage = useNavigate();
+  let location = useLocation();
+
   useEffect(() => {
     if (window.innerWidth >= 768) {
       setIsLargeScreen(true);
@@ -27,7 +33,33 @@ export const Header = () => {
       }
     });
   }, [isLargeScreen]);
-  // ;C:\Users\user\AppData\Local\Programs\Microsoft VS Code\bin
+
+  // SEARCH ENTER BUTTON WONT WORK WHEN THE allProducts IS LOADING OR THERE IS AN ERROR
+  const handleSearching = (e) => {
+    if (isLoading && loadingOrErrorMessage === "Loading") {
+      console.log("pls wait");
+    }
+    if (isLoading && loadingOrErrorMessage !== "Loading") {
+      console.log("err fetch");
+    } else if (allProductsData.length > 0) {
+      navigateToSearchPage(
+        {
+          pathname: "/search",
+          search: `?searchedProduct=${e.currentTarget.previousElementSibling.value}`,
+        },
+        {
+          state: location.pathname,
+        }
+      );
+    }
+  };
+
+  // on entering a new pathname these should be falses
+  useEffect(() => {
+    setIsSearchClicked(false);
+    setIsHamburgerBtnClicked(false);
+  }, [location.pathname]);
+
   return (
     <header className="h-[80px] sticky top-0 z-[1000] bg-[#ffffff]">
       <nav className="w-[100%] h-[100%] font-Roboto px-[5%] font-medium flex items-center justify-between shadow-[0px_0px_4px_0px_rgba(14,19,24,0.7)] ">
@@ -49,7 +81,6 @@ export const Header = () => {
               0
             </span>
           </div>
-
           <div className="relative p-3 bg-[#e5e5e5] rounded-[50%]">
             <AiOutlineShoppingCart className="w-6 h-6" />
             <span className="absolute text-[12px] top-1 right-1 z-10 bg-[#fca311] text-white px-[5px]  rounded-[50%]">
@@ -66,15 +97,20 @@ export const Header = () => {
         </div>
       </nav>
       {isSearchClicked && (
-        <div className="w-[100%] absolute top-[100%] left-0 bottom-auto searchBar h-[45px] bg-[#e5e5e5] text-[#000000] border-b-2 z-50   border-[#e5e5e5]">
+        <div className="w-[100%] absolute top-[100%] left-0 bottom-auto searchBar h-[45px] bg-[#e5e5e5] text-[#000000]  z-50  shadow-sm shadow-[#14213d] flex">
           <input
-            className="w-[100%] text-[18px] pl-20 h-[100%] bg-[#e5e5e5] border-none outline-none"
+            className="w-[85%] text-[18px] pl-6 h-[100%] bg-[#e5e5e5] border-none outline-none"
             type="search"
             name=""
             placeholder="search ..."
             id=""
           />
-          <BiSearch className="absolute left-[15px] top-[12px] w-6 h-6" fill="#14213D" />
+          <button
+            className="bg-[#fca311] w-[15%] h-[100%] flex justify-center items-center"
+            onClick={(e) => handleSearching(e)}
+          >
+            <BiSearch className="w-6 h-6" fill="#14213D" />
+          </button>
         </div>
       )}
       {isHamburgerBtnClicked && <NavTabs />}

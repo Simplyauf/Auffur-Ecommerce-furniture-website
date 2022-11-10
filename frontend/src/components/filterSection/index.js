@@ -1,12 +1,12 @@
 import { IoCloseOutline } from "react-icons/io5";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setPriceRange, setSelectedCategory, setSelectedSubCategoryForFilter } from "../../features/filterBySlice";
 import CategoriesSection from "./CategorySection";
 import { PriceRange } from "./priceRange";
 import { handleFilterByCategoriesAndPrice } from "../../utils/handleFilterByCategoriesAndPrice";
-import { handlePaginationProductsPage } from "../../utils/handlePaginationProductsPage";
 import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { resetFilter } from "../../utils/resetFilter";
 
 export const FilterBySection = ({
   isFilterBySectionOpen,
@@ -14,29 +14,32 @@ export const FilterBySection = ({
   currentPageNo,
   NoOfProductsPerPage,
 }) => {
-  const dispatch = useDispatch();
-  const { sortedAllProductsData } = useSelector((state) => state.productsData);
-
-  useEffect(() => {
-    handleFilterByCategoriesAndPrice(dispatch, NoOfProductsPerPage, currentPageNo, sortedAllProductsData);
-  }, [sortedAllProductsData]);
-
   // DOMS OF THE CHECKED ELEM FOR UNCHECKING DURING RESET
   const [checkedCategoryDOM, setCheckedCategoryDOM] = useState(null);
   const [checkedPriceRangeDOM, setCheckedPriceRangeDOM] = useState(null);
 
-  const resetFilter = (checkedCategory, checkedPriceRange) => {
-    dispatch(setSelectedCategory(null));
-    dispatch(setSelectedSubCategoryForFilter(null));
-    dispatch(setPriceRange(null));
-    handlePaginationProductsPage(dispatch, NoOfProductsPerPage, currentPageNo, sortedAllProductsData);
-    if (checkedCategory) {
-      checkedCategory.checked = false;
+  const dispatch = useDispatch();
+  const location = useLocation();
+
+  const { sortedAllProductsData, sortedSearchedProductData } = useSelector((state) => state.productsData);
+
+  // RESET FILTERS WHEN LOCATION URL CHANGES
+  useEffect(() => {
+    resetFilter(checkedCategoryDOM, checkedPriceRangeDOM, location, dispatch);
+  }, [location.pathname]);
+
+  // Filter in the shop page is from the sortedAllProductsData while the one in the searchpage is from sortedSearchedProductsData
+  useEffect(() => {
+    if (location.pathname === "/shop") {
+      handleFilterByCategoriesAndPrice(dispatch, NoOfProductsPerPage, currentPageNo, sortedAllProductsData);
     }
-    if (checkedPriceRange) {
-      checkedPriceRange.checked = false;
+  }, [location.pathname, sortedAllProductsData]);
+
+  useEffect(() => {
+    if (location.pathname === "/search") {
+      handleFilterByCategoriesAndPrice(dispatch, NoOfProductsPerPage, currentPageNo, sortedSearchedProductData);
     }
-  };
+  }, [location.pathname, sortedSearchedProductData]);
 
   return (
     <div
@@ -58,7 +61,15 @@ export const FilterBySection = ({
           <button
             className="h-[45px] basis-[40%] bg-[#fca311] text-white"
             onClick={() => {
-              handleFilterByCategoriesAndPrice(dispatch, NoOfProductsPerPage, currentPageNo, sortedAllProductsData);
+              location.pathname === "/shop" &&
+                handleFilterByCategoriesAndPrice(dispatch, NoOfProductsPerPage, currentPageNo, sortedAllProductsData);
+              location.pathname === "/search" &&
+                handleFilterByCategoriesAndPrice(
+                  dispatch,
+                  NoOfProductsPerPage,
+                  currentPageNo,
+                  sortedSearchedProductData
+                );
               setIsFilterBySectionOpen(false);
             }}
           >
@@ -67,7 +78,7 @@ export const FilterBySection = ({
           <button
             className="h-[45px] basis-[60%] bg-transparent border-[1px] border-[#14213d] text-black"
             onClick={(e) => {
-              resetFilter(checkedCategoryDOM, checkedPriceRangeDOM);
+              resetFilter(checkedCategoryDOM, checkedPriceRangeDOM, location, dispatch);
               setIsFilterBySectionOpen(false);
             }}
           >
