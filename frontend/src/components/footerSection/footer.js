@@ -10,7 +10,23 @@ export const Footer = () => {
   return (
     <footer className="w-[100%] px-[5%] bg-[#14213d] text-white flex flex-col items-start gap-6 pt-64 pb-16 -mt-48">
       <div>
-        <h1 className="text-[52px] font-bold">auFUR</h1>
+        <svg
+          className="w-[35%]"
+          id="Layer_1"
+          data-name="Layer 1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 271.15 110.85"
+        >
+          <text
+            className="text-[99.69px] fill-[#ffffff] font-leagueGothic tracking-[-0.06em]"
+            transform="translate(0 84.73)"
+          >
+            Auf
+            <tspan class="tracking-[-0.01em]" x="79.21" y="0">
+              Fur
+            </tspan>
+          </text>
+        </svg>
         <p className="mt-4">
           Home of the best interior and exterior furnitures. Lorem ipsum dolor sit amet consectetur adipisicing elit.{" "}
         </p>

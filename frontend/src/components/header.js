@@ -9,6 +9,7 @@ import { BiSearch } from "react-icons/bi";
 import { NavTabs } from "./navTabs";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
+// import logoImg from "../auffur_logo.svg";
 
 export const Header = () => {
   const [isHamburgerBtnClicked, setIsHamburgerBtnClicked] = useState(false);
@@ -63,7 +64,24 @@ export const Header = () => {
   return (
     <header className="h-[80px] sticky top-0 z-[1000] bg-[#ffffff]">
       <nav className="w-[100%] h-[100%] font-Roboto px-[5%] font-medium flex items-center justify-between shadow-[0px_0px_4px_0px_rgba(14,19,24,0.7)] ">
-        <h1 className="text-[24px]">AUFUR</h1>
+        <svg
+          className="w-[35%]"
+          id="Layer_1"
+          data-name="Layer 1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 271.15 110.85"
+        >
+          <text
+            className="text-[99.69px] fill-[#13213c] font-leagueGothic tracking-[-0.06em]"
+            transform="translate(0 84.73)"
+          >
+            Auf
+            <tspan class="tracking-[-0.01em]" x="79.21" y="0">
+              Fur
+            </tspan>
+          </text>
+        </svg>
+
         {isLargeScreen && <NavTabs />}
         <div className="flex items-center gap-4 md:basis-[25%] text-[18px]">
           <BiSearch
