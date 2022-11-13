@@ -9,9 +9,9 @@ import { BiSearch } from "react-icons/bi";
 import { NavTabs } from "./navTabs";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
-// import logoImg from "../auffur_logo.svg";
+import { Wishlist } from "./wishlistSection";
 
-export const Header = () => {
+export const Header = ({ setIsWishlistActive }) => {
   const [isHamburgerBtnClicked, setIsHamburgerBtnClicked] = useState(false);
   const [isLargeScreen, setIsLargeScreen] = useState("");
   const [isSearchClicked, setIsSearchClicked] = useState(false);
@@ -93,7 +93,7 @@ export const Header = () => {
               <span className="">Register</span>
             </div>
           )}
-          <div className="relative p-3 bg-[#e5e5e5] rounded-[50%]">
+          <div className="relative p-3 bg-[#e5e5e5] rounded-[50%]" onClick={() => setIsWishlistActive(true)}>
             <FiHeart className="w-6 h-6 stroke-[#14213d]" />
             <span className="absolute text-[12px] top-1 right-1 z-10 bg-[#fca311] text-white px-[5px]  rounded-[50%]">
               0
