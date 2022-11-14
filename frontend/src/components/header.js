@@ -11,7 +11,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Wishlist } from "./wishlistSection";
 
-export const Header = ({ setIsWishlistActive }) => {
+export const Header = ({ setIsWishlistActive, setIsCartSectionActive }) => {
   const [isHamburgerBtnClicked, setIsHamburgerBtnClicked] = useState(false);
   const [isLargeScreen, setIsLargeScreen] = useState("");
   const [isSearchClicked, setIsSearchClicked] = useState(false);
@@ -100,7 +100,7 @@ export const Header = ({ setIsWishlistActive }) => {
             </span>
           </div>
           <div className="relative p-3 bg-[#e5e5e5] rounded-[50%]">
-            <AiOutlineShoppingCart className="w-6 h-6" />
+            <AiOutlineShoppingCart className="w-6 h-6" onClick={() => setIsCartSectionActive(true)} />
             <span className="absolute text-[12px] top-1 right-1 z-10 bg-[#fca311] text-white px-[5px]  rounded-[50%]">
               0
             </span>
