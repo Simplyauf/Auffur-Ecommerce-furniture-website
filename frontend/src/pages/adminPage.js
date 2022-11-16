@@ -6,6 +6,7 @@ export const AdminPage = () => {
   const [productTitle, setProductTitle] = useState("");
   const [productDiscountPercentValue, setProductDiscountPercentValue] = useState(0);
   const [productPrice, setProductPrice] = useState("");
+  const [productStock, setProductStock] = useState(0);
   const [categories, setCategories] = useState({ "Featured Categories": [], location: [], features: [], others: [] });
 
   const productCategories = {
@@ -14,8 +15,6 @@ export const AdminPage = () => {
     features: ["chairs", "tables", "sets", "cupboards", "lighting", "sofa"],
     others: ["kids"],
   };
-
-
 
   const imgRef = useRef(null);
   console.log(categories);
@@ -45,6 +44,7 @@ export const AdminPage = () => {
       image: imgUrl,
       categories: categories,
       price: productPrice,
+      stock: productStock,
       discountPercentValue: productDiscountPercentValue,
     };
     if (imgUrl === "") {
@@ -63,6 +63,7 @@ export const AdminPage = () => {
       setProductTitle("");
       setCategories({ "Featured Categories": [], location: [], features: [], others: [] });
       setProductPrice("");
+      setProductStock(0);
       setProductDiscountPercentValue(0);
       imgRef.current.nextElementSibling.style.display = "none";
       for (let key of e.target) {
@@ -101,56 +102,71 @@ export const AdminPage = () => {
   };
 
   return (
-    <form action="" className="w-[100%] mt-[32px] flex flex-col gap-8" onSubmit={createProduct}>
-      <h2>create a new product</h2>
+    <form action="" className="w-[100%] px-[5%] mt-[32px] flex flex-col gap-8" onSubmit={createProduct}>
+      <h2 className="text-[36px] font-bold text-center">Create a new product</h2>
       <label htmlFor="">
         Title
         <br />
         <input
           value={productTitle}
           onChange={(e) => setProductTitle(e.currentTarget.value)}
-          className="h-[32px]  mt-3 w-[40%] border-2 border-[#14213d]"
+          className="h-[32px] pl-3  border-2 border-black mt-1 w-[60%]  outline-black rounded-sm"
           type="name"
           name="title"
         />
       </label>
-      <label htmlFor="">
-        Price
-        <br />
-        <input
-          value={productPrice}
-          onChange={(e) => setProductPrice(e.currentTarget.value)}
-          className="h-[32px]  mt-3 w-[40%] border-2 border-black"
-          type="text"
-          name="price"
-          id=""
-        />
-      </label>
-      <label htmlFor="">
-        discountPercentValue
-        <br />
-        <input
-          value={productDiscountPercentValue}
-          onChange={(e) => setProductDiscountPercentValue(e.currentTarget.value)}
-          className="h-[32px]  mt-3 w-[40%] border-2 border-black"
-          type="number"
-          name="discountPercentValue"
-          id=""
-        />
-      </label>
-      <fieldset onChange={handleCheckedCategories} className="flex flex-wrap gap-6 border-2">
-        <legend>select products categories</legend>
-        <div className="flex flex-col flex-wrap gap-6">
+      <div className="flex gap-4 items-center">
+        <label htmlFor="" className="basis-[30%]">
+          Price
+          <br />
+          <input
+            value={productPrice}
+            onChange={(e) => setProductPrice(e.currentTarget.value)}
+            className="h-[32px] pl-1  border-2 border-black mt-1 w-[60%]  outline-black rounded-sm"
+            type="text"
+            name="price"
+            id=""
+          />
+        </label>
+        <label htmlFor="" className="basis-[25%]">
+          Stock
+          <br />
+          <input
+            value={productStock}
+            onChange={(e) => setProductStock(e.currentTarget.value)}
+            className="h-[32px] pl-1  border-2 border-black mt-1 w-[70%]  outline-black rounded-sm"
+            type="number"
+            name="Stock"
+            id=""
+          />
+        </label>
+        <label htmlFor="" className="basis-[40%]">
+          discountValue (%)
+          <br />
+          <input
+            value={productDiscountPercentValue}
+            onChange={(e) => setProductDiscountPercentValue(e.currentTarget.value)}
+            className="h-[32px] pl-1  border-2 border-black mt-1 w-[45%]  outline-black rounded-sm"
+            type="number"
+            name="discountPercentValue"
+            id=""
+          />
+        </label>
+      </div>
+
+      <section onChange={handleCheckedCategories} className="flex flex-wrap">
+        <h2 className="text-[20px] mb-4 font-bold">Select products categories</h2>
+        <div className="flex flex-col flex-wrap gap-4">
           {Object.keys(productCategories).map((categoryTitle) => {
             return (
-              <div>
-                <h2 className="font-bold text-[20px]">{categoryTitle}</h2>
-                <div className="flex ml-4 gap-6">
+              <div className="pb-2 border-b-2">
+                <h2 className="font-medium text-[18px]">{categoryTitle}</h2>
+                <div className="flex ml-4 gap-4 flex-wrap">
                   {productCategories[categoryTitle].map((subCategoryTitle) => {
                     return (
                       <label key={subCategoryTitle} htmlFor="">
                         {subCategoryTitle}
-                        <input type="checkbox" name={categoryTitle} value={subCategoryTitle} />
+                        <input className="ml-1" type="checkbox" name={categoryTitle} value={subCategoryTitle} />
                       </label>
                     );
                   })}
@@ -159,8 +175,8 @@ export const AdminPage = () => {
             );
           })}
         </div>
-      </fieldset>
-      <label htmlFor="" className="relative">
+      </section>
+      <label htmlFor="" className="relative font-semibold">
         Image
         <br />
         <input
@@ -171,11 +187,11 @@ export const AdminPage = () => {
           id=""
           onChange={handleImageUpload}
         />
-        <h1 className="italics absolute left-[45%] hidden text-[#fca311] bottom-4 font-bold "></h1>
+        <h1 className="italics absolute left-[45%] hidden text-[#fca311] bottom-4 font-bold "> </h1>
       </label>
       <button
         type="submit"
-        className="border-2 w-[50%] self-center h-[44px] mx-auto rounded-sm mt-6 text-[#ffffff] bg-[#fca311]"
+        className="border-2 w-[50%] self-center h-[44px] mx-auto rounded-md mt-6 text-[#ffffff] bg-[#fca311]"
       >
         submit
       </button>

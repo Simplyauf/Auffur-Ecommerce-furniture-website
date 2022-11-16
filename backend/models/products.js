@@ -10,6 +10,13 @@ const productSchema = new mongoose.Schema(
       type: Number,
       required: [true, "Product's price is required"],
     },
+    stock: {
+      type: Number,
+      default: function () {
+        return !stock && 0;
+      },
+      required: [true, "Product's stock is required"],
+    },
     discountPercentValue: {
       type: Number,
       default: function () {
