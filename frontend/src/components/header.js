@@ -9,13 +9,14 @@ import { BiSearch } from "react-icons/bi";
 import { NavTabs } from "./navTabs";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { Wishlist } from "./wishlistSection";
+// import { Wishlist } from "./wishlistSection";
 
 export const Header = ({ setIsWishlistActive, setIsCartSectionActive }) => {
   const [isHamburgerBtnClicked, setIsHamburgerBtnClicked] = useState(false);
   const [isLargeScreen, setIsLargeScreen] = useState("");
   const [isSearchClicked, setIsSearchClicked] = useState(false);
   const { allProductsData, isLoading, loadingOrErrorMessage } = useSelector((state) => state.productsData);
+  const { wishlist } = useSelector((state) => state.wishlistAndCartSection);
 
   const navigateToSearchPage = useNavigate();
   let location = useLocation();
@@ -95,13 +96,13 @@ export const Header = ({ setIsWishlistActive, setIsCartSectionActive }) => {
           )}
           <div className="relative p-3 bg-[#e5e5e5] rounded-[50%]" onClick={() => setIsWishlistActive(true)}>
             <FiHeart className="w-6 h-6 stroke-[#14213d]" />
-            <span className="absolute text-[12px] top-1 right-1 z-10 bg-[#fca311] text-white px-[5px]  rounded-[50%]">
-              0
+            <span className="absolute text-[10.8px] top-[3px] right-[3px] z-10 bg-[#fca311] text-white cursor-pointer  px-1 text-center rounded-[50%]">
+              {wishlist.length}
             </span>
           </div>
           <div className="relative p-3 bg-[#e5e5e5] rounded-[50%]">
             <AiOutlineShoppingCart className="w-6 h-6" onClick={() => setIsCartSectionActive(true)} />
-            <span className="absolute text-[12px] top-1 right-1 z-10 bg-[#fca311] text-white px-[5px]  rounded-[50%]">
+            <span className="absolute text-[12px] top-[3px] right-[3px] z-10 bg-[#fca311] text-white px-1 text-center  rounded-[50%]">
               0
             </span>
           </div>

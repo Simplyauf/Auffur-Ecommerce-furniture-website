@@ -1,7 +1,17 @@
 import { IoCloseOutline } from "react-icons/io5";
 import { SingleProductSection } from "./singleProductSection";
+import { useSelector } from "react-redux";
+import { persistor } from "../../store.js";
+import { Loading } from "../Loading.js";
+import { PersistGate } from "redux-persist/integration/react";
+import { useNavigate } from "react-router-dom";
 
 export const Wishlist = ({ isWishlistActive, setIsWishlistActive }) => {
+  const { wishlist } = useSelector((state) => state.wishlistAndCartSection);
+  const { isLoading } = useSelector((state) => state.productsData);
+  const navigate = useNavigate();
+
+  //PersistGate ALLOWS RENDERING OF A LOADER BEFORE REDUX STATE IS PERSISTEd
   return (
     <div
       className={`fixed top-0 left-0 bottom-0 w-[100%] h-[100vh] z-[1500] bg-opacity-60 bg-[#000000] translate-x-[100%]  ${
@@ -14,18 +24,37 @@ export const Wishlist = ({ isWishlistActive, setIsWishlistActive }) => {
           className="absolute top-6 right-6 w-9 h-9 cursor-pointer"
           onClick={() => setIsWishlistActive(false)}
         />
-        <div className="w-[100%] flex flex-col px-[5%] gap-4">
-          <SingleProductSection />
-          <SingleProductSection />
-          <SingleProductSection />
-          <SingleProductSection />
-          <SingleProductSection />
-        </div>
-        <div className="pt-4 border-t-2 mt-14 w-[100%]">
-          <div className="w-[100%] px-[5%]">
-            <button className="bg-[#fca311] text-[#ffffff] h-[54px] rounded-sm  w-[100%]">Continue Shopping</button>
-          </div>
-        </div>
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <PersistGate loading={<Loading />} persistor={persistor}>
+            {wishlist.length < 1 ? (
+              <div className="flex justify-center items-center w-[100%] h-[50vh]">
+                {" "}
+                <h2 className="font-bold text-[20px]">Your wishlist is currently empty</h2>{" "}
+              </div>
+            ) : (
+              <div className="w-[100%] flex flex-col px-[5%] gap-4">
+                {wishlist.map((wishlistData) => {
+                  return <SingleProductSection wishlistData={wishlistData} />;
+                })}
+              </div>
+            )}
+            <div className="pt-4 border-t-2 mt-14 w-[100%]">
+              <div className="w-[100%] px-[5%]">
+                <button
+                  className="bg-[#fca311] text-[#ffffff] h-[54px] rounded-sm  w-[100%]"
+                  onClick={() => {
+                    navigate("/shop");
+                    setIsWishlistActive(false);
+                  }}
+                >
+                  Continue Shopping
+                </button>
+              </div>
+            </div>
+          </PersistGate>
+        )}
       </section>
     </div>
   );
