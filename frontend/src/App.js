@@ -21,7 +21,7 @@ function App() {
       <Header {...{ setIsWishlistActive, setIsCartSectionActive }} />
       <PagesRoute />
       {isWishlistActive && <Wishlist {...{ isWishlistActive, setIsWishlistActive }} />}
-      {isCartSectionActive && <Cart {...{ isCartSectionActive, setIsCartSectionActive }} />}
+      <Cart {...{ isCartSectionActive, setIsCartSectionActive }} />
     </div>
   );
 }

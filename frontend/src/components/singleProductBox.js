@@ -4,12 +4,14 @@ import { BsEye } from "react-icons/bs";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { handleWishlistModification } from "../utils/handleWishlistModification";
+import { handleCartModification } from "../utils/handleCartModification";
 
 export const SingleProductBox = ({ productsData }) => {
   const { _id, title, price, image, discountPercentValue } = productsData;
   const [isWishlisted, setIsWishlisted] = useState(false);
+  const [isProductInCart, setIsProductInCart] = useState(false);
   const dispatch = useDispatch();
-  const { wishlist } = useSelector((state) => state.wishlistAndCartSection);
+  const { wishlist, cart } = useSelector((state) => state.wishlistAndCartSection);
 
   useEffect(() => {
     setIsWishlisted(() => {
@@ -20,6 +22,16 @@ export const SingleProductBox = ({ productsData }) => {
       }
     });
   }, [wishlist]);
+
+  useEffect(() => {
+    setIsProductInCart(() => {
+      if (cart.find((cartProduct) => cartProduct._id === _id)) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+  }, [cart]);
 
   return (
     <article className="flex  w-[100%] mx-auto flex-col gap-4  bg-[#ffffff] pb-6 relative">
@@ -46,7 +58,12 @@ export const SingleProductBox = ({ productsData }) => {
           <h5>${price} USD</h5>
         </div>
       </div>
-      <button className="w-[100%] h-[44px] mx-auto rounded-sm text-[#ffffff] bg-[#fca311]">Add to cart</button>
+      <button
+        className="w-[100%] h-[44px] mx-auto rounded-sm text-[#ffffff] bg-[#fca311] "
+        onClick={() => handleCartModification(_id, dispatch)}
+      >
+        {isProductInCart ? "Remove from cart" : "Add to cart"}
+      </button>
     </article>
   );
 };

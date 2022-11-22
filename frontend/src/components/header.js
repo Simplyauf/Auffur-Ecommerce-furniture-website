@@ -15,8 +15,9 @@ export const Header = ({ setIsWishlistActive, setIsCartSectionActive }) => {
   const [isHamburgerBtnClicked, setIsHamburgerBtnClicked] = useState(false);
   const [isLargeScreen, setIsLargeScreen] = useState("");
   const [isSearchClicked, setIsSearchClicked] = useState(false);
+  const [totalProductQuantityCart, setTotalProductQuantityCart] = useState(0);
   const { allProductsData, isLoading, loadingOrErrorMessage } = useSelector((state) => state.productsData);
-  const { wishlist } = useSelector((state) => state.wishlistAndCartSection);
+  const { wishlist, cart } = useSelector((state) => state.wishlistAndCartSection);
 
   const navigateToSearchPage = useNavigate();
   let location = useLocation();
@@ -56,11 +57,21 @@ export const Header = ({ setIsWishlistActive, setIsCartSectionActive }) => {
     }
   };
 
-  // on entering a new pathname these should be falses
+  // on entering a new pathname these should be false
   useEffect(() => {
     setIsSearchClicked(false);
     setIsHamburgerBtnClicked(false);
   }, [location.pathname]);
+
+  useEffect(() => {
+    let total = 0;
+    for (let key of cart) {
+      total += key.quantity;
+    }
+    setTotalProductQuantityCart(total);
+  }, [cart]);
+
+  console.log(totalProductQuantityCart);
 
   return (
     <header className="h-[80px] sticky top-0 z-[1000] bg-[#ffffff]">
@@ -103,7 +114,7 @@ export const Header = ({ setIsWishlistActive, setIsCartSectionActive }) => {
           <div className="relative p-3 bg-[#e5e5e5] rounded-[50%]">
             <AiOutlineShoppingCart className="w-6 h-6" onClick={() => setIsCartSectionActive(true)} />
             <span className="absolute text-[12px] top-[3px] right-[3px] z-10 bg-[#fca311] text-white px-1 text-center  rounded-[50%]">
-              0
+              {totalProductQuantityCart}
             </span>
           </div>
           <button className="p-3 bg-[#e5e5e5]">
