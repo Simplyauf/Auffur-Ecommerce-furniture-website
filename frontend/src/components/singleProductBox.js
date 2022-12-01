@@ -1,10 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { FiHeart } from "react-icons/fi";
 import { BsEye } from "react-icons/bs";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { handleWishlistModification } from "../utils/handleWishlistModification";
 import { handleCartModification } from "../utils/handleCartModification";
+import { isProductInCartFn, isProductInWishlistFn } from "../utils/isSpecificProductInCartAndWishlist.js";
 
 export const SingleProductBox = ({ productsData }) => {
   const { _id, title, price, image, discountPercentValue } = productsData;
@@ -14,23 +16,11 @@ export const SingleProductBox = ({ productsData }) => {
   const { wishlist, cart } = useSelector((state) => state.wishlistAndCartSection);
 
   useEffect(() => {
-    setIsWishlisted(() => {
-      if (wishlist.find((wishlistProduct) => wishlistProduct._id === _id)) {
-        return true;
-      } else {
-        return false;
-      }
-    });
+    isProductInWishlistFn(_id, setIsWishlisted, wishlist);
   }, [wishlist]);
 
   useEffect(() => {
-    setIsProductInCart(() => {
-      if (cart.find((cartProduct) => cartProduct._id === _id)) {
-        return true;
-      } else {
-        return false;
-      }
-    });
+    isProductInCartFn(_id, setIsProductInCart, cart);
   }, [cart]);
 
   return (
@@ -44,12 +34,14 @@ export const SingleProductBox = ({ productsData }) => {
         <FiHeart className={`w-6 h-6 ${isWishlisted && "fill-[#fca311] stroke-white"}`} />
       </div>
 
-      <div className="w-[100%] h-[290px] bg-[#e5e5e5] relative cursor-pointer product-img- flex justify-center items-center">
+      <div className="w-[100%] h-[290px] bg-[#e5e5e5] relative cursor-pointer product-img-container flex justify-center items-center">
         <img src={image} alt="" className="rounded-sm max-w-[90%] h-auto max-h-[90%] object-cover" />
         <div className="product-img-overlay hidden absolute top-0 left-0 z-50 bg-[#0000005d] w-[100%] h-[100%]"></div>
         <button className="absolute left-[25%] top-[50%] bg-[#fca311] text-white hidden cursor-pointer rounded-sm h-[44px] w-[50%] gap-1 justify-center z-[100]  items-center product-details-link">
           <BsEye />
-          <span> view details</span>
+          <Link to={`/product/${_id}`}>
+            <span> view details</span>
+          </Link>
         </button>
       </div>
       <div className="flex justify-between px-[10%]">
