@@ -4,6 +4,7 @@ import Homepage from "../pages/homepage/homepage";
 import ShopPage from "../pages/shopPage";
 import { AdminPage } from "../pages/adminPage";
 import { SearchPage } from "../pages/searchPage/searchPage";
+import { ProductDetailsPage } from "../pages/productDetails";
 
 const PagesRoute = () => {
   return (
@@ -12,6 +13,7 @@ const PagesRoute = () => {
       <Route path="/shop" element={<ShopPage />} />
       <Route path="/admin" element={<AdminPage />} />
       <Route path="/search" element={<SearchPage />} />
+      <Route path="/product/:productId" element={<ProductDetailsPage />} />
     </Routes>
   );
 };
