@@ -1,10 +1,9 @@
 import { store } from "../store";
 import { setCart } from "../features/wishlistAndCartSlice";
 
-export const handleCartModification = (_id, dispatch) => {
+export const handleCartModification = (_id, dispatch, ProductQuantityForCart = 1) => {
   const { allProductsData } = store.getState().productsData;
   const { cart } = store.getState().wishlistAndCartSection;
-  const ProductQuantityForCart = 1;
 
   let newCart;
   if (cart.find((cartProduct) => cartProduct._id === _id)) {
