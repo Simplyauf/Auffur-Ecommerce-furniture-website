@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/components/*.{js,jsx,ts,tsx}", "./src/pages/**/*.{js,jsx,ts,tsx}"],
+  content: ["./src/components/**/*.{js,jsx,ts,tsx}", "./src/pages/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
       screens: {
@@ -10,8 +10,9 @@ module.exports = {
         lgHeight: { raw: "(min-height:850px)" },
       },
       fontFamily: {
-        Lato: ["Lato", "sans-serif"],
+        OpenSans: ["Open Sans", "sans-serif"],
         RobotoCondensed: ["Roboto Condensed", "sans-serif"],
+        leagueGothic: ["League Gothic", "sans-serif"],
       },
     },
   },

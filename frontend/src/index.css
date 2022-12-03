@@ -24,7 +24,7 @@
     @apply font-RobotoCondensed;
   }
   body {
-    @apply font-Lato overflow-x-hidden;
+    @apply font-OpenSans overflow-x-hidden tracking-normal;
   }
   li {
     @apply cursor-pointer;
