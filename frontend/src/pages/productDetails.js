@@ -2,11 +2,15 @@ import { IoIosArrowBack } from "react-icons/io";
 import { useNavigate, useParams } from "react-router-dom";
 import { FiHeart } from "react-icons/fi";
 import FooterSection from "../components/footerSection";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useState } from "react";
+import { handleCartModification } from "../utils/handleCartModification";
 
 export const ProductDetailsPage = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { allProductsData } = useSelector((state) => state.productsData);
+  const [productQuantityInCart, setProductQuantityInCart] = useState(1);
 
   const { productId } = useParams();
   const currentProduct = allProductsData.find((product) => product._id === productId);
@@ -17,6 +21,13 @@ export const ProductDetailsPage = () => {
   for (let key in categories) {
     if (categories[key].length > 0) subCategoriesArr.push(...categories[key]);
   }
+
+  const handleAddToCartFn = () => {
+    if (productQuantityInCart < 1) {
+      alert("product cant be less than 1");
+    }
+    handleCartModification(_id, dispatch, productQuantityInCart);
+  };
 
   let discountedPrice = price - (price * discountPercentValue) / 100;
   return (
@@ -74,14 +85,18 @@ export const ProductDetailsPage = () => {
             type="number"
             name=""
             id=""
-            value="1"
+            value={productQuantityInCart}
+            onChange={(e) => setProductQuantityInCart(Number(e.currentTarget.value))}
           />
         </div>
         <div>
           <h3 className="font-bold text-[18px] tracking-[0.5px]">Sub-Categories</h3>
           <div className="flex">{subCategoriesArr.map((category) => category).join(", ")}</div>
         </div>
-        <button className="text-[#14213d] bg-transparent border-[1px] border-[#14213d] font-semibold w-[100%] h-[50px]">
+        <button
+          className="text-[#14213d] bg-transparent border-[1px] border-[#14213d] font-semibold w-[100%] h-[50px]"
+          onClick={handleAddToCartFn}
+        >
           Add to Cart
         </button>
         <button className="text-white bg-[#fca311] font-semibold w-[100%] h-[50px]">Buy Now</button>
