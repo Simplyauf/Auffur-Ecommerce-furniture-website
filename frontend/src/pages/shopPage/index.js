@@ -110,8 +110,8 @@ const Index = () => {
           )}
           <h3 className="text-center font-bold text-[24px]">All</h3>
           <section className="flex w-[80%] mx-auto items-center justify-center gap-14 flex-col mt-20">
-            {productsDataForCurrentPage.map((elem, index) => {
-              return <SingleProductBox key={index} />;
+            {productsDataForCurrentPage.map((productsData, index) => {
+              return <SingleProductBox key={index} productsData={productsData} />;
             })}
           </section>
           <PaginationSection {...{ setCurrentPageNo, NoOfProductsPerPage, currentPageNo }} />
