@@ -5,6 +5,7 @@ import { Loading } from "../Loading.js";
 import { PersistGate } from "redux-persist/integration/react";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 export const Cart = ({ isCartSectionActive, setIsCartSectionActive }) => {
   const { cart } = useSelector((state) => state.wishlistAndCartSection);
   const { isLoading } = useSelector((state) => state.productsData);
@@ -32,7 +33,9 @@ export const Cart = ({ isCartSectionActive, setIsCartSectionActive }) => {
       }`}
     >
       <section className="flex flex-col z-[2000] overflow-y-auto absolute top-0 bg-white items-start w-[98%] right-0 bottom-0 pt-4 pb-12 gap-7 tracking-[0.25px] text-[18px] h-[100%]">
-        <h1 className=" text-center mt-[0.5em] w-[100%] text-[22px] border-b-2 pb-4 font-bold">My Cart</h1>
+        <h1 className=" text-center mt-[0.5em] w-[100%] text-[22px] border-b-2 pb-4 font-bold">
+          My Cart
+        </h1>
         <IoCloseOutline
           className="absolute top-6 right-6 w-9 h-9 cursor-pointer"
           onClick={() => setIsCartSectionActive(false)}
@@ -44,12 +47,19 @@ export const Cart = ({ isCartSectionActive, setIsCartSectionActive }) => {
             {cart.length < 1 ? (
               <div className="flex justify-center items-center w-[100%] h-[50vh]">
                 {" "}
-                <h2 className="font-bold text-[20px]">Your Cart is currently empty</h2>{" "}
+                <h2 className="font-bold text-[20px]">
+                  Your Cart is currently empty
+                </h2>{" "}
               </div>
             ) : (
               <div className="w-[100%] flex flex-col px-[5%] gap-4">
                 {cart.map((cartData) => {
-                  return <SingleProductSection cartData={cartData} key={cartData._id} />;
+                  return (
+                    <SingleProductSection
+                      cartData={cartData}
+                      key={cartData._id}
+                    />
+                  );
                 })}
               </div>
             )}
@@ -59,7 +69,12 @@ export const Cart = ({ isCartSectionActive, setIsCartSectionActive }) => {
                 <span className="font-bold">${totalPrice.toFixed(2)} USD</span>
               </div>
               <div className="w-[100%] px-[5%]">
-                <button className="bg-[#fca311] text-[#ffffff] h-[54px] rounded-sm  w-[100%]">Continue Shopping</button>
+                <Link className="w-[100%] h-[54px] block" to="/checkout">
+                  {" "}
+                  <button className="bg-[#fca311] text-[#ffffff] w-[100%] h-[100%] rounded-sm  ">
+                    Proceed to Checkout
+                  </button>
+                </Link>
               </div>
             </div>
           </PersistGate>

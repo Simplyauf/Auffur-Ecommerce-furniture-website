@@ -5,7 +5,9 @@ import ShopPage from "../pages/shopPage";
 import { AdminPage } from "../pages/adminPage";
 import { SearchPage } from "../pages/searchPage/searchPage";
 import { ProductDetailsPage } from "../pages/productDetails";
-
+import { CheckoutPage } from "../pages/checkoutPage";
+import { LoginPage } from "../pages/loginPage";
+import { RegisterPage } from "../pages/RegisterPage";
 const PagesRoute = () => {
   return (
     <Routes>
@@ -14,6 +16,7 @@ const PagesRoute = () => {
       <Route path="/admin" element={<AdminPage />} />
       <Route path="/search" element={<SearchPage />} />
       <Route path="/product/:productId" element={<ProductDetailsPage />} />
+      <Route path="/checkout" element={<CheckoutPage />} />
     </Routes>
   );
 };
