@@ -17,7 +17,11 @@ export const NavTabs = () => {
         <Link to="">Contact</Link>
       </li>
 
-      <button className="w-[125px] h-[40px] ml-[30%] rounded-sm text-[#ffffff] bg-[#fca311]">My Account</button>
+      <Link className="w-[125px] h-[40px] ml-[30%] block" to="/login">
+        <button className="w-[100%] h-[100%] rounded-sm text-[#ffffff] bg-[#fca311]">
+          My Account
+        </button>
+      </Link>
     </ul>
   );
 };
