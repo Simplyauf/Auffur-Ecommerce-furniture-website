@@ -44,4 +44,7 @@
   .active-sorting-lists {
     @apply flex;
   }
+  .homepage-active-category-tab div {
+    @apply w-[100%] transition ease-in duration-100;
+  }
 }
