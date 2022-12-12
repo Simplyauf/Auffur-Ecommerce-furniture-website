@@ -4,7 +4,7 @@ import { SingleProductBox } from "../../components/singleProductBox";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { setSearchedProductData } from "../../features/productSlice";
-import { ProductsNotFound } from "../../components/productsNotFound";
+import { ProductsNotFound } from "./productsNotFound";
 import FooterSection from "../../components/footerSection";
 import { PaginationSection } from "../../components/paginationSection";
 import { handlePaginationProductsPage } from "../../utils/handlePaginationProductsPage";
@@ -35,8 +35,8 @@ export const SearchPage = () => {
   const prevPage =
     location.state === "/" || location.state === "/search"
       ? "home"
-      : location.state.replace("/", "");
-  const searchValue = locationArr[1].toUpperCase()?.trim();
+      : location.state?.replace("/", "");
+  const searchValue = locationArr[1]?.toUpperCase()?.trim();
 
   let NoOfProductsPerPage = 10;
   const [currentPageNo, setCurrentPageNo] = useState(1);
@@ -161,7 +161,7 @@ export const SearchPage = () => {
           )}
           <section className="flex w-[92%] mx-auto items-center justify-center gap-[4rem] flex-col mt-16">
             {productsDataForCurrentPage.map((elem, index) => {
-              return <SingleProductBox key={index} />;
+              return <SingleProductBox key={index} productsData={elem} />;
             })}
           </section>
           <PaginationSection
