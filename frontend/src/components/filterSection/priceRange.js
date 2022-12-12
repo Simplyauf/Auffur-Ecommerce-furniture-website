@@ -44,31 +44,56 @@ export const PriceRange = ({ setCheckedPriceRangeDOM }) => {
         )}
       </div>
       {isPriceSectionOpen && (
-        <div className="flex flex-col gap-[6px] mt-4 text-[16px]" onChange={(e) => handleCheckedPrice(e)}>
+        <div
+          className="flex flex-col gap-[6px] mt-4 text-[16px]"
+          onChange={(e) => handleCheckedPrice(e)}
+        >
           <div className="flex gap-2 items-center">
             <input type="checkbox" name="priceRange" value="1-10" id="1-10" />
-            <label htmlFor="1-10" className="flex gap-[1px] items-center cursor-pointer">
+            <label
+              htmlFor="1-10"
+              className="flex gap-[1px] items-center cursor-pointer"
+            >
               <span>$1</span>
               <span>-</span> <span>$10</span>
             </label>
           </div>
           <div className="flex gap-2 items-center">
-            <input type="checkbox" name="priceRange" value="11-100" id="11-100" />
-            <label htmlFor="11-100" className="flex gap-[1px] items-center cursor-pointer">
+            <input
+              type="checkbox"
+              name="priceRange"
+              value="11-100"
+              id="11-100"
+            />
+            <label
+              htmlFor="11-100"
+              className="flex gap-[1px] items-center cursor-pointer"
+            >
               <span>$11</span>
               <span>-</span> <span>$100</span>
             </label>
           </div>
           <div className="flex gap-2 items-center">
-            <input type="checkbox" name="priceRange" value="101-250" id="101-250" />
-            <label htmlFor="101-250" className="flex gap-[1px] items-center cursor-pointer">
+            <input
+              type="checkbox"
+              name="priceRange"
+              value="101-250"
+              id="101-250"
+            />
+            <label
+              htmlFor="101-250"
+              className="flex gap-[1px] items-center cursor-pointer"
+            >
               <span>$101</span>
               <span>-</span> <span>$250</span>
             </label>
           </div>
           <div className="flex gap-2 items-center">
             <input type="checkbox" name="priceRange" value="251-" id="251-" />
-            <label htmlFor="251-" className="flex gap-[1px] items-center cursor-pointer">
+            <label
+              htmlFor="251-"
+              className="flex gap-[1px] items-center cursor-pointer"
+            >
               <span>$251</span>
               <span>+</span>
             </label>

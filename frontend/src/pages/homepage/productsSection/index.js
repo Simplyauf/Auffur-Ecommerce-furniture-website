@@ -3,12 +3,15 @@ import { HomepageCategoryProducts } from "./homepageCategoryProducts";
 import { FeaturedCategories } from "./featuredCategories";
 import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Loading } from "../../../components/Loading";
 
 const Index = () => {
   const [currentlyRequestedCategories, setCurrentlyRequestedCategories] =
     useState([]);
   const categoryContainerRef = useRef();
-  const { allProductsData } = useSelector((state) => state.productsData);
+  const { allProductsData, isLoading } = useSelector(
+    (state) => state.productsData
+  );
 
   useEffect(() => {
     shuffleArr(featuredProducts);
@@ -61,34 +64,43 @@ const Index = () => {
 
   return (
     <>
-      <h1 className="text-[36px] text-center font-bold">Our shop</h1>
-      <div
-        className="flex text-[20px] whitespace-nowrap items-center  mx-auto w-[80%] overflow-scroll flex-nowrap gap-6 my-8"
-        onClick={(e) => handleCategoryClick(e)}
-        ref={categoryContainerRef}
-      >
-        <div className="cursor-pointer order-1 transition-all ease-in-out duration-[0.25s] homepage-active-category-tab">
-          <h2 data-id="featuredProducts" className="text-center ">
-            Featured{" "}
-          </h2>
-          <div className="bg-[#fca311] h-[3px] w-0 "></div>
-        </div>
-        <div className="cursor-pointer order-2 transition-all ease-in-out duration-[0.25s]">
-          <h2 data-id="firstOrderDeals" className="text-center ">
-            First order deals
-          </h2>
-          <div className="bg-[#fca311] h-[3px] w-0"></div>
-        </div>
-        <div className="cursor-pointer order-0 transition-all ease-in-out duration-[0.25s]">
-          <h2 data-id="bestDeals" className="text-center">
-            Best Deals
-          </h2>
-          <div className="bg-[#fca311] h-[3px] w-0"></div>
-        </div>
-      </div>
-      <HomepageCategoryProducts
-        currentlyRequestedCategories={currentlyRequestedCategories}
-      />
+      <h1 className="text-[40px] text-center font-bold">Our products</h1>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <>
+          <div
+            className="flex  items-center whitespace-nowrap  mx-auto w-[92%] overflow-scroll flex-nowrap gap-6 my-10"
+            onClick={(e) => handleCategoryClick(e)}
+            ref={categoryContainerRef}
+          >
+            <div className="cursor-pointer order-1 transition-all ease-in-out duration-[0.25s] homepage-active-category-tab">
+              <h2
+                data-id="featuredProducts"
+                className="text-center text-[24px]"
+              >
+                Featured{" "}
+              </h2>
+              <div className="bg-[#fca311] h-[3px] w-0 "></div>
+            </div>
+            <div className="cursor-pointer order-2 transition-all ease-in-out duration-[0.25s]">
+              <h2 data-id="firstOrderDeals" className="text-center text-[24px]">
+                First order deals
+              </h2>
+              <div className="bg-[#fca311] h-[3px] w-0"></div>
+            </div>
+            <div className="cursor-pointer order-0 transition-all ease-in-out duration-[0.25s]">
+              <h2 data-id="bestDeals" className="text-center text-[24px]">
+                Best Deals
+              </h2>
+              <div className="bg-[#fca311] h-[3px] w-0"></div>
+            </div>
+          </div>
+          <HomepageCategoryProducts
+            currentlyRequestedCategories={currentlyRequestedCategories}
+          />
+        </>
+      )}
       <FeaturedCategories />
       <DealOfTheMonth />
     </>

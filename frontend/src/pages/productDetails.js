@@ -65,7 +65,7 @@ export const ProductDetailsPage = () => {
           </li>
           <IoIosArrowBack />
           <li
-            onClick={() => navigate("/Shop")}
+            onClick={() => navigate("/shop")}
             className="hover:underline capitalize"
           >
             Shop
@@ -74,7 +74,7 @@ export const ProductDetailsPage = () => {
           <span className=" capitalize">{title}</span>
         </div>
       </div>
-      <section className="className mt-16 mb-32 w-[90%] mx-auto gap-6 flex flex-col ">
+      <section className="className mt-16 mb-32 w-[92%] mx-auto gap-6 flex flex-col ">
         <div className="w-[100%] h-[320px] mx-auto bg-[#e5e5e5] relative flex justify-center items-center">
           <img
             src={image}
@@ -94,7 +94,9 @@ export const ProductDetailsPage = () => {
             />
           </div>
         </div>
-        <h2 className="text-[24px] font-bold tracking-[0.5px]">{title}</h2>
+        <h2 className="text-[28px] font-bold tracking-[0.5px] capitalize">
+          {title}
+        </h2>
         {discountPercentValue > 0 ? (
           <div className="flex gap-2">
             <h3 className="font-bold text-[20px] tracking-[1px]">
@@ -105,21 +107,21 @@ export const ProductDetailsPage = () => {
             </h3>
           </div>
         ) : (
-          <h3 className="font-bold text-[20px] tracki2ng-[1px]">
+          <h3 className="font-bold text-[20px] tracking-[1px]">
             ${price.toFixed(2)}
           </h3>
         )}
-        <div className="flex gap-1">
-          <h3 className="font-bold tracking-[0.5px] text-[18px]">
+        <div className="flex gap-1 items-center">
+          <h3 className="font-bold tracking-[0.5px] text-[20px]">
             Availability :
           </h3>
           <span>{stock > 0 ? "In stock" : " Out of stock"}</span>
         </div>
         <div>
-          <h2 className="font-bold text-[18px] tracking-[0.5px]">
+          <h2 className="font-bold text-[20px] tracking-[0.5px]">
             Description
           </h2>
-          <p className="leading-[150%]">
+          <p className="leading-[150%] tracking-[0.5px]">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores
             ut voluptatem vitae, temporibus fugit velit voluptate ea enim
             voluptas. Fugit?. Lorem ipsum dolor sit amet consectetur adipisicing
@@ -128,7 +130,7 @@ export const ProductDetailsPage = () => {
           </p>
         </div>
         <div className="flex items-center gap-4">
-          <h3 className="font-bold text-[18px] tracking-[0.5px]">Quantity :</h3>
+          <h3 className="font-bold text-[20px] tracking-[0.5px]">Quantity :</h3>
           <input
             className="w-[20%] h-[40px] focus:outline-[#14213d] border-[1px] border-[#14213d] pl-3 rounded-sm text-[#14213d] "
             type="number"
@@ -141,10 +143,10 @@ export const ProductDetailsPage = () => {
           />
         </div>
         <div>
-          <h3 className="font-bold text-[18px] tracking-[0.5px]">
-            Sub-Categories
+          <h3 className="font-bold text-[20px] tracking-[0.5px]">
+            Sub-Categories :
           </h3>
-          <div className="flex">
+          <div className="flex font-medium text-[18px]">
             {subCategoriesArr.map((category) => category).join(", ")}
           </div>
         </div>
@@ -160,7 +162,7 @@ export const ProductDetailsPage = () => {
           </button>
         </Link>
         <div className="flex-col flex gap-4">
-          <h3 className="font-bold text-[18px] tracking-[0.5px]">
+          <h3 className="font-bold text-[20px] tracking-[0.5px]">
             Shipping Options
           </h3>
           <span className="font-bold text-[18px] text-[#fca311]">
@@ -168,12 +170,16 @@ export const ProductDetailsPage = () => {
           </span>
           <div className="flex flex-col gap-2">
             <p className=" leading-[150%]">
-              <text className="font-semibold">Standard shipping</text>(Delivery
-              in 5-7 working days) - takes 5% of product's total amount.
+              <span className="font-semibold text-[18px]">
+                Standard shipping
+              </span>
+              (Delivery in 5-7 working days) - takes 5% of product's total
+              amount.
             </p>
             <p className="leading-[150%]">
-              <text className="font-semibold">Free shipping</text>(Delivery in
-              5-7 working days) - takes 0% of total product's amount.
+              <span className="font-semibold text-[18px]">Free shipping</span>
+              (Delivery in 5-7 working days) - takes 0% of total product's
+              amount.
             </p>
             {/* <p className=" leading-[150%]">
               <text className="font-semibold">Express shipping</text>(Delivery in 3-5 working days) takes 3% of total

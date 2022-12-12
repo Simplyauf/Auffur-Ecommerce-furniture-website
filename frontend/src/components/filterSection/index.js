@@ -21,7 +21,9 @@ export const FilterBySection = ({
   const dispatch = useDispatch();
   const location = useLocation();
 
-  const { sortedAllProductsData, sortedSearchedProductData } = useSelector((state) => state.productsData);
+  const { sortedAllProductsData, sortedSearchedProductData } = useSelector(
+    (state) => state.productsData
+  );
 
   // RESET FILTERS WHEN LOCATION URL CHANGES
   useEffect(() => {
@@ -31,13 +33,23 @@ export const FilterBySection = ({
   // Filter in the shop page is from the sortedAllProductsData while the one in the searchpage is from sortedSearchedProductsData
   useEffect(() => {
     if (location.pathname === "/shop") {
-      handleFilterByCategoriesAndPrice(dispatch, NoOfProductsPerPage, currentPageNo, sortedAllProductsData);
+      handleFilterByCategoriesAndPrice(
+        dispatch,
+        NoOfProductsPerPage,
+        currentPageNo,
+        sortedAllProductsData
+      );
     }
   }, [location.pathname, sortedAllProductsData]);
 
   useEffect(() => {
     if (location.pathname === "/search") {
-      handleFilterByCategoriesAndPrice(dispatch, NoOfProductsPerPage, currentPageNo, sortedSearchedProductData);
+      handleFilterByCategoriesAndPrice(
+        dispatch,
+        NoOfProductsPerPage,
+        currentPageNo,
+        sortedSearchedProductData
+      );
     }
   }, [location.pathname, sortedSearchedProductData]);
 
@@ -48,9 +60,11 @@ export const FilterBySection = ({
       }`}
     >
       <section className="flex flex-col z-[2000] overflow-y-auto absolute top-0 bg-white items-start px-[5%] w-[80%] right-0 pt-4 pb-12 gap-7 tracking-[0.25px] text-[18px] h-[100%]">
-        <h2 className=" self-center text-[22px] border-b-2 pb-2">Filter by</h2>
+        <h2 className="text-center w-[100%] text-[28px] font-bold border-b-[2px] border-[rgba(20,33,61,0.3)] pb-2">
+          Filter by
+        </h2>
         <IoCloseOutline
-          className="absolute top-6 right-6 w-9 h-9 cursor-pointer"
+          className="absolute top-5 right-4 w-9 h-9 cursor-pointer"
           onClick={() => setIsFilterBySectionOpen(false)}
         />
         <div className="w-[100%]">
@@ -62,7 +76,12 @@ export const FilterBySection = ({
             className="h-[45px] basis-[40%] bg-[#fca311] text-white"
             onClick={() => {
               location.pathname === "/shop" &&
-                handleFilterByCategoriesAndPrice(dispatch, NoOfProductsPerPage, currentPageNo, sortedAllProductsData);
+                handleFilterByCategoriesAndPrice(
+                  dispatch,
+                  NoOfProductsPerPage,
+                  currentPageNo,
+                  sortedAllProductsData
+                );
               location.pathname === "/search" &&
                 handleFilterByCategoriesAndPrice(
                   dispatch,
@@ -78,7 +97,12 @@ export const FilterBySection = ({
           <button
             className="h-[45px] basis-[60%] bg-transparent border-[1px] border-[#14213d] text-black"
             onClick={(e) => {
-              resetFilter(checkedCategoryDOM, checkedPriceRangeDOM, location, dispatch);
+              resetFilter(
+                checkedCategoryDOM,
+                checkedPriceRangeDOM,
+                location,
+                dispatch
+              );
               setIsFilterBySectionOpen(false);
             }}
           >

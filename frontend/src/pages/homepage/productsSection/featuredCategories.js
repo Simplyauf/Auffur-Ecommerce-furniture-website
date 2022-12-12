@@ -4,9 +4,11 @@ import { BsArrowRight } from "react-icons/bs";
 export const FeaturedCategories = () => {
   return (
     <section className="my-16">
-      <h2 className="text-[28px] text-center mb-8 font-bold">Featured Categories</h2>
+      <h2 className="text-[36px] text-center mb-10 font-bold">
+        Featured Categories
+      </h2>
       <div className="flex flex-col items-center gap-10">
-        <article className="w-[80%] mx-auto cursor-pointer">
+        <article className="w-[92%] mx-auto cursor-pointer">
           <div className="w-[100%] h-[200px] relative category-img-container">
             <img
               className="w-[100%] h-[100%] object-cover"
@@ -19,9 +21,9 @@ export const FeaturedCategories = () => {
               <BsArrowRight />
             </button>
           </div>
-          <h2 className="text-[20px] mt-3 font-bold"> First order deal</h2>
+          <h2 className="text-[24px] mt-3 font-bold"> First order deal</h2>
         </article>
-        <article className="w-[80%] mx-auto cursor-pointer">
+        <article className="w-[92%] mx-auto cursor-pointer">
           <div className="w-[100%] h-[200px] relative category-img-container">
             <img
               className="w-[100%] h-[100%] object-cover"
@@ -34,9 +36,9 @@ export const FeaturedCategories = () => {
               <BsArrowRight />
             </button>
           </div>
-          <h2 className="text-[20px] mt-3 font-bold">Living room</h2>
+          <h2 className="text-[24px] mt-3 font-bold">Living room</h2>
         </article>
-        <article className="w-[80%] mx-auto cursor-pointer">
+        <article className="w-[92%] mx-auto cursor-pointer">
           <div className="w-[100%] h-[200px] relative category-img-container">
             <img
               className="w-[100%] h-[100%] object-cover"
@@ -49,9 +51,9 @@ export const FeaturedCategories = () => {
               <BsArrowRight />
             </button>
           </div>
-          <h2 className="text-[20px] mt-3 font-bold">Bedroom</h2>
+          <h2 className="text-[24px] mt-3 font-bold">Bedroom</h2>
         </article>
-        <article className="w-[80%] mx-auto cursor-pointer">
+        <article className="w-[92%] mx-auto cursor-pointer">
           <div className="w-[100%] h-[200px] relative category-img-container">
             <img
               className="w-[100%] h-[100%] object-cover"
@@ -64,23 +66,26 @@ export const FeaturedCategories = () => {
               <BsArrowRight />
             </button>
           </div>
-          <h2 className="text-[20px] mt-3 font-bold"> Kids</h2>
+          <h2 className="text-[24px] mt-3 font-bold"> Kids</h2>
         </article>
       </div>
       <div className="flex flex-col w-[100%] mt-10 gap-10">
-        <article className="bg-[#e5e5e5] text-black  h-[150px] flex justify-center items-center px-[10%]">
+        <article className="bg-[#e5e5e5] text-black  h-[150px] flex justify-center items-center px-[4%]">
           <h1 className="font-bold text-[24px] text-center">
-            GET UP TO <span className="text-[#fca311] mr-[5px]">95% OFF</span>ON FIRST ORDER DEAL AND FREE SHIPPING{" "}
+            GET UP TO <span className="text-[#fca311] mr-[5px]">95% OFF</span>ON
+            FIRST ORDER DEAL AND FREE SHIPPING{" "}
           </h1>
         </article>
-        <article className="bg-[#e5e5e5] text-black  h-[150px] flex justify-center items-center px-[10%]">
+        <article className="bg-[#e5e5e5] text-black  h-[150px] flex justify-center items-center px-[4%]">
           <h1 className="font-bold text-[24px] text-center">
-            GET UP TO <span className="text-[#fca311] mr-[5px]">60% OFF</span>ON KIDS CATEGORIES{" "}
+            GET UP TO <span className="text-[#fca311] mr-[5px]">60% OFF</span>ON
+            KIDS CATEGORIES{" "}
           </h1>
         </article>
-        <article className="bg-[#e5e5e5] text-black  h-[150px] flex justify-center items-center px-[10%]">
+        <article className="bg-[#e5e5e5] text-black  h-[150px] flex justify-center items-center px-[4%]">
           <h1 className="font-bold text-[24px] text-center">
-            GET UP TO <span className="text-[#fca311] mr-[5px]">60% OFF</span>ON SETS CATEGORIES{" "}
+            GET UP TO <span className="text-[#fca311] mr-[5px]">60% OFF</span>ON
+            SETS CATEGORIES{" "}
           </h1>
         </article>
       </div>

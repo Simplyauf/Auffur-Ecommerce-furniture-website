@@ -16,7 +16,7 @@ export const CheckoutPage = () => {
           </li>
           <IoIosArrowBack />
           <li
-            onClick={() => navigate("/Shop")}
+            onClick={() => navigate("/shop")}
             className="hover:underline capitalize"
           >
             Shop
@@ -25,8 +25,8 @@ export const CheckoutPage = () => {
           <span className=" capitalize">Checkout</span>
         </div>
       </div>
-      <section class="mt-20 w-[100%] bg-gray-500 py-8">
-        <h2 class="text-[24px] font-bold text-center mb-12">Order Summary</h2>
+      <section class="mt-16 w-[100%] bg-[#e5e5e5] py-8">
+        <h2 class="text-[28px] font-bold text-center mb-12">Order Summary</h2>
         <div class="flex flex-col gap-4 w-[90%] mx-auto border-b-[1px] border-[#14213d] pb-4">
           <article class="flex gap-4 w-[100%]">
             <div class="w-[35%] h-[90px] bg-[#e5e5e5] relative cursor-pointer product-img-container">
@@ -40,7 +40,7 @@ export const CheckoutPage = () => {
               <h2 class="text-[18px] font-bold">Wooden bag</h2>
               <span class="font-medium">Quantity: 2</span>
             </div>
-            <span class="font-medium">$25.00</span>
+            <h4 class="font-bold ">$25.00</h4>
           </article>
           <article class="flex gap-4  w-[100%]">
             <div class="w-[35%] h-[90px] bg-[#e5e5e5] relative cursor-pointer product-img-container">
@@ -51,10 +51,10 @@ export const CheckoutPage = () => {
               />
             </div>
             <div class="flex flex-col gap-2 w-[35%] text-[16px]">
-              <h2 class="text-[18px] font-bold">Wooden bag</h2>
+              <h2 class="text-[20px] font-bold">Wooden bag</h2>
               <span class="font-medium">Quantity: 2</span>
             </div>
-            <span class="font-medium">$25.00</span>
+            <h4 class="font-bold ">$25.00</h4>
           </article>
           <article class="flex gap-4  w-[100%]">
             <div class="w-[35%] h-[90px] bg-[#e5e5e5] relative cursor-pointer product-img-container">
@@ -65,24 +65,24 @@ export const CheckoutPage = () => {
               />
             </div>
             <div class="flex flex-col gap-2 w-[35%] text-[16px]">
-              <h2 class="text-[18px] font-bold">Wooden bag</h2>
+              <h2 class="text-[20px] font-bold">Wooden bag</h2>
               <span class="font-medium">Quantity: 2</span>
             </div>
-            <span class="font-medium">$25.00</span>
+            <h4 class="font-bold">$25.00</h4>
           </article>
         </div>
         <div class="pt-4 border-t-[1px] border-[#14213d]  mt-16 w-[90%] mx-auto">
           <div class="flex w-[100%] items-center gap-4 text-[18px] justify-between mb-4">
-            <h2 class="">Subtotal</h2>
-            <span class="">$25.00</span>
+            <h2 class="text-[20px] font-medium">Subtotal</h2>
+            <span class="font-bold">$25.00</span>
           </div>
           <div class="flex w-[100%] items-center text-[18px] justify-between mb-4">
-            <h2 class="">Shipping Charges</h2>
-            <span class="">$25.00</span>
+            <h2 class="text-[20px] font-medium">Shipping Charges</h2>
+            <span class="font-bold">$25.00</span>
           </div>
           <div class="flex w-[100%] items-center text-[18px] justify-between mb-4">
-            <h2 class="font-bold">Total</h2>
-            <span class="font-bold">$25.00 </span>
+            <h2 class="font-medium text-[24px]">Total</h2>
+            <span class="font-bold text-[20px]">$25.00 </span>
           </div>
         </div>
       </section>
@@ -93,7 +93,7 @@ export const CheckoutPage = () => {
           </h2>
           <section class="flex flex-col gap-4 w-[90%] mx-auto">
             <div class="w-[100%] ">
-              <label for="" class="font-medium">
+              <label for="" class="font-medium text-[18px]">
                 Username
               </label>{" "}
               <br />
@@ -106,7 +106,7 @@ export const CheckoutPage = () => {
               />
             </div>
             <div class="w-[100%] ">
-              <label for="" class="font-medium">
+              <label for="" class="font-medium  text-[18px]">
                 Email address
               </label>{" "}
               <br />
@@ -124,7 +124,7 @@ export const CheckoutPage = () => {
           <h2 class="text-[24px] font-bold pl-[5%] mb-6">Billing Address</h2>
           <section class="flex flex-col gap-4 w-[90%] mx-auto">
             <div class="w-[100%] ">
-              <label for="" class="font-medium">
+              <label for="" class="font-medium  text-[18px]">
                 Address
               </label>{" "}
               <br />
@@ -137,7 +137,7 @@ export const CheckoutPage = () => {
               />
             </div>
             <div class="w-[100%] ">
-              <label for="" class="font-medium">
+              <label for="" class="font-medium  text-[18px]">
                 Country
               </label>{" "}
               <br />
@@ -152,7 +152,7 @@ export const CheckoutPage = () => {
             </div>
             <div class="w-[100%] flex justify-between gap-[5%] items-center">
               <div class="w-[100%]">
-                <label for="" class="font-medium">
+                <label for="" class="font-medium  text-[18px]">
                   City
                 </label>{" "}
                 <br />
@@ -165,7 +165,7 @@ export const CheckoutPage = () => {
                 />
               </div>
               <div class="w-[100%]">
-                <label for="" class="font-medium">
+                <label for="" class="font-medium  text-[18px]  text-[18px]">
                   Postal code
                 </label>{" "}
                 <br />
@@ -182,9 +182,9 @@ export const CheckoutPage = () => {
         </article>
         <article class="mt-6">
           <h2 class="text-[24px] font-bold pl-[5%] mb-6">Payment method</h2>
-          <span class="font-medium text-[18px] text-[#fca311] pl-[5%]">
+          <p class="font-medium text-[18px] text-[#fca311] pl-[5%]">
             There is no payment functionalities yet*
-          </span>
+          </p>
         </article>
         <button class="my-12 w-[90%] mx-auto block h-[52px] bg-[#fca311] text-white font-medium rounded">
           Place Order

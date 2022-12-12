@@ -19,7 +19,9 @@ export const Wishlist = ({ isWishlistActive, setIsWishlistActive }) => {
       }`}
     >
       <section className="flex flex-col z-[2000] overflow-y-auto absolute top-0 bg-white items-start w-[98%] right-0 bottom-0 pt-4 pb-12 gap-7 tracking-[0.25px] text-[18px] h-[100%]">
-        <h1 className=" text-center mt-[0.5em] w-[100%] text-[22px] border-b-2 pb-4 font-bold">My Wishlist</h1>
+        <h1 className=" text-center mt-[0.5em] w-[100%] text-[28px] border-b-[2px] border-[rgba(20,33,61,0.3)] pb-4 font-bold">
+          My Wishlist
+        </h1>
         <IoCloseOutline
           className="absolute top-6 right-6 w-9 h-9 cursor-pointer"
           onClick={() => setIsWishlistActive(false)}
@@ -31,7 +33,9 @@ export const Wishlist = ({ isWishlistActive, setIsWishlistActive }) => {
             {wishlist.length < 1 ? (
               <div className="flex justify-center items-center w-[100%] h-[50vh]">
                 {" "}
-                <h2 className="font-bold text-[20px]">Your wishlist is currently empty</h2>{" "}
+                <h2 className="font-bold text-[20px]">
+                  Your wishlist is currently empty
+                </h2>{" "}
               </div>
             ) : (
               <div className="w-[100%] flex flex-col px-[5%] gap-4">
@@ -40,7 +44,7 @@ export const Wishlist = ({ isWishlistActive, setIsWishlistActive }) => {
                 })}
               </div>
             )}
-            <div className="pt-4 border-t-2 mt-14 w-[100%]">
+            <div className="pt-4 border-t-[2px] border-[rgba(20,33,61,0.3)] mt-14 w-[100%]">
               <div className="w-[100%] px-[5%]">
                 <button
                   className="bg-[#fca311] text-[#ffffff] h-[54px] rounded-sm  w-[100%]"

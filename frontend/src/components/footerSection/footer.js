@@ -8,7 +8,7 @@ import { FiTwitter } from "react-icons/fi";
 
 export const Footer = () => {
   return (
-    <footer className="w-[100%] px-[5%] bg-[#14213d] text-white flex flex-col items-start gap-6 pt-64 pb-16 -mt-48">
+    <footer className="w-[100%] px-[4%] bg-[#14213d] text-white flex flex-col items-start gap-6 pt-64 pb-16 -mt-48">
       <div>
         <svg
           className="w-[35%]"
@@ -28,15 +28,16 @@ export const Footer = () => {
           </text>
         </svg>
         <p className="mt-4">
-          Home of the best interior and exterior furnitures. Lorem ipsum dolor sit amet consectetur adipisicing elit.{" "}
+          Home of the best interior and exterior furnitures. Lorem ipsum dolor
+          sit amet consectetur adipisicing elit.{" "}
         </p>
       </div>
       <div className="flex flex-col items-start gap-4">
         <ul className="flex gap-6">
           <IoLocationOutline className="w-20 h-12  stroke-[#fca311]" />
           <li>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae eaque optio aut!. Lorem ipsum dolor sit
-            amet consectetur.{" "}
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae
+            eaque optio aut!. Lorem ipsum dolor sit amet consectetur.{" "}
           </li>
         </ul>
         <ul className="flex gap-6">

@@ -6,7 +6,7 @@ export const CategoryLists = ({ categoryTitle, productCategories }) => {
   const [isCategoryTitleOpen, setIsCategoryTitleOpen] = useState(false);
 
   return (
-    <div className="border-b-2 pb-2">
+    <div className="border-b-[1px] border-[rgba(20,33,61,0.3)] pb-2">
       <div className="flex items-center justify-between">
         <h3 className="text-[18px] capitalize">{categoryTitle}</h3>
         {isCategoryTitleOpen ? (
@@ -26,9 +26,16 @@ export const CategoryLists = ({ categoryTitle, productCategories }) => {
           {productCategories[categoryTitle].map((subCategoryTitle, index) => {
             return (
               <div key={index} className="flex gap-2 items-center">
-                <input type="checkbox" name="selectedCategoryTitle" value={subCategoryTitle} id={subCategoryTitle} />
+                <input
+                  type="checkbox"
+                  name="selectedCategoryTitle"
+                  value={subCategoryTitle}
+                  id={subCategoryTitle}
+                />
                 <label htmlFor={subCategoryTitle}>
-                  <h4 className="text-[16px] cursor-pointer">{subCategoryTitle}</h4>
+                  <h4 className="text-[16px] cursor-pointer">
+                    {subCategoryTitle}
+                  </h4>
                 </label>
               </div>
             );

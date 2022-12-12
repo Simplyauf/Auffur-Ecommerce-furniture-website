@@ -2,7 +2,7 @@ export const RegisterPage = () => {
   return (
     <section class="mt-20 flex justify-center items-center w-[80%] mx-auto">
       <div class="flex flex-col gap-5 w-[100%] ">
-        <h1 class="text-[32px] font-bold text-center">Create a new Account</h1>
+        <h1 class="text-[40px] font-bold text-center">Create a new Account</h1>
         <div class="inputContainer border-[1px] rounded relative border-black focus-within:outline-none focus-within:border-orange-500  w-[100%] h-[52px] mt-4">
           <input
             class="appearance-none absolute pl-3 top-0 left-0 focus:outline-none w-[100%] h-[100%] login-input bg-transparent"
@@ -11,7 +11,7 @@ export const RegisterPage = () => {
             name=""
             id=""
           />
-          <label for="" class="absolute top-[0.7rem] left-3 z-[-1]">
+          <label for="" class="absolute text-[18px] top-[0.7rem] left-3 z-[-1]">
             Username
           </label>
         </div>
@@ -23,7 +23,7 @@ export const RegisterPage = () => {
             name=""
             id=""
           />
-          <label for="" class="absolute top-[0.7rem] left-3 z-[-1]">
+          <label for="" class="absolute text-[18px] top-[0.7rem] left-3 z-[-1]">
             Email address
           </label>
         </div>
@@ -35,7 +35,7 @@ export const RegisterPage = () => {
             name=""
             id=""
           />
-          <label for="" class="absolute top-[0.7rem] left-3 z-[-1]">
+          <label for="" class="absolute text-[18px] top-[0.7rem] left-3 z-[-1]">
             Password
           </label>
           <svg

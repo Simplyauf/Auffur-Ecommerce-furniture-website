@@ -6,7 +6,7 @@ import { SingleProductBox } from "../../../components/singleProductBox";
 
 export const HomepageCategoryProducts = ({ currentlyRequestedCategories }) => {
   return (
-    <div className="w-[80%] mx-auto items-center justify-center gap-10  flex flex-col">
+    <div className="w-[92%] mx-auto items-center justify-center gap-[4rem]  flex flex-col">
       {currentlyRequestedCategories.map((productData) => (
         <SingleProductBox productsData={productData} key={productData._id} />
       ))}

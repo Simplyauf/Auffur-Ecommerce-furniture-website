@@ -1,8 +1,8 @@
 export const LoginPage = () => {
   return (
-    <section class="mt-20 flex justify-center items-center w-[80%] mx-auto">
+    <section class="mt-16 flex justify-center items-center w-[80%] mx-auto">
       <div class="flex flex-col gap-5 w-[100%] ">
-        <h1 class="text-[32px] font-bold text-center">Welcome back</h1>
+        <h1 class="text-[40px] font-bold text-center">Welcome back</h1>
         <div class="login-input-container mt-4 border-[1px] rounded relative border-[#14213d] focus-within:outline-none focus-within:border-orange-500  w-[100%] h-[52px]">
           <input
             class="appearance-none absolute pl-3 top-0 left-0 focus:outline-none w-[100%] h-[100%] login-input bg-transparent"
@@ -11,7 +11,7 @@ export const LoginPage = () => {
             name=""
             id=""
           />
-          <label for="" class="absolute top-[0.7rem] left-3 z-[-1]">
+          <label for="" class="absolute text-[18px] top-[0.7rem] left-3 z-[-1]">
             Email address
           </label>
         </div>
@@ -23,7 +23,7 @@ export const LoginPage = () => {
             name=""
             id=""
           />
-          <label for="" class="absolute top-[0.7rem] left-3 z-[-1]">
+          <label for="" class="text-[18px] absolute top-[0.7rem] left-3 z-[-1]">
             Password
           </label>
           <svg

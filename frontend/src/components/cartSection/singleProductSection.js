@@ -31,16 +31,23 @@ export const SingleProductSection = ({ cartData }) => {
   }, [productQuantityInCart]);
 
   return (
-    <div className="flex gap-4 border-b-2 pb-4">
+    <div className="flex gap-4 border-b-[1px] border-[rgba(20,33,61,0.3)] pb-4">
       <div className="w-[35%] h-[120px] bg-[#e5e5e5] relative cursor-pointer product-img-container">
-        <img src={image} alt="" className="rounded-sm w-[100%] h-[100%] object-cover" />
+        <img
+          src={image}
+          alt=""
+          className="rounded-sm w-[100%] h-[100%] object-cover"
+        />
       </div>
-      <div className="flex flex-col gap-2 w-[45%] text-[16px]">
-        <h2 className="text-[18px] font-bold">{title}</h2>
-        <span className="font-medium">${price} USD</span>
+      <div className="flex flex-col gap-2 w-[45%] ">
+        <h2 className="text-[18px] font-bold capitalize">{title}</h2>
+        <h4 className="font-bold text-[16px]">${price} USD</h4>
         <div className="flex items-center gap-1 cursor-pointer">
           <FaTrash className="w-4 h-[0.9em] fill-[#fca311]" />{" "}
-          <h3 className="font-semibold text-[#fca311]" onClick={() => handleCartModification(_id, dispatch)}>
+          <h3
+            className="font-semibold text-[#fca311]"
+            onClick={() => handleCartModification(_id, dispatch)}
+          >
             Remove
           </h3>
         </div>

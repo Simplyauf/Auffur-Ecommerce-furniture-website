@@ -20,6 +20,7 @@ const PagesRoute = () => {
       <Route path="/checkout" element={<CheckoutPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
+      <Route path="*" element={<h2>path doesnt exist</h2>} />
     </Routes>
   );
 };

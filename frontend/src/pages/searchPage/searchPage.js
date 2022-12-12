@@ -25,16 +25,18 @@ export const SearchPage = () => {
     productsDataForCurrentPage,
     searchedProductData,
   } = useSelector((state) => state.productsData);
-  const { priceRange, selectedSubCategoryForFilter, selectedCategory } = useSelector(
-    (state) => state.filterByCategoryAndPrice
-  );
+  const { priceRange, selectedSubCategoryForFilter, selectedCategory } =
+    useSelector((state) => state.filterByCategoryAndPrice);
 
   const navigate = useNavigate();
   let location = useLocation();
 
   const locationArr = location.search.split("=");
-  const prevPage = location.state === "/" || location.state === "/search" ? "home" : location.state.replace("/", "");
-  const searchValue = locationArr[1]?.toUpperCase()?.trim();
+  const prevPage =
+    location.state === "/" || location.state === "/search"
+      ? "home"
+      : location.state.replace("/", "");
+  const searchValue = locationArr[1].toUpperCase()?.trim();
 
   let NoOfProductsPerPage = 10;
   const [currentPageNo, setCurrentPageNo] = useState(1);
@@ -67,7 +69,12 @@ export const SearchPage = () => {
       currentPageNo,
       placeholderOfproductsDataCurrentlyRequested
     );
-  }, [dispatch, NoOfProductsPerPage, currentPageNo, placeholderOfproductsDataCurrentlyRequested]);
+  }, [
+    dispatch,
+    NoOfProductsPerPage,
+    currentPageNo,
+    placeholderOfproductsDataCurrentlyRequested,
+  ]);
 
   const handleSortingCriteriaSelection = (e) => {
     if (e.target.dataset.list) {
@@ -91,7 +98,10 @@ export const SearchPage = () => {
       <div className="mt-12 w-[100%] h-[54px] bg-[#e5e5e5] text-[#14213d] pl-[3%] flex items-center justify-between font-bold  font-RobotoCondensed">
         <div className="flex gap-[4px] items-center text-[15px]">
           <IoIosArrowBack />
-          <li onClick={() => navigateToPrevPage()} className="hover:underline capitalize">
+          <li
+            onClick={() => navigateToPrevPage()}
+            className="hover:underline capitalize"
+          >
             {prevPage}
           </li>
           <IoIosArrowBack />
@@ -106,8 +116,8 @@ export const SearchPage = () => {
           )}
         </div>
       </div>
-      <h3 className="text-center font-bold text-[25px] my-12 px-[10%]">
-        Showing search results for the term : '{locationArr[1]}'
+      <h3 className="text-center font-bold text-[24px] my-16 px-[10%]">
+        Showing search results for the term : "{locationArr[1]}"
       </h3>
       {searchedProductData.length < 1 ? (
         <ProductsNotFound searchTerm={searchValue} />
@@ -118,7 +128,9 @@ export const SearchPage = () => {
             <div
               className="flex dark:bg-mainElementColor2 bg-mainElementColor justify-between h-14 rounded-md shadow-[0.5px_2px_32px_-2px_rgba(0,0,0,0.1)] items-center px-[10%] cursor-pointer"
               onClick={(e) => {
-                e.currentTarget.nextElementSibling.classList.toggle("active-sorting-lists");
+                e.currentTarget.nextElementSibling.classList.toggle(
+                  "active-sorting-lists"
+                );
               }}
             >
               <h2>{sortingCriteria}</h2>
@@ -137,26 +149,35 @@ export const SearchPage = () => {
             </div>
           </article>
           {(selectedSubCategoryForFilter || priceRange) && (
-            <article className="w-[75%] tablet:w-[40%] md:w-[30%] bg-[#ffffff] laptop:w-[17%] lg:w-[22%] ml-[5%]  mb-12 flex-col flex gap-2 mb-12">
+            <article className="w-[75%] tablet:w-[40%] md:w-[30%] bg-[#ffffff] laptop:w-[17%] lg:w-[22%] ml-[5%]  mb-12 flex-col flex gap-2 ">
               <h3 className="text-[18px] font-bold ml-2"> Active Filters</h3>
               <div className="flex dark:bg-mainElementColor2 bg-mainElementColor justify-between h-14 rounded-md shadow-[0.5px_2px_32px_-2px_rgba(0,0,0,0.1)] items-center px-[10%] text-[15px] ">
-                {selectedSubCategoryForFilter && <h3>Sub-Category : {selectedSubCategoryForFilter}</h3>}
+                {selectedSubCategoryForFilter && (
+                  <h3>Sub-Category : {selectedSubCategoryForFilter}</h3>
+                )}
                 {priceRange && <h3>priceRange : {priceRange}($)</h3>}
               </div>
             </article>
           )}
-          <section className="flex w-[80%] mx-auto items-center justify-center gap-14 flex-col mt-20">
+          <section className="flex w-[92%] mx-auto items-center justify-center gap-[4rem] flex-col mt-16">
             {productsDataForCurrentPage.map((elem, index) => {
               return <SingleProductBox key={index} />;
             })}
           </section>
-          <PaginationSection {...{ setCurrentPageNo, NoOfProductsPerPage, currentPageNo }} />
+          <PaginationSection
+            {...{ setCurrentPageNo, NoOfProductsPerPage, currentPageNo }}
+          />
           <BiFilter
             className="w-16 h-16 bg-[#fca311] shadow-md stroke-[black] fixed right-[7%] bottom-[7%] z-[1000]"
             onClick={() => setIsFilterBySectionOpen(true)}
           />
           <FilterBySection
-            {...{ isFilterBySectionOpen, setIsFilterBySectionOpen, currentPageNo, NoOfProductsPerPage }}
+            {...{
+              isFilterBySectionOpen,
+              setIsFilterBySectionOpen,
+              currentPageNo,
+              NoOfProductsPerPage,
+            }}
           />
         </>
       )}
