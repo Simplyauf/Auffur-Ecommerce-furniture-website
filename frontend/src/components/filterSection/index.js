@@ -60,7 +60,7 @@ export const FilterBySection = ({
       }`}
     >
       <section className="flex flex-col z-[2000] overflow-y-auto absolute top-0 bg-white items-start px-[5%] w-[80%] right-0 pt-4 pb-12 gap-7 tracking-[0.25px] text-[18px] h-[100%]">
-        <h2 className="text-center w-[100%] text-[28px] font-bold border-b-[2px] border-[rgba(20,33,61,0.3)] pb-2">
+        <h2 className="text-center w-[100%] text-[28px] font-bold border-b-[2px] border-LightSecondaryColor pb-2">
           Filter by
         </h2>
         <IoCloseOutline
@@ -73,7 +73,7 @@ export const FilterBySection = ({
         </div>
         <div className="flex items-center justify-between w-[100%] gap-[10%] ">
           <button
-            className="h-[45px] basis-[40%] bg-[#fca311] text-white"
+            className="h-[45px] basis-[40%] bg-primaryColor text-white"
             onClick={() => {
               location.pathname === "/shop" &&
                 handleFilterByCategoriesAndPrice(
@@ -95,7 +95,7 @@ export const FilterBySection = ({
             Filter
           </button>
           <button
-            className="h-[45px] basis-[60%] bg-transparent border-[1px] border-[#14213d] text-black"
+            className="h-[45px] basis-[60%] bg-transparent border-[1px] border-secondaryColor text-black"
             onClick={(e) => {
               resetFilter(
                 checkedCategoryDOM,

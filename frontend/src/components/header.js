@@ -16,8 +16,12 @@ export const Header = ({ setIsWishlistActive, setIsCartSectionActive }) => {
   const [isLargeScreen, setIsLargeScreen] = useState("");
   const [isSearchClicked, setIsSearchClicked] = useState(false);
   const [totalProductQuantityCart, setTotalProductQuantityCart] = useState(0);
-  const { allProductsData, isLoading, loadingOrErrorMessage } = useSelector((state) => state.productsData);
-  const { wishlist, cart } = useSelector((state) => state.wishlistAndCartSection);
+  const { allProductsData, isLoading, loadingOrErrorMessage } = useSelector(
+    (state) => state.productsData
+  );
+  const { wishlist, cart } = useSelector(
+    (state) => state.wishlistAndCartSection
+  );
 
   const navigateToSearchPage = useNavigate();
   let location = useLocation();
@@ -97,7 +101,7 @@ export const Header = ({ setIsWishlistActive, setIsCartSectionActive }) => {
         {isLargeScreen && <NavTabs />}
         <div className="flex items-center gap-4 md:basis-[25%] text-[18px]">
           <BiSearch
-            className="w-6 h-6 stroke-[#14213d] stroke-1"
+            className="w-6 h-6 stroke-secondaryColor stroke-1"
             onClick={() => setIsSearchClicked(!isSearchClicked)}
           />
           {isLargeScreen && (
@@ -105,41 +109,53 @@ export const Header = ({ setIsWishlistActive, setIsCartSectionActive }) => {
               <span className="">Register</span>
             </div>
           )}
-          <div className="relative p-3 bg-[#e5e5e5] rounded-[50%]" onClick={() => setIsWishlistActive(true)}>
-            <FiHeart className="w-6 h-6 stroke-[#14213d]" />
-            <span className="absolute text-[10.8px] top-[3px] right-[3px] z-10 bg-[#fca311] text-white cursor-pointer  px-1 text-center rounded-[50%]">
+          <div
+            className="relative p-3 bg-neutralColor rounded-[50%]"
+            onClick={() => setIsWishlistActive(true)}
+          >
+            <FiHeart className="w-6 h-6 stroke-secondaryColor" />
+            <span className="absolute text-[10.8px] top-[3px] right-[3px] z-10 bg-primaryColor text-white cursor-pointer  px-1 text-center rounded-[50%]">
               {wishlist.length}
             </span>
           </div>
-          <div className="relative p-3 bg-[#e5e5e5] rounded-[50%]">
-            <AiOutlineShoppingCart className="w-6 h-6" onClick={() => setIsCartSectionActive(true)} />
-            <span className="absolute text-[12px] top-[3px] right-[3px] z-10 bg-[#fca311] text-white px-1 text-center  rounded-[50%]">
+          <div className="relative p-3 bg-neutralColor rounded-[50%]">
+            <AiOutlineShoppingCart
+              className="w-6 h-6"
+              onClick={() => setIsCartSectionActive(true)}
+            />
+            <span className="absolute text-[12px] top-[3px] right-[3px] z-10 bg-primaryColor text-white px-1 text-center  rounded-[50%]">
               {totalProductQuantityCart}
             </span>
           </div>
-          <button className="p-3 bg-[#e5e5e5]">
+          <button className="p-3 bg-neutralColor">
             {isHamburgerBtnClicked ? (
-              <IoCloseOutline className="w-6 h-6" onClick={() => setIsHamburgerBtnClicked(false)} />
+              <IoCloseOutline
+                className="w-6 h-6"
+                onClick={() => setIsHamburgerBtnClicked(false)}
+              />
             ) : (
-              <GiHamburgerMenu className="w-6 h-6" onClick={() => setIsHamburgerBtnClicked(true)} />
+              <GiHamburgerMenu
+                className="w-6 h-6"
+                onClick={() => setIsHamburgerBtnClicked(true)}
+              />
             )}
           </button>
         </div>
       </nav>
       {isSearchClicked && (
-        <div className="w-[100%] absolute top-[100%] left-0 bottom-auto searchBar h-[45px] bg-[#e5e5e5] text-[#000000]  z-50  shadow-sm shadow-[#14213d] flex">
+        <div className="w-[100%] absolute top-[100%] left-0 bottom-auto searchBar h-[45px] bg-neutralColor text-[#000000]  z-50  shadow-sm shadow-secondaryColor flex">
           <input
-            className="w-[85%] text-[18px] pl-6 h-[100%] bg-[#e5e5e5] border-none outline-none"
+            className="w-[85%] text-[18px] pl-6 h-[100%] bg-neutralColor border-none outline-none"
             type="search"
             name=""
             placeholder="search ..."
             id=""
           />
           <button
-            className="bg-[#fca311] w-[15%] h-[100%] flex justify-center items-center"
+            className="bg-primaryColor w-[15%] h-[100%] flex justify-center items-center"
             onClick={(e) => handleSearching(e)}
           >
-            <BiSearch className="w-6 h-6" fill="#14213D" />
+            <BiSearch className="w-6 h-6" fill="white" />
           </button>
         </div>
       )}

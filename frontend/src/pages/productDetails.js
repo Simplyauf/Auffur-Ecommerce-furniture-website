@@ -54,7 +54,7 @@ export const ProductDetailsPage = () => {
   let discountedPrice = price - (price * discountPercentValue) / 100;
   return (
     <>
-      <div className="mt-12 w-[100%] h-[54px] bg-[#e5e5e5] text-[#14213d] pl-[3%] flex items-center justify-between font-bold  font-RobotoCondensed">
+      <div className="mt-12 w-[100%] h-[54px] bg-neutralColor text-secondaryColor pl-[3%] flex items-center justify-between font-bold  font-RobotoCondensed">
         <div className="flex gap-[4px] items-center text-[15px]">
           <IoIosArrowBack />
           <li
@@ -75,7 +75,7 @@ export const ProductDetailsPage = () => {
         </div>
       </div>
       <section className="className mt-16 mb-32 w-[92%] mx-auto gap-6 flex flex-col ">
-        <div className="w-[100%] h-[320px] mx-auto bg-[#e5e5e5] relative flex justify-center items-center">
+        <div className="w-[100%] h-[320px] mx-auto bg-neutralColor relative flex justify-center items-center">
           <img
             src={image}
             alt=""
@@ -83,12 +83,12 @@ export const ProductDetailsPage = () => {
           />
           <div
             className={`absolute p-3 bg-[#ffffff] shadow-[0px_2px_8px_0px_#00000085] rounded-[50%] top-[5%] right-[5%] z-[100] ${
-              isWishlisted && "bg-[#fca311]"
+              isWishlisted && "bg-primaryColor"
             }`}
           >
             <FiHeart
               className={`w-6 h-6 ${
-                isWishlisted && "fill-[#fca311] stroke-white"
+                isWishlisted && "fill-primaryColor stroke-white"
               }`}
               onClick={() => handleWishlistModification(_id, dispatch)}
             />
@@ -102,7 +102,7 @@ export const ProductDetailsPage = () => {
             <h3 className="font-bold text-[20px] tracking-[1px]">
               ${discountedPrice.toFixed(2)}
             </h3>
-            <h3 className="after:w-[100%] after:bg-[#14213d] after:h-[2px] after:left-0 relative after:absolute after:bottom-[1.1rem] tracking-[1px]">
+            <h3 className="after:w-[100%] after:bg-secondaryColor after:h-[2px] after:left-0 relative after:absolute after:bottom-[1.1rem] tracking-[1px]">
               ${price.toFixed(2)}
             </h3>
           </div>
@@ -132,7 +132,7 @@ export const ProductDetailsPage = () => {
         <div className="flex items-center gap-4">
           <h3 className="font-bold text-[20px] tracking-[0.5px]">Quantity :</h3>
           <input
-            className="w-[20%] h-[40px] focus:outline-[#14213d] border-[1px] border-[#14213d] pl-3 rounded-sm text-[#14213d] "
+            className="w-[20%] h-[40px] focus:outline-secondaryColor border-[1px] border-secondaryColor pl-3 rounded-sm text-secondaryColor "
             type="number"
             name=""
             id=""
@@ -151,13 +151,13 @@ export const ProductDetailsPage = () => {
           </div>
         </div>
         <button
-          className="text-[#14213d] bg-transparent border-[1px] border-[#14213d] font-semibold w-[100%] h-[50px]"
+          className="text-secondaryColor bg-transparent border-[1px] border-secondaryColor font-semibold w-[100%] h-[50px]"
           onClick={handleAddToCartFn}
         >
           {isProductInCart ? "Remove from Cart" : "Add to Cart"}
         </button>
         <Link className="w-[100%] h-[50px] block" to="/checkout">
-          <button className="text-white bg-[#fca311] font-semibold w-[100%] h-[100%]">
+          <button className="text-white bg-primaryColor font-semibold w-[100%] h-[100%]">
             Buy Now
           </button>
         </Link>
@@ -165,7 +165,7 @@ export const ProductDetailsPage = () => {
           <h3 className="font-bold text-[20px] tracking-[0.5px]">
             Shipping Options
           </h3>
-          <span className="font-bold text-[18px] text-[#fca311]">
+          <span className="font-bold text-[18px] text-primaryColor">
             *This product is eligible for Free Shipping
           </span>
           <div className="flex flex-col gap-2">

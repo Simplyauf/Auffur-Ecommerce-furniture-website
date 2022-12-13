@@ -8,7 +8,7 @@ import { FiTwitter } from "react-icons/fi";
 
 export const Footer = () => {
   return (
-    <footer className="w-[100%] px-[4%] bg-[#14213d] text-white flex flex-col items-start gap-6 pt-64 pb-16 -mt-48">
+    <footer className="w-[100%] px-[4%] bg-secondaryColor text-white flex flex-col items-start gap-6 pt-64 pb-16 -mt-48">
       <div>
         <svg
           className="w-[35%]"
@@ -34,18 +34,18 @@ export const Footer = () => {
       </div>
       <div className="flex flex-col items-start gap-4">
         <ul className="flex gap-6">
-          <IoLocationOutline className="w-20 h-12  stroke-[#fca311]" />
+          <IoLocationOutline className="w-20 h-12  stroke-primaryColor" />
           <li>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae
             eaque optio aut!. Lorem ipsum dolor sit amet consectetur.{" "}
           </li>
         </ul>
         <ul className="flex gap-6">
-          <FiMail className="w-6 h-6 stroke-[#fca311]" />
+          <FiMail className="w-6 h-6 stroke-primaryColor" />
           <li>auFURFurniture@gmail.com</li>
         </ul>
         <ul className="flex gap-6">
-          <FiPhoneCall className="w-6 h-6 stroke-[#fca311]" />
+          <FiPhoneCall className="w-6 h-6 stroke-primaryColor" />
           <li>+1-243-546-4569</li>
         </ul>
       </div>

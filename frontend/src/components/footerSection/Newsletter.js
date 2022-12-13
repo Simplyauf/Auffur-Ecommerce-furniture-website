@@ -2,7 +2,7 @@ import React from "react";
 
 export const Newsletter = () => {
   return (
-    <section className="mt-16 py-8 px-6 w-[90%] mx-auto bg-[#fca311] text-white rounded-md z-10 sticky">
+    <section className="mt-16 py-8 px-6 w-[90%] mx-auto bg-primaryColor text-white rounded-md z-10 sticky">
       <h2 className="font-bold text-[24px] text-center">
         Get early access today
       </h2>
@@ -20,7 +20,7 @@ export const Newsletter = () => {
         />
         <button
           type="submit"
-          className="text-white rounded-full bg-gradient-to-r from-[#14213d] to-black w-[100%] h-12 "
+          className="text-white rounded-full bg-gradient-to-r from-secondaryColor to-black w-[100%] h-12 "
         >
           subscribe
         </button>

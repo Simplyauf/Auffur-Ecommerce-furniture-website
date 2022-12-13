@@ -31,8 +31,8 @@ export const SingleProductSection = ({ cartData }) => {
   }, [productQuantityInCart]);
 
   return (
-    <div className="flex gap-4 border-b-[1px] border-[rgba(20,33,61,0.3)] pb-4">
-      <div className="w-[35%] h-[120px] bg-[#e5e5e5] relative cursor-pointer product-img-container">
+    <div className="flex gap-4 border-b-[1px] border-LightSecondaryColor pb-4">
+      <div className="w-[35%] h-[120px] bg-neutralColor relative cursor-pointer product-img-container">
         <img
           src={image}
           alt=""
@@ -43,9 +43,9 @@ export const SingleProductSection = ({ cartData }) => {
         <h2 className="text-[18px] font-bold capitalize">{title}</h2>
         <h4 className="font-bold text-[16px]">${price} USD</h4>
         <div className="flex items-center gap-1 cursor-pointer">
-          <FaTrash className="w-4 h-[0.9em] fill-[#fca311]" />{" "}
+          <FaTrash className="w-4 h-[0.9em] fill-primaryColor" />{" "}
           <h3
-            className="font-semibold text-[#fca311]"
+            className="font-semibold text-primaryColor"
             onClick={() => handleCartModification(_id, dispatch)}
           >
             Remove
@@ -53,7 +53,7 @@ export const SingleProductSection = ({ cartData }) => {
         </div>
       </div>
       <input
-        className="w-[20%] h-[40px] focus:outline-[#14213d] border-[2px] border-[#14213d] mx-auto rounded-sm text-[#14213d] pl-3"
+        className="w-[20%] h-[40px] focus:outline-secondaryColor border-[2px] border-secondaryColor mx-auto rounded-sm text-secondaryColor pl-3"
         type="number"
         name=""
         id=""

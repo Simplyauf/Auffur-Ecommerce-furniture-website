@@ -81,19 +81,19 @@ const Index = () => {
               >
                 Featured{" "}
               </h2>
-              <div className="bg-[#fca311] h-[3px] w-0 "></div>
+              <div className="bg-primaryColor h-[3px] w-0 "></div>
             </div>
             <div className="cursor-pointer order-2 transition-all ease-in-out duration-[0.25s]">
               <h2 data-id="firstOrderDeals" className="text-center text-[24px]">
                 First order deals
               </h2>
-              <div className="bg-[#fca311] h-[3px] w-0"></div>
+              <div className="bg-primaryColor h-[3px] w-0"></div>
             </div>
             <div className="cursor-pointer order-0 transition-all ease-in-out duration-[0.25s]">
               <h2 data-id="bestDeals" className="text-center text-[24px]">
                 Best Deals
               </h2>
-              <div className="bg-[#fca311] h-[3px] w-0"></div>
+              <div className="bg-primaryColor h-[3px] w-0"></div>
             </div>
           </div>
           <HomepageCategoryProducts

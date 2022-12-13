@@ -32,23 +32,25 @@ export const SingleProductBox = ({ productsData }) => {
     <article className="flex  w-[100%] mx-auto flex-col gap-4  bg-[#ffffff] relative">
       <div
         className={`absolute p-3 bg-[#ffffff] shadow-[0px_2px_8px_0px_#00000085] rounded-[50%] top-[5%] right-[5%] z-[100] ${
-          isWishlisted && "bg-[#fca311]"
+          isWishlisted && "bg-primaryColor"
         }`}
         onClick={() => handleWishlistModification(_id, dispatch)}
       >
         <FiHeart
-          className={`w-6 h-6 ${isWishlisted && "fill-[#fca311] stroke-white"}`}
+          className={`w-6 h-6 ${
+            isWishlisted && "fill-primaryColor stroke-white"
+          }`}
         />
       </div>
 
-      <div className="w-[100%] h-[290px] bg-[#e5e5e5] relative cursor-pointer product-img-container flex justify-center items-center rounded">
+      <div className="w-[100%] h-[290px] bg-neutralColor relative cursor-pointer product-img-container flex justify-center items-center rounded">
         <img
           src={image}
           alt=""
           className="rounded-sm max-w-[90%] h-auto max-h-[90%] object-cover"
         />
         <div className="product-img-overlay hidden absolute top-0 left-0 z-50 bg-[#0000005d] w-[100%] h-[100%]"></div>
-        <button className="absolute left-[25%] top-[50%] bg-[#fca311] text-white hidden cursor-pointer rounded-sm h-[44px] w-[50%] gap-1 justify-center z-[100]  items-center product-details-link">
+        <button className="absolute left-[25%] top-[50%] bg-primaryColor text-white hidden cursor-pointer rounded-sm h-[44px] w-[50%] gap-1 justify-center z-[100]  items-center product-details-link">
           <BsEye />
           <Link to={`/product/${_id}`}>
             <span> view details</span>
@@ -64,7 +66,7 @@ export const SingleProductBox = ({ productsData }) => {
         </div>
       </div>
       <button
-        className="w-[100%] h-[52px] mx-auto rounded-sm text-[#ffffff] bg-[#fca311] "
+        className="w-[100%] h-[52px] mx-auto rounded-sm text-[#ffffff] bg-primaryColor "
         onClick={() => handleCartModification(_id, dispatch)}
       >
         {isProductInCart ? "Remove from cart" : "Add to cart"}
@@ -78,14 +80,14 @@ export const SingleProductBox = ({ productsData }) => {
 //   <FiHeart className="w-6 h-6 " />
 // </div>
 
-// <div className="w-[100%] h-[290px] bg-[#e5e5e5] relative cursor-pointer product-img-container">
+// <div className="w-[100%] h-[290px] bg-neutralColor relative cursor-pointer product-img-container">
 //   <img
 //     src="/images/ruslan-bardash-4kTbAMRAHtQ-unsplash_preview_rev_1.png"
 //     alt=""
 //     className="rounded-sm w-[100%] h-[100%] object-cover"
 //   />
 //   <div className="product-img-overlay hidden absolute top-0 left-0 z-50 bg-[#0000005d] w-[100%] h-[100%]"></div>
-//   <button className="absolute left-[25%] top-[50%] bg-[#fca311] text-white hidden cursor-pointer rounded-sm h-[44px] w-[50%] gap-1 justify-center z-[100]  items-center product-details-link">
+//   <button className="absolute left-[25%] top-[50%] bg-primaryColor text-white hidden cursor-pointer rounded-sm h-[44px] w-[50%] gap-1 justify-center z-[100]  items-center product-details-link">
 //     <BsEye />
 //     <span> view details</span>
 //   </button>
@@ -97,5 +99,5 @@ export const SingleProductBox = ({ productsData }) => {
 //     <h5>USD</h5>
 //   </div>
 // </div>
-// <button className="w-[100%] h-[44px] mx-auto rounded-sm text-[#ffffff] bg-[#fca311]">Add to cart</button>
+// <button className="w-[100%] h-[44px] mx-auto rounded-sm text-[#ffffff] bg-primaryColor">Add to cart</button>
 // </article>

@@ -6,7 +6,7 @@ export const CategoryLists = ({ categoryTitle, productCategories }) => {
   const [isCategoryTitleOpen, setIsCategoryTitleOpen] = useState(false);
 
   return (
-    <div className="border-b-[1px] border-[rgba(20,33,61,0.3)] pb-2">
+    <div className="border-b-[1px] border-LightSecondaryColor pb-2">
       <div className="flex items-center justify-between">
         <h3 className="text-[18px] capitalize">{categoryTitle}</h3>
         {isCategoryTitleOpen ? (

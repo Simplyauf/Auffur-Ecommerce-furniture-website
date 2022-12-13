@@ -95,7 +95,7 @@ export const SearchPage = () => {
 
   return (
     <>
-      <div className="mt-12 w-[100%] h-[54px] bg-[#e5e5e5] text-[#14213d] pl-[3%] flex items-center justify-between font-bold  font-RobotoCondensed">
+      <div className="mt-12 w-[100%] h-[54px] bg-neutralColor text-secondaryColor pl-[3%] flex items-center justify-between font-bold  font-RobotoCondensed">
         <div className="flex gap-[4px] items-center text-[15px]">
           <IoIosArrowBack />
           <li
@@ -168,7 +168,7 @@ export const SearchPage = () => {
             {...{ setCurrentPageNo, NoOfProductsPerPage, currentPageNo }}
           />
           <BiFilter
-            className="w-16 h-16 bg-[#fca311] shadow-md stroke-[black] fixed right-[7%] bottom-[7%] z-[1000]"
+            className="w-16 h-16 bg-primaryColor shadow-md stroke-secondaryColor fixed right-[7%] bottom-[7%] z-[1000]"
             onClick={() => setIsFilterBySectionOpen(true)}
           />
           <FilterBySection

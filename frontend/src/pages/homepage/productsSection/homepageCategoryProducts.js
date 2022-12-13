@@ -11,10 +11,10 @@ export const HomepageCategoryProducts = ({ currentlyRequestedCategories }) => {
         <SingleProductBox productsData={productData} key={productData._id} />
       ))}
       <div className="self-end flex gap-3 items-center ">
-        <button className="text-[18px] text-[#fca311] font-semibold hover:underline transition underline-offset-[6px] decoration-2">
+        <button className="text-[18px] text-primaryColor font-semibold hover:underline transition underline-offset-[6px] decoration-2">
           Shop for more
         </button>
-        <FaLongArrowAltRight className="w-6 h-6 fill-[#fca311]" />
+        <FaLongArrowAltRight className="w-6 h-6 fill-primaryColor" />
       </div>
     </div>
   );

@@ -2,7 +2,10 @@ import { CategoryLists } from "./categoryLists";
 import { useState } from "react";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { RiArrowDropUpLine } from "react-icons/ri";
-import { setSelectedCategory, setSelectedSubCategoryForFilter } from "../../../features/filterBySlice";
+import {
+  setSelectedCategory,
+  setSelectedSubCategoryForFilter,
+} from "../../../features/filterBySlice";
 import { useDispatch } from "react-redux";
 
 const Index = ({ setCheckedCategoryDOM }) => {
@@ -30,7 +33,10 @@ const Index = ({ setCheckedCategoryDOM }) => {
 
     if (e.target.checked) {
       dispatch(
-        setSelectedCategory(e.target.parentElement.parentElement.previousElementSibling.firstElementChild.textContent)
+        setSelectedCategory(
+          e.target.parentElement.parentElement.previousElementSibling
+            .firstElementChild.textContent
+        )
       );
       dispatch(setSelectedSubCategoryForFilter(e.target.value));
       setCheckedCategoryDOM(e.target);
@@ -57,9 +63,17 @@ const Index = ({ setCheckedCategoryDOM }) => {
         )}
       </div>
       {isCategorySectionOpen && (
-        <div className="flex flex-col gap-4 w-[100%]" onChange={(e) => handleCheckedCategory(e)}>
+        <div
+          className="flex flex-col gap-4 w-[100%]"
+          onChange={(e) => handleCheckedCategory(e)}
+        >
           {Object.keys(productCategories).map((categoryTitle, index) => {
-            return <CategoryLists key={index} {...{ categoryTitle, productCategories }} />;
+            return (
+              <CategoryLists
+                key={index}
+                {...{ categoryTitle, productCategories }}
+              />
+            );
           })}
         </div>
       )}

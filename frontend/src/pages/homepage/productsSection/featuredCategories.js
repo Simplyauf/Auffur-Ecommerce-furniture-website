@@ -16,7 +16,7 @@ export const FeaturedCategories = () => {
               alt=""
             />
             <div className="product-img-overlay hidden absolute top-0 left-0 z-50 bg-[#0000005d] w-[100%] h-[100%]"></div>
-            <button className="absolute left-[25%] top-[40%] bg-[#fca311] text-white hidden cursor-pointer rounded-sm h-[44px] w-[50%] gap-3 justify-center z-[100]  items-center category-shop-link">
+            <button className="absolute left-[25%] top-[40%] bg-primaryColor text-white hidden cursor-pointer rounded-sm h-[44px] w-[50%] gap-3 justify-center z-[100]  items-center category-shop-link">
               <span> Shop Now</span>
               <BsArrowRight />
             </button>
@@ -31,7 +31,7 @@ export const FeaturedCategories = () => {
               alt=""
             />
             <div className="product-img-overlay hidden absolute top-0 left-0 z-50 bg-[#0000005d] w-[100%] h-[100%]"></div>
-            <button className="absolute left-[25%] top-[40%] bg-[#fca311] text-white hidden cursor-pointer rounded-sm h-[44px] w-[50%] gap-3 justify-center z-[100]  items-center category-shop-link">
+            <button className="absolute left-[25%] top-[40%] bg-primaryColor text-white hidden cursor-pointer rounded-sm h-[44px] w-[50%] gap-3 justify-center z-[100]  items-center category-shop-link">
               <span> Shop Now</span>
               <BsArrowRight />
             </button>
@@ -46,7 +46,7 @@ export const FeaturedCategories = () => {
               alt=""
             />
             <div className="product-img-overlay hidden absolute top-0 left-0 z-50 bg-[#0000005d] w-[100%] h-[100%]"></div>
-            <button className="absolute left-[25%] top-[40%] bg-[#fca311] text-white hidden cursor-pointer rounded-sm h-[44px] w-[50%] gap-3 justify-center z-[100]  items-center category-shop-link">
+            <button className="absolute left-[25%] top-[40%] bg-primaryColor text-white hidden cursor-pointer rounded-sm h-[44px] w-[50%] gap-3 justify-center z-[100]  items-center category-shop-link">
               <span> Shop Now</span>
               <BsArrowRight />
             </button>
@@ -61,7 +61,7 @@ export const FeaturedCategories = () => {
               alt=""
             />
             <div className="product-img-overlay hidden absolute top-0 left-0 z-50 bg-[#0000005d] w-[100%] h-[100%]"></div>
-            <button className="absolute left-[25%] top-[40%] bg-[#fca311] text-white hidden cursor-pointer rounded-sm h-[44px] w-[50%] gap-3 justify-center z-[100]  items-center category-shop-link">
+            <button className="absolute left-[25%] top-[40%] bg-primaryColor text-white hidden cursor-pointer rounded-sm h-[44px] w-[50%] gap-3 justify-center z-[100]  items-center category-shop-link">
               <span> Shop Now</span>
               <BsArrowRight />
             </button>
@@ -70,22 +70,25 @@ export const FeaturedCategories = () => {
         </article>
       </div>
       <div className="flex flex-col w-[100%] mt-10 gap-10">
-        <article className="bg-[#e5e5e5] text-black  h-[150px] flex justify-center items-center px-[4%]">
+        <article className="bg-[#e5e5e5] text-secondaryColor  h-[150px] flex justify-center items-center px-[4%]">
           <h1 className="font-bold text-[24px] text-center">
-            GET UP TO <span className="text-[#fca311] mr-[5px]">95% OFF</span>ON
-            FIRST ORDER DEAL AND FREE SHIPPING{" "}
+            GET UP TO{" "}
+            <span className="text-primaryColor mr-[5px]">95% OFF</span>ON FIRST
+            ORDER DEAL AND FREE SHIPPING{" "}
           </h1>
         </article>
-        <article className="bg-[#e5e5e5] text-black  h-[150px] flex justify-center items-center px-[4%]">
+        <article className="bg-[#e5e5e5] text-secondaryColor  h-[150px] flex justify-center items-center px-[4%]">
           <h1 className="font-bold text-[24px] text-center">
-            GET UP TO <span className="text-[#fca311] mr-[5px]">60% OFF</span>ON
-            KIDS CATEGORIES{" "}
+            GET UP TO{" "}
+            <span className="text-primaryColor mr-[5px]">60% OFF</span>ON KIDS
+            CATEGORIES{" "}
           </h1>
         </article>
-        <article className="bg-[#e5e5e5] text-black  h-[150px] flex justify-center items-center px-[4%]">
+        <article className="bg-[#e5e5e5] text-secondaryColor  h-[150px] flex justify-center items-center px-[4%]">
           <h1 className="font-bold text-[24px] text-center">
-            GET UP TO <span className="text-[#fca311] mr-[5px]">60% OFF</span>ON
-            SETS CATEGORIES{" "}
+            GET UP TO{" "}
+            <span className="text-primaryColor mr-[5px]">60% OFF</span>ON SETS
+            CATEGORIES{" "}
           </h1>
         </article>
       </div>

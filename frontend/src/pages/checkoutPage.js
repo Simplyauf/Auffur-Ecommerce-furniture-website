@@ -5,7 +5,7 @@ export const CheckoutPage = () => {
   const navigate = useNavigate();
   return (
     <>
-      <div className="mt-12 w-[100%] h-[54px] bg-[#e5e5e5] text-[#14213d] pl-[3%] flex items-center justify-between font-bold  font-RobotoCondensed">
+      <div className="mt-12 w-[100%] h-[54px] bg-neutralColor text-secondaryColor pl-[3%] flex items-center justify-between font-bold  font-RobotoCondensed">
         <div className="flex gap-[4px] items-center text-[15px]">
           <IoIosArrowBack />
           <li
@@ -25,11 +25,11 @@ export const CheckoutPage = () => {
           <span className=" capitalize">Checkout</span>
         </div>
       </div>
-      <section class="mt-16 w-[100%] bg-[#e5e5e5] py-8">
+      <section class="mt-16 w-[100%] bg-neutralColor py-8">
         <h2 class="text-[28px] font-bold text-center mb-12">Order Summary</h2>
-        <div class="flex flex-col gap-4 w-[90%] mx-auto border-b-[1px] border-[#14213d] pb-4">
+        <div class="flex flex-col gap-4 w-[90%] mx-auto border-b-[1px] border-secondaryColor pb-4">
           <article class="flex gap-4 w-[100%]">
-            <div class="w-[35%] h-[90px] bg-[#e5e5e5] relative cursor-pointer product-img-container">
+            <div class="w-[35%] h-[90px] bg-neutralColor relative cursor-pointer product-img-container">
               <img
                 src="https://pixlr.com/images/index/remove-bg.webp"
                 alt=""
@@ -43,7 +43,7 @@ export const CheckoutPage = () => {
             <h4 class="font-bold ">$25.00</h4>
           </article>
           <article class="flex gap-4  w-[100%]">
-            <div class="w-[35%] h-[90px] bg-[#e5e5e5] relative cursor-pointer product-img-container">
+            <div class="w-[35%] h-[90px] bg-neutralColor relative cursor-pointer product-img-container">
               <img
                 src="https://pixlr.com/images/index/remove-bg.webp"
                 alt=""
@@ -57,7 +57,7 @@ export const CheckoutPage = () => {
             <h4 class="font-bold ">$25.00</h4>
           </article>
           <article class="flex gap-4  w-[100%]">
-            <div class="w-[35%] h-[90px] bg-[#e5e5e5] relative cursor-pointer product-img-container">
+            <div class="w-[35%] h-[90px] bg-neutralColor relative cursor-pointer product-img-container">
               <img
                 src="https://pixlr.com/images/index/remove-bg.webp"
                 alt=""
@@ -71,7 +71,7 @@ export const CheckoutPage = () => {
             <h4 class="font-bold">$25.00</h4>
           </article>
         </div>
-        <div class="pt-4 border-t-[1px] border-[#14213d]  mt-16 w-[90%] mx-auto">
+        <div class="pt-4 border-t-[1px] border-secondaryColor  mt-16 w-[90%] mx-auto">
           <div class="flex w-[100%] items-center gap-4 text-[18px] justify-between mb-4">
             <h2 class="text-[20px] font-medium">Subtotal</h2>
             <span class="font-bold">$25.00</span>
@@ -101,7 +101,7 @@ export const CheckoutPage = () => {
                 type="text"
                 name=""
                 id=""
-                class="pl-3 w-[100%] h-[52px] focus-border-[1px] rounded focus:outline-none border-[1px] border-[#14213d]"
+                class="pl-3 w-[100%] h-[52px] focus-border-[1px] rounded focus:outline-none border-[1px] border-secondaryColor"
                 placeholder="username"
               />
             </div>
@@ -114,7 +114,7 @@ export const CheckoutPage = () => {
                 type="email"
                 name=""
                 id=""
-                class="pl-3 w-[100%] h-[52px] focus-border-[1px] rounded focus:outline-none border-[1px] border-[#14213d]"
+                class="pl-3 w-[100%] h-[52px] focus-border-[1px] rounded focus:outline-none border-[1px] border-secondaryColor"
                 placeholder="user@gmail.com"
               />
             </div>
@@ -132,7 +132,7 @@ export const CheckoutPage = () => {
                 type="text"
                 name=""
                 id=""
-                class="pl-3 w-[100%] h-[52px] focus-border-[1px] rounded focus:outline-none border-[1px] border-[#14213d]"
+                class="pl-3 w-[100%] h-[52px] focus-border-[1px] rounded focus:outline-none border-[1px] border-secondaryColor"
                 placeholder="Address"
               />
             </div>
@@ -143,7 +143,7 @@ export const CheckoutPage = () => {
               <br />
               <select
                 name=""
-                class="pl-3 w-[100%] h-[52px] focus-border-[1px] rounded focus:outline-none border-[1px] border-[#14213d]"
+                class="pl-3 w-[100%] h-[52px] focus-border-[1px] rounded focus:outline-none border-[1px] border-secondaryColor"
                 id=""
               >
                 <option value="Nigeria">Nigeria</option>
@@ -160,12 +160,12 @@ export const CheckoutPage = () => {
                   type="text"
                   name=""
                   id=""
-                  class="pl-3 w-[100%] h-[52px] focus-border-[1px] rounded focus:outline-none border-[1px] border-[#14213d]"
+                  class="pl-3 w-[100%] h-[52px] focus-border-[1px] rounded focus:outline-none border-[1px] border-secondaryColor"
                   placeholder="city"
                 />
               </div>
               <div class="w-[100%]">
-                <label for="" class="font-medium  text-[18px]  text-[18px]">
+                <label for="" class="font-medium  text-[18px]">
                   Postal code
                 </label>{" "}
                 <br />
@@ -173,7 +173,7 @@ export const CheckoutPage = () => {
                   type="tel"
                   name=""
                   id=""
-                  class="pl-3 w-[100%] h-[52px] focus-border-[1px] rounded focus:outline-none border-[1px] border-[#14213d]"
+                  class="pl-3 w-[100%] h-[52px] focus-border-[1px] rounded focus:outline-none border-[1px] border-secondaryColor"
                   placeholder="Zip code"
                 />
               </div>
@@ -182,11 +182,11 @@ export const CheckoutPage = () => {
         </article>
         <article class="mt-6">
           <h2 class="text-[24px] font-bold pl-[5%] mb-6">Payment method</h2>
-          <p class="font-medium text-[18px] text-[#fca311] pl-[5%]">
+          <p class="font-medium text-[18px] text-primaryColor pl-[5%]">
             There is no payment functionalities yet*
           </p>
         </article>
-        <button class="my-12 w-[90%] mx-auto block h-[52px] bg-[#fca311] text-white font-medium rounded">
+        <button class="my-12 w-[90%] mx-auto block h-[52px] bg-primaryColor text-white font-medium rounded">
           Place Order
         </button>
       </div>
