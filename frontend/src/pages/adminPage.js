@@ -1,5 +1,6 @@
 import { React, useState, useRef } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export const AdminPage = () => {
   const [imgUrl, setImgUrl] = useState("");
@@ -7,7 +8,12 @@ export const AdminPage = () => {
   const [productDiscountPercentValue, setProductDiscountPercentValue] = useState(0);
   const [productPrice, setProductPrice] = useState("");
   const [productStock, setProductStock] = useState(0);
-  const [categories, setCategories] = useState({ "Featured Categories": [], location: [], features: [], others: [] });
+  const [categories, setCategories] = useState({
+    "Featured Categories": [],
+    location: [],
+    features: [],
+    others: [],
+  });
 
   const productCategories = {
     "Featured Categories": ["featured", "first order deal", "discounts"],
@@ -21,7 +27,10 @@ export const AdminPage = () => {
   const handleCheckedCategories = (e) => {
     if (e.target.checked) {
       setCategories((categories) => {
-        return { ...categories, [e.target.name]: [...categories[e.target.name], e.target.value] };
+        return {
+          ...categories,
+          [e.target.name]: [...categories[e.target.name], e.target.value],
+        };
       });
     } else {
       if (categories[e.target.name].length === 0) {
@@ -47,9 +56,7 @@ export const AdminPage = () => {
       stock: productStock,
       discountPercentValue: productDiscountPercentValue,
     };
-    if (imgUrl === "") {
-      throw Error("Image hasnt being provided yet");
-    }
+    const asyncCreateProductToastId = toast.loading("product data upload in progress");
     try {
       const data = await axios.post("http://localhost:5000/api/v1/products", formData, {
         headers: {
@@ -61,7 +68,12 @@ export const AdminPage = () => {
       imgRef.current.value = null;
       setImgUrl("");
       setProductTitle("");
-      setCategories({ "Featured Categories": [], location: [], features: [], others: [] });
+      setCategories({
+        "Featured Categories": [],
+        location: [],
+        features: [],
+        others: [],
+      });
       setProductPrice("");
       setProductStock(0);
       setProductDiscountPercentValue(0);
@@ -69,9 +81,27 @@ export const AdminPage = () => {
       for (let key of e.target) {
         key.checked = false;
       }
+      toast.update(asyncCreateProductToastId, {
+        render: "Product data has sucessfully been uploaded",
+        type: "success",
+        isLoading: false,
+        autoClose: 3000,
+      });
 
       console.log(data);
     } catch (error) {
+      let errMessage;
+      if (!error.response.data) errMessage = error.message;
+      else {
+        errMessage = error.response.data.message;
+      }
+
+      toast.update(asyncCreateProductToastId, {
+        render: `${errMessage} : Product data upload failed`,
+        type: "error",
+        isLoading: false,
+        autoClose: 5000,
+      });
       console.log(error);
     }
   };
@@ -83,6 +113,7 @@ export const AdminPage = () => {
     formData.append("image", imageFile);
     imgRef.current.nextElementSibling.style.display = "block";
     imgRef.current.nextElementSibling.textContent = "uploading image ...";
+    const asyncImgUploadToastId = toast.loading("Pls wait, product image is currently being uploaded");
 
     try {
       const { data } = await axios.post("http://localhost:5000/api/v1/products/upload", formData, {
@@ -90,16 +121,35 @@ export const AdminPage = () => {
           "Content-Type": "multipart/form-data",
         },
       });
-
       const { image } = data;
       setImgUrl(image.src);
+      toast.update(asyncImgUploadToastId, {
+        render: "Product image has been successfully uploaded",
+        type: "success",
+        isLoading: false,
+        autoClose: 3000,
+      });
       imgRef.current.nextElementSibling.textContent = "uploaded";
       console.log(image);
     } catch (error) {
-      imgRef.current.nextElementSibling.textContent = "image upload failed";
       console.log(error);
+      let errMessage;
+      if (!imageFile) errMessage = "No image selected";
+      else if (!error.response.data) errMessage = error.message;
+      else {
+        errMessage = error.response.data.message;
+      }
+      toast.update(asyncImgUploadToastId, {
+        render: `${errMessage} : Product image upload has failed`,
+        type: "error",
+        isLoading: false,
+        autoClose: 5000,
+      });
+      imgRef.current.nextElementSibling.textContent = "image upload failed";
     }
   };
+
+  console.log(handleImageUpload);
 
   return (
     <form action="" className="w-[100%] px-[5%] mt-[32px] flex flex-col gap-8" onSubmit={createProduct}>

@@ -10,19 +10,23 @@ const initialState = {
   searchedProductData: [],
   sortedSearchedProductData: [],
   loadingOrErrorMessage: "Loading",
+  fetchingError: null,
 };
-
+console.log(initialState);
 const url = "http://localhost:5000/api/v1/products";
 
-export const getAllProductsData = createAsyncThunk("products/getAllProductsData", async (_, thunkAPI) => {
-  try {
-    const { data } = await axios.get(url);
-    return data.products;
-  } catch (error) {
-    console.log(error);
-    return thunkAPI.rejectWithValue(error.message);
+export const getAllProductsData = createAsyncThunk(
+  "products/getAllProductsData",
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await axios.get(url);
+      return data.products;
+    } catch (error) {
+      console.log(error);
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
-});
+);
 
 export const productSlice = createSlice({
   name: "productsSlice",
@@ -69,6 +73,7 @@ export const productSlice = createSlice({
     [getAllProductsData.rejected]: (state, { payload }) => {
       state.isLoading = true;
       state.allProductsData = [];
+      state.fetchingError = true;
       state.loadingOrErrorMessage = payload;
     },
   },

@@ -21,9 +21,10 @@ export const FilterBySection = ({
   const dispatch = useDispatch();
   const location = useLocation();
 
-  const { sortedAllProductsData, sortedSearchedProductData } = useSelector(
-    (state) => state.productsData
-  );
+  const { sortedAllProductsData, sortedSearchedProductData } = useSelector((state) => state.productsData);
+
+  //this is to distinguish between when the filter function is to display toast message and when its not to
+  let doesTheFnCallNotNeedToast = true;
 
   // RESET FILTERS WHEN LOCATION URL CHANGES
   useEffect(() => {
@@ -31,13 +32,15 @@ export const FilterBySection = ({
   }, [location.pathname]);
 
   // Filter in the shop page is from the sortedAllProductsData while the one in the searchpage is from sortedSearchedProductsData
+
   useEffect(() => {
     if (location.pathname === "/shop") {
       handleFilterByCategoriesAndPrice(
         dispatch,
         NoOfProductsPerPage,
         currentPageNo,
-        sortedAllProductsData
+        sortedAllProductsData,
+        doesTheFnCallNotNeedToast
       );
     }
   }, [location.pathname, sortedAllProductsData]);
@@ -48,7 +51,8 @@ export const FilterBySection = ({
         dispatch,
         NoOfProductsPerPage,
         currentPageNo,
-        sortedSearchedProductData
+        sortedSearchedProductData,
+        doesTheFnCallNotNeedToast
       );
     }
   }, [location.pathname, sortedSearchedProductData]);
@@ -76,12 +80,7 @@ export const FilterBySection = ({
             className="h-[45px] basis-[40%] bg-primaryColor text-white"
             onClick={() => {
               location.pathname === "/shop" &&
-                handleFilterByCategoriesAndPrice(
-                  dispatch,
-                  NoOfProductsPerPage,
-                  currentPageNo,
-                  sortedAllProductsData
-                );
+                handleFilterByCategoriesAndPrice(dispatch, NoOfProductsPerPage, currentPageNo, sortedAllProductsData);
               location.pathname === "/search" &&
                 handleFilterByCategoriesAndPrice(
                   dispatch,
@@ -97,12 +96,7 @@ export const FilterBySection = ({
           <button
             className="h-[45px] basis-[60%] bg-transparent border-[1px] border-secondaryColor text-black"
             onClick={(e) => {
-              resetFilter(
-                checkedCategoryDOM,
-                checkedPriceRangeDOM,
-                location,
-                dispatch
-              );
+              resetFilter(checkedCategoryDOM, checkedPriceRangeDOM, location, dispatch);
               setIsFilterBySectionOpen(false);
             }}
           >

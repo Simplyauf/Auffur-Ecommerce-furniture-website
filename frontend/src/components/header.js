@@ -10,44 +10,32 @@ import { NavTabs } from "./navTabs";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 // import { Wishlist } from "./wishlistSection";
+import { toast } from "react-toastify";
 
-export const Header = ({ setIsWishlistActive, setIsCartSectionActive }) => {
+export const Header = ({ setIsWishlistActive, setIsCartSectionActive, isLargeScreen }) => {
   const [isHamburgerBtnClicked, setIsHamburgerBtnClicked] = useState(false);
-  const [isLargeScreen, setIsLargeScreen] = useState("");
+
   const [isSearchClicked, setIsSearchClicked] = useState(false);
   const [totalProductQuantityCart, setTotalProductQuantityCart] = useState(0);
-  const { allProductsData, isLoading, loadingOrErrorMessage } = useSelector(
-    (state) => state.productsData
-  );
-  const { wishlist, cart } = useSelector(
-    (state) => state.wishlistAndCartSection
-  );
+  const { allProductsData, isLoading, loadingOrErrorMessage } = useSelector((state) => state.productsData);
+  const { wishlist, cart } = useSelector((state) => state.wishlistAndCartSection);
 
   const navigateToSearchPage = useNavigate();
   let location = useLocation();
 
-  useEffect(() => {
-    if (window.innerWidth >= 768) {
-      setIsLargeScreen(true);
-    } else if (window.innerWidth < 768) {
-      setIsLargeScreen(false);
-    }
-    window.addEventListener("resize", (e) => {
-      if (e.currentTarget.innerWidth >= 768) {
-        setIsLargeScreen(true);
-      } else if (e.currentTarget.innerWidth < 768) {
-        setIsLargeScreen(false);
-      }
-    });
-  }, [isLargeScreen]);
-
   // SEARCH ENTER BUTTON WONT WORK WHEN THE allProducts IS LOADING OR THERE IS AN ERROR
   const handleSearching = (e) => {
     if (isLoading && loadingOrErrorMessage === "Loading") {
-      console.log("pls wait");
+      toast("Hold on,while product is loading", {
+        type: "warning",
+        autoClose: 3000,
+      });
     }
     if (isLoading && loadingOrErrorMessage !== "Loading") {
-      console.log("err fetch");
+      toast("Products couldnt be loaded", {
+        type: "error",
+        autoClose: 3000,
+      });
     } else if (allProductsData.length > 0) {
       navigateToSearchPage(
         {
@@ -109,35 +97,23 @@ export const Header = ({ setIsWishlistActive, setIsCartSectionActive }) => {
               <span className="">Register</span>
             </div>
           )}
-          <div
-            className="relative p-3 bg-neutralColor rounded-[50%]"
-            onClick={() => setIsWishlistActive(true)}
-          >
+          <div className="relative p-3 bg-neutralColor rounded-[50%]" onClick={() => setIsWishlistActive(true)}>
             <FiHeart className="w-6 h-6 stroke-secondaryColor" />
             <span className="absolute text-[10.8px] top-[3px] right-[3px] z-10 bg-primaryColor text-white cursor-pointer  px-1 text-center rounded-[50%]">
               {wishlist.length}
             </span>
           </div>
           <div className="relative p-3 bg-neutralColor rounded-[50%]">
-            <AiOutlineShoppingCart
-              className="w-6 h-6"
-              onClick={() => setIsCartSectionActive(true)}
-            />
+            <AiOutlineShoppingCart className="w-6 h-6" onClick={() => setIsCartSectionActive(true)} />
             <span className="absolute text-[12px] top-[3px] right-[3px] z-10 bg-primaryColor text-white px-1 text-center  rounded-[50%]">
               {totalProductQuantityCart}
             </span>
           </div>
           <button className="p-3 bg-neutralColor">
             {isHamburgerBtnClicked ? (
-              <IoCloseOutline
-                className="w-6 h-6"
-                onClick={() => setIsHamburgerBtnClicked(false)}
-              />
+              <IoCloseOutline className="w-6 h-6" onClick={() => setIsHamburgerBtnClicked(false)} />
             ) : (
-              <GiHamburgerMenu
-                className="w-6 h-6"
-                onClick={() => setIsHamburgerBtnClicked(true)}
-              />
+              <GiHamburgerMenu className="w-6 h-6" onClick={() => setIsHamburgerBtnClicked(true)} />
             )}
           </button>
         </div>

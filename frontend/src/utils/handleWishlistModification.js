@@ -1,5 +1,6 @@
 import { store } from "../store";
 import { setWishlist } from "../features/wishlistAndCartSlice";
+import { toast } from "react-toastify";
 
 export const handleWishlistModification = (_id, dispatch) => {
   const { allProductsData } = store.getState().productsData;
@@ -9,9 +10,17 @@ export const handleWishlistModification = (_id, dispatch) => {
   if (wishlist.find((wishlistProduct) => wishlistProduct._id === _id)) {
     const filteredWishlist = wishlist.filter((productsData) => productsData._id !== _id);
     newWishlist = [...filteredWishlist];
+    toast("Product has been removed from wishlist", {
+      type: "success",
+      autoClose: 3000,
+    });
   } else {
     const currentWishlistedProduct = allProductsData.find((productsData) => productsData._id === _id);
     newWishlist = [...wishlist, currentWishlistedProduct];
+    toast("Product has been added to wishlist", {
+      type: "success",
+      autoClose: 3000,
+    });
   }
   dispatch(setWishlist(newWishlist));
 };

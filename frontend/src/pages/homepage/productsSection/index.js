@@ -4,14 +4,28 @@ import { FeaturedCategories } from "./featuredCategories";
 import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Loading } from "../../../components/Loading";
+import { toast } from "react-toastify";
 
 const Index = () => {
   const [currentlyRequestedCategories, setCurrentlyRequestedCategories] =
     useState([]);
   const categoryContainerRef = useRef();
-  const { allProductsData, isLoading } = useSelector(
+  const { allProductsData, isLoading, fetchingError } = useSelector(
     (state) => state.productsData
   );
+
+  useEffect(() => {
+    if (!isLoading)
+      toast("Homepage products loaded sucessfully", {
+        type: "success",
+        autoClose: 3000,
+      });
+    if (fetchingError)
+      toast("Homepage Products loading failed", {
+        type: "error",
+        autoClose: 3000,
+      });
+  }, [fetchingError, isLoading]);
 
   useEffect(() => {
     shuffleArr(featuredProducts);
