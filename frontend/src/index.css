@@ -15,6 +15,16 @@
   .category-img-container:hover .category-shop-link {
     display: flex;
   }
+  .text-to-be-wrapped {
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    -ms-word-break: break-word;
+  }
 }
 @layer utilities {
   h1,
