@@ -9,11 +9,12 @@ import { BiSearch } from "react-icons/bi";
 import { NavTabs } from "./navTabs";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { BiUser } from "react-icons/bi";
 // import { Wishlist } from "./wishlistSection";
 import { toast } from "react-toastify";
 
 export const Header = ({ setIsWishlistActive, setIsCartSectionActive, isLargeScreen }) => {
-  const [isHamburgerBtnClicked, setIsHamburgerBtnClicked] = useState(false);
+  const [displayVerticalNavBar, setDisplayVerticalNavBar] = useState(false);
 
   const [isSearchClicked, setIsSearchClicked] = useState(false);
   const [totalProductQuantityCart, setTotalProductQuantityCart] = useState(0);
@@ -52,8 +53,13 @@ export const Header = ({ setIsWishlistActive, setIsCartSectionActive, isLargeScr
   // on entering a new pathname these should be false
   useEffect(() => {
     setIsSearchClicked(false);
-    setIsHamburgerBtnClicked(false);
+    setDisplayVerticalNavBar(false);
   }, [location.pathname]);
+
+  useEffect(() => {
+    console.log(isLargeScreen, displayVerticalNavBar);
+    isLargeScreen && setDisplayVerticalNavBar(false);
+  }, [isLargeScreen]);
 
   useEffect(() => {
     let total = 0;
@@ -67,16 +73,16 @@ export const Header = ({ setIsWishlistActive, setIsCartSectionActive, isLargeScr
 
   return (
     <header className="h-[80px] sticky top-0 z-[1000] bg-[#ffffff]">
-      <nav className="w-[100%] h-[100%] font-Roboto px-[5%] font-medium flex items-center justify-between shadow-[0px_0px_4px_0px_rgba(14,19,24,0.7)] ">
+      <nav className="w-[100%] h-[100%] font-Roboto px-[4%] tablet:px-[6%] lg:px-[2%] xl:px-[4%] font-medium flex items-center justify-between shadow-[0px_0px_4px_0px_rgba(14,19,24,0.7)] ">
         <svg
-          className="w-[35%]"
+          className="w-[35%] md:w-[20%]"
           id="Layer_1"
           data-name="Layer 1"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 271.15 110.85"
         >
           <text
-            className="text-[99.69px] fill-[#13213c] font-leagueGothic tracking-[-0.06em]"
+            className="text-[99.69px] fill-[#13213c] font-RobotoCondensed tracking-[-0.06em]"
             transform="translate(0 84.73)"
           >
             Auf
@@ -87,14 +93,13 @@ export const Header = ({ setIsWishlistActive, setIsCartSectionActive, isLargeScr
         </svg>
 
         {isLargeScreen && <NavTabs />}
-        <div className="flex items-center gap-4 md:basis-[25%] text-[18px]">
-          <BiSearch
-            className="w-6 h-6 stroke-secondaryColor stroke-1"
-            onClick={() => setIsSearchClicked(!isSearchClicked)}
-          />
+        <div className="flex items-center tablet:gap-4 gap-4 md:gap-4 md:basis-[25%] lg:basis-auto text-[18px]">
+          <div className="relative p-3 bg-neutralColor rounded-[50%]">
+            <BiSearch className="w-6 h-6 stroke-secondaryColor " onClick={() => setIsSearchClicked(!isSearchClicked)} />
+          </div>
           {isLargeScreen && (
-            <div>
-              <span className="">Register</span>
+            <div className="relative p-3 bg-neutralColor rounded-[50%]">
+              <BiUser className="w-6 h-6 stroke-secondaryColor " />
             </div>
           )}
           <div className="relative p-3 bg-neutralColor rounded-[50%]" onClick={() => setIsWishlistActive(true)}>
@@ -109,11 +114,11 @@ export const Header = ({ setIsWishlistActive, setIsCartSectionActive, isLargeScr
               {totalProductQuantityCart}
             </span>
           </div>
-          <button className="p-3 bg-neutralColor">
-            {isHamburgerBtnClicked ? (
-              <IoCloseOutline className="w-6 h-6" onClick={() => setIsHamburgerBtnClicked(false)} />
+          <button className="p-3 bg-neutralColor md:hidden">
+            {displayVerticalNavBar ? (
+              <IoCloseOutline className="w-6 h-6 " onClick={() => setDisplayVerticalNavBar(false)} />
             ) : (
-              <GiHamburgerMenu className="w-6 h-6" onClick={() => setIsHamburgerBtnClicked(true)} />
+              <GiHamburgerMenu className="w-6 h-6 " onClick={() => setDisplayVerticalNavBar(true)} />
             )}
           </button>
         </div>
@@ -135,7 +140,7 @@ export const Header = ({ setIsWishlistActive, setIsCartSectionActive, isLargeScr
           </button>
         </div>
       )}
-      {isHamburgerBtnClicked && <NavTabs />}
+      {displayVerticalNavBar && <NavTabs />}
     </header>
   );
 };

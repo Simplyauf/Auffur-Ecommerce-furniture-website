@@ -17,17 +17,17 @@ export const SingleProductSection = ({ wishlistData }) => {
   }, [cart]);
   return (
     <div className="flex gap-4 border-b-[1px] border-LightSecondaryColor pb-4">
-      <div className="w-[35%] h-[120px] bg-neutralColor relative cursor-pointer product-img-container flex justify-center items-center">
-        <img src={image} alt="" className="rounded-sm w-[100%] h-auto max-h-[90%] max-w-[100%] object-cover" />
+      <div className="w-[40%] h-[144px] bg-neutralColor relative cursor-pointer product-img-container flex justify-center items-center">
+        <img src={image} alt="" className="rounded-sm w-[100%] h-auto max-h-[90%] max-w-[90%] object-cover" />
       </div>
-      <div className="flex flex-col gap-2 w-[50%] text-[16px]">
-        <h2 className="text-[18px] font-bold capitalize">{title}</h2>
-        <h4 className="font-bold text-[16px]">${price} USD</h4>
+      <div className="flex flex-col gap-2 w-[50%] text-base">
+        <h2 className="text-lg font-bold capitalize">{title}</h2>
+        <h4 className="font-bold ">${price} USD</h4>
         <span className="text-primaryColor font-RobotoCondensed tracking-[1.3px]">
           {stock < 0 ? "Out of stock" : "In Stock"}
         </span>
         <button
-          className="w-[100%] h-[40px] mx-auto rounded-sm border-[2px] border-primaryColor text-primaryColor"
+          className="w-[90%] h-[40px] tablet:w-[80%] md:w-[80%] text-sm  rounded-sm border-[2px] border-primaryColor text-primaryColor px-2"
           onClick={() => handleCartModification(_id, dispatch)}
         >
           {isProductInCart ? "Remove from cart" : "Add to cart"}

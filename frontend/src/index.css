@@ -30,8 +30,22 @@
   h1,
   h2,
   h3,
-  h4 {
-    @apply font-RobotoCondensed;
+  h4,
+  h5,
+  h6 {
+    @apply font-RobotoSlab;
+  }
+  h1,
+  h2 {
+    @apply font-bold;
+  }
+  h4,
+  h5,
+  h6 {
+    @apply font-medium;
+  }
+  html {
+    @apply lg:text-[18px] scroll-smooth;
   }
   body {
     @apply font-OpenSans overflow-x-hidden tracking-normal;

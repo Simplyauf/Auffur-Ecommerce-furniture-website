@@ -32,22 +32,15 @@ export const SingleProductSection = ({ cartData }) => {
 
   return (
     <div className="flex gap-4 border-b-[1px] border-LightSecondaryColor pb-4">
-      <div className="w-[35%] h-[120px] bg-neutralColor relative cursor-pointer product-img-container">
-        <img
-          src={image}
-          alt=""
-          className="rounded-sm w-[100%] h-[100%] object-cover"
-        />
+      <div className="w-[40%] h-[120px] tablet:h-[160px] md:h-[160px] bg-neutralColor relative cursor-pointer product-img-container flex justify-center items-center">
+        <img src={image} alt="" className="rounded-sm w-[100%]  object-cover h-auto max-h-[90%] max-w-[90%]" />
       </div>
-      <div className="flex flex-col gap-2 w-[45%] ">
-        <h2 className="text-[18px] font-bold capitalize">{title}</h2>
-        <h4 className="font-bold text-[16px]">${price} USD</h4>
+      <div className="flex flex-col gap-3 w-[45%] text-base">
+        <h2 className="text-lg font-bold capitalize">{title}</h2>
+        <h4 className="font-bold">${price} USD</h4>
         <div className="flex items-center gap-1 cursor-pointer">
           <FaTrash className="w-4 h-[0.9em] fill-primaryColor" />{" "}
-          <h3
-            className="font-semibold text-primaryColor"
-            onClick={() => handleCartModification(_id, dispatch)}
-          >
+          <h3 className="font-semibold text-primaryColor" onClick={() => handleCartModification(_id, dispatch)}>
             Remove
           </h3>
         </div>

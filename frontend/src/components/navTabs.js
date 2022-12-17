@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export const NavTabs = () => {
   return (
-    <ul className="flex flex-col z-50 border-t-[1px] border-LightSecondaryColor absolute top-[100%] bg-white items-start px-[5%] left-0 right-0 py-8 gap-3 tracking-[0.25px] text-[18px] font-medium">
+    <ul className="flex flex-col z-50 border-t-[1px] border-LightSecondaryColor absolute top-[100%] bg-white items-start px-[5%] left-0 right-0 py-8 gap-3 tracking-[0.25px] text-lg  font-medium md:static md:bg-transparent md:border-none md:px-2 md:flex-row  md:gap-4 lg:gap-5">
       <li>
         <Link to="/">Home</Link>
       </li>
@@ -17,7 +17,7 @@ export const NavTabs = () => {
         <Link to="">Contact</Link>
       </li>
 
-      <Link className="w-[125px] h-[40px] ml-[30%] block" to="/login">
+      <Link className="w-[125px] h-[40px] ml-[30%] block md:hidden" to="/login">
         <button className="w-[100%] font-semibold h-[100%] rounded-sm text-[#ffffff] bg-primaryColor">
           My Account
         </button>

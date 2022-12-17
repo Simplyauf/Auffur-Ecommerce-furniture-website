@@ -59,16 +59,16 @@ export const FilterBySection = ({
 
   return (
     <div
-      className={`absolute top-0 left-0 w-[100%] h-[1000px] z-[1500] bg-opacity-60 bg-[#000000] translate-x-[100%]  ${
+      className={`absolute lg:mt-16  lg:max-w-[250px]  lg:static lg:ml-[10%] xl:ml-[24%] lg:col-span-1 lg:row-span-2 lg:w-[100%] lg:translate-x-0 lg:h-auto lg:bg-opacity-100 top-0 left-0 w-[100%] h-[1000px] lg:bg-transparent z-[1500] bg-opacity-60 bg-[#000000] translate-x-[100%] lg:z-0  ${
         isFilterBySectionOpen && "translate-x-[0%]"
       }`}
     >
-      <section className="flex flex-col z-[2000] overflow-y-auto absolute top-0 bg-white items-start px-[5%] w-[80%] right-0 pt-4 pb-12 gap-7 tracking-[0.25px] text-[18px] h-[100%]">
-        <h2 className="text-center w-[100%] text-[28px] font-bold border-b-[2px] border-LightSecondaryColor pb-2">
+      <section className="flex lg:w-[100%] flex-col md:w-[50%] md:max-w-[450px] tablet:w-[60%] tablet:max-w-[400px] max-w-[360px] lg:z-0 z-[2000] overflow-y-auto absolute top-0 bg-white items-start px-[5%] lg:px-0 w-[80%] right-0 pt-4 pb-12 gap-7 tracking-[0.25px] text-lg h-[100%] lg:static ">
+        <h2 className="text-center w-[100%] text-[1.75rem] mt-2 font-bold border-b-[2px] border-LightSecondaryColor pb-2">
           Filter by
         </h2>
         <IoCloseOutline
-          className="absolute top-5 right-4 w-9 h-9 cursor-pointer"
+          className="absolute top-5 right-4 w-9 h-9 cursor-pointer lg:hidden"
           onClick={() => setIsFilterBySectionOpen(false)}
         />
         <div className="w-[100%]">

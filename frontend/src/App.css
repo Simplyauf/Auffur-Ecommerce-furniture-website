@@ -11,6 +11,8 @@ body {
   color: #14213d;
   background-color: #ffffff;
   font-size: 16px;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 #root {

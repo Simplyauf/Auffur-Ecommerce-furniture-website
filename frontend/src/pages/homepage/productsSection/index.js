@@ -7,12 +7,9 @@ import { Loading } from "../../../components/Loading";
 import { toast } from "react-toastify";
 
 const Index = () => {
-  const [currentlyRequestedCategories, setCurrentlyRequestedCategories] =
-    useState([]);
+  const [currentlyRequestedCategories, setCurrentlyRequestedCategories] = useState([]);
   const categoryContainerRef = useRef();
-  const { allProductsData, isLoading, fetchingError } = useSelector(
-    (state) => state.productsData
-  );
+  const { allProductsData, isLoading, fetchingError } = useSelector((state) => state.productsData);
 
   useEffect(() => {
     if (!isLoading)
@@ -61,12 +58,8 @@ const Index = () => {
 
         // order 1 is assigned to the default categoryDom and the other unclicked categoryDom gets order style values from the orderNumbering variable
         let orderNumbering = [0, 2];
-        let categoriesDomListArr = Array.from(
-          categoryContainerRef.current.children
-        );
-        let theNonTargetedCategoryDomArr = categoriesDomListArr.filter(
-          (elem) => elem !== e.target.parentElement
-        );
+        let categoriesDomListArr = Array.from(categoryContainerRef.current.children);
+        let theNonTargetedCategoryDomArr = categoriesDomListArr.filter((elem) => elem !== e.target.parentElement);
         theNonTargetedCategoryDomArr.map((elem, i) => {
           elem.classList.remove("homepage-active-category-tab");
           elem.style.order = orderNumbering[i];
@@ -84,15 +77,12 @@ const Index = () => {
       ) : (
         <>
           <div
-            className="flex  items-center whitespace-nowrap  mx-auto w-[92%] overflow-scroll flex-nowrap gap-6 my-10"
+            className="flex  items-center whitespace-nowrap  mx-auto w-[92%] tablet:w-[88%] overflow-auto justify-center flex-nowrap gap-6 my-10 tablet:gap-8"
             onClick={(e) => handleCategoryClick(e)}
             ref={categoryContainerRef}
           >
             <div className="cursor-pointer order-1 transition-all ease-in-out duration-[0.25s] homepage-active-category-tab">
-              <h2
-                data-id="featuredProducts"
-                className="text-center text-[24px]"
-              >
+              <h2 data-id="featuredProducts" className="text-center text-[24px]">
                 Featured{" "}
               </h2>
               <div className="bg-primaryColor h-[3px] w-0 "></div>
@@ -110,9 +100,7 @@ const Index = () => {
               <div className="bg-primaryColor h-[3px] w-0"></div>
             </div>
           </div>
-          <HomepageCategoryProducts
-            currentlyRequestedCategories={currentlyRequestedCategories}
-          />
+          <HomepageCategoryProducts currentlyRequestedCategories={currentlyRequestedCategories} />
         </>
       )}
       <FeaturedCategories />

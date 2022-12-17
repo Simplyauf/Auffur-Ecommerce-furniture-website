@@ -37,7 +37,7 @@ function App() {
   }, [isLargeScreen]);
 
   return (
-    <div className="App-container">
+    <div className="App-container lg:text-[18px]">
       <Header {...{ setIsWishlistActive, setIsCartSectionActive, isLargeScreen }} />
       <PagesRoute />
       {isWishlistActive && <Wishlist {...{ isWishlistActive, setIsWishlistActive }} />}

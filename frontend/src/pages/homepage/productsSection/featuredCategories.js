@@ -4,12 +4,10 @@ import { BsArrowRight } from "react-icons/bs";
 export const FeaturedCategories = () => {
   return (
     <section className="my-16">
-      <h2 className="text-[36px] text-center mb-10 font-bold">
-        Featured Categories
-      </h2>
-      <div className="flex flex-col items-center gap-10">
-        <article className="w-[92%] mx-auto cursor-pointer">
-          <div className="w-[100%] h-[200px] relative category-img-container">
+      <h2 className="text-[36px] text-center mb-10 font-bold mx-4">Featured Categories</h2>
+      <div className="flex flex-col items-center gap-10 md:flex-row md:w-[92%] lg:w-[96%] xl:w-[92%] md:mx-auto md:justify-between md:flex-wrap md:gap-2">
+        <article className="w-[92%] tablet:w-[88%] md:mx-0 md:w-[100%] mx-auto cursor-pointer basis-[45%]">
+          <div className="w-[100%]  relative category-img-container h-[350px] tablet:h-[400px]">
             <img
               className="w-[100%] h-[100%] object-cover"
               src="https://images.pexels.com/photos/2227832/pexels-photo-2227832.jpeg?auto=compress&cs=tinysrgb&w=600"
@@ -23,8 +21,8 @@ export const FeaturedCategories = () => {
           </div>
           <h2 className="text-[24px] mt-3 font-bold"> First order deal</h2>
         </article>
-        <article className="w-[92%] mx-auto cursor-pointer">
-          <div className="w-[100%] h-[200px] relative category-img-container">
+        <article className="w-[92%] md:mx-0 md:w-[100%] tablet:w-[88%] mx-auto cursor-pointer basis-[45%]">
+          <div className="w-[100%]  relative category-img-container h-[350px] tablet:h-[400px]">
             <img
               className="w-[100%] h-[100%] object-cover"
               src="https://images.pexels.com/photos/2227832/pexels-photo-2227832.jpeg?auto=compress&cs=tinysrgb&w=600"
@@ -38,8 +36,8 @@ export const FeaturedCategories = () => {
           </div>
           <h2 className="text-[24px] mt-3 font-bold">Living room</h2>
         </article>
-        <article className="w-[92%] mx-auto cursor-pointer">
-          <div className="w-[100%] h-[200px] relative category-img-container">
+        <article className="w-[92%] md:mx-0 md:w-[100%] tablet:w-[88%] mx-auto cursor-pointer basis-[45%]">
+          <div className="w-[100%]  relative category-img-container h-[350px] tablet:h-[400px]">
             <img
               className="w-[100%] h-[100%] object-cover"
               src="https://images.pexels.com/photos/2227832/pexels-photo-2227832.jpeg?auto=compress&cs=tinysrgb&w=600"
@@ -53,8 +51,8 @@ export const FeaturedCategories = () => {
           </div>
           <h2 className="text-[24px] mt-3 font-bold">Bedroom</h2>
         </article>
-        <article className="w-[92%] mx-auto cursor-pointer">
-          <div className="w-[100%] h-[200px] relative category-img-container">
+        <article className="w-[92%] md:mx-0 md:w-[100%]  tablet:w-[88%] mx-auto cursor-pointer basis-[45%]">
+          <div className="w-[100%]  relative category-img-container h-[350px] tablet:h-[400px]">
             <img
               className="w-[100%] h-[100%] object-cover"
               src="https://images.pexels.com/photos/2227832/pexels-photo-2227832.jpeg?auto=compress&cs=tinysrgb&w=600"
@@ -71,24 +69,18 @@ export const FeaturedCategories = () => {
       </div>
       <div className="flex flex-col w-[100%] mt-10 gap-10">
         <article className="bg-[#e5e5e5] text-secondaryColor  h-[150px] flex justify-center items-center px-[4%]">
-          <h1 className="font-bold text-[24px] text-center">
-            GET UP TO{" "}
-            <span className="text-primaryColor mr-[5px]">95% OFF</span>ON FIRST
-            ORDER DEAL AND FREE SHIPPING{" "}
+          <h1 className="font-bold text-[24px] tablet:w-[55%] md:w-[55%] lg:w-[40%] text-center">
+            GET UP TO <span className="text-primaryColor mr-[5px]">95% OFF</span>ON FIRST ORDER DEAL AND FREE SHIPPING{" "}
           </h1>
         </article>
         <article className="bg-[#e5e5e5] text-secondaryColor  h-[150px] flex justify-center items-center px-[4%]">
-          <h1 className="font-bold text-[24px] text-center">
-            GET UP TO{" "}
-            <span className="text-primaryColor mr-[5px]">60% OFF</span>ON KIDS
-            CATEGORIES{" "}
+          <h1 className="font-bold text-[24px] tablet:w-[55%] md:w-[55%] lg:w-[40%] text-center">
+            GET UP TO <span className="text-primaryColor mr-[5px]">60% OFF</span>ON KIDS CATEGORIES{" "}
           </h1>
         </article>
         <article className="bg-[#e5e5e5] text-secondaryColor  h-[150px] flex justify-center items-center px-[4%]">
-          <h1 className="font-bold text-[24px] text-center">
-            GET UP TO{" "}
-            <span className="text-primaryColor mr-[5px]">60% OFF</span>ON SETS
-            CATEGORIES{" "}
+          <h1 className="font-bold tablet:w-[55%] md:w-[55%] text-[24px] lg:w-[40%] text-center">
+            GET UP TO <span className="text-primaryColor mr-[5px]">60% OFF</span>ON SETS CATEGORIES{" "}
           </h1>
         </article>
       </div>

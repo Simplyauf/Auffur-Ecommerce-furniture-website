@@ -32,8 +32,8 @@ export const Cart = ({ isCartSectionActive, setIsCartSectionActive }) => {
         isCartSectionActive && "translate-x-[0%]"
       }`}
     >
-      <section className="flex flex-col z-[2000] overflow-y-auto absolute top-0 bg-white items-start w-[98%] right-0 bottom-0 pt-4 pb-12 gap-7 tracking-[0.25px] text-[18px] h-[100%]">
-        <h1 className=" text-center mt-[0.5em] w-[100%] text-[28px] border-b-[2px] border-LightSecondaryColor pb-4 font-bold">
+      <section className="flex flex-col z-[2000] overflow-y-auto absolute top-0 bg-white items-start w-[98%] right-0 bottom-0 pt-4 pb-12 gap-7 tracking-[0.25px] text-lg h-[100%] lg:max-w-[520px] md:max-w-[480px] tablet:max-w-[480px]">
+        <h1 className=" text-center mt-[0.5em] w-[100%] text-[1.75rem] border-b-[2px] border-LightSecondaryColor pb-4 font-bold">
           My Cart
         </h1>
         <IoCloseOutline
@@ -47,25 +47,18 @@ export const Cart = ({ isCartSectionActive, setIsCartSectionActive }) => {
             {cart.length < 1 ? (
               <div className="flex justify-center items-center w-[100%] h-[50vh]">
                 {" "}
-                <h2 className="font-bold text-[20px]">
-                  Your Cart is currently empty
-                </h2>{" "}
+                <h2 className="font-bold text-xl">Your Cart is currently empty</h2>{" "}
               </div>
             ) : (
               <div className="w-[100%] flex flex-col px-[5%] gap-4">
                 {cart.map((cartData) => {
-                  return (
-                    <SingleProductSection
-                      cartData={cartData}
-                      key={cartData._id}
-                    />
-                  );
+                  return <SingleProductSection cartData={cartData} key={cartData._id} />;
                 })}
               </div>
             )}
             <div className="pt-4 border-t-[2px] border-LightSecondaryColor mt-14 w-[100%]">
               <div className="flex w-[100%] items-center px-[5%] justify-between mb-4">
-                <h2 className="font-medium text-[24px]">Total</h2>
+                <h2 className="font-medium text-2xl">Total</h2>
                 <span className="font-bold">${totalPrice.toFixed(2)} USD</span>
               </div>
               <div className="w-[100%] px-[5%]">
