@@ -18,7 +18,6 @@ module.exports = {
         OpenSans: ["Open Sans", "sans-serif"],
         RobotoCondensed: ["Roboto Condensed", "sans-serif"],
         RobotoSlab: ["Roboto Slab", "serif"],
-        leagueGothic: ["League Gothic", "sans-serif"],
       },
     },
   },

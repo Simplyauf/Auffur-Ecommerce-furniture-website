@@ -5,29 +5,14 @@ import { FiMail } from "react-icons/fi";
 import { FiInstagram } from "react-icons/fi";
 import { BsGithub } from "react-icons/bs";
 import { FiTwitter } from "react-icons/fi";
+import logoOrange from "../../logoOrange.png";
 
 export const Footer = () => {
   return (
-    <footer className="w-[100%] px-[4%]  tablet:px-[6%] bg-secondaryColor text-white flex flex-col items-start gap-6 pt-64 pb-16 -mt-48">
+    <footer className="w-[100%] px-[4%]  tablet:px-[6%] bg-secondaryColor text-white flex flex-col items-start gap-6 pt-64 pb-10 -mt-48">
       <div>
-        <svg
-          className="w-[35%]"
-          id="Layer_1"
-          data-name="Layer 1"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 271.15 110.85"
-        >
-          <text
-            className="text-[99.69px] fill-[#ffffff] font-leagueGothic tracking-[-0.06em]"
-            transform="translate(0 84.73)"
-          >
-            Auf
-            <tspan class="tracking-[-0.01em]" x="79.21" y="0">
-              Fur
-            </tspan>
-          </text>
-        </svg>
-        <p className="mt-4 md:w-[80%] lg:w-[60%]">
+        <img src={logoOrange} alt="" className="w-[120px] h-auto" />
+        <p className=" md:w-[80%] lg:w-[60%]">
           Home of the best interior and exterior furnitures. Lorem ipsum dolor sit amet consectetur adipisicing elit.{" "}
         </p>
       </div>

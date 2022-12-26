@@ -12,6 +12,7 @@ import { useSelector } from "react-redux";
 import { BiUser } from "react-icons/bi";
 // import { Wishlist } from "./wishlistSection";
 import { toast } from "react-toastify";
+import logoDark from "../logoDark.png";
 
 export const Header = ({ setIsWishlistActive, setIsCartSectionActive, isLargeScreen }) => {
   const [displayVerticalNavBar, setDisplayVerticalNavBar] = useState(false);
@@ -74,51 +75,49 @@ export const Header = ({ setIsWishlistActive, setIsCartSectionActive, isLargeScr
   return (
     <header className="h-[80px] sticky top-0 z-[1000] bg-[#ffffff]">
       <nav className="w-[100%] h-[100%] font-Roboto px-[4%] tablet:px-[6%] lg:px-[2%] xl:px-[4%] font-medium flex items-center justify-between shadow-[0px_0px_4px_0px_rgba(14,19,24,0.7)] ">
-        <svg
-          className="w-[35%] md:w-[20%]"
-          id="Layer_1"
-          data-name="Layer 1"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 271.15 110.85"
-        >
-          <text
-            className="text-[99.69px] fill-[#13213c] font-RobotoCondensed tracking-[-0.06em]"
-            transform="translate(0 84.73)"
-          >
-            Auf
-            <tspan class="tracking-[-0.01em]" x="79.21" y="0">
-              Fur
-            </tspan>
-          </text>
-        </svg>
-
+        <img src={logoDark} alt="" className="w-[25%] h-auto max-w-[120px]" />
         {isLargeScreen && <NavTabs />}
         <div className="flex items-center tablet:gap-4 gap-4 md:gap-4 md:basis-[25%] lg:basis-auto text-[18px]">
           <div className="relative p-3 bg-neutralColor rounded-[50%]">
-            <BiSearch className="w-6 h-6 stroke-secondaryColor " onClick={() => setIsSearchClicked(!isSearchClicked)} />
+            <BiSearch
+              className="w-4 h-4 tablet:w-5 tablet:h-5 md:w-5 md:h-5  stroke-secondaryColor "
+              onClick={() => setIsSearchClicked(!isSearchClicked)}
+            />
           </div>
           {isLargeScreen && (
             <div className="relative p-3 bg-neutralColor rounded-[50%]">
-              <BiUser className="w-6 h-6 stroke-secondaryColor " />
+              <BiUser className="w-4 h-4 tablet:w-5 tablet:h-5 md:w-5 md:h-5  stroke-secondaryColor " />
             </div>
           )}
           <div className="relative p-3 bg-neutralColor rounded-[50%]" onClick={() => setIsWishlistActive(true)}>
-            <FiHeart className="w-6 h-6 stroke-secondaryColor" />
+            <FiHeart className="w-4 h-4 tablet:w-5 tablet:h-5 md:w-5 md:h-5  stroke-secondaryColor" />
             <span className="absolute text-[10.8px] top-[3px] right-[3px] z-10 bg-primaryColor text-white cursor-pointer  px-1 text-center rounded-[50%]">
               {wishlist.length}
             </span>
           </div>
           <div className="relative p-3 bg-neutralColor rounded-[50%]">
-            <AiOutlineShoppingCart className="w-6 h-6" onClick={() => setIsCartSectionActive(true)} />
+            <AiOutlineShoppingCart
+              className="w-4 h-4  tablet:w-5
+              tablet:h-5
+              md:w-5
+              md:h-5"
+              onClick={() => setIsCartSectionActive(true)}
+            />
             <span className="absolute text-[12px] top-[3px] right-[3px] z-10 bg-primaryColor text-white px-1 text-center  rounded-[50%]">
               {totalProductQuantityCart}
             </span>
           </div>
           <button className="p-3 bg-neutralColor md:hidden">
             {displayVerticalNavBar ? (
-              <IoCloseOutline className="w-6 h-6 " onClick={() => setDisplayVerticalNavBar(false)} />
+              <IoCloseOutline
+                className="w-4 h-4 tablet:w-5 tablet:h-5 md:w-5 md:h-5  "
+                onClick={() => setDisplayVerticalNavBar(false)}
+              />
             ) : (
-              <GiHamburgerMenu className="w-6 h-6 " onClick={() => setDisplayVerticalNavBar(true)} />
+              <GiHamburgerMenu
+                className="w-4 h-4 tablet:w-5 tablet:h-5 md:w-5 md:h-5  "
+                onClick={() => setDisplayVerticalNavBar(true)}
+              />
             )}
           </button>
         </div>
@@ -136,7 +135,7 @@ export const Header = ({ setIsWishlistActive, setIsCartSectionActive, isLargeScr
             className="bg-primaryColor w-[15%] h-[100%] flex justify-center items-center"
             onClick={(e) => handleSearching(e)}
           >
-            <BiSearch className="w-6 h-6" fill="white" />
+            <BiSearch className="w-4 h-4 tablet:w-5 tablet:h-5 md:w-5 md:h-5" fill="white" />
           </button>
         </div>
       )}
