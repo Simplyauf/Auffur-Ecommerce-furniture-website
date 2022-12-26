@@ -24,7 +24,7 @@ export const SingleProductBox = ({ productsData }) => {
   }, [cart]);
 
   return (
-    <article className="flex w-[100%] tablet:w-[48%] xl:w-[23%] md:w-[31%]  md:mx-0 tablet:mx-0  mx-auto flex-col gap-4  bg-[#ffffff] relative">
+    <article className="flex w-[100%] tablet:mx-0 md:mx-0  mx-auto flex-col  bg-[#ffffff] relative">
       <div
         className={`absolute p-3 bg-[#ffffff] shadow-[0px_2px_8px_0px_#00000085] rounded-[50%] top-[5%] right-[5%] z-[100] ${
           isWishlisted && "bg-primaryColor"
@@ -37,18 +37,16 @@ export const SingleProductBox = ({ productsData }) => {
       <div className="w-[100%] h-[290px] bg-neutralColor relative cursor-pointer product-img-container flex justify-center items-center rounded">
         <img src={image} alt="" className="rounded-sm max-w-[90%] h-auto max-h-[90%] object-cover" />
         <div className="product-img-overlay hidden absolute top-0 left-0 z-50 bg-[#0000005d] w-[100%] h-[100%]"></div>
-        <button className="absolute left-[25%] tablet:w-[60%] top-[50%] bg-primaryColor text-white hidden cursor-pointer rounded-sm h-[48px] w-[50%] gap-1 justify-center z-[100]  items-center product-details-link">
+        <button className="absolute left-[25%] tablet:left-[20%] md:left-[20%] tablet:w-[60%] md:w-[60%] top-[50%] bg-primaryColor text-white hidden cursor-pointer rounded-sm h-[48px] w-[50%] gap-1 justify-center z-[100]  items-center product-details-link">
           <BsEye />
           <Link to={`/product/${_id}`}>
             <span> view details</span>
           </Link>
         </button>
       </div>
-      <div className="flex justify-between text-base">
-        <h4 className="font-bold text-lg  capitalize">{title}</h4>
-        <div className="flex gap-[1.5px] ">
-          <h5 className="font-bold tracking-wide">${price.toFixed(2)} USD</h5>
-        </div>
+      <h4 className="font-bold text-lg  capitalize mt-4">{title}</h4>
+      <div className="flex gap-[1.5px] ">
+        <h5 className="font-bold tracking-wide text-base mt-2 mb-4">${price.toFixed(2)} USD</h5>
       </div>
       <button
         className="w-[100%] h-[52px] mx-auto rounded-sm text-[#ffffff] bg-primaryColor "

@@ -149,7 +149,7 @@ export const SearchPage = () => {
               </div>
             </article>
           )}
-          <section className="flex w-[92%] mx-auto items-center justify-center gap-[4rem] flex-col mt-20 tablet:justify-between tablet:w-[88%] md:justify-between tablet:flex-row md:flex-row md:flex-wrap md:gap-2 tablet:flex-wrap tablet:gap-2 tablet:gap-y-12 md:gap-y-12">
+          <section className="grid grid-cols-1 tablet:grid-cols-2 md:grid-cols-3 xl:grid-cols-4  lg:w-[100%] w-[92%] mx-auto items-center justify-center gap-[4rem]  mt-20 tablet:justify-between tablet:w-[88%] md:justify-between tablet:gap-y-12 md:gap-y-12 md:gap-[5%]  tablet:gap-[4%]">
             {productsDataForCurrentPage.map((elem, index) => {
               return <SingleProductBox key={index} productsData={elem} />;
             })}
