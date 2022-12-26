@@ -36,8 +36,8 @@ export const SingleProductSection = ({ cartData }) => {
         <img src={image} alt="" className="rounded-sm w-[100%]  object-cover h-auto max-h-[90%] max-w-[90%]" />
       </div>
       <div className="flex flex-col gap-3 w-[45%] text-base">
-        <h2 className="text-lg font-bold capitalize">{title}</h2>
-        <h4 className="font-bold">${price} USD</h4>
+        <h2 className="text-lg font-bold font-RobotoSlab capitalize">{title}</h2>
+        <h4 className="font-bold tracking-wide">${price} USD</h4>
         <div className="flex items-center gap-1 cursor-pointer">
           <FaTrash className="w-4 h-[0.9em] fill-primaryColor" />{" "}
           <h3 className="font-semibold text-primaryColor" onClick={() => handleCartModification(_id, dispatch)}>

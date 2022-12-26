@@ -8,7 +8,7 @@ export const CategoryLists = ({ categoryTitle, productCategories }) => {
   return (
     <div className="border-b-[1px] border-LightSecondaryColor pb-2">
       <div className="flex items-center justify-between">
-        <h3 className="text-lg tablet:text-xl md:text-xl capitalize">{categoryTitle}</h3>
+        <h3 className="text-lg font-medium tablet:text-xl md:text-xl capitalize">{categoryTitle}</h3>
         {isCategoryTitleOpen ? (
           <RiArrowDropUpLine
             className=" w-8 h-6 cursor-pointer"

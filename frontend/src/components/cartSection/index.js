@@ -58,8 +58,8 @@ export const Cart = ({ isCartSectionActive, setIsCartSectionActive }) => {
             )}
             <div className="pt-4 border-t-[2px] border-LightSecondaryColor mt-14 w-[100%]">
               <div className="flex w-[100%] items-center px-[5%] justify-between mb-4">
-                <h2 className="font-medium text-2xl">Total</h2>
-                <span className="font-bold">${totalPrice.toFixed(2)} USD</span>
+                <h2 className="font-medium font-RobotoSlab text-2xl">Total</h2>
+                <span className="font-bold tracking-wide font-RobotoSlab">${totalPrice.toFixed(2)} USD</span>
               </div>
               <div className="w-[100%] px-[5%]">
                 <Link className="w-[100%] h-[54px] block" to="/checkout">

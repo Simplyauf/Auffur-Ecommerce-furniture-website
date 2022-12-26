@@ -27,18 +27,18 @@
   }
 }
 @layer utilities {
-  h1,
-  h2,
-  h3,
   h4,
   h5,
   h6 {
     @apply font-RobotoSlab;
   }
+
   h1,
-  h2 {
-    @apply font-bold;
+  h2,
+  h3 {
+    @apply font-RobotoCondensed font-bold;
   }
+
   h4,
   h5,
   h6 {

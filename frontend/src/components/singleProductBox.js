@@ -45,9 +45,9 @@ export const SingleProductBox = ({ productsData }) => {
         </button>
       </div>
       <div className="flex justify-between text-base">
-        <h4 className="font-bold text-lg tracking-wide capitalize">{title}</h4>
-        <div className="flex gap-[1.5px]  font-bold">
-          <h5>${price.toFixed(2)} USD</h5>
+        <h4 className="font-bold text-lg  capitalize">{title}</h4>
+        <div className="flex gap-[1.5px] ">
+          <h5 className="font-bold tracking-wide">${price.toFixed(2)} USD</h5>
         </div>
       </div>
       <button

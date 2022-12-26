@@ -32,10 +32,10 @@ export const CheckoutPage = () => {
                 />
               </div>
               <div class="flex flex-col gap-2 w-[35%] text-[16px]">
-                <h2 class="text-[18px] font-bold">Wooden bag</h2>
+                <h2 class="text-[18px] font-bold font-RobotoSlab">Wooden bag</h2>
                 <span class="font-medium">Quantity: 2</span>
               </div>
-              <h4 class="font-bold ">$25.00</h4>
+              <h4 class="font-bold tracking-wide">$25.00</h4>
             </article>
             <article class="flex gap-4  w-[100%]">
               <div class="w-[35%] h-[90px] bg-neutralColor relative cursor-pointer product-img-container">
@@ -46,10 +46,10 @@ export const CheckoutPage = () => {
                 />
               </div>
               <div class="flex flex-col gap-2 w-[35%] text-[16px]">
-                <h2 class="text-[20px] font-bold">Wooden bag</h2>
+                <h2 class="text-[20px] font-bold font-RobotoSlab">Wooden bag</h2>
                 <span class="font-medium">Quantity: 2</span>
               </div>
-              <h4 class="font-bold ">$25.00</h4>
+              <h4 class="font-bold tracking-wide">$25.00</h4>
             </article>
             <article class="flex gap-4  w-[100%]">
               <div class="w-[35%] h-[90px] bg-neutralColor relative cursor-pointer product-img-container">
@@ -60,24 +60,24 @@ export const CheckoutPage = () => {
                 />
               </div>
               <div class="flex flex-col gap-2 w-[35%] text-[16px]">
-                <h2 class="text-[20px] font-bold">Wooden bag</h2>
+                <h2 class="text-[20px] font-bold font-RobotoSlab">Wooden bag</h2>
                 <span class="font-medium">Quantity: 2</span>
               </div>
-              <h4 class="font-bold">$25.00</h4>
+              <h4 class="font-bold tracking-wide">$25.00</h4>
             </article>
           </div>
           <div class="pt-4 border-t-[1px] max-w-[500px] border-secondaryColor  mt-16 w-[90%] mx-auto">
             <div class="flex w-[100%] items-center gap-4 text-[18px] justify-between mb-4">
-              <h2 class="text-[20px] font-medium">Subtotal</h2>
-              <span class="font-bold">$25.00</span>
+              <h2 class="text-[20px] font-RobotoSlab font-medium">Subtotal</h2>
+              <span class="font-bold tracking-wide">$25.00</span>
             </div>
             <div class="flex w-[100%] items-center text-[18px] justify-between mb-4">
-              <h2 class="text-[20px] font-medium">Shipping Charges</h2>
-              <span class="font-bold">$25.00</span>
+              <h2 class="text-[20px] font-RobotoSlab font-medium">Shipping Charges</h2>
+              <span class="font-bold tracking-wide">$25.00</span>
             </div>
             <div class="flex w-[100%] items-center text-[18px] justify-between mb-4">
-              <h2 class="font-medium text-[24px]">Total</h2>
-              <span class="font-bold text-[20px]">$25.00 </span>
+              <h2 class="font-medium font-RobotoSlab text-[24px]">Total</h2>
+              <span class="font-bold text-[20px] tracking-wide">$25.00 </span>
             </div>
           </div>
         </section>

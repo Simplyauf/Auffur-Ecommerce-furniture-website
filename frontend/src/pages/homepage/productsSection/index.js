@@ -77,24 +77,24 @@ const Index = () => {
       ) : (
         <>
           <div
-            className="flex  items-center whitespace-nowrap  mx-auto w-[92%] tablet:w-[88%] overflow-auto justify-center flex-nowrap gap-6 my-10 tablet:gap-8"
+            className="flex  items-center whitespace-nowrap  mx-auto w-[92%] tablet:w-[88%] overflow-auto justify-center flex-nowrap gap-6 my-10 tablet:gap-8 "
             onClick={(e) => handleCategoryClick(e)}
             ref={categoryContainerRef}
           >
             <div className="cursor-pointer order-1 transition-all ease-in-out duration-[0.25s] homepage-active-category-tab">
-              <h2 data-id="featuredProducts" className="text-center text-[24px]">
+              <h2 data-id="featuredProducts" className="text-center text-[24px] font-medium ">
                 Featured{" "}
               </h2>
               <div className="bg-primaryColor h-[3px] w-0 "></div>
             </div>
             <div className="cursor-pointer order-2 transition-all ease-in-out duration-[0.25s]">
-              <h2 data-id="firstOrderDeals" className="text-center text-[24px]">
+              <h2 data-id="firstOrderDeals" className="text-center text-[24px] font-medium ">
                 First order deals
               </h2>
               <div className="bg-primaryColor h-[3px] w-0"></div>
             </div>
             <div className="cursor-pointer order-0 transition-all ease-in-out duration-[0.25s]">
-              <h2 data-id="bestDeals" className="text-center text-[24px]">
+              <h2 data-id="bestDeals" className="text-center text-[24px] font-medium ">
                 Best Deals
               </h2>
               <div className="bg-primaryColor h-[3px] w-0"></div>
