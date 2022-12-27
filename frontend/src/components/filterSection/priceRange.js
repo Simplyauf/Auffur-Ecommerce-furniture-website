@@ -5,7 +5,7 @@ import { setPriceRange } from "../../features/filterBySlice";
 import { useDispatch } from "react-redux";
 
 export const PriceRange = ({ setCheckedPriceRangeDOM }) => {
-  const [isPriceSectionOpen, setIsPriceSectionOpen] = useState(false);
+  const [isPriceSectionOpen, setIsPriceSectionOpen] = useState(true);
 
   const dispatch = useDispatch();
 

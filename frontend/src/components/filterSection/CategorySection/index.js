@@ -6,7 +6,7 @@ import { setSelectedCategory, setSelectedSubCategoryForFilter } from "../../../f
 import { useDispatch } from "react-redux";
 
 const Index = ({ setCheckedCategoryDOM }) => {
-  const [isCategorySectionOpen, setIsCategorySectionOpen] = useState(false);
+  const [isCategorySectionOpen, setIsCategorySectionOpen] = useState(true);
 
   const dispatch = useDispatch();
 
