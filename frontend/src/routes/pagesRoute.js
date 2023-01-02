@@ -9,7 +9,7 @@ import { CheckoutPage } from "../pages/checkoutPage";
 import { LoginPage } from "../pages/loginPage";
 import { RegisterPage } from "../pages/RegisterPage";
 
-const PagesRoute = () => {
+const PagesRoute = ({ setIsCartSectionActive }) => {
   return (
     <Routes>
       <Route path="/" element={<Homepage />} />
@@ -17,7 +17,7 @@ const PagesRoute = () => {
       <Route path="/admin" element={<AdminPage />} />
       <Route path="/search" element={<SearchPage />} />
       <Route path="/product/:productId" element={<ProductDetailsPage />} />
-      <Route path="/checkout" element={<CheckoutPage />} />
+      <Route path="/checkout" element={<CheckoutPage {...{ setIsCartSectionActive }} />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="*" element={<h2>path doesnt exist</h2>} />

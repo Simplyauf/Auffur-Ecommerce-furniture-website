@@ -62,7 +62,7 @@ export const Cart = ({ isCartSectionActive, setIsCartSectionActive }) => {
                 <span className="font-bold tracking-wide font-RobotoSlab">${totalPrice.toFixed(2)} USD</span>
               </div>
               <div className="w-[100%] px-[5%]">
-                <Link className="w-[100%] h-[54px] block" to="/checkout">
+                <Link className="w-[100%] h-[54px] block" to="/checkout" onClick={() => setIsCartSectionActive(false)}>
                   {" "}
                   <button className="bg-primaryColor text-[#ffffff] w-[100%] h-[100%] rounded-sm  ">
                     Proceed to Checkout

@@ -39,7 +39,7 @@ function App() {
   return (
     <div className="App-container lg:text-[18px]">
       <Header {...{ setIsWishlistActive, setIsCartSectionActive, isLargeScreen }} />
-      <PagesRoute />
+      <PagesRoute {...{ setIsCartSectionActive }} />
       {isWishlistActive && <Wishlist {...{ isWishlistActive, setIsWishlistActive }} />}
       <Cart {...{ isCartSectionActive, setIsCartSectionActive }} />
       <ToastContainer position={`${isLargeScreen ? "top-right" : "bottom-center"}`} />

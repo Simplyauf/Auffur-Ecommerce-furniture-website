@@ -43,7 +43,13 @@ export const ProductDetailsPage = () => {
     isProductInCartFn(_id, setIsProductInCart, cart);
   }, [cart]);
 
+  const buyNowFn = () => {
+    handleAddToCartFn();
+    navigate("/checkout");
+  };
+
   let discountedPrice = price - (price * discountPercentValue) / 100;
+
   return (
     <>
       <div className="mt-12 w-[100%] h-[54px] bg-neutralColor text-secondaryColor xl:px-[4%] px-[4%] lg:px-[2%] flex items-center justify-between font-bold tablet:px-[6%] font-RobotoCondensed lg:col-span-full lg:row-span-1">
@@ -122,9 +128,13 @@ export const ProductDetailsPage = () => {
             >
               {isProductInCart ? "Remove from Cart" : "Add to Cart"}
             </button>
-            <Link className="w-[100%] basis-[100%] tablet:basis-[45%] md:basis-[35%] h-[50px] block" to="/checkout">
-              <button className="text-white bg-primaryColor font-semibold w-[100%] h-[100%]">Buy Now</button>
-            </Link>
+
+            <button
+              className="text-white bg-primaryColor font-semibold  w-[100%] basis-[100%] tablet:basis-[45%] md:basis-[35%] h-[50px] block"
+              onClick={buyNowFn}
+            >
+              Buy Now
+            </button>
           </div>
           <div className="flex-col flex gap-4">
             <h3 className="font-bold text-[20px] tracking-[0.5px]">Shipping Options</h3>
