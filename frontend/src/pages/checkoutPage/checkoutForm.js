@@ -93,6 +93,24 @@ export const CheckoutForm = () => {
         </section>
       </article>
       <article className="mt-6">
+        <h2 className="text-[24px] font-bold  mb-6">Shipping options</h2>
+        <div className="flex flex-col gap-2">
+          {" "}
+          <div className="flex gap-4 items-center">
+            <input type="radio" name="shipping-rate" value="standard" className="w-4 h-4" />{" "}
+            <span className=" text-lg">Standard Rate :&nbsp;$5.00 </span>
+          </div>
+          <div className="flex gap-4 items-center">
+            <input type="radio" name="shipping-rate" value="express" className="w-4 h-4" />{" "}
+            <span className=" text-lg">express Rate :&nbsp;$8.00 </span>
+          </div>
+          <div className="flex gap-4 items-center">
+            <input type="radio" name="shipping-rate" value="Free shipping" className="w-4 h-4" />{" "}
+            <span className=" text-lg">Free Shipping :&nbsp;$0 </span>
+          </div>
+        </div>
+      </article>
+      <article className="mt-6">
         <h2 className="text-[24px] font-bold  mb-6">Payment method</h2>
         <p className="font-medium text-[18px] text-primaryColor ">There is no payment functionalities yet*</p>
       </article>

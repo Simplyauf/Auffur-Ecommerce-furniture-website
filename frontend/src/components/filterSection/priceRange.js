@@ -45,7 +45,7 @@ export const PriceRange = ({ setCheckedPriceRangeDOM }) => {
       </div>
       {isPriceSectionOpen && (
         <div
-          className="flex flex-col gap-2 md:gap-3 tablet:gap-3  mt-4 text-base tablet:text-lg md:text-lg"
+          className="flex flex-col gap-2 md:gap-3 tablet:gap-3   text-base tablet:text-lg md:text-lg"
           onChange={(e) => handleCheckedPrice(e)}
         >
           <div className="flex gap-2 items-center">

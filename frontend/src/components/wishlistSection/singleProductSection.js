@@ -18,7 +18,7 @@ export const SingleProductSection = ({ wishlistData }) => {
   return (
     <div className="flex gap-4 border-b-[1px] border-LightSecondaryColor pb-4">
       <div className="w-[40%] h-[144px] bg-neutralColor relative cursor-pointer product-img-container flex justify-center items-center">
-        <img src={image} alt="" className="rounded-sm w-[100%] h-auto max-h-[90%] max-w-[90%] object-cover" />
+        <img src={image} alt="" className="rounded-sm w-[100%] h-auto max-h-[90%] max-w-[90%] object-contain" />
       </div>
       <div className="flex flex-col gap-2 w-[50%] text-base">
         <h2 className="text-lg font-bold font-RobotoSlab capitalize">{title}</h2>

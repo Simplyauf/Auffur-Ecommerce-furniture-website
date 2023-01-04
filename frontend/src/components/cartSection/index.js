@@ -56,12 +56,26 @@ export const Cart = ({ isCartSectionActive, setIsCartSectionActive }) => {
                 })}
               </div>
             )}
-            <div className="pt-4 border-t-[2px] border-LightSecondaryColor mt-14 w-[100%]">
-              <div className="flex w-[100%] items-center px-[5%] justify-between mb-4">
-                <h2 className="font-medium font-RobotoSlab text-2xl">Total</h2>
-                <span className="font-bold tracking-wide font-RobotoSlab">${totalPrice.toFixed(2)} USD</span>
+            <div className="pt-4 flex flex-col gap-4 border-t-[2px] border-LightSecondaryColor mt-14 w-[100%]">
+              <div className="flex  items-center mx-[5%] justify-between  border-b-[1px] border-LightSecondaryColor pb-4">
+                <h2 className="font-normal  text-2xl">SubTotal</h2>
+                <span className="text-lg tracking-wide ">${totalPrice.toFixed(2)} USD</span>
               </div>
-              <div className="w-[100%] px-[5%]">
+              <div className="flex  items-center mx-[5%] justify-between  border-b-[1px] border-LightSecondaryColor pb-4">
+                <div className="flex flex-col gap-2">
+                  {" "}
+                  <h2 className="font-normal  text-2xl">Shipping option</h2>
+                  <span className=" text-lg">Standard rate</span>
+                  <li class="tailwindUnderlineDidntWork">change shipping option</li>
+                </div>
+
+                <span className=" tracking-wide  text-lg">$35.00 USD</span>
+              </div>
+              <div className="flex  items-center mx-[5%] justify-between ">
+                <h2 className="font-bold  text-2xl">Total</h2>
+                <span className="font-bold tracking-wide  text-lg">${totalPrice.toFixed(2)} USD</span>
+              </div>
+              <div className=" mx-[5%] mt-6">
                 <Link className="w-[100%] h-[54px] block" to="/checkout" onClick={() => setIsCartSectionActive(false)}>
                   {" "}
                   <button className="bg-primaryColor text-[#ffffff] w-[100%] h-[100%] rounded-sm  ">

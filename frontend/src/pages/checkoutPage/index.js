@@ -31,7 +31,7 @@ export const CheckoutPage = ({ setIsCartSectionActive }) => {
           <span className=" capitalize">Checkout</span>
         </div>
       </div>
-      <div className="lg:flex lg:w-[96%] xl:w-[92%] lg:mx-auto lg:justify-between lg:items-start">
+      <div className="lg:flex lg:w-[96%] xl:w-[92%] lg:mx-auto lg:justify-between mb-20 lg:items-start">
         <CheckoutForm />
         <OrderSummary />
       </div>
