@@ -3,6 +3,7 @@ require("dotenv").config();
 require("express-async-errors");
 const connectDb = require("./db/connect");
 const productRoute = require("./routes/productRoute");
+const authRoute = require("./routes/authenticationRoute");
 const errorHandler = require("./middleware/errorHandler");
 const pathNotFound = require("./middleware/pathNotFound");
 const cloudinary = require("cloudinary").v2;
@@ -32,6 +33,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/v1/products", productRoute);
+app.use("/api/v1/auth", authRoute);
 app.use(errorHandler);
 app.use(pathNotFound);
 
