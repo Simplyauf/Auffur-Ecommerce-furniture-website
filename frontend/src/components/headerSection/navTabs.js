@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 export const NavTabs = () => {
   return (
@@ -17,11 +17,9 @@ export const NavTabs = () => {
         <Link to="">Contact</Link>
       </li>
 
-      <Link className="w-[125px] h-[40px] ml-[30%] block md:hidden" to="/login">
-        <button className="w-[100%] font-semibold h-[100%] rounded-sm text-[#ffffff] bg-primaryColor">
-          My Account
-        </button>
-      </Link>
+      <button className="w-[125px] h-[40px] ml-[30%] block md:hidden  font-semibold  rounded-sm text-[#ffffff] bg-primaryColor">
+        My Account
+      </button>
     </ul>
   );
 };

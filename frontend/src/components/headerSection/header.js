@@ -19,6 +19,7 @@ export const Header = ({ setIsWishlistActive, setIsCartSectionActive, isLargeScr
 
   const [isSearchClicked, setIsSearchClicked] = useState(false);
   const [totalProductQuantityCart, setTotalProductQuantityCart] = useState(0);
+  
   const { allProductsData, isLoading, loadingOrErrorMessage } = useSelector((state) => state.productsData);
   const { wishlist, cart } = useSelector((state) => state.wishlistAndCartSection);
 
