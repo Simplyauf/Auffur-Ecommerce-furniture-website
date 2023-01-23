@@ -1,7 +1,7 @@
 import "./index.css";
 import "./App.css";
 import PagesRoute from "./routes/pagesRoute";
-import { Header } from "./components/header";
+import { Header } from "./components/headerSection/header";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { getAllProductsData } from "./features/productSlice";
@@ -9,6 +9,8 @@ import { Wishlist } from "./components/wishlistSection";
 import { Cart } from "./components/cartSection";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { fetchIsTokenValid } from "./features/authSlice/fetchIsTokenValid";
+import { getUserData } from "./features/authSlice";
 
 function App() {
   const [isLargeScreen, setIsLargeScreen] = useState("");
@@ -16,11 +18,22 @@ function App() {
   const [isCartSectionActive, setIsCartSectionActive] = useState(false);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchIsTokenValid());
+  }, [dispatch]);
+
+  useEffect(() => {
+    console.log(JSON.parse(localStorage.getItem("UserData")));
+    dispatch(getUserData(JSON.parse(localStorage.getItem("UserData")) || ""));
+  }, [dispatch]);
+
+  // getAllProducts as soon as app starts from any page
   useEffect(() => {
     dispatch(getAllProductsData());
   }, []);
 
-  // large screens are big ipads, desktop and laptop screen
+  // large screens are big ipads, desktop and laptop screen starting from 768
   useEffect(() => {
     if (window.innerWidth >= 768) {
       setIsLargeScreen(true);

@@ -33,6 +33,20 @@
   input[type="radio"]:checked {
     accent-color: #fc6419;
   }
+
+  .authPage-input-container:focus-within > label,
+  .authPage-input:not(:placeholder-shown) ~ label {
+    top: -0.9rem;
+    left: 0.5rem;
+    z-index: 10;
+    background-color: white;
+    transition: all 0.3s;
+    padding: 0 3px;
+  }
+
+  .authPage-input-container:focus-within > label {
+    color: #fca311;
+  }
 }
 
 @layer utilities {
@@ -75,7 +89,22 @@
   .active-sorting-lists {
     @apply flex;
   }
+  .active-profilePage-tab {
+    @apply flex;
+  }
   .homepage-active-category-tab div {
     @apply w-[100%] transition ease-in duration-100;
   }
 }
+
+/* // pry
+// Light shades: #fcd974, #fcf0bb, #fcf9e6
+// Dark shades: #b57800, #8b5500, #613300
+
+// sec
+// Light shades: #3c475d, #5e6c7f, #828ea1
+// Dark shades: #000b1c, #00081a, #000517
+
+// neutralColor
+// Light shades: #f2f2f2, #f7f7f7, #fbfbfb
+// Dark shades: #d9d9d9, #cacaca, #bdbdbd */

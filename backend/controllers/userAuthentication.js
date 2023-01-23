@@ -53,18 +53,17 @@ const loginUser = async (req, res) => {
   const { email, password } = req.body;
   let checkIfEmailExists = await User.findOne({ email });
 
-  console.log(checkIfEmailExists);
   if (!checkIfEmailExists) {
     throw new CustomErrorHandler(400, "Incorect email or password");
   } else if (checkIfEmailExists && checkIfEmailExists.verificationStatus === "pending") {
-    throw new CustomErrorHandler(401, "User Email address must be verified before login");
+    throw new CustomErrorHandler(403, "User Email address must be verified before login");
   } else if (checkIfEmailExists && !(await bcryptjs.compare(password, checkIfEmailExists.password))) {
-    console.log("h");
     throw new CustomErrorHandler(400, "Incorect email or password");
   } else if (checkIfEmailExists && (await bcryptjs.compare(password, checkIfEmailExists.password))) {
-    let loginToken = generateToken(email, "verified", "15d");
-    res.json({ loginToken });
+    let loginToken = generateToken(email, "verified", "30d");
+    const { username } = checkIfEmailExists._doc;
+    res.json({ message: "You have sucessfully logged in", userData: { username, email, loginToken } });
   }
 };
 
-module.exports = { registerUser, loginUser, generateToken };
+module.exports = { registerUser, loginUser, generateToken, emailVerificationMessageDatas };

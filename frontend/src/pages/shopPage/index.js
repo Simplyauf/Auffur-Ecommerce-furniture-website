@@ -119,7 +119,7 @@ const Index = () => {
                 <RiArrowDropDownLine className="w-8 h-8 " />
               </div>
               <div
-                className={`hidden flex-col bg-[#ffffff] rounded-md shadow-[0px_2px_32px_-2px_rgba(0,0,0,0.1)]   py-4  gap-4 z-[200] px-[10%] sticky top-0 left-0 right-0 -mb-64  sorting-lists ${
+                className={`hidden flex-col bg-[#ffffff] rounded-md shadow-[0px_2px_32px_-2px_rgba(0,0,0,0.1)]   py-4  gap-4 z-[200] px-[10%] sticky top-0 left-0 right-0 -mb-[16.5rem]  sorting-lists ${
                   sortingCriteria !== "Default: Latest" && "bg-primaryColor text-white"
                 }`}
                 onClick={(e) => handleSortingCriteriaSelection(e)}

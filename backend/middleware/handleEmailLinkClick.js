@@ -1,12 +1,12 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/userData");
+const CustomErrorHandler = require("../errors/customErrorHandler");
 
 const handleEmailLinkClick = async (req, res, next) => {
   let token = req.query.token;
   let task = req.params.task;
   let taskWithSpace = req.params.task.replace("-", " ");
 
-  console.log(token);
   const isTokenInvalid = jwt.verify(token, process.env.SECRET_TOKEN_KEY, (err, decoded) => {
     if (err && err.name === "TokenExpiredError") {
       return "TokenExpiredError";
@@ -44,7 +44,6 @@ const handleEmailLinkClick = async (req, res, next) => {
         );
     }
   }
-  next();
 };
 
 module.exports = handleEmailLinkClick;
