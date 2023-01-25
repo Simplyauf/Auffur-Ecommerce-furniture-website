@@ -5,8 +5,8 @@ import { useNavigate, Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import { SlArrowDown } from "react-icons/sl";
 import { BiLogOut } from "react-icons/bi";
-import { fetchIsTokenValid } from "../../features/authSlice/fetchIsTokenValid";
 import { toast } from "react-toastify";
+import { isTokenValidBeforeHeadingToRoute } from "../../utils/isTokenValidBeforeHeadingToARoute";
 
 export const ProfilePage = () => {
   const navigate = useNavigate();
@@ -16,24 +16,7 @@ export const ProfilePage = () => {
 
   // check if user is authorized to view the page
   useEffect(() => {
-    async function isTokenValid() {
-      const isValid = await dispatch(fetchIsTokenValid());
-      if (!isValid.payload) {
-        toast("Something went wrong", {
-          type: "error",
-          autoClose: 3000,
-          position: "top-center",
-        });
-        await navigate("/login");
-        toast("Only logged in user may can access profile page", {
-          type: "error",
-          autoClose: 3000,
-          position: "top-center",
-        });
-      }
-    }
-
-    isTokenValid();
+    isTokenValidBeforeHeadingToRoute(dispatch, navigate);
   }, [dispatch, navigate]);
 
   const { priceRange, selectedSubCategoryForFilter, selectedCategory } = useSelector(

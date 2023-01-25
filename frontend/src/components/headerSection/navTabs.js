@@ -19,7 +19,7 @@ export const NavTabs = ({ handleMyAccountClick }) => {
 
       <button
         onClick={handleMyAccountClick}
-        className="w-[125px] h-[40px] ml-[30%] tablet:ml-[25%] block md:hidden mt-[4px]  font-semibold  rounded-sm text-[#ffffff] bg-primaryColor"
+        className="w-[125px] h-[40px] mt-[8px] mx-[4%] md:mx-0  block md:hidden tablet:mx-[6%]   rounded-sm text-[#ffffff] bg-primaryColor"
       >
         My Account
       </button>

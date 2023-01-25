@@ -11,8 +11,10 @@ import { isProductInCartFn, isProductInWishlistFn } from "../utils/isSpecificPro
 export const ProductDetailsPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const { allProductsData } = useSelector((state) => state.productsData);
   const { wishlist, cart } = useSelector((state) => state.wishlistAndCartSection);
+
   const [productQuantityInCart, setProductQuantityInCart] = useState(1);
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [isProductInCart, setIsProductInCart] = useState(false);
@@ -96,6 +98,7 @@ export const ProductDetailsPage = () => {
             <h3 className="font-bold tracking-[0.5px] text-[20px]">Availability :</h3>
             <span>{stock > 0 ? "In stock" : " Out of stock"}</span>
           </div>
+          q2w
           <div>
             <h2 className="font-bold text-[20px] tracking-[0.5px]">Description</h2>
             <p className="leading-[150%] tracking-[0.5px]">

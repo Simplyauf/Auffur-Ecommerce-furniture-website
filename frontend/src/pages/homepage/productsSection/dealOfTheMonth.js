@@ -42,7 +42,7 @@ export const DealOfTheMonth = () => {
   return (
     <section>
       <h1 className="font-bold text-[36px] mb-8 text-center ">Deal of the Week</h1>
-      <div className="w-[100%] md:w-[100%] md:gap-[5%] lg:gap-0 lg:justify-between bg-neutralColor py-14 gap-7 md:order-1 flex flex-col md:pl-0  md:flex-row md:py-0 md:min-h-[500px] md:pr-[1%] lg:pr-[3%]">
+      <div className="w-[100%] md:w-[100%] md:gap-[5%] lg:gap-0 lg:justify-between bg-neutralColor  pb-14 gap-7 md:order-1 flex flex-col md:pl-0  md:flex-row md:py-0 md:min-h-[500px] md:pr-[1%] lg:pr-[3%]">
         <div className="w-[100%] md:max-h-[500px] max-h-[450px] h-[450px] md:h-[500px] min-h-[400px] md:mx-0 mx-auto md:basis-[52%]">
           <img
             className="w-[100%]  h-[100%]"
@@ -73,7 +73,7 @@ export const DealOfTheMonth = () => {
               <span className="text-xs tablet:text-sm  lg:text-sm tracking-wider">SECONDS</span>
             </div>
           </div>
-          <h2 className="my-8 md:my-4 font-bold font-RobotoCondensed text-xl tablet:text-2xl lg:text-2xl inline-block">
+          <h2 className="my-4 md:my-4 font-bold font-RobotoCondensed text-xl tablet:text-2xl lg:text-2xl inline-block">
             <span>Availability :</span> <span className="mr-2">1</span>
           </h2>
           <button className=" text-primaryColor min-w-[150px] max-w-[160px] bg-transparent border-[1px] border-primaryColor cursor-pointer rounded-sm h-[52px] tablet:[52px] tablet:w-[154px] w-[20%] gap-2 justify-center  flex items-center font-bold font-RobotoCondensed ">

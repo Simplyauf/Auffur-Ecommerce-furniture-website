@@ -6,14 +6,17 @@ import { PersistGate } from "redux-persist/integration/react";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+
 export const Cart = ({ isCartSectionActive, setIsCartSectionActive }) => {
   const { cart } = useSelector((state) => state.wishlistAndCartSection);
   const { isLoading } = useSelector((state) => state.productsData);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [productTotalQuantity, setProductTotalQuantity] = useState(0);
 
   // iterate through cart and multiply price by quantity while taking notes of discounted products
   useEffect(() => {
-    let total = 0;
+    let totalPriceValue = 0;
+    let totalProductQuantityValue = 0;
     for (let key of cart) {
       let price;
       if (key.discountPercentValue > 0) {
@@ -21,9 +24,11 @@ export const Cart = ({ isCartSectionActive, setIsCartSectionActive }) => {
       } else {
         price = key.price;
       }
-      total += price * key.quantity;
+      totalPriceValue += price * key.quantity;
+      totalProductQuantityValue += key.quantity;
     }
-    setTotalPrice(total);
+    setTotalPrice(totalPriceValue);
+    setProductTotalQuantity(totalProductQuantityValue);
   }, [cart]);
 
   return (
@@ -58,22 +63,23 @@ export const Cart = ({ isCartSectionActive, setIsCartSectionActive }) => {
             )}
             <div className="pt-4 flex flex-col gap-4 border-t-[2px] border-LightSecondaryColor mt-14 w-[100%]">
               <div className="flex  items-center mx-[5%] justify-between  border-b-[1px] border-LightSecondaryColor pb-4">
-                <h2 className="font-normal  text-2xl">SubTotal</h2>
+                <h2 className="font-normal text-[18px] md:text-[20px]">SubTotal</h2>
                 <span className="text-lg tracking-wide ">${totalPrice.toFixed(2)} USD</span>
               </div>
               <div className="flex  items-center mx-[5%] justify-between  border-b-[1px] border-LightSecondaryColor pb-4">
                 <div className="flex flex-col gap-2">
                   {" "}
-                  <h2 className="font-normal  text-2xl">Shipping option</h2>
-                  <span className=" text-lg">Standard rate</span>
-                  <li class="tailwindUnderlineDidntWork">change shipping option</li>
+                  <h2 className="font-normal  md:text-[20px] text-[18px]">Shipping option</h2>
+                  <span className=" md:text-lg font-RobotoCondensed">Standard rate</span>
                 </div>
 
-                <span className=" tracking-wide  text-lg">$35.00 USD</span>
+                <span className=" tracking-wide  md:text-lg">$7.00 USD</span>
               </div>
               <div className="flex  items-center mx-[5%] justify-between ">
-                <h2 className="font-bold  text-2xl">Total</h2>
-                <span className="font-bold tracking-wide  text-lg">${totalPrice.toFixed(2)} USD</span>
+                <h2 className="font-bold text-xl md:text-2xl">Total</h2>
+                <span className="font-bold tracking-wide font-RobotoCondensed text-[18px] md:text-[20px]">
+                  ${(totalPrice + productTotalQuantity * 7).toFixed(2)} USD
+                </span>
               </div>
               <div className=" mx-[5%] mt-6">
                 <Link className="w-[100%] h-[54px] block" to="/checkout" onClick={() => setIsCartSectionActive(false)}>

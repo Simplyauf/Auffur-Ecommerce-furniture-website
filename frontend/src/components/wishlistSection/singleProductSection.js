@@ -21,8 +21,8 @@ export const SingleProductSection = ({ wishlistData }) => {
         <img src={image} alt="" className="rounded-sm w-[100%] h-auto max-h-[90%] max-w-[90%] object-contain" />
       </div>
       <div className="flex flex-col gap-2 w-[50%] text-base">
-        <h2 className="text-lg font-bold font-RobotoSlab capitalize">{title}</h2>
-        <h4 className="font-bold tracking-wide font-RobotoSlab">${price} USD</h4>
+        <h2 className="md:text-[18px] font-medium font-RobotoSlab capitalize">{title}</h2>
+        <h3 className="font-bold md:text-[18px] tracking-wide">${price.toFixed(2)}</h3>
         <span className="text-primaryColor font-RobotoCondensed tracking-[1.3px]">
           {stock < 0 ? "Out of stock" : "In Stock"}
         </span>

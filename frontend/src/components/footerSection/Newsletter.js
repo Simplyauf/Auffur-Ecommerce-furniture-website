@@ -9,7 +9,7 @@ export const Newsletter = () => {
       </p>
       <form className="flex tablet:w-[90%] tablet:mx-auto flex-col gap-6 mt-6">
         <input
-          className="w-[100%]  pl-8 h-12 rounded-full outline-0"
+          className="w-[100%]  pl-8 h-12 rounded-full outline-0 text-secondaryColor"
           type="email"
           placeholder="Your email"
           name=""

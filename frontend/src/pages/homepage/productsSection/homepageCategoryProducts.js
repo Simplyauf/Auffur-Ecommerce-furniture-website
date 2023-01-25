@@ -11,7 +11,7 @@ export const HomepageCategoryProducts = ({ currentlyRequestedCategories }) => {
       {currentlyRequestedCategories.map((productData) => (
         <SingleProductBox productsData={productData} key={productData._id} />
       ))}
-      <div className="self-end tablet:ml-auto md:ml-auto flex gap-3 items-center ">
+      <div className="self-end tablet:ml-auto md:ml-auto flex gap-3 items-center md:self-center">
         <button className="text-lg lg:text-2xl text-primaryColor font-semibold hover:underline transition underline-offset-[6px] decoration-2">
           Shop for more
         </button>

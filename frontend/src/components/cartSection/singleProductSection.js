@@ -5,7 +5,7 @@ import { handleCartModification } from "../../utils/handleCartModification";
 import { setCart } from "../../features/wishlistAndCartSlice";
 
 export const SingleProductSection = ({ cartData }) => {
-  const { title, price, image, _id } = cartData;
+  const { title, price, discountPercentValue, image, _id } = cartData;
   const dispatch = useDispatch();
   const { cart } = useSelector((state) => state.wishlistAndCartSection);
   const [productQuantityInCart, setProductQuantityInCart] = useState(1);
@@ -30,14 +30,26 @@ export const SingleProductSection = ({ cartData }) => {
     dispatch(setCart(newCart));
   }, [productQuantityInCart]);
 
+  // get the discount percent value if present so as to display it
+  let discountedPrice = price - (price * discountPercentValue) / 100;
+
   return (
     <div className="flex gap-4 border-b-[1px] border-LightSecondaryColor pb-4">
       <div className="w-[40%] h-[120px] tablet:h-[160px] md:h-[160px] bg-neutralColor relative cursor-pointer product-img-container flex justify-center items-center">
-        <img src={image} alt="" className="rounded-sm w-[100%]  object-cover h-auto max-h-[90%] max-w-[90%]" />
+        <img src={image} alt="" className="rounded-sm w-[100%]  object-contain h-auto max-h-[90%] max-w-[90%]" />
       </div>
       <div className="flex flex-col gap-3 w-[45%] text-base">
-        <h2 className="text-lg font-bold font-RobotoSlab capitalize">{title}</h2>
-        <h4 className="font-bold tracking-wide">${price} USD</h4>
+        <h2 className="  md:text-[18px] font-normal font-RobotoSlab capitalize">{title}</h2>
+        {discountPercentValue > 0 ? (
+          <div className="flex gap-3">
+            <h3 className="font-bold   md:text-[18px] tracking-wide">${discountedPrice.toFixed(2)}</h3>
+            <h3 className="font-medium text-[14px] md:text-[16px]  tracking-wide text-lightBlack line-through">
+              ${price.toFixed(2)}
+            </h3>
+          </div>
+        ) : (
+          <h3 className="font-bold   md:text-[18px] tracking-wide ">${price.toFixed(2)}</h3>
+        )}
         <div className="flex items-center gap-1 cursor-pointer">
           <FaTrash className="w-4 h-[0.9em] fill-primaryColor" />{" "}
           <h3 className="font-semibold text-primaryColor" onClick={() => handleCartModification(_id, dispatch)}>

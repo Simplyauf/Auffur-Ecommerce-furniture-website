@@ -5,9 +5,11 @@ module.exports = {
     extend: {
       colors: {
         primaryColor: "#fca311",
+        lighterPrimaryColor: "hsl(37,98%,92%)",
         secondaryColor: "#14213d",
         neutralColor: "#e5e5e5",
         LightSecondaryColor: "#14213d4d",
+        lightBlack: "hsl(0deg 0% 50%)",
       },
       screens: {
         tablet: { min: "480px", max: "767px" },
