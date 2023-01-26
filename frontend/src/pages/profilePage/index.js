@@ -7,6 +7,7 @@ import { SlArrowDown } from "react-icons/sl";
 import { BiLogOut } from "react-icons/bi";
 import { toast } from "react-toastify";
 import { isTokenValidBeforeHeadingToRoute } from "../../utils/isTokenValidBeforeHeadingToARoute";
+import { FullpageSpinnerLoader } from "../../components/loaders/spinnerIcon";
 
 export const ProfilePage = () => {
   const navigate = useNavigate();
@@ -48,7 +49,7 @@ export const ProfilePage = () => {
   };
 
   if (isTokenValidLoader) {
-    return <h2>loading...</h2>;
+    return <FullpageSpinnerLoader />;
   } else {
     return (
       <>

@@ -1,10 +1,10 @@
 import { RegisterUser } from "../features/authSlice/register";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { validateEmail } from "../utils/emailRegexValidation";
 import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FullpageSpinnerLoader } from "../components/loaders/spinnerIcon";
 
 export const RegisterPage = () => {
   // check if input type=password is in password mode or text mode
@@ -115,7 +115,7 @@ export const RegisterPage = () => {
           className="h-[56px] mt-3 bg-primaryColor w-[100%] rounded border-transparent text-white text-[18px]  font-medium"
           type="submit"
         >
-          Register
+          {isLoading ? <>Registering</> : "Register"}
         </button>
         <span className=" text-center">
           Already have an account?{" "}
@@ -123,6 +123,8 @@ export const RegisterPage = () => {
             Log in
           </Link>
         </span>
+
+        {isLoading && <FullpageSpinnerLoader />}
       </form>
     </section>
   );

@@ -1,5 +1,5 @@
 import { loginUser } from "../features/authSlice/login";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { validateEmail } from "../utils/emailRegexValidation";
@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { fetchForgotPasswordClick } from "../features/authSlice/fetchForgotPasswordClick";
 import { fetchResendEmailVerificationLink } from "../features/authSlice/resendEmailVerification";
+import { FullpageSpinnerLoader } from "../components/loaders/spinnerIcon";
 
 export const LoginPage = () => {
   // check if input type=password is in password mode or text mode
@@ -126,10 +127,10 @@ export const LoginPage = () => {
           )}
         </div>
         <div class="flex justify-between items-center mt-1">
-          <div class="flex gap-2 items-center">
+          {/* <div class="flex gap-2 items-center">
             <input class="border-[1px] w-5 h-5" type="checkbox" name="" />
             <span>Remember me</span>
-          </div>
+          </div> */}
           <span data-nature="forgotPassswordBtn" class="text-primaryColor cursor-pointer">
             Forgot Password?
           </span>
@@ -138,7 +139,7 @@ export const LoginPage = () => {
           class="h-[56px] mt-3 bg-primaryColor w-[100%] rounded border-transparent text-white text-[18px]  font-medium"
           type="submit"
         >
-          Log in
+          {isLoading ? "Logging in" : "Log in"}
         </button>
         <span class=" text-center">
           Dont have an account?{" "}
@@ -152,6 +153,7 @@ export const LoginPage = () => {
         >
           Resend email verification
         </span>
+        {isLoading && <FullpageSpinnerLoader />}
       </form>
     </section>
   );

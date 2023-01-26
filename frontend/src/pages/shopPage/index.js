@@ -4,7 +4,7 @@ import { SingleProductBox } from "../../components/singleProductBox";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import FooterSection from "../../components/footerSection";
-import { Loading } from "../../components/Loading";
+import { ProductLoader } from "../../components/loaders/productLoader";
 import { PaginationSection } from "../../components/paginationSection";
 import { handlePaginationProductsPage } from "../../utils/handlePaginationProductsPage";
 import { FilterBySection } from "../../components/filterSection";
@@ -102,7 +102,7 @@ const Index = () => {
       <div className="lg:col-start-2 lg:col-end-5 lg:row-span-1 lg:ml-[8%] xl:ml-[10%] lg:mr-[3%] xl:mr-[5%]">
         <h1 className="text-center font-bold text-[2.5rem] my-16">Shop</h1>
         {isLoading ? (
-          <Loading />
+          <ProductLoader />
         ) : (
           <>
             <article className="w-[65%] tablet:w-[40%] lg:ml-0 lg:w-[30%] md:w-[30%] bg-[#ffffff] laptop:w-[17%]  ml-[4%] tablet:ml-[6%]  mb-12 flex-col flex gap-2">

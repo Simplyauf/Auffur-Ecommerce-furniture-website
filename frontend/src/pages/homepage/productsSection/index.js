@@ -2,8 +2,8 @@ import { DealOfTheMonth } from "./dealOfTheMonth";
 import { HomepageCategoryProducts } from "./homepageCategoryProducts";
 import { FeaturedCategories } from "./featuredCategories";
 import { useState, useEffect, useRef } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { Loading } from "../../../components/Loading";
+import { useSelector } from "react-redux";
+import { ProductLoader } from "../../../components/loaders/productLoader";
 import { toast } from "react-toastify";
 
 const Index = () => {
@@ -73,7 +73,7 @@ const Index = () => {
     <>
       <h1 className="text-[40px] text-center font-bold">Our products</h1>
       {isLoading ? (
-        <Loading />
+        <ProductLoader />
       ) : (
         <>
           <div

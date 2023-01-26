@@ -1,17 +1,13 @@
-import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setShippingMethod } from "../../features/authSlice";
+import { FullpageSpinnerLoader } from "../../components/loaders/spinnerIcon";
 
 export const CheckoutForm = ({ placeOrderFn, checkoutFormData, setCheckoutFormData }) => {
   const {
-    userData: { email, username },
+    userData: { isLoading, email },
   } = useSelector((state) => state.userAuth);
 
-  console.log(email, username);
-
   const dispatch = useDispatch();
-
-  console.log(checkoutFormData);
 
   return (
     <form
@@ -186,8 +182,10 @@ export const CheckoutForm = ({ placeOrderFn, checkoutFormData, setCheckoutFormDa
         type="submit"
         className="my-12 w-[100%] mx-auto block h-[52px] bg-primaryColor text-white font-medium rounded"
       >
-        Place Order
+        {isLoading ? <>Processing</> : "Place Order"}
       </button>
+
+      {isLoading && <FullpageSpinnerLoader />}
     </form>
   );
 };

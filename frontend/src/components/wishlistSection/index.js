@@ -2,7 +2,7 @@ import { IoCloseOutline } from "react-icons/io5";
 import { SingleProductSection } from "./singleProductSection";
 import { useSelector } from "react-redux";
 import { persistor } from "../../store.js";
-import { Loading } from "../Loading.js";
+import { ProductLoader } from "../loaders/productLoader";
 import { PersistGate } from "redux-persist/integration/react";
 import { useNavigate } from "react-router-dom";
 
@@ -27,9 +27,9 @@ export const Wishlist = ({ isWishlistActive, setIsWishlistActive }) => {
           onClick={() => setIsWishlistActive(false)}
         />
         {isLoading ? (
-          <Loading />
+          <ProductLoader />
         ) : (
-          <PersistGate loading={<Loading />} persistor={persistor}>
+          <PersistGate loading={<ProductLoader />} persistor={persistor}>
             {wishlist.length < 1 ? (
               <div className="flex justify-center items-center w-[100%] h-[50vh]">
                 {" "}

@@ -1,7 +1,7 @@
 import { IoCloseOutline } from "react-icons/io5";
 import { SingleProductSection } from "./singleProductSection";
 import { persistor } from "../../store.js";
-import { Loading } from "../Loading.js";
+import { ProductLoader } from "../loaders/productLoader";
 import { PersistGate } from "redux-persist/integration/react";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
@@ -66,9 +66,9 @@ export const Cart = ({ isCartSectionActive, setIsCartSectionActive }) => {
           onClick={() => setIsCartSectionActive(false)}
         />
         {isLoading ? (
-          <Loading />
+          <ProductLoader />
         ) : (
-          <PersistGate loading={<Loading />} persistor={persistor}>
+          <PersistGate loading={<ProductLoader />} persistor={persistor}>
             {cart.length < 1 ? (
               <div className="flex justify-center items-center w-[100%] h-[50vh]">
                 {" "}

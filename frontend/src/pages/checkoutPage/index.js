@@ -7,15 +7,15 @@ import { useEffect, useState } from "react";
 import { isTokenValidBeforeHeadingToRoute } from "../../utils/isTokenValidBeforeHeadingToARoute";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { FullpageSpinnerLoader } from "../../components/loaders/spinnerIcon";
 
 export const CheckoutPage = ({ setIsCartSectionActive }) => {
   const { cart } = useSelector((state) => state.wishlistAndCartSection);
+
   const {
     isTokenValidLoader,
     userData: { email, username, country, city, address, postalCode, shippingMethod },
   } = useSelector((state) => state.userAuth);
-  console.log(email, username);
-
   const [totalAmountToBePaid, setTotalAmountToBePaid] = useState(0);
 
   const [checkoutFormData, setCheckoutFormData] = useState({
@@ -102,7 +102,7 @@ export const CheckoutPage = ({ setIsCartSectionActive }) => {
   };
 
   if (isTokenValidLoader) {
-    return <h2>Loading...</h2>;
+    return <FullpageSpinnerLoader />;
   } else {
     return (
       <>

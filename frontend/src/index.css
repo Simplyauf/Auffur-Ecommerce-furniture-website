@@ -47,6 +47,27 @@
   .authPage-input-container:focus-within > label {
     color: #fca311;
   }
+
+  .loader {
+    -webkit-animation: spinner 0.6s linear infinite;
+    animation: spinner 1.5s linear infinite;
+  }
+  @-webkit-keyframes spinner {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+  @keyframes spinner {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 }
 
 @layer utilities {
