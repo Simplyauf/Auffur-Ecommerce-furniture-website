@@ -44,10 +44,7 @@ const handleForgotPasswordClick = async (req, res) => {
 const changePassword = async (req, res) => {
   let token = req.headers.token;
   const { password } = req.body;
-  console.log(token);
   let checkIfTokenExist = await User.findOne({ verificationToken: token });
-
-  console.log(checkIfTokenExist);
 
   if (!checkIfTokenExist) {
     throw new CustomErrorHandler(400, "not authorized");

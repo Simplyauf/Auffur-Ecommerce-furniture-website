@@ -62,6 +62,8 @@ const loginUser = async (req, res) => {
   } else if (checkIfEmailExists && (await bcryptjs.compare(password, checkIfEmailExists.password))) {
     let loginToken = generateToken(email, "verified", "30d");
     const { username } = checkIfEmailExists._doc;
+    await User.updateOne({ verificationToken: loginToken });
+
     res.json({ message: "You have sucessfully logged in", userData: { username, email, loginToken } });
   }
 };

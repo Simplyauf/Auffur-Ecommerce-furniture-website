@@ -5,13 +5,11 @@ const User = require("../models/userData");
 const isTokenvalid = async (req, res) => {
   let authHeader = req.headers.authorization;
   const token = authHeader.split(" ")[1];
-  console.log(token);
 
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
     throw new CustomErrorHandler(401, false);
   } else {
     const tokenVerification = jwt.verify(token, process.env.SECRET_TOKEN_KEY, (err, decoded) => {
-      console.log(err, decoded);
       if (err) {
         return false;
       } else {
@@ -20,6 +18,9 @@ const isTokenvalid = async (req, res) => {
     });
     let checkIfTokenExist = await User.findOne({ verificationToken: token });
 
+    if (!checkIfTokenExist) {
+      throw new CustomErrorHandler(401, false);
+    }
     if (!tokenVerification && !checkIfTokenExist) {
       throw new CustomErrorHandler(401, false);
     } else {

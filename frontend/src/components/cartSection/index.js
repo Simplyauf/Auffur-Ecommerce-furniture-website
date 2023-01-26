@@ -5,31 +5,51 @@ import { Loading } from "../Loading.js";
 import { PersistGate } from "redux-persist/integration/react";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { handleSetShippingMethodValue } from "../../utils/handleSetShippingMethodValueFn";
+import { settingTotalProductPriceAndTotalQuantityValue } from "../../utils/settingTotalProductPriceAndquantityValue";
+import { toast } from "react-toastify";
 
 export const Cart = ({ isCartSectionActive, setIsCartSectionActive }) => {
-  const { cart } = useSelector((state) => state.wishlistAndCartSection);
-  const { isLoading } = useSelector((state) => state.productsData);
-  const [totalPrice, setTotalPrice] = useState(0);
+  const [shippingMethodValue, setShippingMethodValue] = useState(0);
+  const [totalProductPrice, setTotalProductPrice] = useState(0);
   const [productTotalQuantity, setProductTotalQuantity] = useState(0);
 
-  // iterate through cart and multiply price by quantity while taking notes of discounted products
+  const { cart } = useSelector((state) => state.wishlistAndCartSection);
+  const { isLoading } = useSelector((state) => state.productsData);
+  const { shippingMethod } = useSelector((state) => state.userAuth);
+
+  // setting shippingMethodValue based on chosen method
   useEffect(() => {
-    let totalPriceValue = 0;
-    let totalProductQuantityValue = 0;
-    for (let key of cart) {
-      let price;
-      if (key.discountPercentValue > 0) {
-        price = key.price - (key.price * key.discountPercentValue) / 100;
-      } else {
-        price = key.price;
-      }
-      totalPriceValue += price * key.quantity;
-      totalProductQuantityValue += key.quantity;
-    }
-    setTotalPrice(totalPriceValue);
-    setProductTotalQuantity(totalProductQuantityValue);
+    handleSetShippingMethodValue(shippingMethod, setShippingMethodValue);
+  }, [shippingMethod]);
+
+  // iterate through cart and multiply price by quantity while taking notes of discounted products and get totalProductValue and also total product quantity so as to use to get total value which is shipping price for each goods + total products value
+  useEffect(() => {
+    settingTotalProductPriceAndTotalQuantityValue(setProductTotalQuantity, setTotalProductPrice);
   }, [cart]);
+
+  const navigate = useNavigate();
+
+  const proceedToCheckoutPage = () => {
+    let isOrderAboveLimit;
+    for (let key of cart) {
+      if (key.quantity > key.stock) {
+        isOrderAboveLimit = true;
+      }
+    }
+
+    if (isOrderAboveLimit) {
+      toast("One or more product quantities selected is more than the amount in stock", {
+        type: "error",
+        autoClose: false,
+        position: "top-center",
+      });
+    } else {
+      setIsCartSectionActive(false);
+      navigate("/checkout");
+    }
+  };
 
   return (
     <div
@@ -64,30 +84,30 @@ export const Cart = ({ isCartSectionActive, setIsCartSectionActive }) => {
             <div className="pt-4 flex flex-col gap-4 border-t-[2px] border-LightSecondaryColor mt-14 w-[100%]">
               <div className="flex  items-center mx-[5%] justify-between  border-b-[1px] border-LightSecondaryColor pb-4">
                 <h2 className="font-normal text-[18px] md:text-[20px]">SubTotal</h2>
-                <span className="text-lg tracking-wide ">${totalPrice.toFixed(2)} USD</span>
+                <span className="text-lg tracking-wide ">${totalProductPrice.toFixed(2)} USD</span>
               </div>
               <div className="flex  items-center mx-[5%] justify-between  border-b-[1px] border-LightSecondaryColor pb-4">
                 <div className="flex flex-col gap-2">
                   {" "}
                   <h2 className="font-normal  md:text-[20px] text-[18px]">Shipping option</h2>
-                  <span className=" md:text-lg font-RobotoCondensed">Standard rate</span>
+                  <span className=" md:text-lg font-RobotoCondensed">{shippingMethod} rate</span>
                 </div>
 
-                <span className=" tracking-wide  md:text-lg">$7.00 USD</span>
+                <span className=" tracking-wide  md:text-lg">${shippingMethodValue * productTotalQuantity}.00 USD</span>
               </div>
               <div className="flex  items-center mx-[5%] justify-between ">
-                <h2 className="font-bold text-xl md:text-2xl">Total</h2>
-                <span className="font-bold tracking-wide font-RobotoCondensed text-[18px] md:text-[20px]">
-                  ${(totalPrice + productTotalQuantity * 7).toFixed(2)} USD
-                </span>
+                <h2 className="font-bold text-[20px] md:text-[24px]">Total</h2>
+                <h2 className="font-bold tracking-wide  text-[20px] md:text-[24px]">
+                  ${(totalProductPrice + productTotalQuantity * shippingMethodValue).toFixed(2)} USD
+                </h2>
               </div>
               <div className=" mx-[5%] mt-6">
-                <Link className="w-[100%] h-[54px] block" to="/checkout" onClick={() => setIsCartSectionActive(false)}>
-                  {" "}
-                  <button className="bg-primaryColor text-[#ffffff] w-[100%] h-[100%] rounded-sm  ">
-                    Proceed to Checkout
-                  </button>
-                </Link>
+                <button
+                  className="bg-primaryColor text-[#ffffff] w-[100%] h-[54px] rounded-sm  "
+                  onClick={proceedToCheckoutPage}
+                >
+                  Proceed to Checkout
+                </button>
               </div>
             </div>
           </PersistGate>

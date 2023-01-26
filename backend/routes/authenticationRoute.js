@@ -1,6 +1,7 @@
 const express = require("express");
 const { registerUser, loginUser } = require("../controllers/userAuthentication");
 const router = express.Router();
+
 const handleEmailLinkClick = require("../middleware/handleEmailLinkClick");
 const { handleForgotPasswordClick, changePassword } = require("../controllers/password");
 const isTokenvalid = require("../controllers/isTokenValid");

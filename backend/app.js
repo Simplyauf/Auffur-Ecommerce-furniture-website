@@ -8,6 +8,7 @@ const errorHandler = require("./middleware/errorHandler");
 const pathNotFound = require("./middleware/pathNotFound");
 const cloudinary = require("cloudinary").v2;
 const fileUpload = require("express-fileupload");
+const ordersRoute = require("./routes/ordersRoute");
 const cors = require("cors");
 
 cloudinary.config({
@@ -34,6 +35,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/v1/products", productRoute);
 app.use("/api/v1/auth", authRoute);
+app.use("/orders", ordersRoute);
 app.use(errorHandler);
 app.use(pathNotFound);
 

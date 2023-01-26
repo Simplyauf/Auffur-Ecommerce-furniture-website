@@ -11,7 +11,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { BiUser } from "react-icons/bi";
 import { toast } from "react-toastify";
 import logoDark from "../../logoDark.png";
-import { fetchIsTokenValid } from "../../features/authSlice/fetchIsTokenValid";
 
 export const Header = ({ setIsWishlistActive, setIsCartSectionActive, isLargeScreen }) => {
   const [displayVerticalNavBar, setDisplayVerticalNavBar] = useState(false);
@@ -84,14 +83,14 @@ export const Header = ({ setIsWishlistActive, setIsCartSectionActive, isLargeScr
         <img src={logoDark} alt="" className="w-[25%] h-auto max-w-[120px]" />
         {isLargeScreen && <NavTabs />}
         <div className="flex items-center tablet:gap-4 gap-4  xl:gap-6 2xl:gap-7  md:gap-4 md:basis-[25%] lg:basis-auto text-[18px]">
-          <div className="relative p-3  bg-neutralColor rounded-[50%]">
-            <BiSearch
-              className="w-4 h-4 tablet:w-5 tablet:h-5 md:w-5 md:h-5  stroke-secondaryColor "
-              onClick={() => setIsSearchClicked(!isSearchClicked)}
-            />
+          <div className="xl:flex xl:items-center cursor-pointer" onClick={() => setIsSearchClicked(!isSearchClicked)}>
+            <div className="relative p-3  bg-neutralColor rounded-[50%]">
+              <BiSearch className="w-4 h-4 tablet:w-5 tablet:h-5 md:w-5 md:h-5  stroke-secondaryColor " />
+            </div>
+            <span className="text-[18px] hidden cursor-pointer xl:block">&nbsp; Search</span>
           </div>
           {isLargeScreen && (
-            <div className="xl:flex xl:items-center xl:cursor-pointer" onClick={handleMyAccountClick}>
+            <div className="xl:flex xl:items-center cursor-pointer" onClick={handleMyAccountClick}>
               <div className="relative p-3 bg-neutralColor    rounded-[50%]">
                 <BiUser className="w-4 h-4 tablet:w-5 tablet:h-5 md:w-5 md:h-5   stroke-secondaryColor " />
               </div>
@@ -102,7 +101,7 @@ export const Header = ({ setIsWishlistActive, setIsCartSectionActive, isLargeScr
               )}
             </div>
           )}
-          <div className="xl:flex xl:items-center xl:cursor-pointer">
+          <div className="xl:flex xl:items-center cursor-pointer">
             <div className="relative p-3 bg-neutralColor  rounded-[50%]" onClick={() => setIsWishlistActive(true)}>
               <FiHeart className="w-4 h-4 tablet:w-5 tablet:h-5 md:w-5 md:h-5  stroke-secondaryColor" />
               <span className="absolute text-[12px] top-[-4px] right-[-9px] z-10 bg-primaryColor text-white px-1 text-center  rounded-[50%]">
@@ -111,20 +110,19 @@ export const Header = ({ setIsWishlistActive, setIsCartSectionActive, isLargeScr
             </div>
             <span className="text-[18px] hidden cursor-pointer xl:block">&nbsp;Wishlist</span>
           </div>
-          <div className="xl:flex xl:items-center xl:cursor-pointer">
+          <div className="xl:flex xl:items-center cursor-pointer" onClick={() => setIsCartSectionActive(true)}>
             <div className="relative p-3  bg-neutralColor rounded-[50%]">
               <AiOutlineShoppingCart
                 className="w-4 h-4  tablet:w-5
               tablet:h-5
               md:w-5
               md:h-5"
-                onClick={() => setIsCartSectionActive(true)}
               />
               <span className="absolute text-[12px] top-[-4px] right-[-9px] z-10 bg-primaryColor text-white px-1 text-center  rounded-[50%]">
                 {totalProductQuantityCart}
               </span>
             </div>
-            <span className="text-[18px] hidden cursor-pointer xl:block">&nbsp;cart</span>
+            <span className="text-[18px] hidden cursor-pointer xl:block">&nbsp;Cart</span>
           </div>
           <button
             className="p-3 bg-neutralColor md:hidden"

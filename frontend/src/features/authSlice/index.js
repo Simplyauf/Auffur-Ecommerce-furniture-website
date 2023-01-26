@@ -10,6 +10,7 @@ const initialState = {
   isLoggedIn: false,
   isLoading: false,
   userData: "",
+  shippingMethod: "standard",
 };
 console.log(initialState);
 
@@ -17,6 +18,9 @@ export const authSlice = createSlice({
   name: "authSlice",
   initialState,
   reducers: {
+    setShippingMethod: (state, { payload }) => {
+      state.shippingMethod = payload;
+    },
     getUserData: (state, { payload }) => {
       state.userData = payload;
     },
@@ -40,7 +44,7 @@ export const authSlice = createSlice({
 
       toast(payload, {
         type: "success",
-        autoClose: 4000,
+        autoClose: 3000,
         position: "top-center",
       });
     },
@@ -138,6 +142,6 @@ export const authSlice = createSlice({
   },
 });
 
-export const { setIsLoading, setIsLoggedIn, getUserData } = authSlice.actions;
+export const { setIsLoading, setIsLoggedIn, getUserData, setShippingMethod } = authSlice.actions;
 
 export default authSlice.reducer;

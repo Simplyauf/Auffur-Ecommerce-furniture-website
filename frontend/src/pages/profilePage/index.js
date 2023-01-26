@@ -63,7 +63,11 @@ export const ProfilePage = () => {
               Home
             </li>
             <IoIosArrowBack />
-            <span>Shop</span>
+            <li onClick={() => navigate("/shop")} className="hover:underline capitalize">
+              Shop
+            </li>
+            <IoIosArrowBack />
+            <span>Profile</span>
             {selectedSubCategoryForFilter && (
               <>
                 {" "}

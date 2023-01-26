@@ -4,11 +4,16 @@ const fs = require("fs");
 const CustomErrorHandler = require("../errors/customErrorHandler");
 
 const createProducts = async (req, res) => {
-  console.log(req.body);
   const { image } = req.body;
   const product = await Product.create(req.body);
   // const product = await Product.create(req.body);
   res.status(201).json(product);
+};
+
+const getAspecificProduct = async (req, res) => {
+  const { productTitle } = req.body;
+  let product = await Product.findOne({ title: productTitle });
+  res.status(200).json({ message: "success", product });
 };
 
 const getAllProducts = async (req, res) => {
@@ -38,7 +43,7 @@ const uploadProductImages = async (req, res) => {
   return res.status(201).json({ image: { src: result.secure_url } });
 };
 
-module.exports = { getAllProducts, createProducts, uploadProductImages };
+module.exports = { getAllProducts, createProducts, uploadProductImages, getAspecificProduct };
 
 // const options = {
 //   use_filename: true,

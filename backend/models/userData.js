@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 const userSchema = mongoose.Schema(
   {
@@ -22,6 +23,36 @@ const userSchema = mongoose.Schema(
     verificationToken: {
       type: String,
     },
+    address: String,
+    country: String,
+    postalCode: Number,
+    city: String,
+    shippingMethod: {
+      type: String,
+      default: "standard",
+      enum: ["standard", "express", "free shipping"],
+    },
+    orders: [
+      {
+        products: [
+          {
+            productId: { type: Schema.Types.ObjectId, ref: "Product" },
+            quantity: { type: Number },
+          },
+        ],
+        username: String,
+        shippingMethod: String,
+        email: String,
+        address: String,
+        country: String,
+        postalCode: Number,
+        city: String,
+        totalAmount: Number,
+        deliveryStatus: { type: String, enum: ["pending", "delivered", "cancelled"] },
+        paymentStatus: { type: String, enum: ["pending", "paid", "cancelled"] },
+        date: { type: Date, default: Date.now },
+      },
+    ],
   },
   {
     timeStamps: true,
