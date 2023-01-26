@@ -11,6 +11,6 @@ export const fetchForgotPasswordClick = createAsyncThunk("users/forgotPasswordCl
     return data;
   } catch (error) {
     console.log(error);
-    return thunkAPI.rejectWithValue(error.response.data.message || error.message);
+    return thunkAPI.rejectWithValue(error.response.data?.message || error.message);
   }
 });

@@ -1,6 +1,5 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { setErrStatus } from ".";
 
 const url = "http://localhost:5000/api/v1/auth/changePassword";
 
@@ -13,7 +12,7 @@ export const enterNewPasswordAsync = createAsyncThunk(
       console.log(data);
       return { data, success: true };
     } catch (error) {
-      return { errorMsg: error.response.data.message || error.message, success: false };
+      return { errorMsg: error?.response.data.message || error.message, success: false };
     }
   }
 );

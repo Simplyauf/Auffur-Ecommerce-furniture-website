@@ -12,7 +12,7 @@ const initialState = {
   loadingOrErrorMessage: "Loading",
   fetchingError: null,
 };
-console.log(initialState);
+
 const url = "http://localhost:5000/api/v1/products";
 
 export const getAllProductsData = createAsyncThunk("products/getAllProductsData", async (_, thunkAPI) => {
@@ -20,8 +20,7 @@ export const getAllProductsData = createAsyncThunk("products/getAllProductsData"
     const { data } = await axios.get(url);
     return data.products;
   } catch (error) {
-    console.log(error);
-    return thunkAPI.rejectWithValue(error.message);
+    return thunkAPI.rejectWithValue(error.response.data?.message || error.message);
   }
 });
 

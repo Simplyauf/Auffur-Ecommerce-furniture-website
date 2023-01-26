@@ -12,18 +12,14 @@ export const ProfilePage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { userData, isLoading } = useSelector((state) => state.userAuth);
+  const [currentTabInProfilePage, setCurrentTabInProfilePage] = useState("Account information");
+
+  const { isTokenValidLoader } = useSelector((state) => state.userAuth);
 
   // check if user is authorized to view the page
   useEffect(() => {
     isTokenValidBeforeHeadingToRoute(dispatch, navigate);
   }, [dispatch, navigate]);
-
-  const { priceRange, selectedSubCategoryForFilter, selectedCategory } = useSelector(
-    (state) => state.filterByCategoryAndPrice
-  );
-
-  const [currentTabInProfilePage, setCurrentTabInProfilePage] = useState("Account information");
 
   const handleProfilePageTabChange = (e) => {
     if (e.target.dataset.tabpath) {
@@ -51,7 +47,7 @@ export const ProfilePage = () => {
     }
   };
 
-  if (isLoading) {
+  if (isTokenValidLoader) {
     return <h2>loading...</h2>;
   } else {
     return (
@@ -68,14 +64,6 @@ export const ProfilePage = () => {
             </li>
             <IoIosArrowBack />
             <span>Profile</span>
-            {selectedSubCategoryForFilter && (
-              <>
-                {" "}
-                <IoIosArrowBack />
-                <span>{selectedCategory}</span> <IoIosArrowBack />
-                <span>{selectedSubCategoryForFilter}</span>
-              </>
-            )}
           </div>
         </div>
         <div className="flex mx-[4%] justify-between mt-16  md:mx-[4%] lg:mx-[2%] xl:mx:[4%] tablet:mx-[6%] ">

@@ -4,7 +4,7 @@ import Homepage from "../pages/homepage/homepage";
 import ShopPage from "../pages/shopPage";
 import { AdminPage } from "../pages/adminPage";
 import { SearchPage } from "../pages/searchPage/searchPage";
-import { ProductDetailsPage } from "../pages/productDetails";
+import { ProductDetailsPage } from "../pages/productDetailsPage";
 import { CheckoutPage } from "../pages/checkoutPage";
 import { LoginPage } from "../pages/loginPage";
 import { RegisterPage } from "../pages/RegisterPage";
@@ -15,12 +15,16 @@ import { Adresses } from "../pages/profilePage/Adresses";
 import { AccountSettings } from "../pages/profilePage/AccountSettings";
 import { Orders } from "../pages/profilePage/Orders";
 import { Navigate } from "react-router-dom";
+import { ContactUsPage } from "../pages/contactUsPage";
+import { AboutUsPage } from "../pages/aboutUsPage";
 
 const PagesRoute = ({ setIsCartSectionActive }) => {
   return (
     <Routes>
       <Route path="/" element={<Homepage />} />
       <Route path="/shop" element={<ShopPage />} />
+      <Route path="/aboutUs" element={<AboutUsPage />} />
+      <Route path="/contactUs" element={<ContactUsPage />} />
       <Route path="/admin" element={<AdminPage />} />
       <Route path="/search" element={<SearchPage />} />
       <Route path="/product/:productId" element={<ProductDetailsPage />} />

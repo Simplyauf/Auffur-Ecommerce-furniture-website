@@ -80,7 +80,12 @@ export const Header = ({ setIsWishlistActive, setIsCartSectionActive, isLargeScr
   return (
     <header className="h-[80px] sticky top-0 z-[1000] bg-[#ffffff]">
       <nav className="w-[100%] h-[100%] font-Roboto px-[4%] tablet:px-[6%] lg:px-[2%] xl:px-[4%] font-medium flex items-center justify-between shadow-[0px_0px_4px_0px_rgba(14,19,24,0.7)] ">
-        <img src={logoDark} alt="" className="w-[25%] h-auto max-w-[120px]" />
+        <img
+          src={logoDark}
+          alt=""
+          className="w-[25%] cursor-pointer h-auto max-w-[120px]"
+          onClick={() => navigate("/")}
+        />
         {isLargeScreen && <NavTabs />}
         <div className="flex items-center tablet:gap-4 gap-4  xl:gap-6 2xl:gap-7  md:gap-4 md:basis-[25%] lg:basis-auto text-[18px]">
           <div className="xl:flex xl:items-center cursor-pointer" onClick={() => setIsSearchClicked(!isSearchClicked)}>
@@ -137,7 +142,7 @@ export const Header = ({ setIsWishlistActive, setIsCartSectionActive, isLargeScr
         </div>
       </nav>
       {isSearchClicked && (
-        <div className="w-[92%] xl:w-[] tablet:w-[88%] absolute top-[100%] tablet:left-[6%] lg:w-[96%] left-[4%] lg:left[2%] xl:left-[4%] bottom-auto searchBar h-[45px] bg-neutralColor text-secondaryColor z-50  shadow-[0_4px_6px_-2px_rgba(0,0,0,0.2)] flex justify-between">
+        <div className="w-[92%] lg: xl:w-[92%] tablet:w-[88%] absolute top-[100%] tablet:left-[6%] lg:w-[96%] left-[4%] lg:left[2%] xl:left-[4%] bottom-auto searchBar h-[45px] bg-neutralColor text-secondaryColor z-50  shadow-[0_4px_6px_-2px_rgba(0,0,0,0.2)] flex justify-between">
           <input
             className="w-[85%] text-[18px] pl-6 h-[100%] bg-neutralColor border-none outline-none"
             type="search"

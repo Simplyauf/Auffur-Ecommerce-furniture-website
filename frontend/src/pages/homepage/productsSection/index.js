@@ -15,12 +15,12 @@ const Index = () => {
     if (!isLoading)
       toast("Homepage products loaded sucessfully", {
         type: "success",
-        autoClose: 3000,
+        autoClose: 2000,
       });
     if (fetchingError)
       toast("Homepage Products loading failed", {
         type: "error",
-        autoClose: 3000,
+        autoClose: 2000,
       });
   }, [fetchingError, isLoading]);
 

@@ -11,7 +11,7 @@ import { toast } from "react-toastify";
 export const CheckoutPage = ({ setIsCartSectionActive }) => {
   const { cart } = useSelector((state) => state.wishlistAndCartSection);
   const {
-    isLoading,
+    isTokenValidLoader,
     userData: { email, username, country, city, address, postalCode, shippingMethod },
   } = useSelector((state) => state.userAuth);
   console.log(email, username);
@@ -93,7 +93,7 @@ export const CheckoutPage = ({ setIsCartSectionActive }) => {
         };
       });
     } catch (error) {
-      toast(error.message, {
+      toast(error.response.data?.message || error.message, {
         type: error.message,
         autoClose: false,
         position: "top-center",
@@ -101,7 +101,7 @@ export const CheckoutPage = ({ setIsCartSectionActive }) => {
     }
   };
 
-  if (isLoading) {
+  if (isTokenValidLoader) {
     return <h2>Loading...</h2>;
   } else {
     return (

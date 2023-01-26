@@ -8,12 +8,10 @@ export const fetchResendEmailVerificationLink = createAsyncThunk(
   async (email, thunkAPI) => {
     try {
       const { data } = await axios.post(url, { email });
-
-      console.log(data);
       return data;
     } catch (error) {
       console.log(error);
-      return thunkAPI.rejectWithValue(error.response.data.message || error.message);
+      return thunkAPI.rejectWithValue(error.response.data?.message || error.message);
     }
   }
 );

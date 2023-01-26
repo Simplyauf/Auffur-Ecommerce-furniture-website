@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 const initialState = {
   isLoggedIn: false,
   isLoading: false,
+  isTokenValidLoader: false,
   userData: "",
   shippingMethod: "standard",
 };
@@ -128,16 +129,16 @@ export const authSlice = createSlice({
     },
     // fetch isTokenValid controller from servers
     [fetchIsTokenValid.pending]: (state) => {
-      state.isLoading = true;
+      state.isTokenValidLoader = true;
     },
     [fetchIsTokenValid.fulfilled]: (state, { payload }) => {
-      state.isLoading = false;
+      state.isTokenValidLoader = false;
       state.isLoggedIn = true;
     },
     [fetchIsTokenValid.rejected]: (state, { payload }) => {
       state.isLoggedIn = false;
       state.userData = "";
-      state.isLoading = false;
+      state.isTokenValidLoader = false;
     },
   },
 });
