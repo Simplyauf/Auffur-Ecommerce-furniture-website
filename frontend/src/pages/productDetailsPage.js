@@ -7,12 +7,13 @@ import { useState, useEffect } from "react";
 import { handleCartModification } from "../utils/handleCartModification";
 import { handleWishlistModification } from "../utils/handleWishlistModification";
 import { isProductInCartFn, isProductInWishlistFn } from "../utils/isSpecificProductInCartAndWishlist.js";
+import { ProductLoader } from "../components/loaders/productLoader";
 
 export const ProductDetailsPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { allProductsData } = useSelector((state) => state.productsData);
+  const { allProductsData, isLoading } = useSelector((state) => state.productsData);
   const { wishlist, cart } = useSelector((state) => state.wishlistAndCartSection);
 
   const [productQuantityInCart, setProductQuantityInCart] = useState(1);
@@ -21,9 +22,17 @@ export const ProductDetailsPage = () => {
 
   const { productId } = useParams();
   const currentProduct = allProductsData.find((product) => product._id === productId);
-  const { _id, title, price, image, discountPercentValue, categories, stock } = currentProduct;
+  const { _id, title, price, image, discountPercentValue, categories, stock } = currentProduct || {
+    _id: "",
+    title: "",
+    price: "",
+    image: "",
+    discountPercentValue: "",
+    categories: "",
+    stock: "",
+  };
 
-  //loop through and get the sub categories arr
+  //loop through and get the sub categories arr so it can be displayed as part of the details
   let subCategoriesArr = [];
   for (let key in categories) {
     if (categories[key].length > 0) subCategoriesArr.push(...categories[key]);
@@ -39,11 +48,11 @@ export const ProductDetailsPage = () => {
   // Checks if a the current product can be found in the wishlist and cart so as to be able to display the states in the ui
   useEffect(() => {
     isProductInWishlistFn(_id, setIsWishlisted, wishlist);
-  }, [wishlist]);
+  }, [wishlist, _id]);
 
   useEffect(() => {
     isProductInCartFn(_id, setIsProductInCart, cart);
-  }, [cart]);
+  }, [cart, _id]);
 
   const buyNowFn = () => {
     handleAddToCartFn();
@@ -51,6 +60,9 @@ export const ProductDetailsPage = () => {
   };
 
   let discountedPrice = price - (price * discountPercentValue) / 100;
+  if (isLoading) {
+    return <ProductLoader />;
+  }
 
   return (
     <>
@@ -86,19 +98,16 @@ export const ProductDetailsPage = () => {
           <h2 className="text-[28px] font-bold tracking-[0.5px] capitalize">{title}</h2>
           {discountPercentValue > 0 ? (
             <div className="flex gap-2">
-              <h3 className="font-bold text-[20px] tracking-[1px]">${discountedPrice.toFixed(2)}</h3>
-              <h3 className="after:w-[100%] after:bg-secondaryColor after:h-[2px] after:left-0 relative after:absolute after:bottom-[1.1rem] tracking-[1px]">
-                ${price.toFixed(2)}
-              </h3>
+              <h3 className="font-bold text-[20px] md:text-[24px]  tracking-[1px]">${discountedPrice.toFixed(2)}</h3>
+              <h3 className="line-through tracking-[1px] text-[18px] md:text-[20px] ">${price.toFixed(2)}</h3>
             </div>
           ) : (
-            <h3 className="font-bold text-[20px] tracking-[1px]">${price.toFixed(2)}</h3>
+            <h3 className="font-bold text-[20px] md:text-[24px] tracking-[1px]">${price.toFixed(2)}</h3>
           )}
           <div className="flex gap-1 items-center">
             <h3 className="font-bold tracking-[0.5px] text-[20px]">Availability :</h3>
             <span>{stock > 0 ? "In stock" : " Out of stock"}</span>
           </div>
-          q2w
           <div>
             <h2 className="font-bold text-[20px] tracking-[0.5px]">Description</h2>
             <p className="leading-[150%] tracking-[0.5px]">
@@ -141,15 +150,18 @@ export const ProductDetailsPage = () => {
           </div>
           <div className="flex-col flex gap-4">
             <h3 className="font-bold text-[20px] tracking-[0.5px]">Shipping Options</h3>
-            <span className="font-bold text-[18px] text-primaryColor">*This product is eligible for Free Shipping</span>
             <div className="flex flex-col gap-2">
               <p className=" leading-[150%]">
                 <span className="font-semibold text-[18px]">Standard shipping</span>
-                (Delivery in 5-7 working days) - takes 5% of product's total amount.
+                (Delivery in 7-10 working days) - takes $7.00 USD for each product
+              </p>
+              <p className=" leading-[150%]">
+                <span className="font-semibold text-[18px]">Express shipping</span>
+                (Delivery in 5-7working days) - takes $7.00 USD for each product
               </p>
               <p className="leading-[150%]">
                 <span className="font-semibold text-[18px]">Free shipping</span>
-                (Delivery in 5-7 working days) - takes 0% of total product's amount.
+                (Delivery in 11-13 working days) - takes 0 USD for each product
               </p>
               {/* <p className=" leading-[150%]">
               <text className="font-semibold">Express shipping</text>(Delivery in 3-5 working days) takes 3% of total

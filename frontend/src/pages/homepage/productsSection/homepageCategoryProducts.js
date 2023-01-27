@@ -1,8 +1,7 @@
 import React from "react";
-import { BsEye } from "react-icons/bs";
-import { FiHeart } from "react-icons/fi";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { SingleProductBox } from "../../../components/singleProductBox";
+import { Link } from "react-router-dom";
 
 export const HomepageCategoryProducts = ({ currentlyRequestedCategories }) => {
   return (
@@ -12,9 +11,12 @@ export const HomepageCategoryProducts = ({ currentlyRequestedCategories }) => {
         <SingleProductBox productsData={productData} key={productData._id} />
       ))}
       <div className="self-end tablet:ml-auto md:ml-auto flex gap-3 items-center md:self-center">
-        <button className="text-lg lg:text-2xl text-primaryColor font-semibold hover:underline transition underline-offset-[6px] decoration-2">
+        <Link
+          to="/shop"
+          className="text-lg lg:text-2xl text-primaryColor font-semibold hover:underline transition underline-offset-[6px] decoration-2"
+        >
           Shop for more
-        </button>
+        </Link>
         <FaLongArrowAltRight className="w-6 lg:w-10 h-10 fill-primaryColor" />
       </div>
     </div>
