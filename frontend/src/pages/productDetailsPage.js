@@ -38,11 +38,15 @@ export const ProductDetailsPage = () => {
     if (categories[key].length > 0) subCategoriesArr.push(...categories[key]);
   }
 
-  const handleAddToCartFn = () => {
-    if (productQuantityInCart < 1) {
+  const handleAddAndRemoveItemInCartFn = () => {
+    if (!isProductInCart) {
+      handleCartModification(_id, dispatch, productQuantityInCart, isProductInCart);
+      setProductQuantityInCart(1);
+    } else if (productQuantityInCart < 1) {
       alert("product cant be less than 1");
+    } else {
+      handleCartModification(_id, dispatch, null, isProductInCart);
     }
-    handleCartModification(_id, dispatch, productQuantityInCart);
   };
 
   // Checks if a the current product can be found in the wishlist and cart so as to be able to display the states in the ui
@@ -55,8 +59,15 @@ export const ProductDetailsPage = () => {
   }, [cart, _id]);
 
   const buyNowFn = () => {
-    handleAddToCartFn();
-    navigate("/checkout");
+    if (productQuantityInCart < 1) {
+      alert("product cant be less than 1");
+    } else if (isProductInCart) {
+      handleCartModification(_id, dispatch, productQuantityInCart, isProductInCart);
+      navigate("/checkout");
+    } else {
+      handleCartModification(_id, dispatch, null, isProductInCart);
+      navigate("/checkout");
+    }
   };
 
   let discountedPrice = price - (price * discountPercentValue) / 100;
@@ -124,7 +135,7 @@ export const ProductDetailsPage = () => {
               name=""
               id=""
               value={productQuantityInCart}
-              onChange={(e) => setProductQuantityInCart(Number(e.currentTarget.value))}
+              onChange={(e) => setProductQuantityInCart(e.currentTarget.value)}
             />
           </div>
           <div>
@@ -136,7 +147,7 @@ export const ProductDetailsPage = () => {
           <div className="flex gap-6 flex-wrap">
             <button
               className="text-secondaryColor basis-[100%] tablet:basis-[45%] md:basis-[35%] bg-transparent border-[1px] border-secondaryColor font-semibold w-[100%] h-[50px]"
-              onClick={handleAddToCartFn}
+              onClick={handleAddAndRemoveItemInCartFn}
             >
               {isProductInCart ? "Remove from Cart" : "Add to Cart"}
             </button>

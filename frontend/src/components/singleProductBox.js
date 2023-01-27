@@ -66,7 +66,7 @@ export const SingleProductBox = ({ productsData }) => {
       )}
       <button
         className="w-[100%] h-[52px] mx-auto rounded-md text-[#ffffff] bg-primaryColor "
-        onClick={() => handleCartModification(_id, dispatch)}
+        onClick={() => handleCartModification(_id, dispatch, null, isProductInCart)}
       >
         {isProductInCart ? "Remove from cart" : "Add to cart"}
       </button>

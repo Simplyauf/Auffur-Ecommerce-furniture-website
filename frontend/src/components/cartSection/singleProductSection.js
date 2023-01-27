@@ -17,7 +17,7 @@ export const SingleProductSection = ({ cartData }) => {
         setProductQuantityInCart(key.quantity);
       }
     }
-  }, []);
+  }, [cart]);
 
   useEffect(() => {
     // ON QUANTITY CHANGE
@@ -52,7 +52,10 @@ export const SingleProductSection = ({ cartData }) => {
         )}
         <div className="flex items-center gap-1 cursor-pointer">
           <FaTrash className="w-4 h-[0.9em] fill-primaryColor" />{" "}
-          <h3 className="font-semibold text-primaryColor" onClick={() => handleCartModification(_id, dispatch)}>
+          <h3
+            className="font-semibold text-primaryColor"
+            onClick={() => handleCartModification(_id, dispatch, null, true)}
+          >
             Remove
           </h3>
         </div>

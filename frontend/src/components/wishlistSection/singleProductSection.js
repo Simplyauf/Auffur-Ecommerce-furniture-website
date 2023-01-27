@@ -28,7 +28,7 @@ export const SingleProductSection = ({ wishlistData }) => {
         </span>
         <button
           className="w-[90%] h-[40px] tablet:w-[80%] md:w-[80%] text-sm  rounded-sm border-[2px] border-primaryColor text-primaryColor px-2"
-          onClick={() => handleCartModification(_id, dispatch)}
+          onClick={() => handleCartModification(_id, dispatch, null, isProductInCart)}
         >
           {isProductInCart ? "Remove from cart" : "Add to cart"}
         </button>
