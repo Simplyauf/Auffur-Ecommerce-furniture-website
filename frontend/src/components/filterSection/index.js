@@ -24,11 +24,11 @@ export const FilterBySection = ({
   const { sortedAllProductsData, sortedSearchedProductData } = useSelector((state) => state.productsData);
 
   //this is to distinguish between when the filter function is to display toast message and when its not to
-  let doesTheFnCallNotNeedToast = true;
+  let theFnCallDoesNotNeedToast = true;
 
   // RESET FILTERS WHEN LOCATION URL CHANGES
   useEffect(() => {
-    resetFilter(checkedCategoryDOM, checkedPriceRangeDOM, location, dispatch);
+    resetFilter(checkedCategoryDOM, checkedPriceRangeDOM, location, dispatch, theFnCallDoesNotNeedToast);
   }, [location.pathname]);
 
   // Filter in the shop page is from the sortedAllProductsData while the one in the searchpage is from sortedSearchedProductsData
@@ -40,7 +40,7 @@ export const FilterBySection = ({
         NoOfProductsPerPage,
         currentPageNo,
         sortedAllProductsData,
-        doesTheFnCallNotNeedToast
+        theFnCallDoesNotNeedToast
       );
     }
   }, [location.pathname, sortedAllProductsData]);
@@ -52,7 +52,7 @@ export const FilterBySection = ({
         NoOfProductsPerPage,
         currentPageNo,
         sortedSearchedProductData,
-        doesTheFnCallNotNeedToast
+        theFnCallDoesNotNeedToast
       );
     }
   }, [location.pathname, sortedSearchedProductData]);

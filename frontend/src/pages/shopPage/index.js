@@ -40,12 +40,12 @@ const Index = () => {
     if (!isLoading)
       toast("Products loaded sucessfully", {
         type: "success",
-        autoClose: 3000,
+        autoClose: 2000,
       });
     if (fetchingError)
       toast("Products loading failed", {
         type: "error",
-        autoClose: 3000,
+        autoClose: 2000,
       });
   }, [fetchingError, isLoading]);
 
@@ -91,6 +91,7 @@ const Index = () => {
           )}
         </div>
       </div>
+
       <FilterBySection
         {...{
           isFilterBySectionOpen,
@@ -99,16 +100,17 @@ const Index = () => {
           NoOfProductsPerPage,
         }}
       />
+
       <div className="lg:col-start-2 lg:col-end-5 lg:row-span-1 lg:ml-[8%] xl:ml-[10%] lg:mr-[3%] xl:mr-[5%]">
         <h1 className="text-center font-bold text-[2.5rem] my-16">Shop</h1>
         {isLoading ? (
           <ProductLoader />
         ) : (
           <>
-            <article className="w-[65%] tablet:w-[40%] lg:ml-0 lg:w-[30%] md:w-[30%] bg-[#ffffff] laptop:w-[17%]  ml-[4%] tablet:ml-[6%]  mb-12 flex-col flex gap-2">
+            <article className="w-[65%] tablet:w-[40%] md:w-[30%] bg-[#ffffff] laptop:w-[17%] lg:w-[30%] ml-[4%] tablet:ml-[6%]  mb-12 flex-col lg:ml-0 flex gap-2 lg:max-w-[262px]">
               <h3 className="text-lg font-bold ml-2"> Sort by</h3>
               <div
-                className={`flex justify-between h-14 rounded-md shadow-[0px_3px_8px_0px_rgba(0,0,0,0.2)]  items-center px-[10%] cursor-pointer ${
+                className={`flex justify-between h-14 rounded-md shadow-[0.5px_2px_32px_-2px_rgba(0,0,0,0.1)] items-center px-[10%] cursor-pointer ${
                   sortingCriteria !== "Default: Latest" && "bg-primaryColor text-white"
                 }`}
                 onClick={(e) => {
@@ -119,7 +121,7 @@ const Index = () => {
                 <RiArrowDropDownLine className="w-8 h-8 " />
               </div>
               <div
-                className={`hidden flex-col bg-[#ffffff] rounded-md shadow-[0px_3px_8px_0px_rgba(0,0,0,0.2)]   py-4  gap-4 z-[200] px-[10%] sticky top-0 left-0 right-0 -mb-[16.5rem]  sorting-lists ${
+                className={`hidden flex-col bg-[#ffffff] rounded-md shadow-[0px_3px_8px_0px_rgba(0,0,0,0.2)]   py-4  gap-4 z-[200] px-[10%] sticky top-0 left-0 right-0 -mb-64  sorting-lists ${
                   sortingCriteria !== "Default: Latest" && "bg-primaryColor text-white"
                 }`}
                 onClick={(e) => handleSortingCriteriaSelection(e)}
@@ -133,7 +135,7 @@ const Index = () => {
               </div>
             </article>
             {(selectedSubCategoryForFilter || priceRange) && (
-              <article className="w-[300px] max-w-[75%] lg:ml-0  lg:w-[30%]   bg-[#ffffff] laptop:w-[17%]  ml-[4%] tablet:ml-[6%] mb-12 flex-col flex gap-2 ">
+              <article className="w-[300px] max-w-[75%]  bg-[#ffffff] laptop:w-[17%] lg:w-[30%] ml-[4%] tablet:ml-[6%] xl:ml-[4%] mb-12 flex-col flex gap-2 lg:ml-0 lg:max-w-[262px]">
                 <h3 className="text-lg font-bold ml-2"> Active Filters</h3>
                 <div className="flex  justify-between h-14 bg-primaryColor text-white rounded-md shadow-[0px_3px_8px_0px_rgba(0,0,0,0.2)]  items-center px-[5%] font-medium text-base ">
                   {selectedSubCategoryForFilter && <h3>Sub-Category : {selectedSubCategoryForFilter}</h3>}

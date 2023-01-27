@@ -3,7 +3,7 @@ import { setPlaceholderOfproductsDataCurrentlyRequested } from "../features/prod
 import { setSelectedCategory, setSelectedSubCategoryForFilter, setPriceRange } from "../features/filterBySlice";
 import { toast } from "react-toastify";
 
-export const resetFilter = (checkedCategory, checkedPriceRange, location, dispatch, doesTheFnCallNotNeedToast) => {
+export const resetFilter = (checkedCategory, checkedPriceRange, location, dispatch, theFnCallDoesNotNeedsToast) => {
   const { sortedAllProductsData, sortedSearchedProductData } = store.getState().productsData;
 
   dispatch(setSelectedCategory(null));
@@ -19,7 +19,7 @@ export const resetFilter = (checkedCategory, checkedPriceRange, location, dispat
     checkedPriceRange.checked = false;
   }
 
-  !doesTheFnCallNotNeedToast &&
+  !theFnCallDoesNotNeedsToast &&
     toast("filter criterias has been reset", {
       type: "success",
       autoClose: 3000,
