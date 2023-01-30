@@ -11,6 +11,9 @@ export const OrderSummary = ({ setTotalAmountToBePaid }) => {
   const { cart } = useSelector((state) => state.wishlistAndCartSection);
   const { shippingMethod } = useSelector((state) => state.userAuth);
 
+  // cart with quantity lesser than zero shouldnt be allowed for checkout
+  const filteredCart = cart.filter((product) => product.quantity > 0);
+
   useEffect(() => {
     handleSetShippingMethodValue(shippingMethod, setShippingMethodValue);
   }, [shippingMethod]);
@@ -27,7 +30,7 @@ export const OrderSummary = ({ setTotalAmountToBePaid }) => {
     <section className="mt-16 mb-16 lg:mb-0 w-[92%] tablet:w-[88%] mx-auto lg:mx-0  bg-white border-2 border-LightSecondaryColor py-8 lg:order-2 lg:basis-[40%] xl:basis-[35%]">
       <h2 className="text-[28px] font-bold text-center mb-12">Order Summary</h2>
       <div className="flex flex-col gap-4 w-[90%] max-w-[500px] mx-auto ">
-        {cart.map((cartItem) => {
+        {filteredCart.map((cartItem) => {
           return (
             <article
               className="flex gap-4 w-[100%] border-b-[1px] justify-between border-LightSecondaryColor pb-4"
