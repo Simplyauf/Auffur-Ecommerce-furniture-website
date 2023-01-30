@@ -17,7 +17,7 @@ const resendEmailVerification = async (req, res) => {
 
   await User.findByIdAndUpdate(checkIfEmailExists._id, { verificationToken: token }, { new: true }).exec();
 
-  sendMessageToUserEmail(email, token, emailVerificationMessageDatas);
+  await sendMessageToUserEmail(email, token, emailVerificationMessageDatas);
 
   res
     .status(200)

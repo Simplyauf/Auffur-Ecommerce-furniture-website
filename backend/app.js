@@ -30,7 +30,7 @@ app.use(
 );
 
 app.get("/", (req, res) => {
-  res.status(200).send("<h1>Auffur</h1>  <a href=''>products page<a/> ");
+  res.status(200).send("<h1>Auffur,ecommerce server</h1> ");
 });
 
 app.use("/api/v1/products", productRoute);

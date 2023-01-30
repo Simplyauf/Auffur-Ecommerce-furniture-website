@@ -10,15 +10,17 @@ const generateToken = (email, verificationStatus, expiryDate) => {
 };
 
 // verify user's account
+
 const emailVerificationMessageDatas = (emailVerificationToken) => {
+  const serverUrl = process.env.SERVER_URL || "http://localhost:5000";
   return {
     port: 587,
     secure: false,
-    user: "211fc4a3084936",
-    pass: "24c2f27583bed7",
+    user: "azeezumarfaruk@gmail.com",
+    pass: "lnywzyzvjeertcgq",
     subject: "[Auffur] Please confirm your email address",
-    text: `Please click this link or paste the link in your browser to verify your email address: http://localhost:5000/api/v1/verifyGmail/Email-verification?token=${emailVerificationToken}`,
-    html: `<h2>Verify your email address </h2><br/><div>To complete your account registration,please verify that this is your email address by clicking the button below</div><br/> <a href="http://localhost:5000/api/v1/auth/verifyGmail/Email-verification?token=${emailVerificationToken}" style="display: inline-block; padding: 0.5em 1em; background-color: #fca311; color: white; text-decoration: none;">Verify Email</a> <br /> <br /> <br /> <div>This link will expire in 5days.If you didnt request this code,you can safely ignore this email,Someone else might have typed your email address by mistake</div> <br /> <span>Thanks,</span> <br /> <span>Auffur Team</span>`,
+    text: `Please click this link or paste the link in your browser to verify your email address: ${serverUrl}/api/v1/verifyGmail/Email-verification?token=${emailVerificationToken}`,
+    html: `<h2>Verify your email address </h2><br/><div>To complete your account registration,please verify that this is your email address by clicking the button below</div><br/> <a href="${serverUrl}/api/v1/auth/verifyGmail/Email-verification?token=${emailVerificationToken}" style="display: inline-block; padding: 0.5em 1em; background-color: #fca311; color: white; text-decoration: none;">Verify Email</a> <br /> <br /> <br /> <div>This link will expire in 5days.If you didnt request this code,you can safely ignore this email,Someone else might have typed your email address by mistake</div> <br /> <span>Thanks,</span> <br /> <span>Auffur Team</span>`,
   };
 };
 
@@ -42,7 +44,8 @@ const registerUser = async (req, res) => {
     verificationToken: token,
   });
 
-  sendMessageToUserEmail(email, token, emailVerificationMessageDatas);
+  const response = await sendMessageToUserEmail(email, token, emailVerificationMessageDatas);
+  console.log(response);
   res.send(
     "Your account has been created! A verification link has been sent to your email. Please check your email to complete your registration."
   );
