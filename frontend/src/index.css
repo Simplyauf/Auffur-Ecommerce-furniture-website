@@ -4,7 +4,7 @@
 
 @layer base {
   .product-img-container:hover .product-img-overlay {
-    display: block;
+    opacity: 1;
   }
   .product-img-container:hover .product-details-link {
     display: flex;
@@ -26,7 +26,7 @@
     -ms-word-break: break-word;
   }
   .tailwindUnderlineDidntWork {
-    text-underline-offset: 3px;
+    text-underline-offset: 1px;
     text-decoration-line: underline;
   }
   input[type="checkbox"]:checked,
@@ -40,10 +40,9 @@
     left: 0.5rem;
     z-index: 10;
     background-color: white;
-    transition: all 0.3s;
+    transition: all 0.4s ease-in-out;
     padding: 0 3px;
   }
-
   .authPage-input-container:focus-within > label {
     color: #fca311;
   }
@@ -92,7 +91,7 @@
     @apply lg:text-[18px] scroll-smooth;
   }
   body {
-    @apply font-OpenSans overflow-x-hidden tracking-normal;
+    @apply font-OpenSans tracking-normal;
   }
   li {
     @apply cursor-pointer;
@@ -115,6 +114,9 @@
   }
   .homepage-active-category-tab div {
     @apply w-[100%] transition ease-in duration-100;
+  }
+  .active-product-page-no {
+    @apply bg-[#fca311] text-white border-none transition-all duration-500;
   }
 }
 

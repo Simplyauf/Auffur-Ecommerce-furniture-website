@@ -1,6 +1,8 @@
+import { AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { RiArrowDropUpLine } from "react-icons/ri";
+import { motion } from "framer-motion";
 
 export const CategoryLists = ({ categoryTitle, productCategories }) => {
   const [isCategoryTitleOpen, setIsCategoryTitleOpen] = useState(false);
@@ -21,20 +23,29 @@ export const CategoryLists = ({ categoryTitle, productCategories }) => {
           />
         )}
       </div>
-      {isCategoryTitleOpen && (
-        <div className="flex flex-col gap-2 tablet:gap-3 md:gap-3 mt-4">
-          {productCategories[categoryTitle].map((subCategoryTitle, index) => {
-            return (
-              <div key={index} className="flex gap-2 tablet:gap-3 md:gap-3 items-center">
-                <input type="checkbox" name="selectedCategoryTitle" value={subCategoryTitle} id={subCategoryTitle} />
-                <label htmlFor={subCategoryTitle}>
-                  <h4 className="text-base tablet:text-lg md:text-lg cursor-pointer font-normal">{subCategoryTitle}</h4>
-                </label>
-              </div>
-            );
-          })}
-        </div>
-      )}
+      <AnimatePresence>
+        {isCategoryTitleOpen && (
+          <motion.div
+            initial={{ height: 0 }}
+            animate={{ height: "auto" }}
+            exit={{ overflowY: "hidden", height: 0, transition: { duration: 0.3, ease: "easeOut" } }}
+            className="flex flex-col gap-2 tablet:gap-3 md:gap-3 mt-4"
+          >
+            {productCategories[categoryTitle].map((subCategoryTitle, index) => {
+              return (
+                <div key={index} className="flex gap-2 tablet:gap-3 md:gap-3 items-center">
+                  <input type="checkbox" name="selectedCategoryTitle" value={subCategoryTitle} id={subCategoryTitle} />
+                  <label htmlFor={subCategoryTitle}>
+                    <h4 className="text-base tablet:text-lg md:text-lg cursor-pointer font-normal">
+                      {subCategoryTitle}
+                    </h4>
+                  </label>
+                </div>
+              );
+            })}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

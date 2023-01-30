@@ -7,6 +7,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { handleWishlistModification } from "../utils/handleWishlistModification";
 import { handleCartModification } from "../utils/handleCartModification";
 import { isProductInCartFn, isProductInWishlistFn } from "../utils/isSpecificProductInCartAndWishlist.js";
+import { motion, useAnimation } from "framer-motion";
+import { primaryBtnVariant } from "../utils/animation";
+import { cartTextChangeVariant } from "../utils/animation";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
 
 export const SingleProductBox = ({ productsData }) => {
   const { _id, title, price, image, discountPercentValue } = productsData;
@@ -20,7 +25,6 @@ export const SingleProductBox = ({ productsData }) => {
   useEffect(() => {
     isProductInWishlistFn(_id, setIsWishlisted, wishlist);
   }, [wishlist]);
-
   useEffect(() => {
     isProductInCartFn(_id, setIsProductInCart, cart);
   }, [cart]);
@@ -28,15 +32,37 @@ export const SingleProductBox = ({ productsData }) => {
   // get the discount percent value if present so as to display it
   let discountedPrice = price - (price * discountPercentValue) / 100;
 
+  // framer animation for when its in view
+  const ref = useRef(null);
+  const inView = useInView(ref);
+
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (inView) {
+      controls.start({ scale: 1 });
+    } else {
+      controls.start({ scale: 0.4 });
+    }
+  }, [controls, inView]);
   return (
-    <article className="flex w-[100%] tablet:mx-0 md:mx-0  mx-auto flex-col  bg-[#ffffff] relative">
+    <motion.article
+      ref={ref}
+      animate={controls}
+      transition={{ duration: 0.3, ease: "easeOut" }}
+      className="flex w-[100%] tablet:mx-0 md:mx-0  mx-auto flex-col  bg-[#ffffff] relative"
+    >
       <div
-        className={`absolute p-3 bg-[#ffffff] shadow-[0px_2px_8px_0px_#00000085] rounded-[50%] top-[5%] right-[5%] z-[100] ${
+        className={`absolute p-3 bg-[#ffffff] shadow-[0px_2px_8px_0px_#00000085] rounded-[50%] ease-in transition-colors cursor-pointer duration-300 top-[5%] right-[5%] z-[100] ${
           isWishlisted && "bg-primaryColor"
         }`}
         onClick={() => handleWishlistModification(_id, dispatch)}
       >
-        <FiHeart className={`w-6 h-6 ${isWishlisted && "fill-primaryColor stroke-white"}`} />
+        <FiHeart
+          className={`w-6 h-6 ${
+            isWishlisted && "fill-primaryColor duration-200 ease-linear transition-colors stroke-white"
+          }`}
+        />
       </div>
 
       {discountPercentValue > 0 && (
@@ -45,15 +71,20 @@ export const SingleProductBox = ({ productsData }) => {
         </div>
       )}
 
-      <div className="w-[100%] h-[290px] bg-neutralColor relative cursor-pointer product-img-container flex justify-center items-center rounded-md">
+      <div className="w-[100%] h-[290px] bg-neutralColor relative cursor-pointer product-img-container flex justify-center items-center rounded-md ease-in transition-all duration-100">
         <img src={image} alt="" className="rounded-md max-w-[90%] h-auto max-h-[90%] object-cover" />
-        <div className="product-img-overlay hidden rounded-md absolute top-0 left-0 z-50 bg-[#0000005d] w-[100%] h-[100%]"></div>
-        <button className="absolute left-[25%] tablet:left-[20%] md:left-[20%] tablet:w-[60%] md:w-[60%] top-[50%] bg-primaryColor text-white hidden cursor-pointer rounded-md h-[48px] w-[50%] gap-1 justify-center z-[100]  items-center product-details-link">
+        <div className="product-img-overlay  rounded-md absolute top-0 left-0 z-50 bg-[#0000005d] w-[100%] h-[100%] opacity-0  transition-opacity ease-in duration-[0.5]"></div>
+        <motion.button
+          initial="initial"
+          whileTap="click"
+          variants={primaryBtnVariant}
+          className="absolute left-[25%] tablet:left-[20%] md:left-[20%] tablet:w-[60%] md:w-[60%] top-[40%] bg-primaryColor text-white hidden cursor-pointer rounded-md h-[48px] w-[50%] gap-1 justify-center z-[100] items-center product-details-link transition ease-in duration-[0.5]"
+        >
           <BsEye />
           <Link to={`/product/${_id}`}>
             <span> view details</span>
           </Link>
-        </button>
+        </motion.button>
       </div>
       <h4 className=" text-[20px] font-normal capitalize mt-4">{title}</h4>
       {discountPercentValue > 0 ? (
@@ -64,13 +95,24 @@ export const SingleProductBox = ({ productsData }) => {
       ) : (
         <h3 className="font-bold  text-[20px] mt-[0.125rem] mb-4 tracking-wide ">${price.toFixed(2)}</h3>
       )}
-      <button
+      <motion.button
+        initial="initial"
+        whileTap="click"
+        variants={primaryBtnVariant}
         className="w-[100%] h-[52px] mx-auto rounded-md text-[#ffffff] bg-primaryColor "
         onClick={() => handleCartModification(_id, dispatch, null, isProductInCart)}
       >
-        {isProductInCart ? "Remove from cart" : "Add to cart"}
-      </button>
-    </article>
+        <motion.span
+          className="w-[100%] h-[100%] flex items-center justify-center"
+          initial="initial"
+          whileTap="animate"
+          variants={cartTextChangeVariant}
+        >
+          {" "}
+          {isProductInCart ? "Remove from cart" : "Add to cart"}
+        </motion.span>
+      </motion.button>
+    </motion.article>
   );
 };
 

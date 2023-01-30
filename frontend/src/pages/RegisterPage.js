@@ -5,6 +5,9 @@ import { validateEmail } from "../utils/emailRegexValidation";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FullpageSpinnerLoader } from "../components/loaders/spinnerIcon";
+import { primaryBtnVariant } from "../utils/animation";
+import { cartTextChangeVariant } from "../utils/animation";
+import { motion } from "framer-motion";
 
 export const RegisterPage = () => {
   // check if input type=password is in password mode or text mode
@@ -41,7 +44,8 @@ export const RegisterPage = () => {
               type="text"
               placeholder=" "
               name=""
-              minlength="3"
+              minLength="3"
+              maxLength="12"
               required
               value={registerDetails.username}
               onChange={(e) =>
@@ -50,7 +54,7 @@ export const RegisterPage = () => {
                 })
               }
             />
-            <label for="" className="absolute  top-[0.8rem] left-3 z-[-1]">
+            <label htmlFor="" className="absolute  top-[0.8rem] left-3 z-[-1]">
               Username
             </label>
           </div>
@@ -73,7 +77,7 @@ export const RegisterPage = () => {
                 }
               }}
             />
-            <label for="" className="absolute  top-[0.8rem] left-3 z-[-1]">
+            <label htmlFor="" className="absolute  top-[0.8rem] left-3 z-[-1]">
               Email address
             </label>
           </div>
@@ -95,7 +99,7 @@ export const RegisterPage = () => {
                 })
               }
             />
-            <label for="" className="absolute  top-[0.8rem] left-3 z-[-1]">
+            <label htmlFor="" className="absolute  top-[0.8rem] left-3 z-[-1]">
               Password
             </label>
             {isInputValueInPassword ? (
@@ -111,12 +115,22 @@ export const RegisterPage = () => {
             )}
           </div>
         </div>
-        <button
+        <motion.button
+          initial="initial"
+          whileTap="click"
+          variants={primaryBtnVariant}
           className="h-[56px] mt-3 bg-primaryColor w-[100%] rounded border-transparent text-white text-[18px]  font-medium"
           type="submit"
         >
-          {isLoading ? <>Registering</> : "Register"}
-        </button>
+          <motion.span
+            className="w-[100%] h-[100%] flex items-center justify-center"
+            initial="initial"
+            whileTap="animate"
+            variants={cartTextChangeVariant}
+          >
+            {isLoading ? <>Registering</> : "Register"}
+          </motion.span>
+        </motion.button>
         <span className=" text-center">
           Already have an account?{" "}
           <Link to="/login" className="text-primaryColor">

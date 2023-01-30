@@ -3,10 +3,13 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { handleCartModification } from "../../utils/handleCartModification";
 import { setCart } from "../../features/wishlistAndCartSlice";
+import { useNavigate } from "react-router-dom";
 
-export const SingleProductSection = ({ cartData }) => {
-  const { title, price, discountPercentValue, image, _id } = cartData;
+export const SingleProductSection = ({ cartData, setIsCartSectionActive }) => {
+  const { title, price, discountPercentValue, image, _id, stock } = cartData;
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const { cart } = useSelector((state) => state.wishlistAndCartSection);
   const [productQuantityInCart, setProductQuantityInCart] = useState(1);
 
@@ -35,7 +38,13 @@ export const SingleProductSection = ({ cartData }) => {
 
   return (
     <div className="flex gap-4 border-b-[1px] border-LightSecondaryColor pb-4">
-      <div className="w-[40%] h-[120px] tablet:h-[160px] md:h-[160px] bg-neutralColor relative cursor-pointer product-img-container flex justify-center items-center">
+      <div
+        className="w-[40%] h-[120px] tablet:h-[160px] md:h-[160px] bg-neutralColor relative cursor-pointer product-img-container flex justify-center items-center cursor-pointer"
+        onClick={() => {
+          navigate(`/product/${_id}`);
+          setIsCartSectionActive(false);
+        }}
+      >
         <img src={image} alt="" className="rounded-sm w-[100%]  object-contain h-auto max-h-[90%] max-w-[90%]" />
       </div>
       <div className="flex flex-col gap-3 w-[45%] text-base">
@@ -50,6 +59,10 @@ export const SingleProductSection = ({ cartData }) => {
         ) : (
           <h3 className="font-bold   md:text-[18px] tracking-wide ">${price.toFixed(2)}</h3>
         )}
+        <span className="text-primaryColor font-RobotoCondensed tracking-[0.7px]">
+          {stock < 0 ? "Out of stock" : <strong>{stock}</strong>}
+          {stock >= 0 && " left in stock"}
+        </span>
         <div className="flex items-center gap-1 cursor-pointer">
           <FaTrash className="w-4 h-[0.9em] fill-primaryColor" />{" "}
           <h3

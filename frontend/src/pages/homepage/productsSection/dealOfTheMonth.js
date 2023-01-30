@@ -46,8 +46,8 @@ export const DealOfTheMonth = () => {
         <div className="w-[100%] md:max-h-[500px] max-h-[450px] h-[450px] md:h-[500px] min-h-[400px] md:mx-0 mx-auto md:basis-[52%]">
           <img
             className="w-[100%]  h-[100%]"
+            alt="monthly-deal"
             src="https://images.pexels.com/photos/2227832/pexels-photo-2227832.jpeg?auto=compress&cs=tinysrgb&w=600"
-            alt=""
           />
         </div>
         <div className="md:basis-[42%] tablet:pl-[6%] pl-[4%] md:pl-0 md:order-2 md:flex-col md:flex md:gap-4 md:mt-8 lg:px-[2%] lg:basis-[45%]">

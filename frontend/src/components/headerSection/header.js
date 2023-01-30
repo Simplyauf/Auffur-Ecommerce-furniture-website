@@ -7,10 +7,11 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BiSearch } from "react-icons/bi";
 import { NavTabs } from "./navTabs";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { BiUser } from "react-icons/bi";
 import { toast } from "react-toastify";
 import logoDark from "../../logoDark.png";
+import { motion, AnimatePresence } from "framer-motion";
 
 export const Header = ({ setIsWishlistActive, setIsCartSectionActive, isLargeScreen }) => {
   const [displayVerticalNavBar, setDisplayVerticalNavBar] = useState(false);
@@ -22,7 +23,6 @@ export const Header = ({ setIsWishlistActive, setIsCartSectionActive, isLargeScr
   const { isLoggedIn, userData } = useSelector((state) => state.userAuth);
   const { wishlist, cart } = useSelector((state) => state.wishlistAndCartSection);
 
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const navigateToSearchPage = useNavigate();
   let location = useLocation();
@@ -141,24 +141,33 @@ export const Header = ({ setIsWishlistActive, setIsCartSectionActive, isLargeScr
           </button>
         </div>
       </nav>
-      {isSearchClicked && (
-        <div className="w-[92%] lg: xl:w-[92%] tablet:w-[88%] absolute top-[100%] tablet:left-[6%] lg:w-[96%] left-[4%] lg:left[2%] xl:left-[4%] bottom-auto searchBar h-[45px] bg-neutralColor text-secondaryColor z-50  shadow-[0_4px_6px_-2px_rgba(0,0,0,0.2)] flex justify-between">
-          <input
-            className="w-[85%] text-[18px] pl-6 h-[100%] bg-neutralColor border-none outline-none"
-            type="search"
-            name=""
-            placeholder="search ..."
-            id=""
-          />
-          <button
-            className="bg-primaryColor max-w-[100px] w-[15%] h-[100%] flex justify-center items-center"
-            onClick={(e) => handleSearching(e)}
+      <AnimatePresence>
+        {isSearchClicked && (
+          <motion.div
+            initial={{ height: 0 }}
+            animate={{ height: 45 }}
+            exit={{ height: "auto", transition: { duration: 0.3, ease: "easeOut" } }}
+            transition={{ type: "spring", stiffness: 100, dampness: 5 }}
+            className="w-[92%] lg: xl:w-[92%] tablet:w-[88%] absolute top-[100%] tablet:left-[6%] lg:w-[96%] left-[4%] lg:left-[2%] xl:left-[4%] bottom-auto searchBar h-[45px] bg-neutralColor text-secondaryColor z-50  shadow-[0_4px_6px_-2px_rgba(0,0,0,0.2)] flex justify-between"
           >
-            <BiSearch className="w-5 h-5 tablet:w-6 tablet:h-6 md:w-6 md:h-6" fill="white" />
-          </button>
-        </div>
-      )}
-      {displayVerticalNavBar && <NavTabs {...{ handleMyAccountClick }} />}
+            <input
+              className="w-[85%] text-[18px] pl-6 h-[100%] bg-neutralColor border-none outline-none"
+              type="search"
+              name=""
+              placeholder="search ..."
+              id=""
+            />
+            <button
+              className="bg-primaryColor max-w-[100px] w-[15%] h-[100%] flex justify-center items-center"
+              onClick={(e) => handleSearching(e)}
+            >
+              <BiSearch className="w-5 h-5 tablet:w-6 tablet:h-6 md:w-6 md:h-6" fill="white" />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>{displayVerticalNavBar && <NavTabs {...{ handleMyAccountClick }} />}</AnimatePresence>
     </header>
   );
 };

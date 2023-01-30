@@ -8,7 +8,7 @@ export const HeroSection = () => {
     <>
       <div
         style={{ backgroundImage: `url(${heroImg})` }}
-        className="w-[100%] h-[300px] tablet:h-[400px] md:h-[452px] lg:h-[560px] xl:h-[652px] 2xl:h-[800px]  bg-cover bg-no-repeat bg-center top-0 relative flex justify-center items-center"
+        className="w-[100%] bg-neutralColor h-[300px] tablet:h-[400px] md:h-[452px] lg:h-[560px] xl:h-[652px] 2xl:h-[800px]  bg-cover bg-no-repeat bg-center top-0 relative flex justify-center items-center"
       >
         <div className="overlay absolute top-0 left-0 right-0 w-[100%] h-[100%] bg-opacity-50 bg-[#000000]"></div>
         <div className="justify-center items-center w-[90%] mx-auto flex max-w-[500px] relative tablet  flex-col gap-3 tablet:gap-4 h-[100%] text-white md:gap-5 ">
@@ -19,7 +19,7 @@ export const HeroSection = () => {
             Upgrade your home and offices with our curated selection of furniture and decor
           </p>
           <button
-            className=" lg:w-[11.1rem] lg:h-[72px] w-[9.4rem] h-[52px] md:h-[56px] font-medium  border-[3px] hover:text-white hover:bg-primaryColor hover:border-transparent hover:font-normal duration-500 ease-in-out border-primaryColor text-primaryColor px-2"
+            className=" lg:w-[11.1rem] lg:h-[72px] w-[9.4rem] h-[52px] md:h-[56px] font-medium lg:font-bold border-[2px] lg:border-[3px] hover:text-white hover:bg-primaryColor hover:border-transparent hover:font-normal transition-colors duration-500 ease-in-out border-primaryColor text-primaryColor px-2"
             onClick={() => navigate("/shop")}
           >
             Shop now

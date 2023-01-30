@@ -1,3 +1,6 @@
+import { motion } from "framer-motion";
+import { primaryBtnVariant } from "../../utils/animation";
+
 export const AccountSettings = () => {
   return (
     <div className="w-[100] tablet:px-[6%] mb-20 xl:px-[4%] px-[4%] lg:px-[2%]">
@@ -27,9 +30,14 @@ export const AccountSettings = () => {
                     A verification link will be sent to your email for the password reset after clicking change
                   </span>
                 </div>
-                <button className=" block h-[28px] mx-auto w-[80%] max-w-[100px] bg-primaryColor text-white font-medium rounded">
+                <motion.button
+                  initial="initial"
+                  whileTap="click"
+                  variants={primaryBtnVariant}
+                  className=" block h-[28px] mx-auto w-[80%] max-w-[100px] bg-primaryColor text-white font-medium rounded"
+                >
                   Change
-                </button>
+                </motion.button>
               </div>
               <div className=" p-4 w-[49%] flex-col bg-neutralColor flex rounded-sm items-start md:justify-between gap-6">
                 <div>
@@ -38,9 +46,14 @@ export const AccountSettings = () => {
                     A verification link will be sent to your email for the password reset after clicking change
                   </span>
                 </div>
-                <button className=" block h-[28px] mx-auto w-[80%] max-w-[100px] bg-primaryColor text-white font-medium rounded">
+                <motion.button
+                  initial="initial"
+                  whileTap="click"
+                  variants={primaryBtnVariant}
+                  className=" block h-[28px] mx-auto w-[80%] max-w-[100px] bg-primaryColor text-white font-medium rounded"
+                >
                   Change
-                </button>
+                </motion.button>
               </div>
             </div>
           </section>
@@ -127,9 +140,14 @@ export const AccountSettings = () => {
           <h2 className="text-[24px] font-bold  mb-6">Payment method</h2>
           <p className="font-medium text-[18px] text-primaryColor ">There is no payment functionalities yet*</p>
         </article>
-        <button className="my-12 w-[100%] mx-auto block h-[52px] bg-primaryColor text-white font-medium rounded">
+        <motion.button
+          initial="initial"
+          whileTap="click"
+          variants={primaryBtnVariant}
+          className="my-12 w-[100%] mx-auto block h-[52px] bg-primaryColor text-white font-medium rounded"
+        >
           Update Changes
-        </button>
+        </motion.button>
       </div>
     </div>
   );

@@ -16,12 +16,15 @@ export const FeaturedCategories = () => {
     <section className="my-16">
       <h2 className="text-[36px] text-center mb-10 font-bold mx-4">Featured Categories</h2>
       <div className="flex flex-col items-center gap-10 md:flex-row md:w-[92%] lg:w-[96%] xl:w-[92%] md:mx-auto md:justify-between md:flex-wrap md:gap-2">
-        {categoriesFaceArr.map((category) => {
+        {categoriesFaceArr.map((category, index) => {
           return (
-            <article className="w-[92%] tablet:w-[88%] md:mx-0 md:w-[100%] mx-auto cursor-pointer basis-[45%]">
+            <article
+              key={index}
+              className="w-[92%] tablet:w-[88%] md:mx-0 md:w-[100%] mx-auto cursor-pointer basis-[45%]"
+            >
               <div
                 style={{ backgroundImage: `url(${category.src})` }}
-                className="w-[100%]  bg-cover bg-no-repeat bg-center relative category-img-container h-[350px] tablet:h-[400px]"
+                className="w-[100%]  bg-neutralColor  bg-cover bg-no-repeat bg-center relative category-img-container h-[350px] tablet:h-[400px]"
               >
                 <div className="product-img-overlay hidden absolute top-0 left-0 z-50 bg-[#0000005d] w-[100%] h-[100%]"></div>
                 <button className="absolute left-[25%] top-[40%] bg-primaryColor text-white hidden cursor-pointer rounded-sm h-[44px] w-[50%] gap-3 justify-center z-[100]  items-center category-shop-link">

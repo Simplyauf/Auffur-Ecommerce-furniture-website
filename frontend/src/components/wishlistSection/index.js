@@ -5,6 +5,8 @@ import { persistor } from "../../store.js";
 import { ProductLoader } from "../loaders/productLoader";
 import { PersistGate } from "redux-persist/integration/react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import { primaryBtnVariant } from "../../utils/animation";
 
 export const Wishlist = ({ isWishlistActive, setIsWishlistActive }) => {
   const { wishlist } = useSelector((state) => state.wishlistAndCartSection);
@@ -13,8 +15,11 @@ export const Wishlist = ({ isWishlistActive, setIsWishlistActive }) => {
 
   //PersistGate ALLOWS RENDERING OF A LOADER BEFORE REDUX STATE IS PERSISTEd
   return (
-    <div
-      className={`fixed top-0 left-0 bottom-0 w-[100%] h-[100vh] z-[1500] bg-opacity-60 bg-[#000000] translate-x-[100%]  ${
+    <motion.div
+      initial={{ x: "100%" }}
+      animate={{ x: isWishlistActive ? "0%" : "100%" }}
+      transition={{ duration: 0.4, ease: "easeInOut" }}
+      className={`fixed top-0 left-0 bottom-0 w-[100%] h-[100vh] z-[1500] bg-opacity-60 bg-[#000000]  ${
         isWishlistActive && "translate-x-[0%]"
       }`}
     >
@@ -38,26 +43,29 @@ export const Wishlist = ({ isWishlistActive, setIsWishlistActive }) => {
             ) : (
               <div className="w-[100%] flex flex-col px-[5%] gap-4">
                 {wishlist.map((wishlistData) => {
-                  return <SingleProductSection wishlistData={wishlistData} />;
+                  return <SingleProductSection key={wishlistData._id} {...{ wishlistData, setIsWishlistActive }} />;
                 })}
               </div>
             )}
             <div className="pt-4 border-t-[2px] border-LightSecondaryColor mt-14 w-[100%]">
               <div className="w-[100%] px-[5%]">
-                <button
-                  className="bg-primaryColor text-[#ffffff] h-[54px] rounded-sm  w-[100%]"
+                <motion.button
+                  variants={primaryBtnVariant}
+                  initial="initial"
+                  whileTap="click"
+                  className="bg-primaryColor text-[#ffffff] h-[54px] rounded-md  w-[100%]"
                   onClick={() => {
                     navigate("/shop");
                     setIsWishlistActive(false);
                   }}
                 >
                   Continue Shopping
-                </button>
+                </motion.button>
               </div>
             </div>
           </PersistGate>
         )}
       </section>
-    </div>
+    </motion.div>
   );
 };

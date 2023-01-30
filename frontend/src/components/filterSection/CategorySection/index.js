@@ -4,6 +4,7 @@ import { RiArrowDropDownLine } from "react-icons/ri";
 import { RiArrowDropUpLine } from "react-icons/ri";
 import { setSelectedCategory, setSelectedSubCategoryForFilter } from "../../../features/filterBySlice";
 import { useDispatch } from "react-redux";
+import { AnimatePresence, motion } from "framer-motion";
 
 const Index = ({ setCheckedCategoryDOM }) => {
   const [isCategorySectionOpen, setIsCategorySectionOpen] = useState(true);
@@ -56,13 +57,21 @@ const Index = ({ setCheckedCategoryDOM }) => {
           />
         )}
       </div>
-      {isCategorySectionOpen && (
-        <div className="flex flex-col gap-4 tablet:gap-5 md:gap-5 w-[100%]" onChange={(e) => handleCheckedCategory(e)}>
-          {Object.keys(productCategories).map((categoryTitle, index) => {
-            return <CategoryLists key={index} {...{ categoryTitle, productCategories }} />;
-          })}
-        </div>
-      )}
+      <AnimatePresence>
+        {isCategorySectionOpen && (
+          <motion.div
+            initial={{ height: 0 }}
+            animate={{ height: "auto" }}
+            exit={{ overflowY: "hidden", height: 0, transition: { duration: 0.3, ease: "easeOut" } }}
+            className="flex flex-col gap-4 tablet:gap-5 md:gap-5 w-[100%]"
+            onChange={(e) => handleCheckedCategory(e)}
+          >
+            {Object.keys(productCategories).map((categoryTitle, index) => {
+              return <CategoryLists key={index} {...{ categoryTitle, productCategories }} />;
+            })}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </article>
   );
 };

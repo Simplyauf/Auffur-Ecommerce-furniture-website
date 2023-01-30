@@ -9,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 import { handleSetShippingMethodValue } from "../../utils/handleSetShippingMethodValueFn";
 import { settingTotalProductPriceAndTotalQuantityValue } from "../../utils/settingTotalProductPriceAndquantityValue";
 import { toast } from "react-toastify";
+import { motion } from "framer-motion";
+import { primaryBtnVariant } from "../../utils/animation";
 
 export const Cart = ({ isCartSectionActive, setIsCartSectionActive }) => {
   const [shippingMethodValue, setShippingMethodValue] = useState(0);
@@ -52,7 +54,10 @@ export const Cart = ({ isCartSectionActive, setIsCartSectionActive }) => {
   };
 
   return (
-    <div
+    <motion.div
+      initial={{ x: "100%" }}
+      animate={{ x: isCartSectionActive ? "0%" : "100%" }}
+      transition={{ duration: 0.4, ease: "easeInOut" }}
       className={`fixed top-0 left-0 bottom-0 w-[100%] h-[100vh] z-[1500] bg-opacity-60 bg-[#000000] translate-x-[100%]  ${
         isCartSectionActive && "translate-x-[0%]"
       }`}
@@ -77,7 +82,7 @@ export const Cart = ({ isCartSectionActive, setIsCartSectionActive }) => {
             ) : (
               <div className="w-[100%] flex flex-col px-[5%] gap-4">
                 {cart.map((cartData) => {
-                  return <SingleProductSection cartData={cartData} key={cartData._id} />;
+                  return <SingleProductSection {...{ cartData, setIsCartSectionActive }} key={cartData._id} />;
                 })}
               </div>
             )}
@@ -102,17 +107,20 @@ export const Cart = ({ isCartSectionActive, setIsCartSectionActive }) => {
                 </h2>
               </div>
               <div className=" mx-[5%] mt-6">
-                <button
-                  className="bg-primaryColor text-[#ffffff] w-[100%] h-[54px] rounded-sm  "
+                <motion.button
+                  variants={primaryBtnVariant}
+                  initial="initial"
+                  whileTap="click"
+                  className="bg-primaryColor text-[#ffffff] w-[100%] h-[54px] rounded-md  "
                   onClick={proceedToCheckoutPage}
                 >
                   Proceed to Checkout
-                </button>
+                </motion.button>
               </div>
             </div>
           </PersistGate>
         )}
       </section>
-    </div>
+    </motion.div>
   );
 };

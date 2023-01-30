@@ -8,6 +8,9 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { fetchForgotPasswordClick } from "../features/authSlice/fetchForgotPasswordClick";
 import { fetchResendEmailVerificationLink } from "../features/authSlice/resendEmailVerification";
 import { FullpageSpinnerLoader } from "../components/loaders/spinnerIcon";
+import { motion } from "framer-motion";
+import { primaryBtnVariant } from "../utils/animation";
+import { cartTextChangeVariant } from "../utils/animation";
 
 export const LoginPage = () => {
   // check if input type=password is in password mode or text mode
@@ -70,7 +73,7 @@ export const LoginPage = () => {
   };
 
   return (
-    <section class="mt-16 flex justify-center items-center max-w-[340px] text-base  w-[92%] mx-auto">
+    <section class="my-16 flex justify-center items-center max-w-[340px] text-base  w-[92%] mx-auto">
       <form class="flex flex-col gap-5 w-[100%] " onSubmit={onSubmit} onClick={onClickOfSomeBtn}>
         <h1 class="text-4xl font-bold text-center font-RobotoCondensed">Welcome back</h1>
         <div className="w-100% mt-4">
@@ -91,7 +94,7 @@ export const LoginPage = () => {
               }}
               required
             />
-            <label for="" class="absolute  top-[0.8rem] left-4 z-[-1]">
+            <label htmlFor="" class="absolute  top-[0.8rem] left-4 z-[-1]">
               Email address
             </label>
           </div>
@@ -111,7 +114,7 @@ export const LoginPage = () => {
               })
             }
           />
-          <label for="" class=" absolute top-[0.8rem] left-4 z-[-1]">
+          <label htmlFor="" class=" absolute top-[0.8rem] left-4 z-[-1]">
             Password
           </label>
           {isInputValueInPassword ? (
@@ -135,12 +138,23 @@ export const LoginPage = () => {
             Forgot Password?
           </span>
         </div>
-        <button
-          class="h-[56px] mt-3 bg-primaryColor w-[100%] rounded border-transparent text-white text-[18px]  font-medium"
+        <motion.button
+          initial="initial"
+          whileTap="click"
+          variants={primaryBtnVariant}
+          class="h-[56px] mt-3 bg-primaryColor w-[100%] rounded-md border-transparent text-white text-[18px]  font-medium"
           type="submit"
         >
-          {isLoading ? "Logging in" : "Log in"}
-        </button>
+          <motion.span
+            className="w-[100%] h-[100%] flex items-center justify-center"
+            initial="initial"
+            whileTap="animate"
+            variants={cartTextChangeVariant}
+          >
+            {" "}
+            {isLoading ? "Logging in" : "Log in"}
+          </motion.span>
+        </motion.button>
         <span class=" text-center">
           Dont have an account?{" "}
           <Link to="/register" class="text-primaryColor">
@@ -148,7 +162,7 @@ export const LoginPage = () => {
           </Link>
         </span>
         <span
-          className="text-center opacity-80 hover:opacity-100 text-[#fca311] cursor-pointer"
+          className="text-center  hover:tailwindUnderlineDidntWork  text-secondaryColor font-medium cursor-pointer"
           data-nature="resendEmailVerificationBtn"
         >
           Resend email verification
