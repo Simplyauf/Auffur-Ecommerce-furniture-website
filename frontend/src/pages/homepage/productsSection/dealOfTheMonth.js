@@ -81,15 +81,15 @@ export const DealOfTheMonth = () => {
             </>
           )}
         </div>
-        <div className="lg:basis-[45%] tablet:pl-[6%] pl-[4%] md:pl-[4%] md:order-2 flex-col flex gap-5 md:pb-8 mt-8">
-          <h2 className="text-3xl tablet:text-4xl font-bold mr-[35%] md:mr-[60%] lg:mr-[25%] capitalize">
+        <div className="lg:basis-[45%] tablet:pl-[6%] pl-[4%] md:pl-[4%] md:order-2 flex-col flex gap-5 md:pb-8 lg:mt-8">
+          <h2 className="text-3xl tablet:text-4xl  md:text-4xl font-bold mr-[35%] leading-[120%] tablet:leading-[130%] md:leading-[140%] lg:leading-[120%] md:mr-[60%] lg:mr-[25%] max-w-[400px]">
             Get &nbsp;
             <span className="text-primaryColor font-bold">
-              {isOfferOn ? `${discountPercentValue}% discount` : "a huge dicount"}
+              {isOfferOn ? `${discountPercentValue}% discount` : "a huge discount"}
             </span>
             &nbsp; from this Furniture set
           </h2>
-          <h3 className="text-primaryColor mt-2  font-bold uppercase  text-xl md:text-2xl xl:text-3xl">
+          <h3 className="text-PrimaryColor mt-2 font-RobotoSlab  font-medium  text-xl tablet:text-2xl md:text-2xl xl:text-3xl">
             {" "}
             {isOfferOn ? "Offer ends by :" : "Offer begins by :"}{" "}
           </h3>
@@ -117,35 +117,45 @@ export const DealOfTheMonth = () => {
 
           <div className="flex flex-col gap-5 mt-2">
             <h2 className=" flex gap-2 items-center">
-              <h3 className="font-bold text-lg md:text-xl  tracking-[0.5px]">Title :</h3>
-              <h3 className="font-bold capitalize text-xl tablet:text-2xl lg:text-2xl">{`${
-                isOfferOn ? title : "???"
-              }`}</h3>
+              <h3 className="font-bold text-[20px] md:text-[24px] lg:text-[20px] xl:text-2xl font-RobotoSlab  tracking-[0.5px]">
+                Title :
+              </h3>
+              <h3 className="font-bold capitalize font-RobotoSlab text-xl tablet:text-2xl lg:text-2xl">
+                {isOfferOn ? title : <span className="font-bold text-[16px]">???</span>}
+              </h3>
             </h2>
             <div className="flex gap-2 items-center">
-              <h3 className="font-bold text-lg md:text-xl tracking-[0.5px]">Price :</h3>
+              <h3 className="font-bold text-[20px] md:text-[24px] lg:text-[20px] xl:text-2xl tracking-[0.5px] font-RobotoSlab ">
+                Price :
+              </h3>
               {isOfferOn ? (
                 <>
                   {" "}
                   {discountPercentValue > 0 ? (
                     <div className="flex gap-3">
-                      <h3 className="font-bold text-[20px] md:text-[28px]  tracking-[1px]">
+                      <h3 className="font-bold text-[20px] md:text-[28px] font-RobotoSlab tracking-[1px]">
                         ${discountedPrice.toFixed(2)}
                       </h3>
-                      <h3 className="line-through tracking-[1px] text-[18px] md:text-[20px] ">${price.toFixed(2)}</h3>
+                      <h3 className="line-through tracking-[1px] text-[18px] md:text-[20px] font-RobotoSlab">
+                        ${price.toFixed(2)}
+                      </h3>
                     </div>
                   ) : (
-                    <h3 className="font-bold text-[20px] md:text-[28px] tracking-[1px]">${price.toFixed(2)}</h3>
+                    <h3 className="font-bold text-[20px] md:text-[28px] tracking-[1px] font-RobotoSlab">
+                      ${price.toFixed(2)}
+                    </h3>
                   )}
                 </>
               ) : (
                 <span className="font-bold">???</span>
               )}
             </div>
-            <div className="flex gap-1 items-center">
-              <h3 className="font-bold text-lg md:text-xl tracking-[0.5px]">Availability :</h3>
+            <div className="flex gap-2 items-center">
+              <h3 className="font-bold text-[20px] md:text-[24px] lg:text-[20px] xl:text-2xl tracking-[0.5px] font-RobotoSlab ">
+                Availability :
+              </h3>
               {isOfferOn ? (
-                <span className="text-primaryColor text-lg md:text-xl tracking-[0.7px]  md:xl ">
+                <span className="text-primaryColor text-lg md:text-xl xl:text-2xl tracking-[0.7px] font-RobotoSlab md:xl ">
                   {offerProduct.stock < 0 ? "Out of stock" : <strong>{offerProduct.stock}</strong>}
                   {offerProduct.stock >= 0 && " left in stock"}
                 </span>
