@@ -127,11 +127,20 @@ export const SearchPage = () => {
         ) : (
           <>
             <div className="lg:flex lg:justify-between lg:items-start">
-              <article className="w-[65%] tablet:w-[40%] md:w-[30%] bg-[#ffffff] laptop:w-[40%] lg:w-[30%] ml-[4%] tablet:ml-[6%]  mb-12 flex-col flex gap-2 lg:ml-0 lg:max-w-[262px]">
+              {isFilterFnApplied && (selectedSubCategoryForFilter || priceRange) && (
+                <article className="w-[300px] tablet:w-[360px] max-w-[75%] md:w-[400px]  bg-[#ffffff] laptop:w-[17%]  ml-[4%] tablet:ml-[6%]  mb-12 flex-col flex gap-2 lg:ml-0 lg:order-2 lg:min-w-[400px]">
+                  <h3 className="text-lg font-bold ml-2"> Active Filters</h3>
+                  <div className="flex  justify-between h-14 bg-lightPrimaryColor text-white rounded-md shadow-[0px_3px_8px_0px_rgba(0,0,0,0.2)]  items-center px-[5%] font-medium text-base ">
+                    {selectedSubCategoryForFilter && <h3>Sub-Category : {selectedSubCategoryForFilter}</h3>}
+                    {priceRange && <h3>priceRange : {priceRange}($)</h3>}
+                  </div>
+                </article>
+              )}
+              <article className="w-[65%] lg:order-1 tablet:w-[40%] md:w-[30%] bg-[#ffffff] laptop:w-[40%] lg:w-[30%] ml-[4%] tablet:ml-[6%]  mb-12 flex-col flex gap-2 lg:ml-0 lg:max-w-[262px]">
                 <h3 className="text-lg font-bold ml-2"> Sort by</h3>
                 <div
                   className={`flex justify-between h-14 rounded-md shadow-[0.5px_2px_32px_-2px_rgba(0,0,0,0.1)] items-center px-[10%] cursor-pointer ${
-                    sortingCriteria !== "Default: Latest" && "bg-primaryColor text-white"
+                    sortingCriteria !== "Default: Latest" && "bg-lightPrimaryColor text-white"
                   }`}
                   onClick={(e) => {
                     e.currentTarget.nextElementSibling.classList.toggle("active-sorting-lists");
@@ -142,7 +151,7 @@ export const SearchPage = () => {
                 </div>
                 <div
                   className={`hidden flex-col bg-[#ffffff] rounded-md shadow-[0px_3px_8px_0px_rgba(0,0,0,0.2)]   py-4  gap-4 z-[200] px-[10%] sticky top-0 left-0 right-0 -mb-64  sorting-lists ${
-                    sortingCriteria !== "Default: Latest" && "bg-primaryColor text-white"
+                    sortingCriteria !== "Default: Latest" && "bg-lightPrimaryColor text-white"
                   }`}
                   onClick={(e) => handleSortingCriteriaSelection(e)}
                 >
@@ -154,15 +163,6 @@ export const SearchPage = () => {
                   <li data-list="sorting-criteria">Oldest</li>
                 </div>
               </article>
-              {isFilterFnApplied && (selectedSubCategoryForFilter || priceRange) && (
-                <article className="w-[300px] tablet:w-[360px] max-w-[75%] md:w-[400px]  bg-[#ffffff] laptop:w-[17%]  ml-[4%] tablet:ml-[6%]  mb-12 flex-col flex gap-2 lg:ml-0 lg:min-w-[400px]">
-                  <h3 className="text-lg font-bold ml-2"> Active Filters</h3>
-                  <div className="flex  justify-between h-14 bg-primaryColor text-white rounded-md shadow-[0px_3px_8px_0px_rgba(0,0,0,0.2)]  items-center px-[5%] font-medium text-base ">
-                    {selectedSubCategoryForFilter && <h3>Sub-Category : {selectedSubCategoryForFilter}</h3>}
-                    {priceRange && <h3>priceRange : {priceRange}($)</h3>}
-                  </div>
-                </article>
-              )}
             </div>
 
             {placeholderOfproductsDataCurrentlyRequested.length > 0 ? (
@@ -174,7 +174,7 @@ export const SearchPage = () => {
                 </section>
                 <PaginationSection {...{ setCurrentPageNo, NoOfProductsPerPage, currentPageNo }} />
                 <BiFilter
-                  className="w-16 lg:hidden h-16 bg-primaryColor shadow-md stroke-secondaryColor fixed right-[7%] bottom-[7%] z-[1000] cursor-pointer"
+                  className="w-16 lg:hidden h-16 bg-darkPrimaryColor shadow-lg fill-secondaryColor fixed right-[7%] bottom-[7%] z-[1000] cursor-pointer"
                   onClick={() => setIsFilterBySectionOpen(true)}
                 />
               </>

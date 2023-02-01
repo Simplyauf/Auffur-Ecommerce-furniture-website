@@ -42,43 +42,44 @@ export const SingleProductBox = ({ productsData }) => {
     if (inView) {
       controls.start({ scale: 1 });
     } else {
-      controls.start({ scale: 0.4 });
+      controls.start({ scale: 0.6 });
     }
   }, [controls, inView]);
+
   return (
     <motion.article
       ref={ref}
       animate={controls}
-      transition={{ duration: 0.3, ease: "easeOut" }}
+      transition={{ duration: 0.2, ease: "easeOut" }}
       className="flex w-[100%] tablet:mx-0 md:mx-0  mx-auto flex-col  bg-[#ffffff] relative"
     >
       <div
-        className={`absolute p-3 bg-[#ffffff] shadow-[0px_2px_8px_0px_#00000085] rounded-[50%] ease-in transition-colors cursor-pointer duration-300 top-[5%] right-[5%] z-[100] ${
-          isWishlisted && "bg-primaryColor"
+        className={`absolute p-3 bg-[#ffffff] shadow-[0px_3px_8px_0px_rgba(0,0,0,0.2)] rounded-[50%] ease-in transition-colors cursor-pointer duration-300 top-[5%] right-[5%] z-[100] ${
+          isWishlisted && "bg-lightPrimaryColor"
         }`}
         onClick={() => handleWishlistModification(_id, dispatch)}
       >
         <FiHeart
           className={`w-6 h-6 ${
-            isWishlisted && "fill-primaryColor duration-200 ease-linear transition-colors stroke-white"
+            isWishlisted && "fill-lightPrimaryColor duration-200 ease-linear transition-colors stroke-white"
           }`}
         />
       </div>
 
       {discountPercentValue > 0 && (
-        <div className="flex justify-center items-center absolute w-16 px-3 h-8 z-[100] top-[6%]  hover:opacity-100 bg-primaryColor text-white  shadow-[0px_3px_8px_0px_rgba(0,0,0,0.1)]  ">
+        <div className="flex justify-center items-center absolute w-16 px-3 h-8 z-[100] top-[6%]  hover:opacity-100 bg-lightPrimaryColor text-white  shadow-[0px_3px_8px_0px_rgba(0,0,0,0.2)]  ">
           <span>{discountPercentValue}%</span>
         </div>
       )}
 
       <div className="w-[100%] h-[290px] bg-neutralColor relative cursor-pointer product-img-container flex justify-center items-center rounded-md ease-in transition-all duration-100">
         <img src={image} alt="" className="rounded-md max-w-[90%] h-auto max-h-[90%] object-cover" />
-        <div className="product-img-overlay  rounded-md absolute top-0 left-0 z-50 bg-[#0000005d] w-[100%] h-[100%] opacity-0  transition-opacity ease-in duration-[0.5]"></div>
+        <div className="product-img-overlay  rounded-md absolute top-0 left-0 z-50 bg-[rgba(0,0,0,0.2)] w-[100%] h-[100%] opacity-0  transition-opacity ease-in duration-[0.5]"></div>
         <motion.button
           initial="initial"
           whileTap="click"
           variants={primaryBtnVariant}
-          className="absolute left-[25%] tablet:left-[20%] md:left-[20%] tablet:w-[60%] md:w-[60%] top-[40%] bg-primaryColor text-white hidden cursor-pointer rounded-md h-[48px] w-[50%] gap-1 justify-center z-[100] items-center product-details-link transition ease-in duration-[0.5]"
+          className="absolute left-[25%] tablet:left-[20%] md:left-[20%] tablet:w-[60%] md:w-[60%] top-[40%] bg-lightPrimaryColor text-white hidden cursor-pointer rounded-md h-[48px] w-[50%] gap-1 justify-center z-[100] items-center product-details-link transition ease-in duration-[0.5]"
         >
           <BsEye />
           <Link to={`/product/${_id}`}>

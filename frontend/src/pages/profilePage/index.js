@@ -67,10 +67,10 @@ export const ProfilePage = () => {
             <span>Profile</span>
           </div>
         </div>
-        <div className="flex mx-[4%] justify-between mt-16  md:mx-[4%] lg:mx-[2%] xl:mx:[4%] tablet:mx-[6%] ">
-          <article className="w-[50%] tablet:w-[35%] lg:w-[30%] md:w-[30%] bg-[#ffffff] laptop:w-[17%]  mb-16 flex-col flex gap-2">
+        <div className="flex mx-[4%] justify-between mt-16  md:mx-[4%] lg:mx-[2%] xl:mx-[4%] tablet:mx-[6%] ">
+          <article className="w-[50%] tablet:w-[35%] lg:w-[30%] md:w-[30%] bg-[#ffffff] max-w-[264px] mb-16 flex-col flex gap-2">
             <div
-              className="flex justify-between h-14 rounded-md shadow-[0px_3px_8px_0px_rgba(0,0,0,0.2)] items-center px-[10%] cursor-pointer bg-primaryColor text-white"
+              className="flex justify-between h-14 rounded-md shadow-[0px_3px_8px_0px_rgba(0,0,0,0.2)] items-center px-[10%] cursor-pointer bg-lightPrimaryColor text-white"
               onClick={(e) => {
                 e.currentTarget.nextElementSibling.classList.toggle("active-profilePage-tab");
               }}
@@ -79,7 +79,7 @@ export const ProfilePage = () => {
               <SlArrowDown className="w-4 h-4" />
             </div>
             <div
-              className="hidden flex-col rounded-md shadow-[0px_3px_8px_0px_rgba(0,0,0,0.2)]   py-4  gap-4 z-[200] px-[10%] sticky top-0 left-0 right-0 md:-mb-[11.5rem] bg-primaryColor text-white"
+              className="hidden flex-col rounded-md shadow-[0px_3px_8px_0px_rgba(0,0,0,0.2)]   py-4  gap-4 z-[200] px-[10%] sticky top-0 left-0 right-0 md:-mb-[11.5rem] bg-lightPrimaryColor text-white"
               onClick={handleProfilePageTabChange}
             >
               <Link to="accountInformation">
@@ -98,7 +98,7 @@ export const ProfilePage = () => {
             </div>
           </article>
           <div
-            className="text-center w-[100px] h-9  hover:opacity-100 bg-[hsl(37,98%,92%)] text-[hsl(37,98%,53%)] cursor-pointer shadow-[0px_3px_8px_0px_rgba(0,0,0,0.1)]  rounded-md flex items-center justify-center"
+            className="text-center w-[100px] h-9  hover:opacity-100 bg-lighterPrimaryColor text-[hsl(37,98%,53%)] cursor-pointer shadow-[0px_3px_8px_0px_rgba(0,0,0,0.1)]  rounded-md flex items-center justify-center"
             onClick={logoutBtnClick}
           >
             <span>logout</span> &nbsp; &nbsp; <BiLogOut className="w-6 h-6 stroke-primaryColor" />

@@ -111,11 +111,20 @@ const Index = () => {
         ) : (
           <>
             <div className="lg:flex lg:justify-between lg:items-start">
-              <article className="w-[65%] tablet:w-[40%] md:w-[30%] bg-[#ffffff] laptop:w-[17%] lg:w-[30%] ml-[4%] tablet:ml-[6%]  mb-20 flex-col lg:ml-0 flex gap-2 lg:max-w-[262px]">
+              {isFilterFnApplied && (selectedSubCategoryForFilter || priceRange) && (
+                <article className="w-[300px] tablet:w-[360px] max-w-[75%] md:w-[400px]  bg-[#ffffff] laptop:w-[17%]  ml-[4%] tablet:ml-[6%]  mb-12 flex-col flex gap-2 lg:ml-0 lg:order-2 lg:min-w-[400px]">
+                  <h3 className="text-lg font-bold ml-2"> Active Filters</h3>
+                  <div className="flex  justify-between h-14 bg-lightPrimaryColor text-white rounded-md shadow-[0px_3px_8px_0px_rgba(0,0,0,0.2)]  items-center px-[5%] font-medium text-base ">
+                    {selectedSubCategoryForFilter && <h3>Sub-Category : {selectedSubCategoryForFilter}</h3>}
+                    {priceRange && <h3>priceRange : {priceRange}($)</h3>}
+                  </div>
+                </article>
+              )}
+              <article className="w-[65%] tablet:w-[40%] md:w-[30%] bg-[#ffffff] lg:order-1 laptop:w-[17%] lg:w-[30%] ml-[4%] tablet:ml-[6%]  mb-20 flex-col lg:ml-0 flex gap-2 lg:max-w-[262px]">
                 <h3 className="text-lg font-bold ml-2"> Sort by</h3>
                 <div
                   className={`flex justify-between h-14 rounded-md  shadow-[0.5px_2px_32px_-2px_rgba(0,0,0,0.1)]  items-center px-[10%] cursor-pointer ${
-                    sortingCriteria !== "Default: Latest" && "bg-primaryColor text-white"
+                    sortingCriteria !== "Default: Latest" && "bg-lightPrimaryColor text-white"
                   }`}
                   onClick={(e) => {
                     e.currentTarget.nextElementSibling.classList.toggle("active-sorting-lists");
@@ -126,7 +135,7 @@ const Index = () => {
                 </div>
                 <div
                   className={`hidden flex-col bg-[#ffffff] rounded-md shadow-[0px_3px_8px_0px_rgba(0,0,0,0.2)]   py-4  gap-4 z-[200] px-[10%] sticky top-0 left-0 right-0 mb-[-16.5rem] lg:mb-[-15.5rem] transition duration-700 ease-in-out sorting-lists ${
-                    sortingCriteria !== "Default: Latest" && "bg-primaryColor text-white"
+                    sortingCriteria !== "Default: Latest" && "bg-lightPrimaryColor text-white"
                   }`}
                   onClick={(e) => handleSortingCriteriaSelection(e)}
                 >
@@ -138,17 +147,8 @@ const Index = () => {
                   <li data-list="sorting-criteria">Oldest</li>
                 </div>
               </article>
-
-              {isFilterFnApplied && (selectedSubCategoryForFilter || priceRange) && (
-                <article className="w-[300px] tablet:w-[360px] max-w-[75%] md:w-[400px]  bg-[#ffffff] laptop:w-[17%]  ml-[4%] tablet:ml-[6%]  mb-12 flex-col flex gap-2 lg:ml-0 lg:min-w-[400px]">
-                  <h3 className="text-lg font-bold ml-2"> Active Filters</h3>
-                  <div className="flex  justify-between h-14 bg-primaryColor text-white rounded-md shadow-[0px_3px_8px_0px_rgba(0,0,0,0.2)]  items-center px-[5%] font-medium text-base ">
-                    {selectedSubCategoryForFilter && <h3>Sub-Category : {selectedSubCategoryForFilter}</h3>}
-                    {priceRange && <h3>priceRange : {priceRange}($)</h3>}
-                  </div>
-                </article>
-              )}
             </div>
+
             {placeholderOfproductsDataCurrentlyRequested.length > 0 ? (
               <>
                 {" "}
@@ -158,10 +158,15 @@ const Index = () => {
                   })}
                 </section>
                 <PaginationSection {...{ setCurrentPageNo, NoOfProductsPerPage, currentPageNo }} />
-                <BiFilter
-                  className="w-16 lg:hidden h-16 bg-primaryColor shadow-md stroke-secondaryColor fixed right-[7%] bottom-[7%] z-[1000] cursor-pointer"
-                  onClick={() => setIsFilterBySectionOpen(true)}
-                />
+                <div className="fixed right-[7%] bottom-[7%] lg:hidden">
+                  <BiFilter
+                    className="w-16  h-16 bg-darkPrimaryColor shadow-lg shadow-[rgba(0,0,0,0.2)] fill-secondaryColor  z-1000 cursor-pointer"
+                    onClick={() => setIsFilterBySectionOpen(true)}
+                  />
+                  <span class="absolute   -left-5 -top-2 -translate-y-full w-20 px-2 py-1 bg-gray-700 rounded-lg text-center text-white text-sm after:content-[''] after:absolute after:left-1/2 after:top-[100%] shadow-lg shadow-[rgba(0,0,0,0.2)]   after:border-8 after:border-x-transparent after:border-b-transparent after:border-t-gray-700">
+                    Filter Products
+                  </span>
+                </div>
               </>
             ) : (
               <h1 className="text-center text-[28px] md-[32px] lg:text-[36px]">product match not found</h1>
