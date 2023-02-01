@@ -73,9 +73,11 @@ export const DealOfTheMonth = () => {
             <>
               <img className="w-[100%]  h-[100%]" alt="monthly-deal" src={dealOfTheMonthImg} />
 
-              <div className="flex justify-center items-center absolute w-16 tablet:w-24 tablet:h-24 md:w-28 md:h-28  h-16 z-[100] top-4 left-4 rounded-[50%] hover:opacity-100 bg-lightPrimaryColor text-white  shadow-[0px_3px_8px_0px_rgba(0,0,0,0.2)]  ">
-                <span className="text-sm tablet:text-base font-bold md:text-base">sold out</span>
-              </div>
+              {isOfferOn && stock <= 0 && (
+                <div className="flex justify-center items-center absolute w-16 tablet:w-24 tablet:h-24 md:w-28 md:h-28  h-16 z-[100] top-4 left-4 rounded-[50%] hover:opacity-100 bg-lightPrimaryColor text-white  shadow-[0px_3px_8px_0px_rgba(0,0,0,0.2)]  ">
+                  <span className="text-sm tablet:text-base font-bold md:text-base">sold out</span>
+                </div>
+              )}
             </>
           )}
         </div>
