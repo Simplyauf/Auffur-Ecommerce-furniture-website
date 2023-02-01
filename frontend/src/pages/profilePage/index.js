@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
-import { SlArrowDown } from "react-icons/sl";
+import { IoIosArrowDown } from "react-icons/io";
 import { BiLogOut } from "react-icons/bi";
 import { toast } from "react-toastify";
 import { isTokenValidBeforeHeadingToRoute } from "../../utils/isTokenValidBeforeHeadingToARoute";
@@ -76,7 +76,7 @@ export const ProfilePage = () => {
               }}
             >
               <h2>{currentTabInProfilePage}</h2>
-              <SlArrowDown className="w-4 h-4" />
+              <IoIosArrowDown className="w-6 h-6" />
             </div>
             <div
               className="hidden flex-col rounded-md shadow-[0px_3px_8px_0px_rgba(0,0,0,0.2)]   py-4  gap-4 z-[200] px-[10%] sticky top-0 left-0 right-0 md:-mb-[11.5rem] bg-lightPrimaryColor text-white"
