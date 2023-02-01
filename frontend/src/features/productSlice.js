@@ -13,11 +13,11 @@ const initialState = {
   fetchingError: null,
 };
 
-const url = "http://localhost:5000/api/v1/products";
+const serverUrl = process.env.REACT_APP_SERVER_URL || "http://localhost:5000";
 
 export const getAllProductsData = createAsyncThunk("products/getAllProductsData", async (_, thunkAPI) => {
   try {
-    const { data } = await axios.get(url);
+    const { data } = await axios.get(serverUrl + "/api/v1/products");
     return data.products;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.response.data?.message || error.message);

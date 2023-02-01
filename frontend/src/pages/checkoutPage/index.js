@@ -69,7 +69,7 @@ export const CheckoutPage = ({ setIsCartSectionActive }) => {
   };
 
   const placeOrderFn = async (e) => {
-    const serverUrl = "http://localhost:5000/";
+    const serverUrl = process.env.REACT_APP_SERVER_URL || "http://localhost:5000/";
     e.preventDefault();
     try {
       await axios.post(`${serverUrl}orders/placeOrders`, { orderDetails });
