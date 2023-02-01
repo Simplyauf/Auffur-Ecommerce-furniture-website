@@ -44,6 +44,7 @@ export const handleCartModification = (_id, dispatch, productQuantity, isObjInCa
           quantity: 1,
         };
         newCart = [...cart, currentCartedProduct];
+
         toast("Product has been added to cart", {
           type: "success",
           autoClose: 2000,
@@ -53,9 +54,10 @@ export const handleCartModification = (_id, dispatch, productQuantity, isObjInCa
 
         currentCartedProduct = {
           ...currentCartedProduct,
-          quantity: Number(productQuantity),
+          quantity: parseInt(productQuantity),
         };
         newCart = [...cart, currentCartedProduct];
+
         toast("Product has been added to cart", {
           type: "success",
           autoClose: 2000,

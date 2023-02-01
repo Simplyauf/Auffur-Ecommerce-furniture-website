@@ -14,11 +14,11 @@ export const ProductLoader = () => {
           ) : (
             <div className="flex items-center gap-4 ">
               <svg
-                class="loader ease-linear rounded-full border-8 border-t-primaryColor border-t-8 border-gray-200  h-16 w-16 ..."
+                className="loader ease-linear rounded-full border-8 border-t-primaryColor border-t-8 border-gray-200  h-16 w-16 ..."
                 viewBox="0 0 24 24"
               ></svg>
               <svg
-                class="loader ease-linear rounded-full border-8 border-t-primaryColor border-t-8 border-gray-200  h-16 w-16 ..."
+                className="loader ease-linear rounded-full border-8 border-t-primaryColor border-t-8 border-gray-200  h-16 w-16 ..."
                 viewBox="0 0 24 24"
               ></svg>
             </div>

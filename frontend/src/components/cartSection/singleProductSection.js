@@ -17,6 +17,7 @@ export const SingleProductSection = ({ cartData, setIsCartSectionActive }) => {
   useEffect(() => {
     for (let key of cart) {
       if (key._id === _id) {
+        console.log(key.quantity);
         setProductQuantityInCart(key.quantity);
       }
     }
@@ -27,7 +28,7 @@ export const SingleProductSection = ({ cartData, setIsCartSectionActive }) => {
     let newCart = structuredClone(cart);
     for (let key of newCart) {
       if (key._id === _id) {
-        key.quantity = Number(productQuantityInCart);
+        key = { ...key, quantity: parseInt(productQuantityInCart) };
       }
     }
     dispatch(setCart(newCart));
@@ -39,7 +40,7 @@ export const SingleProductSection = ({ cartData, setIsCartSectionActive }) => {
   return (
     <div className="flex gap-4 border-b-[1px] border-LightSecondaryColor pb-4">
       <div
-        className="w-[40%] h-[120px] tablet:h-[160px] md:h-[160px] bg-neutralColor relative cursor-pointer product-img-container flex justify-center items-center cursor-pointer"
+        className="w-[40%] h-[120px] tablet:h-[160px] md:h-[160px] bg-neutralColor relative cursor-pointer product-img-container flex justify-center items-center"
         onClick={() => {
           navigate(`/product/${_id}`);
           setIsCartSectionActive(false);

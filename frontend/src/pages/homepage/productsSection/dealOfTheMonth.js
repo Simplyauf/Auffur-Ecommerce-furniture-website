@@ -89,7 +89,7 @@ export const DealOfTheMonth = () => {
             </span>
             &nbsp; from this Furniture set
           </h2>
-          <h3 className="text-PrimaryColor mt-2 font-RobotoSlab  font-medium  text-xl tablet:text-2xl md:text-2xl xl:text-3xl">
+          <h3 className="text-primaryColor mt-2 font-RobotoSlab  font-medium  text-xl tablet:text-2xl md:text-2xl xl:text-3xl">
             {" "}
             {isOfferOn ? "Offer ends by :" : "Offer begins by :"}{" "}
           </h3>
@@ -116,14 +116,14 @@ export const DealOfTheMonth = () => {
           </div>
 
           <div className="flex flex-col gap-5 mt-2">
-            <h2 className=" flex gap-2 items-center">
+            <div className=" flex gap-2 items-center">
               <h3 className="font-bold text-[20px] md:text-[24px] lg:text-[20px] xl:text-2xl font-RobotoSlab  tracking-[0.5px]">
                 Title :
               </h3>
               <h3 className="font-bold capitalize font-RobotoSlab text-xl tablet:text-2xl lg:text-2xl">
                 {isOfferOn ? title : <span className="font-bold text-[16px]">???</span>}
               </h3>
-            </h2>
+            </div>
             <div className="flex gap-2 items-center">
               <h3 className="font-bold text-[20px] md:text-[24px] lg:text-[20px] xl:text-2xl tracking-[0.5px] font-RobotoSlab ">
                 Price :

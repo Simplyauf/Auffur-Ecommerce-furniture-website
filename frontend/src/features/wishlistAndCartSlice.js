@@ -4,7 +4,7 @@ const initialState = {
   wishlist: [],
   cart: [],
 };
-
+console.log(initialState);
 export const wishlistAndCartSlice = createSlice({
   name: "wishlistAndCartSlice",
   initialState,
@@ -14,6 +14,7 @@ export const wishlistAndCartSlice = createSlice({
       state.wishlist = payload;
     },
     setCart: (state, { payload }) => {
+      console.log(payload);
       state.cart = payload;
     },
   },

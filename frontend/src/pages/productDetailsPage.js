@@ -1,5 +1,5 @@
 import { IoIosArrowBack } from "react-icons/io";
-import { useNavigate, useParams, useLocation } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { FiHeart } from "react-icons/fi";
 import FooterSection from "../components/footerSection";
 import { useSelector, useDispatch } from "react-redux";
@@ -10,12 +10,10 @@ import { isProductInCartFn, isProductInWishlistFn } from "../utils/isSpecificPro
 import { ProductLoader } from "../components/loaders/productLoader";
 import { motion } from "framer-motion";
 import { primaryBtnVariant } from "../utils/animation";
-import { AnimatePresence } from "framer-motion";
 
 export const ProductDetailsPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const location = useLocation();
 
   const { allProductsData, isLoading } = useSelector((state) => state.productsData);
   const { wishlist, cart } = useSelector((state) => state.wishlistAndCartSection);
@@ -43,11 +41,11 @@ export const ProductDetailsPage = () => {
   }
 
   const handleAddAndRemoveItemInCartFn = () => {
-    if (!isProductInCart) {
-      handleCartModification(_id, dispatch, productQuantityInCart, isProductInCart);
-      setProductQuantityInCart(1);
-    } else if (productQuantityInCart < 1) {
+    if (productQuantityInCart < 1) {
       alert("product cant be less than 1");
+    } else if (!isProductInCart) {
+      handleCartModification(_id, dispatch, productQuantityInCart, isProductInCart);
+      setProductQuantityInCart(0);
     } else {
       handleCartModification(_id, dispatch, null, isProductInCart);
     }
@@ -149,7 +147,7 @@ export const ProductDetailsPage = () => {
               name=""
               id=""
               value={productQuantityInCart}
-              onChange={(e) => setProductQuantityInCart(e.currentTarget.value)}
+              onChange={(e) => setProductQuantityInCart(e.target.value)}
             />
           </div>
           <div>
