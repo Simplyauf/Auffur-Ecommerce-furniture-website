@@ -119,7 +119,7 @@ export const SearchPage = () => {
       />
 
       <div className="lg:col-start-2 lg:col-end-5 lg:row-span-1 lg:ml-[8%] xl:ml-[10%] lg:mr-[3%] xl:mr-[5%]">
-        <h3 className="text-center font-bold text-[24px] my-16 px-[10%]">
+        <h3 className="text-center font-bold text-[24px] my-20 px-[10%]">
           Showing search results for the term : "{locationArr[1]}"
         </h3>
         {searchedProductData.length < 1 ? (

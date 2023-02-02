@@ -27,7 +27,7 @@ export const OrderSummary = ({ setTotalAmountToBePaid }) => {
   }, [cart]);
 
   return (
-    <section className="mt-16 mb-16 lg:mb-0 w-[92%] tablet:w-[88%] mx-auto lg:mx-0  bg-white border-2 border-LightSecondaryColor py-8 lg:order-2 lg:basis-[40%] xl:basis-[35%]">
+    <section className="mt-20 mb-20 lg:mb-0 w-[92%] tablet:w-[88%] mx-auto lg:mx-0  bg-white border-2 border-LightSecondaryColor py-8 lg:order-2 lg:basis-[40%] xl:basis-[35%]">
       <h2 className="text-[28px] font-bold text-center mb-12">Order Summary</h2>
       <div className="flex flex-col gap-4 w-[90%] max-w-[500px] mx-auto ">
         {filteredCart.map((cartItem) => {
@@ -54,7 +54,7 @@ export const OrderSummary = ({ setTotalAmountToBePaid }) => {
           );
         })}
       </div>
-      <div className="pt-4 flex flex-col gap-4 border-t-[2px] border-LightSecondaryColor  mt-16 w-[100%] ">
+      <div className="pt-4 flex flex-col gap-4 border-t-[2px] border-LightSecondaryColor  mt-20 w-[100%] ">
         <div className="flex  items-center mx-[5%] justify-between  border-b-[1px] border-LightSecondaryColor pb-4">
           <h2 className="font-normal  text-[18px] md:text-[20px]">SubTotal</h2>
           <span className="text-lg tracking-wide ">${totalProductPrice.toFixed(2)} USD</span>

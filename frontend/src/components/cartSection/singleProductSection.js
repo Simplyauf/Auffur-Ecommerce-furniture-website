@@ -17,7 +17,6 @@ export const SingleProductSection = ({ cartData, setIsCartSectionActive }) => {
   useEffect(() => {
     for (let key of cart) {
       if (key._id === _id) {
-        console.log(key.quantity);
         setProductQuantityInCart(key.quantity);
       }
     }
@@ -25,10 +24,17 @@ export const SingleProductSection = ({ cartData, setIsCartSectionActive }) => {
 
   useEffect(() => {
     // ON QUANTITY CHANGE
-    let newCart = structuredClone(cart);
-    for (let key of newCart) {
-      if (key._id === _id) {
-        key = { ...key, quantity: parseInt(productQuantityInCart) };
+    let newCart;
+    //  this is for catching errors on non supported device{from chat gpt}
+    if (!window.Blob || !window.ImageBitmap || !window.ImageData || !window.Worker) {
+      newCart = [...cart];
+      alert("Your browser does not support the functionality. Please update to a newer version.");
+    } else {
+      newCart = structuredClone(cart);
+      for (let key of newCart) {
+        if (key._id === _id) {
+          key = { ...key, quantity: parseInt(productQuantityInCart) };
+        }
       }
     }
     dispatch(setCart(newCart));

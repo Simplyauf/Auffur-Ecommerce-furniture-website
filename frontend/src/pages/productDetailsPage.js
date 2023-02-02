@@ -76,12 +76,11 @@ export const ProductDetailsPage = () => {
   if (isLoading) {
     return <ProductLoader />;
   }
-
   return (
     <motion.div
       initial={{ scale: 0 }}
-      exit={{ scale: 0, rotate: 360, transition: { ease: "easeIn", duration: 0.7 } }}
-      animate={{ scale: 1, rotate: 360, transition: { duration: 0.7, ease: "easeOut" } }}
+      exit={{ scale: 0, rotate: 360, transition: { ease: "easeIn", duration: 0.5 } }}
+      animate={{ scale: 1, rotate: 360, transition: { duration: 0.5, ease: "easeOut" } }}
       className="w-[100%] "
     >
       <div className="mt-12 w-[100%] h-[54px] bg-neutralColor text-secondaryColor xl:px-[4%] px-[4%] lg:px-[2%] flex items-center justify-between font-bold tablet:px-[6%] font-RobotoCondensed lg:col-span-full lg:row-span-1">
@@ -98,7 +97,7 @@ export const ProductDetailsPage = () => {
           <span className=" capitalize">{title}</span>
         </div>
       </div>
-      <section className="className mt-16 mb-32 w-[92%] mx-auto gap-6 flex flex-col lg:flex-row  lg:gap-2 md:justify-between tablet:w-[88%] lg:w-[96%]">
+      <section className="className my-20 mb-32 w-[92%] mx-auto gap-6 flex flex-col lg:flex-row  lg:gap-2 md:justify-between tablet:w-[88%] lg:w-[96%]">
         <div className="w-[100%] lg:mx-0 lg:basis-[50%] lg:h-max min-h-[320px] tablet:min-h-[450px] md:min-h-[500px] h-auto mx-auto bg-neutralColor relative flex justify-center items-center">
           <img src={image} alt="" className="w-auto max-w-[99%] h-auto  object-cover" />
           <div
@@ -114,15 +113,18 @@ export const ProductDetailsPage = () => {
             />
           </div>
         </div>
-        <div className="lg:basis-[40%] flex flex-col gap-6">
+        <div className="lg:basis-[40%] mt-16 lg:mt-0 flex flex-col gap-6">
           <h2 className="text-[28px] font-bold tracking-[0.5px] capitalize">{title}</h2>
+
           {discountPercentValue > 0 ? (
             <div className="flex gap-2">
-              <h3 className="font-bold text-[20px] md:text-[24px]  tracking-[1px]">${discountedPrice.toFixed(2)}</h3>
-              <h3 className="line-through tracking-[1px] text-[18px] md:text-[20px] ">${price.toFixed(2)}</h3>
+              <h3 className="font-bold text-[24px] md:text-[28px]  tracking-[1px]">
+                ${discountedPrice.toFixed(2)} USD
+              </h3>
+              <h3 className="line-through tracking-[1px] text-[20px] md:text-[24px] ">${price.toFixed(2)} USD</h3>
             </div>
           ) : (
-            <h3 className="font-bold text-[20px] md:text-[24px] tracking-[1px]">${price.toFixed(2)}</h3>
+            <h3 className="font-bold text-[24px] md:text-[28px] tracking-[1px]">${price.toFixed(2)} USD</h3>
           )}
           <div className="flex gap-1 items-end">
             <h3 className="font-bold tracking-[0.5px] text-[20px]">Availability :</h3>

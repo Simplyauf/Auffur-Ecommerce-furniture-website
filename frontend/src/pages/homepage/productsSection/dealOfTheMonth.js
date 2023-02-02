@@ -59,7 +59,7 @@ export const DealOfTheMonth = () => {
   let discountedPrice = price - (price * discountPercentValue) / 100;
 
   return (
-    <section>
+    <section className="mb-20">
       <h1 className="font-bold text-[36px] mb-8 text-center ">Deal of the Month</h1>
       <div className="w-[100%] md:w-[100%] lg:gap-0  lg:justify-between bg-neutralColor  pb-14 gap-9 lg:order-1 flex flex-col lg:pl-0  lg:flex-row md:py-0 lg:min-h-[480px]  lg:pr-[1%]">
         <div className="w-[100%] lg:max-h-[600px] max-h-[620px] md:h-[600px] h-auto md:min-h-[600px] relative lg:mx-0 mx-auto lg:basis-[55%]">

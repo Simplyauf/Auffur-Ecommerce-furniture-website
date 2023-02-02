@@ -47,7 +47,7 @@ export const Wishlist = ({ isWishlistActive, setIsWishlistActive }) => {
                 })}
               </div>
             )}
-            <div className="pt-4 border-t-[2px] border-LightSecondaryColor mt-14 w-[100%]">
+            <div className="pt-4 border-t-[2px] border-LightSecondaryColor mt-20 w-[100%]">
               <div className="w-[100%] px-[5%]">
                 <motion.button
                   variants={primaryBtnVariant}

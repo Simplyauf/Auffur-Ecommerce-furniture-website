@@ -104,8 +104,8 @@ const Index = () => {
         }}
       />
 
-      <div className="lg:col-start-2 lg:col-end-5 lg:row-span-1 lg:ml-[8%] xl:ml-[10%] lg:mr-[3%] xl:mr-[5%]">
-        <h1 className="text-center font-bold text-[2.5rem] my-16">Shop</h1>
+      <div className="lg:col-start-2  lg:col-end-5 lg:row-span-1 lg:ml-[8%] xl:ml-[10%] lg:mr-[3%] xl:mr-[5%]">
+        <h1 className="text-center font-bold text-[2.5rem] my-20">Shop</h1>
         {isLoading ? (
           <ProductLoader />
         ) : (

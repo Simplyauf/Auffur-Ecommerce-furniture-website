@@ -87,7 +87,7 @@ export const Cart = ({ isCartSectionActive, setIsCartSectionActive }) => {
                 })}
               </div>
             )}
-            <div className="pt-4 flex flex-col gap-4 border-t-[2px] border-LightSecondaryColor mt-14 w-[100%]">
+            <div className="pt-4 flex flex-col gap-4 border-t-[2px] border-LightSecondaryColor mt-20 w-[100%]">
               <div className="flex  items-center mx-[5%] justify-between  border-b-[1px] border-LightSecondaryColor pb-4">
                 <h2 className="font-normal text-[18px] md:text-[20px]">SubTotal</h2>
                 <span className="text-lg tracking-wide ">${totalProductPrice.toFixed(2)} USD</span>

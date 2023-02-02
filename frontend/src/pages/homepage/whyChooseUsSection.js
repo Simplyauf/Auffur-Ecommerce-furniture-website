@@ -6,7 +6,7 @@ import { TbDiscount2 } from "react-icons/tb";
 
 export const WhyChooseUsSection = () => {
   return (
-    <div className="py-16 mb-16 bg-neutralColor w-[100%]">
+    <div className="pt-20 pb-16 mb-20 bg-neutralColor w-[100%]">
       <h2 className="text-[40px] text-center  font-bold ">Why choose us</h2>
       <div className="flex items-start w-[18.5em] max-w-[92%] mx-auto gap-12  mt-10 flex-col tablet:w-[70%] md:flex-row md:w-[80%] md:flex-wrap md:justify-between">
         <div className="flex w-[100%] md:basis-[45%]  items-start gap-4 tablet:gap-6 tablet:w-[90%] tablet:max-w-[384px]">

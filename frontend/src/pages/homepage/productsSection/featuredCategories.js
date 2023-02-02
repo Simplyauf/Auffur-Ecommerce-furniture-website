@@ -13,9 +13,9 @@ export const FeaturedCategories = () => {
     { title: "living room", src: livingRoomCategoryBgImg },
   ];
   return (
-    <section className="my-16">
+    <section className="my-20">
       <h2 className="text-[36px] text-center mb-10 font-bold mx-4">Featured Categories</h2>
-      <div className="flex flex-col items-center gap-10 md:flex-row md:w-[92%] lg:w-[96%] xl:w-[92%] md:mx-auto md:justify-between md:flex-wrap md:gap-2">
+      <div className="flex flex-col items-center gap-12 md:flex-row md:w-[92%] lg:w-[96%] xl:w-[92%] md:mx-auto md:justify-between md:flex-wrap md:gap-2">
         {categoriesFaceArr.map((category, index) => {
           return (
             <article
@@ -37,7 +37,7 @@ export const FeaturedCategories = () => {
           );
         })}
       </div>
-      <div className="flex flex-col w-[100%] mt-10 gap-10">
+      <div className="flex flex-col w-[100%] mt-20 gap-12">
         <article className="bg-[#e5e5e5] text-secondaryColor  h-[150px] flex justify-center items-center px-[4%]">
           <h1 className="font-bold text-[24px] tablet:w-[55%] md:w-[55%] lg:w-[40%] text-center">
             GET UP TO <span className="text-primaryColor mr-[5px]">95% OFF</span>ON FIRST ORDER DEAL AND FREE SHIPPING{" "}

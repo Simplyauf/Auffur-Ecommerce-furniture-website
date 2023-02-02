@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 
 export const AccountInformation = () => {
   const { userData } = useSelector((state) => state.userAuth);
-  console.log(userData);
+
   return (
     <div className="w-[100] tablet:px-[6%] mb-20 xl:px-[4%] px-[4%] lg:px-[2%]">
       <h2 className="text-2xl text-center">Account Information</h2>

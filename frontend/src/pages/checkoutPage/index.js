@@ -16,6 +16,7 @@ export const CheckoutPage = ({ setIsCartSectionActive }) => {
     isTokenValidLoader,
     userData: { email, username, country, city, address, postalCode, shippingMethod },
   } = useSelector((state) => state.userAuth);
+
   const [totalAmountToBePaid, setTotalAmountToBePaid] = useState(0);
 
   const [checkoutFormData, setCheckoutFormData] = useState({
