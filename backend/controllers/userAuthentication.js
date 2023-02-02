@@ -64,8 +64,9 @@ const loginUser = async (req, res) => {
     throw new CustomErrorHandler(400, "Incorect email or password");
   } else if (checkIfEmailExists && (await bcryptjs.compare(password, checkIfEmailExists.password))) {
     let loginToken = generateToken(email, "verified", "30d");
+
     const { username } = checkIfEmailExists._doc;
-    await User.updateOne({ verificationToken: loginToken });
+    await User.findByIdAndUpdate({ _id: checkIfEmailExists._id }, { verificationToken: loginToken });
 
     res.json({ message: "You have sucessfully logged in", userData: { username, email, loginToken } });
   }
