@@ -4,7 +4,8 @@
   "description": "Auffur is an e-commerce platform",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "server": "nodemon app.js"
   },
   "author": "Azeez umar faruk",
   "license": "ISC",

@@ -6,7 +6,7 @@ const errorHandler = (err, req, res, next) => {
   if (err instanceof CustomErrorHandler) {
     res.status(err.statusCode).json({ message: err.message });
   } else if (err instanceof mongoose.Error.ValidationError) {
-    res.status(400).json({ message: err.message });
+    res.status(400).json({ message: err._message || err.message });
   } else {
     res.status(500).json({ message: "Something went wrong" });
   }

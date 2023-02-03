@@ -72,4 +72,16 @@ const loginUser = async (req, res) => {
   }
 };
 
-module.exports = { registerUser, loginUser, generateToken, emailVerificationMessageDatas };
+// DELETE USERS
+
+const deleteUser = async (req, res) => {
+  const { id } = req.params;
+  if (!id) {
+    throw new CustomErrorHandler(401, "parameters missing");
+  }
+  const user = await User.findByIdAndDelete(id);
+
+  res.status(201).json({});
+};
+
+module.exports = { registerUser, loginUser, generateToken, emailVerificationMessageDatas, deleteUser };
