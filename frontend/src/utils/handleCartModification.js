@@ -21,23 +21,23 @@ export const handleCartModification = (_id, dispatch, productQuantity, isObjInCa
       } else if (productQuantity) {
         // ON QUANTITY CHANGE
         //  this is for catching errors on non supported device{from chat gpt}
-        if (!window.Blob || !window.ImageBitmap || !window.ImageData || !window.Worker) {
+        if (!structuredClone) {
           newCart = [...cart];
           alert("Your browser does not support the functionality. Please update to a newer version.");
-        }
-        let clonedCart = structuredClone(cart);
-        for (let key of clonedCart) {
-          if (key._id === _id) {
-            key.quantity = key.quantity + Number(productQuantity);
+        } else {
+          let clonedCart = structuredClone(cart);
+          for (let key of clonedCart) {
+            if (key._id === _id) {
+              key.quantity = key.quantity + Number(productQuantity);
+            }
           }
+          newCart = [...clonedCart];
+          toast("Product has been added to cart", {
+            type: "success",
+            autoClose: 2000,
+          });
         }
-        newCart = [...clonedCart];
-        toast("Product has been added to cart", {
-          type: "success",
-          autoClose: 2000,
-        });
       }
-
       break;
 
     case false:

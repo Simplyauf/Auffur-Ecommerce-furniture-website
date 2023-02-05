@@ -26,7 +26,7 @@ export const SingleProductSection = ({ cartData, setIsCartSectionActive }) => {
     // ON QUANTITY CHANGE
     let newCart;
     //  this is for catching errors on non supported device{from chat gpt}
-    if (!window.Blob || !window.ImageBitmap || !window.ImageData || !window.Worker) {
+    if (!structuredClone) {
       newCart = [...cart];
       alert("Your browser does not support the functionality. Please update to a newer version.");
     } else {
