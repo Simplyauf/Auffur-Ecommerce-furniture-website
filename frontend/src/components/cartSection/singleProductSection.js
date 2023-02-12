@@ -22,19 +22,15 @@ export const SingleProductSection = ({ cartData, setIsCartSectionActive }) => {
     }
   }, [cart]);
 
+  // on quantity change
   useEffect(() => {
-    // ON QUANTITY CHANGE
-    let newCart;
-    //  this is for catching errors on non supported device{from chat gpt}
-    if (!structuredClone) {
-      newCart = [...cart];
-      alert("Your browser does not support the functionality. Please update to a newer version.");
-    } else {
-      newCart = structuredClone(cart);
-      for (let key of newCart) {
-        if (key._id === _id) {
-          key = { ...key, quantity: parseInt(productQuantityInCart) };
-        }
+    let newCart = [...cart];
+
+    for (let key of newCart) {
+      if (key._id === _id) {
+        // the keys of newCart are still immutable so i modified the obj[index] instead of using key directly as it is still a reference to another obj due to shallow copy.i removed structuredClone due to it having few supported device
+        const index = newCart.indexOf(key);
+        newCart[index] = { ...key, quantity: parseInt(productQuantityInCart) };
       }
     }
     dispatch(setCart(newCart));
@@ -86,7 +82,7 @@ export const SingleProductSection = ({ cartData, setIsCartSectionActive }) => {
         name=""
         id=""
         value={productQuantityInCart}
-        onChange={(e) => setProductQuantityInCart(e.currentTarget.value)}
+        onChange={(e) => setProductQuantityInCart(e.target.value)}
       />
     </div>
   );

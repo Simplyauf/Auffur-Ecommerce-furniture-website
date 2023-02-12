@@ -45,7 +45,7 @@ export const ProductDetailsPage = () => {
       alert("product cant be less than 1");
     } else if (!isProductInCart) {
       handleCartModification(_id, dispatch, productQuantityInCart, isProductInCart);
-      setProductQuantityInCart(0);
+      setProductQuantityInCart(1);
     } else {
       handleCartModification(_id, dispatch, null, isProductInCart);
     }
@@ -67,7 +67,7 @@ export const ProductDetailsPage = () => {
       handleCartModification(_id, dispatch, productQuantityInCart, isProductInCart);
       navigate("/checkout");
     } else {
-      handleCartModification(_id, dispatch, null, isProductInCart);
+      handleCartModification(_id, dispatch, productQuantityInCart, isProductInCart);
       navigate("/checkout");
     }
   };
