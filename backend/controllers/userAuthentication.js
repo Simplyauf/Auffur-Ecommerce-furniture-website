@@ -68,7 +68,7 @@ const loginUser = async (req, res) => {
     const { username } = checkIfEmailExists._doc;
     await User.findByIdAndUpdate({ _id: checkIfEmailExists._id }, { verificationToken: loginToken });
 
-    res.json({ message: "You have sucessfully logged in", userData: { username, email, loginToken } });
+    res.json({ message: "You have sucessfully logged in", userData: { ...checkIfEmailExists, loginToken } });
   }
 };
 

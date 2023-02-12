@@ -21,7 +21,7 @@ export const Cart = ({ isCartSectionActive, setIsCartSectionActive }) => {
   const { isLoading } = useSelector((state) => state.productsData);
   const { shippingMethod } = useSelector((state) => state.userAuth);
 
-  console.log(cart);
+
   // setting shippingMethodValue based on chosen method
   useEffect(() => {
     handleSetShippingMethodValue(shippingMethod, setShippingMethodValue);

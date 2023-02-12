@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 
 export const ProductLoader = () => {
   const { loadingOrErrorMessage, fetchingError } = useSelector((state) => state.productsData);
-  console.log(fetchingError);
+
   return (
     <div className="w-[100%] h-[50vh]">
       <div className="flex flex-col items-center flex-wrap gap-[24px] justify-center w-[100%] h-[100%]">

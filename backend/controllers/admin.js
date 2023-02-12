@@ -76,7 +76,7 @@ const removeAdmin = async (req, res) => {
 };
 
 const getAdminDatas = async (req, res) => {
-  const adminDatas = await Admin.find({});
+  const adminDatas = await Admin.find({}).populate(userData);
   res.status(200).json({ adminDatas });
 };
 
@@ -88,7 +88,7 @@ const clearAdminJwt = async () => {
     let {
       userData: { verificationToken },
     } = await key.populate("userData");
-    console.log(verificationToken);
+
     if (new Date() - key.lastLogin > 6 * 60 * 60 * 1000) {
       verificationToken = "";
       await key.save();
@@ -96,4 +96,9 @@ const clearAdminJwt = async () => {
   }
 };
 
-module.exports = { createNewAdmin, removeAdmin, getAdminDatas, clearAdminJwt };
+const validateUserAsAnAdmin = async (req, res) => {
+  res.locals = "";
+
+  res.status(200).send("success");
+};
+module.exports = { createNewAdmin, removeAdmin, getAdminDatas, clearAdminJwt, validateUserAsAnAdmin };

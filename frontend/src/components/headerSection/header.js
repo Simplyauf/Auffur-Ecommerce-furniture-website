@@ -74,7 +74,7 @@ export const Header = ({ setIsWishlistActive, setIsCartSectionActive, isLargeScr
 
   // on user  or myaccount icon btn click
   const handleMyAccountClick = async () => {
-    navigate("/profilePage");
+    navigate("/profilePage/accountInformation");
   };
 
   return (

@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Homepage from "../pages/homepage/homepage";
 import ShopPage from "../pages/shopPage";
-import { AdminPage } from "../pages/adminPage";
+import AdminPage from "../pages/adminPage";
 import { SearchPage } from "../pages/searchPage/searchPage";
 import { ProductDetailsPage } from "../pages/productDetailsPage";
 import { CheckoutPage } from "../pages/checkoutPage";
@@ -19,6 +19,10 @@ import { ContactUsPage } from "../pages/contactUsPage";
 import { AboutUsPage } from "../pages/aboutUsPage";
 import { AnimatePresence } from "framer-motion";
 import { useLocation } from "react-router-dom";
+import { Dashboard } from "../pages/adminPage/dashboard";
+import { ProductManagement } from "../pages/adminPage/productTab/";
+import { UserManagement } from "../pages/adminPage/user";
+import { AdminManagement } from "../pages/adminPage/adminManagement/admins";
 
 const PagesRoute = ({ setIsCartSectionActive }) => {
   const location = useLocation();
@@ -29,6 +33,7 @@ const PagesRoute = ({ setIsCartSectionActive }) => {
         <Route path="/shop" element={<ShopPage />} />
         <Route path="/aboutUs" element={<AboutUsPage />} />
         <Route path="/contactUs" element={<ContactUsPage />} />
+
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/product/:productId" element={<ProductDetailsPage />} />
@@ -36,6 +41,7 @@ const PagesRoute = ({ setIsCartSectionActive }) => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/changeMyPassword" element={<EnterNewPassword />} />
+
         <Route path="profilePage" element={<ProfilePage />}>
           <Route index element={<Navigate to="accountInformation" />} />
           <Route path="accountInformation" element={<AccountInformation />} />
@@ -43,6 +49,15 @@ const PagesRoute = ({ setIsCartSectionActive }) => {
           <Route path="myOrders" element={<Orders />} />
           <Route path="accountSettings" element={<AccountSettings />} />
         </Route>
+
+        <Route path="administrator" element={<AdminPage />}>
+          <Route index element={<Navigate to="product-Management" />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="product-Management" element={<ProductManagement />} />
+          <Route path="user-Management" element={<UserManagement />} />
+          <Route path="admin-Management" element={<AdminManagement />} />
+        </Route>
+
         <Route path="*" element={<h2>path doesnt exist</h2>} />
       </Routes>
     </AnimatePresence>

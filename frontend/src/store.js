@@ -7,6 +7,7 @@ import authSlice from "./features/authSlice";
 import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { getDefaultMiddleware } from "@reduxjs/toolkit";
+import adminSlice from "./features/adminSlice";
 
 const persistConfig = {
   key: "wishlistAndCartSlice",
@@ -20,6 +21,7 @@ export const store = configureStore({
     filterByCategoryAndPrice: filterBySlice,
     wishlistAndCartSection: wishlistAndCartPersistedReducer,
     userAuth: authSlice,
+    adminOperations: adminSlice,
   },
   middleware: getDefaultMiddleware({
     serializableCheck: {

@@ -112,11 +112,17 @@
   .active-profilePage-tab {
     @apply flex;
   }
+  .active-AdminPage-tab {
+    @apply flex;
+  }
   .homepage-active-category-tab div {
     @apply w-[100%] transition ease-in duration-100;
   }
   .active-product-page-no {
     @apply bg-[#fca311] text-white border-none transition-all duration-500;
+  }
+  .admin-table-borderBottom tr:last-child td {
+    @apply border-b;
   }
 }
 

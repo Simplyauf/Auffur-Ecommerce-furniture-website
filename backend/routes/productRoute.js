@@ -7,6 +7,7 @@ const {
   deleteAspecificProduct,
   searchProducts,
   updateAspecificProduct,
+  sortByLowStockProducts,
 } = require("../controllers/products");
 const { checkIfUserIsAnAdminMiddleware } = require("../middleware/adminAuthorisation");
 
@@ -16,7 +17,8 @@ router.route("/").post(checkIfUserIsAnAdminMiddleware, createProducts).get(getAl
 router.route("/upload").post(checkIfUserIsAnAdminMiddleware, uploadProductImages);
 router.route("/getProduct/:id").get(getAspecificProduct);
 router.route("/deleteProduct/:id").delete(checkIfUserIsAnAdminMiddleware, deleteAspecificProduct);
-router.route("/editAndupdateProduct").patch(checkIfUserIsAnAdminMiddleware, updateAspecificProduct);
+router.route("/editAndupdateProduct/:id").patch(checkIfUserIsAnAdminMiddleware, updateAspecificProduct);
 router.route("/searchProducts").get(searchProducts);
+router.route("/sortByLowStockProducts").get(sortByLowStockProducts);
 
 module.exports = router;
