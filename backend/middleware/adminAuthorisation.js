@@ -26,7 +26,7 @@ const checkIfUserIsAnAdminMiddleware = async (req, res, next) => {
     throw new CustomErrorHandler(401, "Unauthorized,only logged in admin may perfrom action");
   } else if (checkIfTokenExist && checkIfTokenExist.adminStatus === true) {
     const adminData = await Admin.findOne({ userData: checkIfTokenExist._id });
-    console.log("hi");
+    
     res.locals.actionDoer = { doerRank: adminData.adminRank, doerData: checkIfTokenExist };
     next();
   } else {

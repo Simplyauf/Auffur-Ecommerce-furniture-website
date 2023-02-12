@@ -77,7 +77,7 @@ const Index = () => {
       ) : (
         <>
           <div
-            className="flex  items-center whitespace-nowrap  mx-auto w-[92%] tablet:w-[88%] overflow-auto justify-center flex-nowrap gap-6 my-10 tablet:gap-8 "
+            className="flex tablet:justify-center md:justify-center items-center whitespace-nowrap  mx-auto w-[92%] tablet:w-[88%] overflow-x-auto  flex-nowrap gap-6 my-10 tablet:gap-8 "
             onClick={(e) => handleCategoryClick(e)}
             ref={categoryContainerRef}
           >

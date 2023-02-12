@@ -4,8 +4,11 @@ import bedroomCategoryBgImg from "../../../assets/bedRoomCategory.jpg";
 import kidsCategoryBgImg from "../../../assets/kidsCategory.jpg";
 import firstOrderCategoryBgImg from "../../../assets/firstOrderCategory.jpg";
 import livingRoomCategoryBgImg from "../../../assets/livingRoomCategory.jpg";
+import { useNavigate } from "react-router-dom";
 
 export const FeaturedCategories = () => {
+  const navigateShop = useNavigate();
+
   const categoriesFaceArr = [
     { title: "kids", src: kidsCategoryBgImg },
     { title: "first order deal", src: firstOrderCategoryBgImg },
@@ -27,7 +30,10 @@ export const FeaturedCategories = () => {
                 className="w-[100%]  bg-neutralColor  bg-cover bg-no-repeat bg-center relative category-img-container h-[350px] tablet:h-[400px]"
               >
                 <div className="product-img-overlay hidden absolute top-0 left-0 z-50 bg-[#0000005d] w-[100%] h-[100%]"></div>
-                <button className="absolute left-[25%] top-[40%] bg-primaryColor text-white hidden cursor-pointer rounded-sm h-[44px] w-[50%] gap-3 justify-center z-[100]  items-center category-shop-link">
+                <button
+                  onClick={() => navigateShop("/shop")}
+                  className="absolute left-[25%] top-[40%] bg-primaryColor text-white hidden cursor-pointer rounded-sm h-[44px] w-[50%] gap-3 justify-center z-[100]  items-center category-shop-link"
+                >
                   <span> Shop Now</span>
                   <BsArrowRight />
                 </button>
