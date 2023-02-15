@@ -19,7 +19,7 @@ Auffur offers several key features to enhance the user experience, including:
 ## Built With
 The following technologies were utilized in the development of Auffur:
 
-- [Auffur server api](https://auffur.onrender.com) 
+- [Auffur server backend api](https://auffur.onrender.com) 
 - [Redux Toolkit](https://redux-toolkit.js.org/)
 - [ReactJS](https://reactjs.org/)
 - [TailwindCSS](https://tailwindcss.com/)
@@ -28,13 +28,19 @@ The following technologies were utilized in the development of Auffur:
 - [Framer Motion Animation Library](https://www.framer.com/motion/)
 
 ## Live URL
-Auffur is currently in the process of being hosted and will be available at the following URL soon:
+  This project is currently live at the following URL:
+- [Auffur furniture website](https://auffur-furnishes.netlify.app/)
 
-Live Site URL: [Coming Soon](#)
 
 ## Screenshots & Gifs
-A visual representation of Auffur will be made available shortly:
+<div>
+  <img src="https://raw.githubusercontent.com/Simplyauf/Auffur/master/screenshot1.png"  style="width=auto; height:360px;  margin-left:8px;">
+  <img src="https://raw.githubusercontent.com/Simplyauf/Auffur/master/screenshot2.png"   style="width=auto;  height:360px;  margin-left:8px;">  
+   <img src="https://raw.githubusercontent.com/Simplyauf/Auffur/master/screenshot4.png"   style="width=auto;  height:360px;  margin-left:8px;">
+    <img src="https://raw.githubusercontent.com/Simplyauf/Auffur/master/site_gif1.gif"   style="width=auto;  height:400px; margin-left:20px;">
+</div>
 
-Screenshots & Gifs: [Coming Soon](#)
 
-Please note that this project is still ongoing.
+# Backend
+
+ * The documentation is in the [Backend README](./backend/README.md)
