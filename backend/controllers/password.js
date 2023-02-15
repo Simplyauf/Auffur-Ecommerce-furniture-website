@@ -21,7 +21,8 @@ const resetPasswordMessageData = (passwordVerificationToken) => {
 
 // This fires when "forgot password" button is clicked in frontend,it assumes the user email should be in login field
 const handleForgotPasswordClick = async (req, res) => {
-  const { email } = req.body;
+  const email = req.body?.email?.toLowerCase();
+  
   let checkIfEmailExists = await User.findOne({ email });
 
   if (!checkIfEmailExists) {

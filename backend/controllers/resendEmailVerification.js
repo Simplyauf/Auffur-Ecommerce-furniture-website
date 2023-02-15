@@ -4,7 +4,7 @@ const CustomErrorHandler = require("../errors/customErrorHandler");
 const { sendMessageToUserEmail } = require("./sendMailToUsers");
 
 const resendEmailVerification = async (req, res) => {
-  const { email } = req.body;
+  const email = req.body?.email?.toLowerCase();
 
   let checkIfEmailExists = await User.findOne({ email });
 

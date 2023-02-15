@@ -4,7 +4,9 @@ const Product = require("../models/products");
 
 const postUserOrders = async (req, res) => {
   const { orderDetails } = req.body;
-  const { email, products } = orderDetails;
+  const { products } = orderDetails;
+
+  const email = req.body?.orderDetails?.email?.toLowerCase();
 
   let isOrderAboveLimit;
   for (let key of products) {

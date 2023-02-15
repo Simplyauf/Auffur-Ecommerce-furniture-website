@@ -6,7 +6,9 @@ const User = require("../models/userData");
 const mongoose = require("mongoose");
 
 const createNewAdmin = async (req, res) => {
-  const { email, adminRank } = req.body;
+  const { adminRank } = req.body;
+  const email = req.body?.email?.toLowerCase();
+
   const { doerRank, doerData } = res.locals.actionDoer;
 
   let checkIfEmailExistsinUsers = await User.findOne({ email });
@@ -43,7 +45,8 @@ const createNewAdmin = async (req, res) => {
 };
 
 const removeAdmin = async (req, res) => {
-  const { email } = req.body;
+  const email = req.body?.email?.toLowerCase();
+
   const { doerRank, doerData } = res.locals.actionDoer;
 
   let checkIfEmailExistsinUsers = await User.findOne({ email });

@@ -28,7 +28,9 @@ const emailVerificationMessageDatas = (emailVerificationToken) => {
 
 //Register
 const registerUser = async (req, res) => {
-  const { email, username, password } = req.body;
+  const { username, password } = req.body;
+  const email = req.body?.email?.toLowerCase();
+
   let checkIfEmailExists = await User.findOne({ email });
   let token = generateToken(email, "pending", "5d");
   const hashedpassword = await bcryptjs.hash(password, 10);
@@ -55,7 +57,9 @@ const registerUser = async (req, res) => {
 
 //LOGIN
 const loginUser = async (req, res) => {
-  const { email, password } = req.body;
+  const { password } = req.body;
+  const email = req.body?.email?.toLowerCase();
+
   let checkIfEmailExists = await User.findOne({ email }).lean();
 
   if (!checkIfEmailExists) {

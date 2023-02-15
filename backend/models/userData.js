@@ -64,4 +64,9 @@ const userSchema = mongoose.Schema(
   }
 );
 
+userSchema.pre("save", function (next) {
+  this.email = this.email.toLowerCase();
+  next();
+});
+
 module.exports = mongoose.model("User", userSchema);
