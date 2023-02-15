@@ -174,42 +174,40 @@ export const EditAndupdateProductModal = ({
     }
   };
 
-  console.log(productDetails.categories, productDetails);
   return (
     <>
       {" "}
       {isFetchingUpdatedDataLoading && <FullpageSpinnerLoader />}
       <div
-        class={`fixed bottom-0 inset-x-0 px-4 pb-4 sm:inset-0 flex items-center justify-center overflow-y-auto  h-[100vh]  z-[3000] translate-y-[100%] ${
+        className={`fixed bottom-0 inset-x-0 px-4 pb-4 sm:inset-0 flex items-center justify-center overflow-y-auto  h-[100vh]  z-[3000] translate-y-[100%] ${
           isEditAndUpdateModalOn && "translate-y-0"
         } `}
       >
-        <div class="fixed inset-0 transition-opacity">
-          <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+        <div className="fixed inset-0 transition-opacity">
+          <div className="absolute inset-0 bg-gray-500 opacity-75"></div>
         </div>
-        <div class="bg-white rounded-lg px-4 pt-5 pb-4 overflow-y-auto w-[99%] h-[98%] shadow-xl transform transition-all sm:max-w-lg sm:w-full">
-          <h2 class="text-xl sm:text-2xl font-bold text-center">Update existing product</h2>
+        <div className="bg-white rounded-lg px-4 pt-5 pb-4 overflow-y-auto w-[99%] h-[98%] shadow-xl transform transition-all sm:max-w-lg sm:w-full">
+          <h2 className="text-xl sm:text-2xl font-bold text-center">Update existing product</h2>
           <AiOutlineClose
             className="w-9 h-9 fill-primaryColor absolute right-5 cursor-pointer top-5"
             onClick={() => setIsEditAndUpdateModal(false)}
           />
-          <form action="" class="pt-8" onSubmit={UpdateProduct}>
-            <div class="mb-6">
-              <label class="block font-medium mb-2">Title</label>
+          <form action="" className="pt-8" onSubmit={UpdateProduct}>
+            <div className="mb-6">
+              <label className="block font-medium mb-2">Title</label>
               <input
                 type="text"
-                class="w-full p-2 border border-gray-300 rounded-lg"
+                className="w-full p-2 border border-gray-300 rounded-lg"
                 value={title}
                 onChange={(e) => {
                   setProductDetails((prevData) => {
-                    console.log(e.target.value);
                     return { ...prevData, title: e.target.value };
                   });
                 }}
               />
             </div>
-            <div class="mb-6 flex gap-[2%] items-end justify-between">
-              <div class="w-1/3">
+            <div className="mb-6 flex gap-[2%] items-end justify-between">
+              <div className="w-1/3">
                 <label htmlFor="price" className="font-bold">
                   Price
                 </label>
@@ -225,7 +223,7 @@ export const EditAndupdateProductModal = ({
                   className="w-full mt-2 p-2 border border-gray-300 rounded-lg"
                 />
               </div>
-              <div class="w-1/3">
+              <div className="w-1/3">
                 <label htmlFor="stock" className="font-bold">
                   Stock
                 </label>
@@ -241,7 +239,7 @@ export const EditAndupdateProductModal = ({
                   className="w-full mt-2 p-2 border border-gray-300 rounded-lg"
                 />
               </div>
-              <div class="w-1/3">
+              <div className="w-1/3">
                 <label htmlFor="discount" className="font-bold">
                   Discount(%)
                 </label>
@@ -259,9 +257,9 @@ export const EditAndupdateProductModal = ({
               </div>
             </div>
             <section>
-              <h2 class="text-lg font-bold mb-2">Select product categories</h2>
-              <div class="mb-6">
-                <div class="flex flex-wrap">
+              <h2 className="text-lg font-bold mb-2">Select product categories</h2>
+              <div className="mb-6">
+                <div className="flex flex-wrap">
                   {Object.keys(productCategories).map((categoryTitle) => {
                     return (
                       <div className="pb-2 border border-gray-300 p-2">
@@ -289,13 +287,13 @@ export const EditAndupdateProductModal = ({
                 </div>
               </div>
             </section>
-            <div class="mb-10 relative">
+            <div className="mb-10 relative">
               <div>
-                <label class="block font-bold mb-2">Image</label>
+                <label className="block font-bold mb-2">Image</label>
                 <input
                   type="file"
                   ref={imgRef}
-                  class="w-full p-4 border border-gray-300 rounded-lg "
+                  className="w-full p-4 border border-gray-300 rounded-lg "
                   onChange={handleImageUpload}
                 />
                 <h1 className="italics absolute left-[45%] sm:left-[55%] top-[38%]  hidden text-[#fca311] bottom-4 font-bold ">
@@ -311,8 +309,8 @@ export const EditAndupdateProductModal = ({
                 </h4>
               </div>
             </div>
-            <div class="flex items-center justify-end">
-              <button type="submit" class="text-[#ffffff] bg-[#fca311] w-[40%] max-w-[150px] p-2 rounded-lg">
+            <div className="flex items-center justify-end">
+              <button type="submit" className="text-[#ffffff] bg-[#fca311] w-[40%] max-w-[150px] p-2 rounded-lg">
                 Update
               </button>
             </div>

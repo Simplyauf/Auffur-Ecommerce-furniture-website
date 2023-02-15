@@ -10,7 +10,6 @@ const initialState = {
   checkingAdminStatusLoader: false,
   adminDatas: [],
 };
-console.log(initialState);
 
 export const adminSlice = createSlice({
   name: "adminSlice",
@@ -31,7 +30,6 @@ export const adminSlice = createSlice({
       state.successMessage = "";
     },
     [createNewAdmin.fulfilled]: (state, { payload }) => {
-      console.log(payload);
       state.isLoading = false;
       state.errorMessage = "";
       state.successMessage = "";
@@ -43,7 +41,6 @@ export const adminSlice = createSlice({
       });
     },
     [createNewAdmin.rejected]: (state, { payload }) => {
-      console.log(payload);
       state.isLoading = false;
       state.errorMessage = "";
       state.successMessage = "";
@@ -93,7 +90,6 @@ export const adminSlice = createSlice({
       });
     },
     [fetchAdminDatas.rejected]: (state, { payload }) => {
-      console.log(payload);
       state.isLoading = false;
 
       toast(payload, {

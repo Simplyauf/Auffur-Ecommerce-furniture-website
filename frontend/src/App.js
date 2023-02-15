@@ -24,7 +24,6 @@ function App() {
   }, [dispatch]);
 
   useEffect(() => {
-    console.log(JSON.parse(localStorage.getItem("UserData")));
     dispatch(getUserData(JSON.parse(localStorage.getItem("UserData")) || ""));
   }, [dispatch]);
 

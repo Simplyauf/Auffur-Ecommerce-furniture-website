@@ -49,10 +49,9 @@ export const handleSorting = (
       sortedArr = [...allProductsData].sort((a, z) => z.price - a.price);
       break;
     default:
-      console.log("Default");
       break;
   }
-  console.log(sortedArr, currentPagePathName);
+
   currentPagePathName === "/shop" && dispatch(setSortedAllProductsData(sortedArr));
   currentPagePathName === "/search" && dispatch(setSortedSearchedProductData(sortedArr));
 };

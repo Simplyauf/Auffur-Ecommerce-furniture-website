@@ -12,12 +12,14 @@ const generateToken = (email, verificationStatus, expiryDate) => {
 // verify user's account
 
 const emailVerificationMessageDatas = (emailVerificationToken) => {
+  const mailUser = process.env.MAIL_FOR_SENDING;
+  const mailPass = process.env.MAIL_PASS;
   const serverUrl = process.env.SERVER_URL || "http://localhost:5000";
   return {
     port: 587,
     secure: false,
-    user: "azeezumarfaruk@gmail.com",
-    pass: "lnywzyzvjeertcgq",
+    user: mailUser,
+    pass: mailPass,
     subject: "[Auffur] Please confirm your email address",
     text: `Please click this link or paste the link in your browser to verify your email address: ${serverUrl}/api/v1/verifyGmail/Email-verification?token=${emailVerificationToken}`,
     html: `<h2>Verify your email address </h2><br/><div>To complete your account registration,please verify that this is your email address by clicking the button below</div><br/> <a href="${serverUrl}/api/v1/auth/verifyGmail/Email-verification?token=${emailVerificationToken}" style="display: inline-block; padding: 0.5em 1em; background-color: #fca311; color: white; text-decoration: none;">Verify Email</a> <br /> <br /> <br /> <div>This link will expire in 5days.If you didnt request this code,you can safely ignore this email,Someone else might have typed your email address by mistake</div> <br /> <span>Thanks,</span> <br /> <span>Auffur Team</span>`,
@@ -45,7 +47,7 @@ const registerUser = async (req, res) => {
   });
 
   const response = await sendMessageToUserEmail(email, token, emailVerificationMessageDatas);
-  console.log(response);
+
   res.send(
     "Your account has been created! A verification link has been sent to your email. Please check your email to complete your registration."
   );
@@ -55,8 +57,6 @@ const registerUser = async (req, res) => {
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
   let checkIfEmailExists = await User.findOne({ email }).lean();
-
-  console.log(checkIfEmailExists);
 
   if (!checkIfEmailExists) {
     throw new CustomErrorHandler(400, "Incorect email or password");

@@ -25,7 +25,7 @@ export const RegisterPage = () => {
       gmailInputDOM.parentElement.nextElementSibling.style.display = "block";
     } else {
       let response = await dispatch(RegisterUser(registerDetails));
-      console.log(response);
+
       if (!response.error) {
         navigate("/login");
         setRegisterDetails({ email: "", username: "", password: "" });

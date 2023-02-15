@@ -6,10 +6,9 @@ const User = require("../models/userData");
 const checkIfUserIsAnAdminMiddleware = async (req, res, next) => {
   let authHeader = req.headers.authorization;
   const token = authHeader?.split(" ")[1] || " ";
-  console.log(token);
+
   const tokenVerification = jwt.verify(token, process.env.SECRET_TOKEN_KEY, (err, decoded) => {
     if (err) {
-      console.log(err);
       return false;
     } else {
       return true;
@@ -26,7 +25,7 @@ const checkIfUserIsAnAdminMiddleware = async (req, res, next) => {
     throw new CustomErrorHandler(401, "Unauthorized,only logged in admin may perfrom action");
   } else if (checkIfTokenExist && checkIfTokenExist.adminStatus === true) {
     const adminData = await Admin.findOne({ userData: checkIfTokenExist._id });
-    
+
     res.locals.actionDoer = { doerRank: adminData.adminRank, doerData: checkIfTokenExist };
     next();
   } else {

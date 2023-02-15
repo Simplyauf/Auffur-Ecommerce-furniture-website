@@ -77,11 +77,11 @@ export const SingleProductTableCell = ({ products }) => {
         {...{ isProductDetailsModalOn, setIsProductDetailsModalOn, productDetails, isFetchingUpdatedDataLoading }}
       />
       <tr className="hover:bg-lightestSecondaryColor cursor-pointer" onClick={handleShowProductDetails}>
-        <td class="p-2  border border-b-0  border-LightSecondaryColor">{_id}</td>
-        <td class="p-2  border border-b-0 border-LightSecondaryColor">{title}</td>
-        <td class="p-2  border border-b-0 border-LightSecondaryColor">{price}</td>
-        <td class="p-2  border border-b-0 border-LightSecondaryColor">{stock}</td>
-        <td class="p-2  border border-b-0 border-LightSecondaryColor  ">
+        <td className="p-2  border border-b-0  border-LightSecondaryColor">{_id}</td>
+        <td className="p-2  border border-b-0 border-LightSecondaryColor">{title}</td>
+        <td className="p-2  border border-b-0 border-LightSecondaryColor">{price}</td>
+        <td className="p-2  border border-b-0 border-LightSecondaryColor">{stock}</td>
+        <td className="p-2  border border-b-0 border-LightSecondaryColor  ">
           <div className="flex items-center justify-center gap-2">
             {" "}
             <AiOutlineDelete

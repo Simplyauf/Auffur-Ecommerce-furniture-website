@@ -29,7 +29,6 @@ export const handleFilterByCategoriesAndPrice = (
 ) => {
   const { priceRange, selectedSubCategoryForFilter, selectedCategory } = store.getState().filterByCategoryAndPrice;
 
-  console.log(selectedCategory, selectedSubCategoryForFilter);
   if (selectedSubCategoryForFilter && priceRange) {
     let filteredProductsCategory = sortedAllProductsData.filter((productsData) =>
       productsData.categories[selectedCategory].includes(selectedSubCategoryForFilter)

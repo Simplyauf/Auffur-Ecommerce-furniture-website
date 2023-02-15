@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 
 export const AccountInformation = () => {
   const { userData } = useSelector((state) => state.userAuth);
-  console.log(userData);
   const navigate = useNavigate();
   return (
     <div className="w-[100] tablet:px-[6%] mb-20 xl:px-[4%] px-[4%] lg:px-[2%]">

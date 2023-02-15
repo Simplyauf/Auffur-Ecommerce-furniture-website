@@ -43,7 +43,7 @@ const sendMessageToUserEmail = async (email, verificationToken, messageData) => 
 
   await transporter.sendMail(
     {
-      from: "azeezumarfaruk@gmail.com",
+      from: "Auffur" + " <" + user + ">",
       to: email,
       subject: subject,
       text: text,

@@ -2,7 +2,6 @@ const { default: mongoose } = require("mongoose");
 const CustomErrorHandler = require("../errors/customErrorHandler");
 
 const errorHandler = (err, req, res, next) => {
-  console.log(err);
   if (err instanceof CustomErrorHandler) {
     res.status(err.statusCode).json({ message: err.message });
   } else if (err instanceof mongoose.Error.ValidationError) {

@@ -11,7 +11,7 @@ const productRoute = require("./routes/productRoute");
 const authRoute = require("./routes/authenticationRoute");
 const adminRoute = require("./routes/adminRoutes");
 const ordersRoute = require("./routes/ordersRoute");
-const { clearAdminJwt } = require("./controllers/Admin");
+const { clearAdminJwt } = require("./controllers/admin");
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
@@ -49,9 +49,7 @@ const startServer = async () => {
   try {
     await connectDb(process.env.MONGO_URI);
     app.listen(port, () => console.log(`Server is listening on port ${port}`));
-  } catch (error) {
-    console.log(`error : ${error}`);
-  }
+  } catch (error) {}
 };
 
 startServer();

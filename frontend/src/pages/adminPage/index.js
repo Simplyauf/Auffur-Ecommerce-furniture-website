@@ -31,7 +31,7 @@ export const Index = () => {
   useEffect(() => {
     const checkIfUserIsAdminFN = async () => {
       const { payload } = await dispatch(fetchIsUserAnAdmin());
-      console.log(payload, isAdmin);
+
       if (payload === "success") {
         setIsAdmin(true);
       } else {

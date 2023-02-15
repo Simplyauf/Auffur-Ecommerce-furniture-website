@@ -9,10 +9,9 @@ export const fetchAdminDatas = createAsyncThunk("admin/fetchAdminDatas", async (
     const header = { headers: { authorization: `Bearer ${LoginToken}` } };
 
     const { data } = await axios.get(serverUrl + "/api/v1/admin/fetchAdminDatas", header);
-    console.log(data);
+
     return data;
   } catch (error) {
-    console.log(error);
     return thunkAPI.rejectWithValue(error);
   }
 });

@@ -163,7 +163,7 @@ const Index = () => {
                     className="w-16 h-16 bg-darkPrimaryColor shadow-lg shadow-[rgba(0,0,0,0.2)] fill-secondaryColor cursor-pointer"
                     onClick={() => setIsFilterBySectionOpen(true)}
                   />
-                  <span class="absolute   -left-5 -top-2 -translate-y-full w-20 px-2 py-1 bg-gray-700 rounded-lg text-center text-white text-sm after:content-[''] after:absolute after:left-1/2 after:top-[100%] shadow-lg shadow-[rgba(0,0,0,0.2)]   after:border-8 after:border-x-transparent after:border-b-transparent after:border-t-gray-700">
+                  <span className="absolute   -left-5 -top-2 -translate-y-full w-20 px-2 py-1 bg-gray-700 rounded-lg text-center text-white text-sm after:content-[''] after:absolute after:left-1/2 after:top-[100%] shadow-lg shadow-[rgba(0,0,0,0.2)]   after:border-8 after:border-x-transparent after:border-b-transparent after:border-t-gray-700">
                     Filter Products
                   </span>
                 </div>

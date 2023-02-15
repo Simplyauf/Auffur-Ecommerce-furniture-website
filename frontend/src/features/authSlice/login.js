@@ -7,7 +7,7 @@ export const loginUser = createAsyncThunk("users/login", async (userParameter, t
   try {
     const { email, password } = userParameter;
     const { data } = await axios.post(serverUrl + "/api/v1/auth/login", { email, password });
-    console.log(data);
+
     return data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.response.data?.message || error.message);

@@ -7,10 +7,8 @@ export const fetchForgotPasswordClick = createAsyncThunk("users/forgotPasswordCl
   try {
     const { data } = await axios.post(serverUrl + "/api/v1/auth/forgotPasswordClick", { email });
 
-    console.log(data);
     return data;
   } catch (error) {
-    console.log(error);
     return thunkAPI.rejectWithValue(error.response.data?.message || error.message);
   }
 });

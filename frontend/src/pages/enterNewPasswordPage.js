@@ -37,7 +37,7 @@ export const EnterNewPassword = () => {
       });
     } else {
       const response = await dispatch(enterNewPasswordAsync({ password, token }));
-      console.log(response);
+
       if (!response.payload.success) {
         toast(response.errorMsg, {
           type: "error",
@@ -57,12 +57,12 @@ export const EnterNewPassword = () => {
   };
 
   return (
-    <section class="mt-16 flex justify-center items-center max-w-[340px] text-base  w-[92%] mx-auto">
-      <form class="flex flex-col gap-5  w-[100%] " onSubmit={onSubmit}>
-        <h1 class="text-4xl font-bold text-center font-RobotoCondensed">Change Password</h1>
-        <div class="authPage-input-container border-[1px] rounded relative border-secondaryColor focus-within:outline-none focus-within:border-primaryColor  w-[100%] h-[56px]">
+    <section className="mt-16 flex justify-center items-center max-w-[340px] text-base  w-[92%] mx-auto">
+      <form className="flex flex-col gap-5  w-[100%] " onSubmit={onSubmit}>
+        <h1 className="text-4xl font-bold text-center font-RobotoCondensed">Change Password</h1>
+        <div className="authPage-input-container border-[1px] rounded relative border-secondaryColor focus-within:outline-none focus-within:border-primaryColor  w-[100%] h-[56px]">
           <input
-            class="appearance-none absolute pl-4 top-0 left-0 focus:outline-none w-[100%] h-[100%] authPage-input bg-transparent"
+            className="appearance-none absolute pl-4 top-0 left-0 focus:outline-none w-[100%] h-[100%] authPage-input bg-transparent"
             type={`${isInputValueInPasswordMode1 ? "password" : "text"}`}
             placeholder=" "
             name=""
@@ -75,7 +75,7 @@ export const EnterNewPassword = () => {
               })
             }
           />
-          <label for="" class="absolute top-[0.7rem] left-4 z-[-1]">
+          <label for="" className="absolute top-[0.7rem] left-4 z-[-1]">
             password
           </label>
           {isInputValueInPasswordMode1 ? (
@@ -90,9 +90,9 @@ export const EnterNewPassword = () => {
             />
           )}
         </div>
-        <div class="authPage-input-container border-[1px] rounded relative border-secondaryColor focus-within:outline-none focus-within:border-primaryColor  w-[100%] h-[56px]">
+        <div className="authPage-input-container border-[1px] rounded relative border-secondaryColor focus-within:outline-none focus-within:border-primaryColor  w-[100%] h-[56px]">
           <input
-            class="appearance-none absolute pl-4 top-0 left-0 focus:outline-none w-[100%] h-[100%] authPage-input bg-transparent"
+            className="appearance-none absolute pl-4 top-0 left-0 focus:outline-none w-[100%] h-[100%] authPage-input bg-transparent"
             type={`${isInputValueInPasswordMode2 ? "password" : "text"}`}
             placeholder=" "
             name=""
@@ -106,7 +106,7 @@ export const EnterNewPassword = () => {
               })
             }
           />
-          <label for="" class="absolute top-[0.7rem] left-4 z-[-1]">
+          <label for="" className="absolute top-[0.7rem] left-4 z-[-1]">
             confirm password
           </label>
           {isInputValueInPasswordMode2 ? (
@@ -121,20 +121,22 @@ export const EnterNewPassword = () => {
             />
           )}
         </div>
-        <div class="border-[1px]  rounded py-[0.9rem] w-[100%] flex flex-col gap-4 border-black pl-4">
+        <div className="border-[1px]  rounded py-[0.9rem] w-[100%] flex flex-col gap-4 border-black pl-4">
           <span>Your password must contain:</span>
-          <span class={`${passwords.password.length < 8 ? "text-primaryColor" : "text-secondaryColor"}`}>
+          <span className={`${passwords.password.length < 8 ? "text-primaryColor" : "text-secondaryColor"}`}>
             {passwords.password.length < 8 ? "•" : "✓"}&nbsp; &nbsp;At least 8 characters
           </span>
           <span
-            class={`${passwords.password === passwords.confirmPassword ? "text-secondaryColor" : "text-primaryColor"}`}
+            className={`${
+              passwords.password === passwords.confirmPassword ? "text-secondaryColor" : "text-primaryColor"
+            }`}
           >
             {passwords.password === passwords.confirmPassword ? "✓" : "•"}&nbsp; &nbsp;Passwords must match
           </span>
         </div>
-        <div class="flex justify-between items-center mt-1"></div>
+        <div className="flex justify-between items-center mt-1"></div>
         <button
-          class="h-[56px] mt-3 bg-primaryColor w-[100%] rounded border-transparent text-white  font-medium"
+          className="h-[56px] mt-3 bg-primaryColor w-[100%] rounded border-transparent text-white  font-medium"
           type="submit"
         >
           Change Password

@@ -13,7 +13,6 @@ export const enterNewPasswordAsync = createAsyncThunk(
         { headers: { token: token } }
       );
 
-      console.log(data);
       return { data, success: true };
     } catch (error) {
       return { errorMsg: error?.response.data.message || error.message, success: false };

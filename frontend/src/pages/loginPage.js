@@ -56,14 +56,13 @@ export const LoginPage = () => {
   };
 
   const onSubmit = async (e) => {
-    console.log(loginDetails);
     e.preventDefault();
     let emailInputDOM = e.currentTarget.querySelector("input[type='email']");
     if (!validateEmail(emailInputDOM.value)) {
       emailInputDOM.parentElement.nextElementSibling.style.display = "block";
     } else {
       let response = await dispatch(loginUser(loginDetails));
-      console.log(response);
+
       if (response.payload.message) {
         navigate("/");
 
@@ -73,13 +72,13 @@ export const LoginPage = () => {
   };
 
   return (
-    <section class="my-16 flex justify-center items-center max-w-[340px] text-base  w-[92%] mx-auto">
-      <form class="flex flex-col gap-5 w-[100%] " onSubmit={onSubmit} onClick={onClickOfSomeBtn}>
-        <h1 class="text-4xl font-bold text-center font-RobotoCondensed">Welcome back</h1>
+    <section className="my-16 flex justify-center items-center max-w-[340px] text-base  w-[92%] mx-auto">
+      <form className="flex flex-col gap-5 w-[100%] " onSubmit={onSubmit} onClick={onClickOfSomeBtn}>
+        <h1 className="text-4xl font-bold text-center font-RobotoCondensed">Welcome back</h1>
         <div className="w-100% mt-4">
-          <div class="authPage-input-container mt-4 border-[1px] rounded relative border-secondaryColor focus-within:outline-none focus-within:border-primaryColor  w-[100%] h-[56px]">
+          <div className="authPage-input-container mt-4 border-[1px] rounded relative border-secondaryColor focus-within:outline-none focus-within:border-primaryColor  w-[100%] h-[56px]">
             <input
-              class="appearance-none absolute pl-4 top-0 left-0 focus:outline-none w-[100%] h-[100%] authPage-input bg-transparent"
+              className="appearance-none absolute pl-4 top-0 left-0 focus:outline-none w-[100%] h-[100%] authPage-input bg-transparent"
               type="email"
               placeholder=" "
               name=""
@@ -94,15 +93,15 @@ export const LoginPage = () => {
               }}
               required
             />
-            <label htmlFor="" class="absolute  top-[0.8rem] left-4 z-[-1]">
+            <label htmlFor="" className="absolute  top-[0.8rem] left-4 z-[-1]">
               Email address
             </label>
           </div>
           <span className="text-[#fca311] font-RobotoCondensed hidden">Please enter a valid email address</span>
         </div>
-        <div class="authPage-input-container border-[1px] rounded relative border-secondaryColor focus-within:outline-none focus-within:border-primaryColor  w-[100%] h-[56px]">
+        <div className="authPage-input-container border-[1px] rounded relative border-secondaryColor focus-within:outline-none focus-within:border-primaryColor  w-[100%] h-[56px]">
           <input
-            class="appearance-none absolute pl-4 top-0 left-0 focus:outline-none w-[100%] h-[100%] authPage-input bg-transparent"
+            className="appearance-none absolute pl-4 top-0 left-0 focus:outline-none w-[100%] h-[100%] authPage-input bg-transparent"
             type={`${isInputValueInPassword ? "password" : "text"}`}
             placeholder=" "
             name=""
@@ -114,7 +113,7 @@ export const LoginPage = () => {
               })
             }
           />
-          <label htmlFor="" class=" absolute top-[0.8rem] left-4 z-[-1]">
+          <label htmlFor="" className=" absolute top-[0.8rem] left-4 z-[-1]">
             Password
           </label>
           {isInputValueInPassword ? (
@@ -129,12 +128,12 @@ export const LoginPage = () => {
             />
           )}
         </div>
-        <div class="flex justify-between items-center mt-1">
-          {/* <div class="flex gap-2 items-center">
-            <input class="border-[1px] w-5 h-5" type="checkbox" name="" />
+        <div className="flex justify-between items-center mt-1">
+          {/* <div className="flex gap-2 items-center">
+            <input className="border-[1px] w-5 h-5" type="checkbox" name="" />
             <span>Remember me</span>
           </div> */}
-          <span data-nature="forgotPassswordBtn" class="text-primaryColor cursor-pointer">
+          <span data-nature="forgotPassswordBtn" className="text-primaryColor cursor-pointer">
             Forgot Password?
           </span>
         </div>
@@ -142,7 +141,7 @@ export const LoginPage = () => {
           initial="initial"
           whileTap="click"
           variants={primaryBtnVariant}
-          class="h-[56px] mt-3 bg-primaryColor w-[100%] rounded-md border-transparent text-white text-[18px]  font-medium"
+          className="h-[56px] mt-3 bg-primaryColor w-[100%] rounded-md border-transparent text-white text-[18px]  font-medium"
           type="submit"
         >
           <motion.span
@@ -155,9 +154,9 @@ export const LoginPage = () => {
             {isLoading ? "Logging in" : "Log in"}
           </motion.span>
         </motion.button>
-        <span class=" text-center">
+        <span className=" text-center">
           Dont have an account?{" "}
-          <Link to="/register" class="text-primaryColor">
+          <Link to="/register" className="text-primaryColor">
             Register here
           </Link>
         </span>

@@ -9,10 +9,9 @@ export const removeAdmin = createAsyncThunk("admin/removeAdmin", async (email, t
     const header = { headers: { authorization: `Bearer ${LoginToken}` } };
 
     const { data } = await axios.get(serverUrl + "/api/v1/admin/removeAdmin", { email }, header);
-    console.log(data);
+
     return data;
   } catch (error) {
-    console.log(error);
     return thunkAPI.rejectWithValue(error);
   }
 });

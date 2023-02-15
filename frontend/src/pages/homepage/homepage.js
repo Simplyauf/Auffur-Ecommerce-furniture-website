@@ -6,7 +6,7 @@ import FooterSection from "../../components/footerSection";
 
 const Homepage = () => {
   const location = useLocation();
-  console.log(location);
+
   return (
     <>
       <HeroSection />

@@ -10,10 +10,9 @@ export const createNewAdmin = createAsyncThunk("admin/createNewAdmin", async (pa
     const header = { headers: { authorization: `Bearer ${LoginToken}` } };
 
     const { data } = await axios.get(serverUrl + "/api/v1/admin/createNewAdmin", { email, adminRank }, header);
-    console.log(data);
+
     return data;
   } catch (error) {
-    console.log(error);
     return thunkAPI.rejectWithValue(error);
   }
 });

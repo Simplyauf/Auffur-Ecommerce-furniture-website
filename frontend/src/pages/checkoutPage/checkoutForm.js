@@ -27,7 +27,7 @@ export const CheckoutForm = ({ placeOrderFn, checkoutFormData, setCheckoutFormDa
               name=""
               id=""
               required
-              className="pl-3 w-[100%] h-[52px] focus-border-[1px] rounded focus:outline-none border-[1px] border-secondaryColor"
+              className="pl-3 w-[100%] h-[52px] focus-border-[1px] rounded focus:outline-none border-[1px] border-LightSecondaryColor"
               placeholder="username"
               value={checkoutFormData.username}
               onChange={(e) => {
@@ -49,7 +49,7 @@ export const CheckoutForm = ({ placeOrderFn, checkoutFormData, setCheckoutFormDa
               id=""
               required
               defaultValue={email}
-              className="pl-3 cursor-not-allowed w-[100%] h-[52px] focus-border-[1px] rounded focus:outline-none border-[1px] border-secondaryColor"
+              className="pl-3 cursor-not-allowed w-[100%] h-[52px] focus-border-[1px] rounded focus:outline-none border-[1px] border-LightSecondaryColor"
               placeholder="user@gmail.com"
             />
           </div>
@@ -68,7 +68,7 @@ export const CheckoutForm = ({ placeOrderFn, checkoutFormData, setCheckoutFormDa
               name=""
               id=""
               required
-              className="pl-3 w-[100%] h-[52px] focus-border-[1px] rounded focus:outline-none border-[1px] border-secondaryColor"
+              className="pl-3 w-[100%] h-[52px] focus-border-[1px] rounded focus:outline-none border-[1px] border-LightSecondaryColor"
               placeholder="Address"
               value={checkoutFormData.address}
               onChange={(e) => {
@@ -85,7 +85,7 @@ export const CheckoutForm = ({ placeOrderFn, checkoutFormData, setCheckoutFormDa
             <br />
             <select
               name=""
-              className="pl-3 w-[100%] h-[52px] focus-border-[1px] rounded focus:outline-none border-[1px] border-secondaryColor"
+              className="pl-3 w-[100%] h-[52px] focus-border-[1px] rounded focus:outline-none border-[1px] border-LightSecondaryColor"
               id=""
               required
               value={checkoutFormData.country}
@@ -113,7 +113,7 @@ export const CheckoutForm = ({ placeOrderFn, checkoutFormData, setCheckoutFormDa
                 name=""
                 required
                 id=""
-                className="pl-3 w-[100%] h-[52px] focus-border-[1px] rounded focus:outline-none border-[1px] border-secondaryColor"
+                className="pl-3 w-[100%] h-[52px] focus-border-[1px] rounded focus:outline-none border-[1px] border-LightSecondaryColor"
                 placeholder="city"
                 value={checkoutFormData.city}
                 onChange={(e) => {
@@ -133,7 +133,7 @@ export const CheckoutForm = ({ placeOrderFn, checkoutFormData, setCheckoutFormDa
                 name=""
                 id=""
                 required
-                className="pl-3 w-[100%] h-[52px] focus-border-[1px] rounded focus:outline-none border-[1px] border-secondaryColor"
+                className="pl-3 w-[100%] h-[52px] focus-border-[1px] rounded focus:outline-none border-[1px] border-LightSecondaryColor"
                 placeholder="Zip code"
                 value={checkoutFormData.postalCode}
                 onChange={(e) => {

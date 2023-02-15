@@ -13,7 +13,6 @@ const initialState = {
   userData: "",
   shippingMethod: "standard",
 };
-console.log(initialState);
 
 export const authSlice = createSlice({
   name: "authSlice",
@@ -40,7 +39,6 @@ export const authSlice = createSlice({
       state.successMessageInRegisterPage = "";
     },
     [RegisterUser.fulfilled]: (state, { payload }) => {
-      console.log(payload);
       state.isLoading = false;
 
       toast(payload, {
@@ -50,7 +48,6 @@ export const authSlice = createSlice({
       });
     },
     [RegisterUser.rejected]: (state, { payload }) => {
-      console.log(payload);
       state.isLoading = false;
 
       toast(payload, {
@@ -68,7 +65,7 @@ export const authSlice = createSlice({
       state.isLoading = false;
 
       state.isLoggedIn = true;
-      console.log(payload);
+
       localStorage.setItem("UserData", JSON.stringify(payload.userData));
       state.userData = payload.userData;
       toast(payload.message, {
@@ -78,7 +75,6 @@ export const authSlice = createSlice({
       });
     },
     [loginUser.rejected]: (state, { payload }) => {
-      console.log(payload);
       state.isLoading = false;
 
       toast(payload, {

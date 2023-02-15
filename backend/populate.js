@@ -10,7 +10,6 @@ const populateDb = async () => {
     await Products.create(productJson);
     process.exit(0);
   } catch (error) {
-    console.log(error);
     process.exit(1);
   }
 };

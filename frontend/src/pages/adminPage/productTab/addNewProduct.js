@@ -106,7 +106,6 @@ export const AddNewProduct = ({ isAddNewProductClicked, setIsAddNewProductClicke
         isLoading: false,
         autoClose: 5000,
       });
-      console.log(error);
     }
   };
 
@@ -114,7 +113,7 @@ export const AddNewProduct = ({ isAddNewProductClicked, setIsAddNewProductClicke
     let imageFile = e.currentTarget.files[0];
     const formData = new FormData();
     formData.append("image", imageFile);
-    console.log(imgRef.current);
+
     imgRef.current.nextElementSibling.style.display = "block";
     imgRef.current.nextElementSibling.textContent = "uploading image ...";
     const asyncImgUploadToastId = toast.loading("Pls wait, product image is currently being uploaded");
@@ -136,10 +135,9 @@ export const AddNewProduct = ({ isAddNewProductClicked, setIsAddNewProductClicke
         autoClose: 3000,
       });
       imgRef.current.nextElementSibling.textContent = "uploaded";
-      console.log(image);
     } catch (error) {
       setImgUrl("");
-      console.log(error);
+
       let errMessage;
       if (!imageFile) errMessage = "No image selected";
       else if (!error.response.data) errMessage = error.message;

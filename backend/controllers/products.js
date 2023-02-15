@@ -31,8 +31,6 @@ const uploadProductImages = async (req, res) => {
   });
   fs.unlinkSync(req.files.image.tempFilePath);
 
-  console.log(result.secure_url);
-
   return res.status(201).json({ image: { src: result.secure_url } });
 };
 
@@ -87,7 +85,7 @@ const searchProducts = async (req, res) => {
   if (!title || !pageNo || !perPage) {
     throw new CustomErrorHandler(400, "parameters missing");
   }
-  console.log(perPage, pageNo);
+
   const searchLength = await Product.countDocuments({ title: { $regex: title, $options: "i" } });
   const searchedProducts = await Product.find({ title: { $regex: title, $options: "i" } })
     .skip((pageNo - 1) * perPage)
