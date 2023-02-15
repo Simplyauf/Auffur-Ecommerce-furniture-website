@@ -10,7 +10,7 @@
 
 To install this project, follow these steps:
 - Clone the repository
-`git clone https://github.com/your-username/your-project.git`
+`git clone https://github.com/Simplyauf/Auffur.git`
 - cd your-project and Install dependencies
 `yarn add`
 - Start the development server
