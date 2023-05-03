@@ -11,18 +11,7 @@ const Index = () => {
   const categoryContainerRef = useRef();
   const { allProductsData, isLoading, fetchingError } = useSelector((state) => state.productsData);
 
-  useEffect(() => {
-    if (!isLoading)
-      toast("Homepage products loaded sucessfully", {
-        type: "success",
-        autoClose: 2000,
-      });
-    if (fetchingError)
-      toast("Homepage Products loading failed", {
-        type: "error",
-        autoClose: 2000,
-      });
-  }, [fetchingError, isLoading]);
+
 
   useEffect(() => {
     shuffleArr(featuredProducts);
