@@ -37,19 +37,7 @@ const Index = () => {
   let NoOfProductsPerPage = 10;
   const [currentPageNo, setCurrentPageNo] = useState(1);
 
-  //toast message
-  useEffect(() => {
-    if (!isLoading)
-      toast("Products loaded sucessfully", {
-        type: "success",
-        autoClose: 2000,
-      });
-    if (fetchingError)
-      toast("Products loading failed", {
-        type: "error",
-        autoClose: 2000,
-      });
-  }, [fetchingError, isLoading]);
+ 
 
   // HANDLE SORTING WHEN THE APP STARTS AND ALSO WHEN SORTING CRITERIA CHANGES
   useEffect(() => {
