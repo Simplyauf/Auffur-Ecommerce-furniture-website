@@ -11,11 +11,24 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { fetchIsTokenValid } from "./features/authSlice/fetchIsTokenValid";
 import { getUserData } from "./features/authSlice";
+import { useLocation } from 'react-router-dom';
+
 
 function App() {
   const [isLargeScreen, setIsLargeScreen] = useState("");
   const [isWishlistActive, setIsWishlistActive] = useState(false);
   const [isCartSectionActive, setIsCartSectionActive] = useState(false);
+
+
+
+    const location = useLocation();
+  
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [location.pathname]);
+  
+
+  
 
   const dispatch = useDispatch();
 

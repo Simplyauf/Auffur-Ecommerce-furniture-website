@@ -23,14 +23,13 @@ import { Dashboard } from "../pages/adminPage/dashboard";
 import { ProductManagement } from "../pages/adminPage/productTab/";
 import { UserManagement } from "../pages/adminPage/user";
 import { AdminManagement } from "../pages/adminPage/adminManagement/admins";
-import ScrollToTop from "../utils/scrollToTopOnNavigate";
+
 
 const PagesRoute = ({ setIsCartSectionActive }) => {
   const location = useLocation();
   return (
     <AnimatePresence mode="wait">
       <Routes key={location.pathname} location={location}>
-        <ScrollToTop/>
         <Route path="/" element={<Homepage />} />
         <Route path="/shop" element={<ShopPage />} />
         <Route path="/aboutUs" element={<AboutUsPage />} />
