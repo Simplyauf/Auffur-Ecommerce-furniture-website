@@ -21,7 +21,9 @@ cloudinary.config({
 
 const app = express();
 //  middlewares
-app.use(cors());
+app.use(cors({
+  origin:"https://auffur-furnishes.netlify.app"
+}));
 app.use(express.json());
 app.use(
   fileUpload({
